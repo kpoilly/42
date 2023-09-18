@@ -14,10 +14,13 @@
 
 char	*ft_strrchr(const char *str, char c)
 {
-	str = ft_strchr(str, c);
-	if (!str)
+	char	*dest;
+
+	dest = (char *)str;
+	dest = ft_strchr(dest, c);
+	if (!dest)
 		return (NULL);
-	while (*str && ft_strchr(str + 1, c))
-		str = ft_strchr(str + 1, c);
-	return (str);
+	while (*dest && ft_strchr(dest + 1, c))
+		dest = ft_strchr(dest + 1, c);
+	return (dest);
 }

@@ -25,4 +25,5 @@ void	*ft_memset(void *mem, int oct, size_t n)
 		str++;
 		i++;
 	}
+	return (mem);
 }

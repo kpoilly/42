@@ -15,7 +15,7 @@
 void	*ft_calloc(size_t nelem, size_t size)
 {
 	void	**tab;
-	int		i;
+	size_t	i;
 
 	if (!nelem || !size)
 		return (NULL);

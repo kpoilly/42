@@ -23,5 +23,5 @@ char	*ft_strchr(const char *str, char c)
 		i++;
 	if (i == ft_strlen(str))
 		return (NULL);
-	return (str + i);
+	return ((char *)str + i);
 }

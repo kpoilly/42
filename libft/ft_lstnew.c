@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 11:14:59 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/12 11:14:59 by marvin           ###   ########.fr       */
+/*   Created: 2023/09/18 13:20:52 by marvin            #+#    #+#             */
+/*   Updated: 2023/09/18 13:20:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, void *src, size_t n)
+t_list	*ft_lstnew(void *content)
 {
-	
+	t_list	*elem;
+
+	elem = malloc(sizeof(elem));
+	if (!elem)
+		return (NULL);
+	elem->content = content;
+	elem->next = NULL;
+	return (elem);
 }
