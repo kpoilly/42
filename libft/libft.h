@@ -44,7 +44,7 @@ int				ft_strncmp(char *s1, char *s2, unsigned int n);
 void			*ft_memchr(const void *mem, int c, size_t n);
 int				memcmp(const void *mem1, const void *mem2, size_t n);
 char			*ft_strnstr(char *big, char *little, size_t n);
-int				ft_atoi(char *str);
+int				ft_atoi(const char *str);
 void			*ft_calloc(size_t nelem, size_t size);
 char			*ft_strdup(const char *s);
 char			*ft_substr(char const *s, unsigned int start, size_t len);

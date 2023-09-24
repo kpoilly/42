@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 13:19:53 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/10 13:19:53 by marvin           ###   ########.fr       */
+/*   Created: 2023/09/24 03:37:21 by marvin            #+#    #+#             */
+/*   Updated: 2023/09/24 03:37:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	*memmove(void *dest, const void *src, size_t n)
 {
-	int	nb;
-	int	sign;
-
-	nb = 0;
-	sign = 1;
-	if (*str == '-')
-	{
-		sign *= -1;
-		str++;
-	}
-	while (ft_isdigit(*str))
-	{
-		nb = (nb * 10) + (*str - '0');
-		str++;
-	}
-	return (nb * sign);
+	return (NULL);
 }
