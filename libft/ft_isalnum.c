@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 10:18:05 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/10 10:18:05 by marvin           ###   ########.fr       */
+/*   Created: 2023/11/01 10:19:43 by kpoilly           #+#    #+#             */
+/*   Updated: 2023/11/01 17:19:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(char c)
+int	ft_isalnum(int c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));
 }

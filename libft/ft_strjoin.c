@@ -37,9 +37,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[len] = '\0';
 	return (str);
 }
-
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	printf("%s\n", ft_strjoin(argv[1], argv[2]));
-}

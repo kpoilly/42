@@ -28,6 +28,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		i;
 	int		j;
 	char	*str;
+	int		lenstr;
 
 	i = 0;
 	j = ft_strlen(s1) - 1;
@@ -35,7 +36,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	while (j && in_set(s1[j], set))
 		j--;
-	str = malloc(((j - i + 1) + 1) * sizeof(char));
+	lenstr = j - i + 1;
+	if (lenstr < 0)
+		lenstr = 0;
+	str = malloc((lenstr + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	s1 += i;

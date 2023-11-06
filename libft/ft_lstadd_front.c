@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 10:36:43 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/01 10:38:32 by kpoilly          ###   ########.fr       */
+/*   Created: 2023/11/02 13:56:47 by kpoilly           #+#    #+#             */
+/*   Updated: 2023/11/02 14:03:11 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	return (c >= ' ' && c <= '~');
+	new->next = *lst;
+	*lst = new;
 }

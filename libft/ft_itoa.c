@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 18:54:48 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/12 18:54:48 by marvin           ###   ########.fr       */
+/*   Created: 2023/11/04 10:43:36 by kpoilly           #+#    #+#             */
+/*   Updated: 2023/11/06 11:09:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_intlen(int nb)
+int	ft_intlen(long int nb)
 {
 	int	len;
 
@@ -42,28 +42,36 @@ char	*ft_strrev(char *str)
 	return (revstr);
 }
 
-char	*ft_itoa(int n)
+long int	grapillage(long int n, int *sign)
 {
-	int		sign;
-	char	*str;
-	int		i;
-
-	sign = 1;
+	*sign = 1;
 	if (n < 0)
 	{
-		sign++;
+		(*sign)++;
 		n *= -1;
 	}
-	str = malloc((ft_intlen(n) + sign) * sizeof(char));
+	return (n);
+}
+
+char	*ft_itoa(int n)
+{
+	long int	nb;
+	int			sign;
+	char		*str;
+	int			i;
+
+	nb = n;
+	nb = grapillage(n, &sign);
+	str = malloc((ft_intlen(nb) + sign) * sizeof(char));
 	if (!str)
 		return (NULL);
 	i = 0;
-	if (!n)
+	if (!nb)
 		str[i++] = '0';
-	while (n > 0)
+	while (nb > 0)
 	{
-		str[i++] = (n % 10) + '0';
-		n /= 10;
+		str[i++] = (nb % 10) + '0';
+		nb /= 10;
 	}
 	if (sign == 2)
 		str[i++] = '-';

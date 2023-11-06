@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 10:25:01 by marvin            #+#    #+#             */
-/*   Updated: 2023/09/10 10:25:01 by marvin           ###   ########.fr       */
+/*   Created: 2023/11/01 10:44:34 by kpoilly           #+#    #+#             */
+/*   Updated: 2023/11/01 17:58:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(char c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
-		return (c - 32);
+		c -= 32;
 	return (c);
 }
