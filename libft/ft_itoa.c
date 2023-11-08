@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 10:43:36 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/06 11:09:31 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/08 07:27:18 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	*ft_strrev(char *str)
 
 	i = ft_strlen(str);
 	revstr = malloc((i + 1) * sizeof(char));
+	if (!revstr)
+		return (NULL);
 	i--;
 	j = 0;
 	while (i >= 0)
@@ -60,7 +62,6 @@ char	*ft_itoa(int n)
 	char		*str;
 	int			i;
 
-	nb = n;
 	nb = grapillage(n, &sign);
 	str = malloc((ft_intlen(nb) + sign) * sizeof(char));
 	if (!str)

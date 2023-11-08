@@ -32,11 +32,11 @@ bonus:		${BONUSOBJ}
 			${AR} ${NAME} ${OBJECTS} ${BONUSOBJ}
 
 clean:
-			${RM} ${OBJECTS}
+			${RM} ${OBJECTS} ${BONUSOBJ}
 
 fclean:		clean
 			${RM} ${NAME}
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all bonus clean fclean re

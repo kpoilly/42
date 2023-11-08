@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 01:29:57 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/08 04:39:42 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/08 16:38:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,28 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*balai;
 	t_list	*new;
+	t_list	*toreturn;
 
-	balai = lst;
-	new = ft_lstnew(lst->content);
-	if (!new)
-		return (0);
-	new = new->next;
-	while (balai)
+	toreturn = ft_lstnew(f(lst->content));
+	if (!toreturn)
 	{
-		if (f(balai->content))
-		{
-			new->next = ft_lstnew(balai->content);
-			new = new->next;
-		}
-		balai = balai->next;
+		ft_lstclear(&toreturn, del);
+		return (NULL);
 	}
-	return (new);
+	new = toreturn;
+	lst = lst->next;
+	while (lst)
+	{
+		new->next = ft_lstnew(f(lst->content));
+		lst = lst->next;
+		if (!new)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		new = new->next;
+	}
+	lst = NULL;
+	return (toreturn);
 }
