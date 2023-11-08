@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 14:51:36 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/08 02:17:22 by kpoilly          ###   ########.fr       */
+/*   Created: 2023/11/08 01:29:57 by kpoilly           #+#    #+#             */
+/*   Updated: 2023/11/08 04:39:42 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*dest;
-	int		i;
+	t_list	*balai;
+	t_list	*new;
 
-	dest = malloc((ft_strlen(src) + 1) * sizeof(char));
-	if (!dest)
-		return (NULL);
-	i = 0;
-	while (src[i])
+	balai = lst;
+	new = ft_lstnew(lst->content);
+	if (!new)
+		return (0);
+	new = new->next;
+	while (balai)
 	{
-		dest[i] = src[i];
-		i++;
+		if (f(balai->content))
+		{
+			new->next = ft_lstnew(balai->content);
+			new = new->next;
+		}
+		balai = balai->next;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (new);
 }
