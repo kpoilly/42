@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 14:21:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/10 08:54:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/10 15:25:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*array;
+	size_t	total;
 
-	if (!nmemb || !size)
+	total = nmemb * size;
+	if (nmemb && total / nmemb != size)
 		return (NULL);
 	array = malloc(nmemb * size);
 	if (!array)

@@ -31,6 +31,10 @@ ${NAME}:	${OBJECTS}
 bonus:		${BONUSOBJ}
 			${AR} ${NAME} ${OBJECTS} ${BONUSOBJ}
 
+so:
+	$(CC) -nostartfiles -fPIC ${FILES} ${BONUSFILES}
+	gcc -nostartfiles -shared -o libft.so ${OBJECTS} ${BONUSOBJ}
+
 clean:
 			${RM} ${OBJECTS} ${BONUSOBJ}
 

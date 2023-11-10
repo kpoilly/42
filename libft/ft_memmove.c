@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 14:02:48 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/10 13:29:03 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/10 17:52:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*str_dst;
 	size_t			i;
 
+	if (dest == src)
+		return (dest);
 	str_src = (unsigned char *)src;
 	str_dst = (unsigned char *)dest;
 	i = 0;
@@ -30,12 +32,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		}
 	}
 	else
-	{
-		while (i < n)
-		{
-			str_dst[i] = str_src[i];
-			i++;
-		}
-	}
+		ft_memcpy(dest, src, n);
 	return (dest);
 }

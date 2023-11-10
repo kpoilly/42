@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:03:05 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/10 10:55:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/10 17:38:09 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	count_words(char const *s, char c)
 	int	count;
 
 	count = 0;
-	if (*s != c)
+	if (*s && *s != c)
 	{
 		count++;
 		s++;
 	}
-	while (*(s + 1))
+	while (*s && *(s + 1))
 	{
 		if (*s == c && *(s + 1) != c)
 			count++;
