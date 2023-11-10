@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 13:57:31 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/01 14:13:42 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/10 13:27:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*str;
 	size_t	i;
 
+	if (!dest || !src)
+		return (NULL);
 	str = (char *)dest;
 	i = 0;
 	while (i < n)

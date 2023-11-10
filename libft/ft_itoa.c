@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:57:09 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/10 09:15:02 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/10 11:21:21 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	ft_intlen(long int nb)
 {
 	int	len;
 
-	len = 1;
+	if (!nb)
+		return (1);
+	len = 0;
 	while (nb > 0)
 	{
 		len++;
@@ -39,14 +41,14 @@ char	*ft_itoa(int n)
 		sign++;
 		nb *= -1;
 	}
-	str = malloc((ft_intlen(nb) + sign) * sizeof(char));
+	str = ft_calloc((ft_intlen(nb) + sign), sizeof(char));
 	if (!str)
 		return (NULL);
-	i = ft_intlen(nb) + sign;
-	str[i] = '\0';
+	i = ft_intlen(nb) + sign - 1;
+	str[0] = '0';
 	while (nb > 0)
 	{
-		str[i--] = (nb % 10) + '0';
+		str[--i] = (nb % 10) + '0';
 		nb /= 10;
 	}
 	if (sign == 2)
