@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:29:15 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/10 17:57:45 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/11 10:08:07 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		i++;
 	}
 	dst[size_dst + i] = '\0';
-	if (size_dst > size)
-		return (size + size_src);
-	else
-		return (size_src + size_dst);
+	return (size_src + size_dst);
 }

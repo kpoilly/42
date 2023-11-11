@@ -6,9 +6,11 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:18:42 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/08 14:29:48 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/11 10:50:21 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {
