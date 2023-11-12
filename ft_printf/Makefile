@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME		= libftprintf.a
-FILES		= ft_printf.c ft_utils.c
+FILES		= ft_printf.c ft_printstr.c ft_printnbr.c ft_utils.c
 BONUSFILES	= 
 OBJECTS		= ${FILES:.c=.o}
 BONUSOBJ	= ${BONUSFILES:.c=.o}

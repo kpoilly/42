@@ -6,13 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 06:03:37 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/12 13:27:06 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/12 16:38:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(char *input, ...)
+int	ft_printf(const char *input, ...)
 {
 	va_list	args;
 	int		len;
@@ -53,42 +53,25 @@ int	ft_printf(char *input, ...)
 	return (len);
 }
 
-
 int	main(void)
 {
-	int a = 42;
+	int a = -42;
 	int *ptr = &a;
 
-	/*printf("vraie: %%\n");
+
+	printf("vraie: %d\n", a);
+	ft_printf("ft:    %d\n", a);
+	/* printf("vraie: %%\n");
 	ft_printf("ft:    %%\n");
 	printf("vraie: %x\n", a);
 	ft_printf("ft:    %x\n", a);
 	printf("vraie: %X\n", a);
 	ft_printf("ft:    %X\n", a);
 	printf("vraie: %p\n", ptr);
-	ft_printf("ft:    %p\n", ptr);
-	*/
-	printf("vraie: %u\n", -a);
-	ft_printf("ft:    %u\n", -a);
+	ft_printf("ft:    %p\n", ptr); */
+
+	printf("vraie: %u\n", a);
+	ft_printf("ft:    %u\n", a);
 	ft_printf("len: %d\n", printf("vraie:      %s%c  %% %p %d%c %x %s %X\n", "Adress mem", ':', ptr, a, ':', a, "ou", a));
 	printf("len: %d\n", ft_printf("ft:         %s%c  %% %p %d%c %x %s %X\n", "Adress mem", ':', ptr, a, ':', a, "ou", a));
-
-	/*ft_printf("-%c\n", '0');
-	printf("+%c\n", '0');
-	ft_printf("- %c \n", '0');
-	printf("+ %c \n", '0');
-	ft_printf("- %c\n", '0' - 256);
-	printf("+ %c\n", '0' - 256);
-	ft_printf("-%c \n", '0' + 256);
-	printf("+%c \n", '0' + 256);
-	ft_printf("- %c %c %c \n", '0', 0, '1');
-	printf("+ %c %c %c \n", '0', 0, '1');
-	ft_printf("- %c %c %c \n", ' ', ' ', ' ');
-	printf("+ %c %c %c \n", ' ', ' ', ' ');
-	ft_printf("- %c %c %c \n", '1', '2', '3');
-	printf("+ %c %c %c \n", '1', '2', '3');
-	ft_printf("- %c %c %c \n", '2', '1', 0);
-	printf("+ %c %c %c \n", '2', '1', 0);
-	ft_printf("- %c %c %c \n", 0, '1', '2');
-	printf("+ %c %c %c \n", 0, '1', '2');*/
 }
