@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 15:29:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/12 15:33:53 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/13 14:15:16 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putstr(char *s)
 		write(1, s++, 1);
 }
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
 	int	i;
 
@@ -30,6 +30,11 @@ size_t	ft_strlen(const char *s)
 
 int	ft_putstrlen(char *str)
 {
+	if (!str)
+	{
+		ft_putstrlen("(null)");
+		return (6);
+	}
 	ft_putstr(str);
 	return (ft_strlen(str));
 }
