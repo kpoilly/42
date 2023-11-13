@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:52:50 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/13 17:53:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/13 19:16:09 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*get_next_line(int fd)
 {
 	int		reader;
 	char	buffer;
+	char	buffer2;
 
 	reader = read(fd, &buffer, 1);
 	if (reader == -1)

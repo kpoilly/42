@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:29:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/13 17:49:39 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/13 19:07:32 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-int	ft_atoi(const char *nptr);
+char	*get_next_line(int fd);
+int		ft_atoi(const char *nptr);
 
 #endif
