@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:52:50 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/13 19:16:09 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/14 17:37:56 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,37 @@ char	*get_next_line(int fd)
 {
 	int		reader;
 	char	buffer;
-	char	buffer2;
+	char	*start;
+	char	*append;
 
 	reader = read(fd, &buffer, 1);
 	if (reader == -1)
 		return (NULL);
+	while (buffer == '\n')
+		reader = read(fd, &buffer, 1);
 	while (reader && reader != -1 && buffer != '\n')
 	{
-		write(1, &buffer, 1);
+		start = ft_strjoin(append, &buffer);
+		append = ft_strdup(start);
+		free(start);
 		reader = read(fd, &buffer, 1);
 	}
-	return ("test");
+	buffer = '\n';
+	start = ft_strjoin(append, &buffer);
+	free(append);
+	return (start);
 }
 
-int	main(int argc, char **argv)
+/* int	main(int argc, char **argv)
 {
 	int  fd = open(argv[1], O_RDONLY);
 	int i = 0;
 
+	(void)argc;
 	while (i < ft_atoi(argv[2]))
 	{
-		get_next_line(fd);
-		write(1, "\n", 1);
+		printf("%s", get_next_line(fd));
 		i++;
 	}
 	close(fd);
-}
+} */
