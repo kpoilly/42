@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 06:03:37 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/13 14:32:46 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/16 10:57:00 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,12 @@ int	ft_printf(const char *input, ...)
 
 /* int	main(void)
 {
-	int a = -42;
+	int a = -1;
 	int *ptr = &a;
+
+	printf("%s\n", 0);
+	printf("vraie: %X\n", a);
+	ft_printf("ft:    %X\n", a);
 
 	printf("vr: %d\n", printf("%u", 9223372036854775807));
 	printf("ft: %d\n", ft_printf("%u", 9223372036854775807));

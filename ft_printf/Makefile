@@ -12,9 +12,7 @@
 
 NAME		= libftprintf.a
 FILES		= ft_printf.c ft_printstr.c ft_printnbr.c ft_utils.c
-BONUSFILES	= 
 OBJECTS		= ${FILES:.c=.o}
-BONUSOBJ	= ${BONUSFILES:.c=.o}
 AR			= ar rcs
 RM			= rm -f
 CC			= cc
@@ -28,9 +26,6 @@ all:		${NAME}
 ${NAME}:	${OBJECTS}
 			${AR} ${NAME} ${OBJECTS}
 
-bonus:		${BONUSOBJ}
-			${AR} ${NAME} ${OBJECTS} ${BONUSOBJ}
-
 clean:
 			${RM} ${OBJECTS} ${BONUSOBJ}
 
@@ -39,4 +34,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all bonus clean fclean re
+.PHONY:		all clean fclean re
