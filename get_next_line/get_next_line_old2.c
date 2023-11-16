@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_old2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 18:33:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/16 23:12:45 by kpoilly          ###   ########.fr       */
+/*   Created: 2023/11/16 09:48:53 by kpoilly           #+#    #+#             */
+/*   Updated: 2023/11/16 19:35:05 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,42 +28,60 @@ int	isnewline(char *str, char c)
 	return (-1);
 }
 
+char	*get_line(char *buffer, int n)
+{
+	char	*str;
+
+	if (!buffer)
+		return (NULL);
+	str = malloc((n + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, buffer, (n + 1));
+	return (str);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*next_line;
+	char		*temp;
+	int			reader;
 	char		*buffer;
 	int			checker;
-	int			reader;
 
 	checker = isnewline(next_line, '\n');
 	if (checker >= 0)
 	{
-		buffer = ft_strndup(ft_strchr(next_line, '\n'), -1);
-		next_line += checker;
+		buffer = get_line(next_line, checker);
+		if (!buffer)
+			return (NULL);
+		next_line = ft_strdup(ft_strchr(buffer, '\n'));
 		return (buffer);
 	}
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	reader = read(fd, buffer, BUFFER_SIZE);
+	reader = read(fd, &buffer, BUFFER_SIZE);
+	printf("buffer: %s\n", buffer);
 	if (reader == -1)
 		return (NULL);
-	checker = isnewline(next_line, '\n');
-	while (checker == -1 && reader && reader != -1)
+	checker = isnewline(buffer, '\n');
+	if (checker >= 0)
 	{
-		next_line = ft_strjoin(next_line, buffer);
-		reader = read(fd, buffer, BUFFER_SIZE);
-		checker = isnewline(next_line, '\n');
+		temp = ft_strjoin();
+		next_line = ft_strdup(ft_strchr(buffer, '\n'));
+		
+		return (get_line(buffer, checker));
+	}
+	while (reader && reader != -1 && checker < 0)
+	{
+		reader = read(fd, &buffer, BUFFER_SIZE);
+		checker = isnewline(buffer, '\n');
 	}
 	if (checker >= 0)
 	{
-		buffer = ft_strndup(next_line, checker + 1);
-		next_line = ft_strndup(ft_strchr(next_line, '\n'), -1);
-		return (buffer);
+		next_line = ft_strdup(ft_strchr(buffer, '\n'));
+		return (get_line(buffer, checker));
 	}
-	if (!reader)
-	{
-		return (next_line);
-	}
-	return (NULL);
+	return (get_line(buffer, ft_strlen(buffer)));
 }
 
 int	main(int argc, char **argv)
@@ -74,7 +92,6 @@ int	main(int argc, char **argv)
 	(void)argc;
 	while (i < ft_atoi(argv[2]))
 	{
-		printf("%d: ", i + 1);
 		printf("%s", get_next_line(fd));
 		i++;
 	}
