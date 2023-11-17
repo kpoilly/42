@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:29:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/16 23:10:23 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/17 17:44:46 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@
 # endif
 
 char	*get_next_line(int fd);
+int		isnewline(char *str, char c);
+char	*get_line(char **next_line, int pos);
+char	*end_of_file(char **next_line);
+
 int		ft_strlen(char *s);
 int		ft_atoi(const char *nptr);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strndup(char *src, int n);
-char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
+void	ft_bzero(void *s, size_t n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:35:54 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/16 23:12:23 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/17 17:52:55 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*ft_strchr(const char *s, int c)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] && s[i] != (unsigned char)c)
-		i++;
-	if (i == ft_strlen((char *)s) && s[i] != (unsigned char)c)
-		return (NULL);
-	return ((char *)s + i + 1);
-}
-
 char	*ft_strndup(char *src, int n)
 {
 	char	*dest;
@@ -80,20 +68,46 @@ char	*ft_strndup(char *src, int n)
 	return (dest);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	isnewline(char *str, char c)
 {
-	size_t	len;
-	size_t	i;
+	int	i;
 
-	len = ft_strlen((char *)src);
+	if (!str)
+		return (-1);
 	i = 0;
-	if (size <= 0)
-		return (len);
-	while (src[i] && i < size - 1)
+	while (str[i])
 	{
-		dst[i] = src[i];
+		if (str[i] == c)
+			return (i);
 		i++;
 	}
-	dst[i] = '\0';
-	return (len);
+	if (str[i] == c)
+		return (i);
+	return (-1);
+}
+
+char	*end_of_file(char **next_line)
+{
+	char	*lastline;
+
+	if (ft_strlen(*next_line))
+	{
+		lastline = ft_strndup(*next_line, -1);
+		free(*next_line);
+		*next_line = NULL;
+	}
+	else
+		lastline = NULL;
+	return (lastline);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	char	*str;
+	size_t	i;
+
+	str = (char *)s;
+	i = 0;
+	while (i < n)
+		str[i++] = '\0';
 }
