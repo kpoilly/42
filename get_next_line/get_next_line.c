@@ -43,7 +43,7 @@ char	*get_next_line(int fd)
 	checker = isnewline(next_line, '\n');
 	while (checker == -1 && reader && reader != -1)
 	{
-		ft_bzero(buffer, ft_strlen(buffer));
+		ft_bzero(buffer, BUFFER_SIZE);
 		reader = read(fd, buffer, BUFFER_SIZE);
 		next_line = ft_strjoin(next_line, buffer);
 		checker = isnewline(next_line, '\n');
