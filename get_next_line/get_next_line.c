@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:33:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/19 16:35:04 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/19 16:46:34 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ char	*file_reader(int fd, int reader, char *buffer, char **next_line)
 		return (get_line(next_line, checker));
 	if (!reader)
 		return (end_of_file(next_line));
-
 	free(*next_line);
 	return (NULL);
 }
