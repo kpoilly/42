@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:29:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/19 16:47:11 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/19 17:07:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
+
+typedef struct s_monoread
+{
+	int		fd;
+	char	*str;
+	void	*next;
+}	t_monoread;
 
 char	*get_next_line(int fd);
 int		isnewline(char *str, char c);

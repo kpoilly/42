@@ -6,11 +6,11 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:33:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/19 16:46:48 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/19 17:24:42 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_line(char **next_line, int pos)
 {
@@ -66,31 +66,46 @@ char	*end_of_file(char **next_line)
 	return (lastline);
 }
 
+t_monoread	*seek_fd(int fd, t_monoread *current)
+{
+	if (!current)
+	{
+		current = malloc(sizeof(t_monoread));
+		current->fd = fd;
+		current->str = NULL;
+		current->next = NULL;
+	}
+	else if (current->fd != fd)
+		seek_fd(fd, current->next);
+	return (current);
+}
+
 char	*get_next_line(int fd)
 {
-	static char	*next_line = NULL;
-	char		*buffer;
-	char		*temp;
-	int			checker;
-	int			reader;
+	static t_monoread	*current = NULL;
+	char				*buffer;
+	char				*temp;
+	int					checker;
+	int					reader;
 
+	current = seek_fd(fd, current);
 	if (fd < 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
-	checker = isnewline(next_line, '\n');
+	checker = isnewline(current->str, '\n');
 	if (checker >= 0)
-		return (get_line(&next_line, checker));
+		return (get_line(&(current->str), checker));
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
 	reader = read(fd, buffer, BUFFER_SIZE);
 	buffer[reader] = 0;
-	if (!next_line)
-		next_line = ft_strndup("", -1);
-	temp = ft_strjoin(next_line, buffer);
-	free(next_line);
-	next_line = ft_strndup(temp, -1);
+	if (!current->str)
+		current->str = ft_strndup("", -1);
+	temp = ft_strjoin(current->str, buffer);
+	free(current->str);
+	current->str = ft_strndup(temp, -1);
 	free(temp);
-	return (file_reader(fd, reader, buffer, &next_line));
+	return (file_reader(fd, reader, buffer, &(current->str)));
 }
 
 /* int	main(int argc, char **argv)
