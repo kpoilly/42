@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:33:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/19 16:35:04 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/19 15:37:02 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,6 @@ char	*get_line(char **next_line, int pos)
 	*next_line = ft_strndup(temp, -1);
 	free(temp);
 	return (line);
-}
-
-char	*end_of_file(char **next_line)
-{
-	char	*lastline;
-
-	if (ft_strlen(*next_line))
-	{
-		lastline = ft_strndup(*next_line, -1);
-		free(*next_line);
-		*next_line = NULL;
-	}
-	else
-		lastline = NULL;
-	return (lastline);
 }
 
 char	*file_reader(int fd, int reader, char *buffer, char **next_line)
@@ -65,6 +50,21 @@ char	*file_reader(int fd, int reader, char *buffer, char **next_line)
 
 	free(*next_line);
 	return (NULL);
+}
+
+char	*end_of_file(char **next_line)
+{
+	char	*lastline;
+
+	if (ft_strlen(*next_line))
+	{
+		lastline = ft_strndup(*next_line, -1);
+		free(*next_line);
+		*next_line = NULL;
+	}
+	else
+		lastline = NULL;
+	return (lastline);
 }
 
 char	*get_next_line(int fd)
