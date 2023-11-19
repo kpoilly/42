@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:35:54 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/17 17:52:55 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/19 13:59:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,6 @@ int	isnewline(char *str, char c)
 	if (str[i] == c)
 		return (i);
 	return (-1);
-}
-
-char	*end_of_file(char **next_line)
-{
-	char	*lastline;
-
-	if (ft_strlen(*next_line))
-	{
-		lastline = ft_strndup(*next_line, -1);
-		free(*next_line);
-		*next_line = NULL;
-	}
-	else
-		lastline = NULL;
-	return (lastline);
 }
 
 void	ft_bzero(void *s, size_t n)

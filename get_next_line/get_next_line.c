@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:33:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/17 17:54:23 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/19 13:59:12 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,34 +25,59 @@ char	*get_line(char **next_line, int pos)
 	return (line);
 }
 
+char	*file_reader(int fd, int reader, char *buffer, char **next_line)
+{
+	int	checker;
+
+	checker = isnewline(*next_line, '\n');
+	while (checker == -1 && reader && reader != -1)
+	{
+		ft_bzero(buffer, BUFFER_SIZE);
+		reader = read(fd, buffer, BUFFER_SIZE);
+		*next_line = ft_strjoin(*next_line, buffer);
+		checker = isnewline(*next_line, '\n');
+	}
+	if (checker >= 0)
+		return (get_line(next_line, checker));
+	if (!reader)
+		return (end_of_file(next_line));
+	return (NULL);
+}
+
+char	*end_of_file(char **next_line)
+{
+	char	*lastline;
+
+	if (ft_strlen(*next_line))
+	{
+		lastline = ft_strndup(*next_line, -1);
+		free(*next_line);
+		*next_line = NULL;
+	}
+	else
+		lastline = NULL;
+	return (lastline);
+}
+
 char	*get_next_line(int fd)
 {
-	static char	*next_line;
+	static char	*next_line = NULL;
 	char		*buffer;
 	int			checker;
 	int			reader;
 
+	if (fd < 0 || read(fd, NULL, 0) < 0)
+		return (NULL);
 	checker = isnewline(next_line, '\n');
 	if (checker >= 0)
 		return (get_line(&next_line, checker));
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	reader = read(fd, buffer, BUFFER_SIZE);
-	if (reader == -1)
+	if (!buffer)
 		return (NULL);
+	reader = read(fd, buffer, BUFFER_SIZE);
+	buffer[reader] = 0;
 	next_line = ft_strjoin(next_line, buffer);
-	checker = isnewline(next_line, '\n');
-	while (checker == -1 && reader && reader != -1)
-	{
-		ft_bzero(buffer, ft_strlen(buffer));
-		reader = read(fd, buffer, BUFFER_SIZE);
-		next_line = ft_strjoin(next_line, buffer);
-		checker = isnewline(next_line, '\n');
-	}
-	if (checker >= 0)
-		return (get_line(&next_line, checker));
-	if (!reader)
-		return (end_of_file(&next_line));
-	return (NULL);
+	return (file_reader(fd, reader, buffer, &next_line));
 }
 
 /* int	main(int argc, char **argv)
@@ -67,4 +92,5 @@ char	*get_next_line(int fd)
 		i++;
 	}
 	close(fd);
-} */
+}
+ */
