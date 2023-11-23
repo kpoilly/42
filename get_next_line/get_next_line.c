@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:33:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/19 16:46:34 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/21 14:09:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,3 @@ char	*get_next_line(int fd)
 	free(temp);
 	return (file_reader(fd, reader, buffer, &next_line));
 }
-
-/* int	main(int argc, char **argv)
-{
-	int  fd = open(argv[1], O_RDONLY);
-	int i = 0;
-
-	(void)argc;
-	while (i < ft_atoi(argv[2]))
-	{
-		printf("%d: %s", i + 1, get_next_line(fd));
-		i++;
-	}
-	close(fd);
-} */

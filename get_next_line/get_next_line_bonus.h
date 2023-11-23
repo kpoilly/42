@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:29:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/19 17:07:04 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/23 11:25:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,12 @@
 #  define BUFFER_SIZE 5
 # endif
 
-typedef struct s_monoread
-{
-	int		fd;
-	char	*str;
-	void	*next;
-}	t_monoread;
-
 char	*get_next_line(int fd);
 int		isnewline(char *str, char c);
 char	*get_line(char **next_line, int pos);
 char	*end_of_file(char **next_line);
 
 int		ft_strlen(char *s);
-int		ft_atoi(const char *nptr);
 char	*ft_strndup(char *src, int n);
 char	*ft_strjoin(char *s1, char *s2);
 void	ft_bzero(void *s, size_t n);

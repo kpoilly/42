@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:29:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/19 15:05:02 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/22 14:42:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*get_line(char **next_line, int pos);
 char	*end_of_file(char **next_line);
 
 int		ft_strlen(char *s);
-int		ft_atoi(const char *nptr);
 char	*ft_strndup(char *src, int n);
 char	*ft_strjoin(char *s1, char *s2);
 void	ft_bzero(void *s, size_t n);

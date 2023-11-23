@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:33:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/19 17:24:42 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/23 11:25:36 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,21 @@ char	*get_line(char **next_line, int pos)
 	*next_line = ft_strndup(temp, -1);
 	free(temp);
 	return (line);
+}
+
+char	*end_of_file(char **next_line)
+{
+	char	*lastline;
+
+	if (ft_strlen(*next_line))
+	{
+		lastline = ft_strndup(*next_line, -1);
+		free(*next_line);
+		*next_line = NULL;
+	}
+	else
+		lastline = NULL;
+	return (lastline);
 }
 
 char	*file_reader(int fd, int reader, char *buffer, char **next_line)
@@ -51,73 +66,29 @@ char	*file_reader(int fd, int reader, char *buffer, char **next_line)
 	return (NULL);
 }
 
-char	*end_of_file(char **next_line)
-{
-	char	*lastline;
-
-	if (ft_strlen(*next_line))
-	{
-		lastline = ft_strndup(*next_line, -1);
-		free(*next_line);
-		*next_line = NULL;
-	}
-	else
-		lastline = NULL;
-	return (lastline);
-}
-
-t_monoread	*seek_fd(int fd, t_monoread *current)
-{
-	if (!current)
-	{
-		current = malloc(sizeof(t_monoread));
-		current->fd = fd;
-		current->str = NULL;
-		current->next = NULL;
-	}
-	else if (current->fd != fd)
-		seek_fd(fd, current->next);
-	return (current);
-}
-
 char	*get_next_line(int fd)
 {
-	static t_monoread	*current = NULL;
-	char				*buffer;
-	char				*temp;
-	int					checker;
-	int					reader;
+	static char	*next_line[1024];
+	char		*buffer;
+	char		*temp;
+	int			checker;
+	int			reader;
 
-	current = seek_fd(fd, current);
 	if (fd < 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
-	checker = isnewline(current->str, '\n');
+	checker = isnewline(next_line[fd], '\n');
 	if (checker >= 0)
-		return (get_line(&(current->str), checker));
+		return (get_line(&next_line[fd], checker));
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
 	reader = read(fd, buffer, BUFFER_SIZE);
 	buffer[reader] = 0;
-	if (!current->str)
-		current->str = ft_strndup("", -1);
-	temp = ft_strjoin(current->str, buffer);
-	free(current->str);
-	current->str = ft_strndup(temp, -1);
+	if (!next_line[fd])
+		next_line[fd] = ft_strndup("", -1);
+	temp = ft_strjoin(next_line[fd], buffer);
+	free(next_line[fd]);
+	next_line[fd] = ft_strndup(temp, -1);
 	free(temp);
-	return (file_reader(fd, reader, buffer, &(current->str)));
+	return (file_reader(fd, reader, buffer, &next_line[fd]));
 }
-
-/* int	main(int argc, char **argv)
-{
-	int  fd = open(argv[1], O_RDONLY);
-	int i = 0;
-
-	(void)argc;
-	while (i < ft_atoi(argv[2]))
-	{
-		printf("%d: %s", i + 1, get_next_line(fd));
-		i++;
-	}
-	close(fd);
-} */
