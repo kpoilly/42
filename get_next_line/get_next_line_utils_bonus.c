@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:35:54 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/19 15:04:56 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:38:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_strlen(char *s)
 {
@@ -27,6 +27,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		len;
 	char	*str;
 
+	if (!s1)
+		return (ft_strndup(s2, -1));
 	len = ft_strlen(s1) + ft_strlen(s2);
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
@@ -66,7 +68,7 @@ char	*ft_strndup(char *src, int n)
 	return (dest);
 }
 
-int	isnewline(char *str, char c)
+int	isnewline(char *str)
 {
 	int	i;
 
@@ -75,22 +77,11 @@ int	isnewline(char *str, char c)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == c)
+		if (str[i] == '\n')
 			return (i);
 		i++;
 	}
-	if (str[i] == c)
+	if (str[i] == '\n')
 		return (i);
 	return (-1);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	char	*str;
-	size_t	i;
-
-	str = (char *)s;
-	i = 0;
-	while (i < n)
-		str[i++] = '\0';
 }

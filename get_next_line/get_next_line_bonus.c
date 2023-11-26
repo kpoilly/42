@@ -3,92 +3,103 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:33:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/23 11:25:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:39:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*get_line(char **next_line, int pos)
+char	*get_line(char *next_line, int *pos)
 {
 	char	*line;
-	char	*temp;
 
-	line = ft_strndup(*next_line, pos + 1);
-	temp = ft_strndup(*next_line + pos + 1,
-			ft_strlen(*next_line + pos + 1));
-	free(*next_line);
-	*next_line = ft_strndup(temp, -1);
-	free(temp);
+	if (!*next_line)
+		return (NULL);
+	if (*pos < 0)
+		*pos = ft_strlen(next_line) - 1;
+	line = ft_strndup(next_line, *pos + 1);
+	if (!line)
+		return (NULL);
 	return (line);
 }
 
-char	*end_of_file(char **next_line)
+char	*get_next(char *next_line, int pos)
 {
-	char	*lastline;
+	char	*next;
 
-	if (ft_strlen(*next_line))
+	if (!*(next_line + pos + 1))
 	{
-		lastline = ft_strndup(*next_line, -1);
-		free(*next_line);
-		*next_line = NULL;
+		free(next_line);
+		return (NULL);
 	}
-	else
-		lastline = NULL;
-	return (lastline);
+	next = ft_strndup(next_line + pos + 1, -1);
+	if (!next)
+		return (NULL);
+	free(next_line);
+	return (next);
 }
 
-char	*file_reader(int fd, int reader, char *buffer, char **next_line)
+char	*file_reader(int fd, char *next_line, int *checker)
 {
-	int		checker;
+	int		reader;
+	char	*buffer;
 	char	*temp;
 
-	checker = isnewline(*next_line, '\n');
-	while (checker == -1 && reader && reader != -1)
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	reader = 1;
+	*checker = isnewline(next_line);
+	while (*checker == -1 && reader && reader != -1)
 	{
-		ft_bzero(buffer, BUFFER_SIZE);
 		reader = read(fd, buffer, BUFFER_SIZE);
-		temp = ft_strjoin(*next_line, buffer);
-		free(*next_line);
-		*next_line = ft_strndup(temp, -1);
+		buffer[reader] = '\0';
+		temp = ft_strjoin(next_line, buffer);
+		free(next_line);
+		next_line = ft_strndup(temp, -1);
 		free(temp);
-		checker = isnewline(*next_line, '\n');
+		*checker = isnewline(next_line);
 	}
 	free(buffer);
-	if (checker >= 0)
-		return (get_line(next_line, checker));
-	if (!reader)
-		return (end_of_file(next_line));
-	free(*next_line);
+	if (*checker >= 0 || !reader)
+		return (next_line);
+	free(next_line);
 	return (NULL);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*next_line[1024];
-	char		*buffer;
-	char		*temp;
+	char		*line;
 	int			checker;
-	int			reader;
 
 	if (fd < 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
-	checker = isnewline(next_line[fd], '\n');
-	if (checker >= 0)
-		return (get_line(&next_line[fd], checker));
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-	reader = read(fd, buffer, BUFFER_SIZE);
-	buffer[reader] = 0;
+	next_line[fd] = file_reader(fd, next_line[fd], &checker);
 	if (!next_line[fd])
-		next_line[fd] = ft_strndup("", -1);
-	temp = ft_strjoin(next_line[fd], buffer);
-	free(next_line[fd]);
-	next_line[fd] = ft_strndup(temp, -1);
-	free(temp);
-	return (file_reader(fd, reader, buffer, &next_line[fd]));
+		return (NULL);
+	line = get_line(next_line[fd], &checker);
+	next_line[fd] = get_next(next_line[fd], checker);
+
+	return (line);
 }
+
+// int	main(int argc, char **argv)
+// {
+// 	int  fd = open(argv[1], O_RDONLY);
+// 	int i = 0;
+// 	char *str;
+
+// 	(void)argc;
+// 	while (i < atoi(argv[2]))
+// 	{
+// 		str = get_next_line(fd);
+// 		printf("%d: %s", i + 1, str);
+// 		free(str);
+// 		i++;
+// 	}
+// 	close(fd);
+// }
