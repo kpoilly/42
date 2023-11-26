@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 18:33:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/26 13:39:23 by marvin           ###   ########.fr       */
+/*   Updated: 2023/11/26 14:00:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = get_line(next_line[fd], &checker);
 	next_line[fd] = get_next(next_line[fd], checker);
-
 	return (line);
 }
 
