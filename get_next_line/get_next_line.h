@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:29:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/22 14:42:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:34:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,14 @@
 # include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 10
 # endif
 
 char	*get_next_line(int fd);
-int		isnewline(char *str, char c);
-char	*get_line(char **next_line, int pos);
-char	*end_of_file(char **next_line);
 
+int		isnewline(char *str);
 int		ft_strlen(char *s);
 char	*ft_strndup(char *src, int n);
 char	*ft_strjoin(char *s1, char *s2);
-void	ft_bzero(void *s, size_t n);
 
 #endif
