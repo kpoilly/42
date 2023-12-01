@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/01 16:00:12 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/01 16:54:10 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,15 @@ int	ft_atoi(const char *nptr)
 
 int	checkerror(char	*input)
 {
-	//isdigit, bigger than int, duplicate
-	//c >= '0' && c <= '9'
-	if (0)
-		write(2, "Error", 5);
+	//bigger than int, duplicate
+	while (*input)
+	{
+		if (*input >= '0' && *input <= '9')
+		{
+			write(2, "Error", 5);
+			return (0);
+		}
+		input++;
+	}
 	return (1);
 }
