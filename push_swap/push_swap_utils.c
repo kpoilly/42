@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/03 19:57:09 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/03 23:09:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	checkerror(char *input)
 	return (1);
 }
 
-t_stack	checkdup(t_stack *a)
+t_stack	*checkdup(t_stack *a)
 {
 	
 }

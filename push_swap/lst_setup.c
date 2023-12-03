@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_setup.c                                       :+:      :+:    :+:   */
+/*   lst_setup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:05:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/03 19:55:57 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/03 23:29:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	debug_prntlst(t_stack *lst)
 		printf("%d : %d\n", balai->index, balai->value);
 		balai = balai->next;
 	}
+	printf("    _\n    a");
 }
 
 t_stack	*setupstack(int argc, char **argv)

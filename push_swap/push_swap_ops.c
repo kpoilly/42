@@ -3,12 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 17:16:21 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/03 18:45:11 by kpoilly          ###   ########.fr       */
+/*   Created: 2023/12/03 23:39:27 by marvin            #+#    #+#             */
+/*   Updated: 2023/12/03 23:39:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	sa(t_stack **a)
+{
+	*a = swap(a);
+}
+
+void	sb(t_stack **b)
+{
+	*b = swap(b);
+}
+
+void	ss(t_stack **a, t_stack **b)
+{
+	sa(a);
+	sb(b);
+}
