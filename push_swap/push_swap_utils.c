@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/04 12:27:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/04 18:25:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ int	ft_atoi(const char *nptr)
 	return (nb * sign);
 }
 
-
 int	checkerror(char *input)
 {
-	//duplicate
 	if (ft_atoi(input) > 2147483647 || ft_atoi(input) < -2147483647)
 	{
 		write(2, "Error", 5);
@@ -57,9 +55,24 @@ int	checkerror(char *input)
 	return (1);
 }
 
-t_stack	*checkdup(t_stack *a)
+int	checkdup(t_stack *a)
 {
-	return (a);
+	t_stack	*i;
+	t_stack	*j;
+
+	i = a;
+	while (i)
+	{
+		j = a;
+		while (j)
+		{
+			if (j->value == i->value && j != i)
+				return (0);
+			j = j->next;
+		}
+		i = i->next;
+	}
+	return (1);
 }
 
 void	rrr(t_stack **a, t_stack **b)
