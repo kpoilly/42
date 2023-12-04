@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_setup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:05:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/03 23:29:19 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/04 08:22:05 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,6 @@ t_stack	*ft_lstnew(int value, int index, void *prev, void *next)
 	elem->prev = prev;
 	elem->next = next;
 	return (elem);
-}
-
-void	debug_prntlst(t_stack *lst)
-{
-	t_stack	*balai;
-
-	balai = lst;
-	while (balai)
-	{
-		printf("%d : %d\n", balai->index, balai->value);
-		balai = balai->next;
-	}
-	printf("    _\n    a");
 }
 
 t_stack	*setupstack(int argc, char **argv)

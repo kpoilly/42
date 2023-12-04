@@ -16,6 +16,7 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
 	new->next = *lst;
 	new->prev = NULL;
+	new->index = 0;
 	*lst = new;
 }
 
@@ -30,6 +31,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		last = ft_lstlast(*lst);
 		last->next = new;
 		new->prev = last;
+		new->next = NULL;
 	}
 }
 
@@ -37,14 +39,11 @@ t_stack	*ft_lstdelelem(t_stack *elem)
 {
 	t_stack	*temp;
 
-	temp = NULL;
-	(elem->next)->prev = elem->prev;
+	temp = elem->next;
+	if (elem->next)
+		(elem->next)->prev = elem->prev;
 	if (elem->prev)
-	{
 		(elem->prev)->next = elem->next;
-		temp = elem->next;
-	}
-	free(elem);
 	return (temp);
 }
 
