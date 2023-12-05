@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:35:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/04 17:41:19 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/05 13:06:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	push_swap(t_stack **a, t_stack **b)
 {
-	while (!issorted(a))
+	while ((*a) && (*a)->value)
 	{
-		while (!*b || (*b)->value > (*a)->value)
+		//printf("\n [%d]", (*a)->value);
+		while (!*b || (*b)->value < (*a)->value)
 		{
 			pb(b, a);
 			debug_prntlst(*a, *b);
 		}
-		ra(a);
+		rb(b);
 	}
 }
 
@@ -36,11 +37,10 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (!a)
 		return (-1);
-	//push_swap(&a, &b);
-	// sa(&a);
+
 	debug_prntlst(a, b);
-	// push_swap(&a, &b);
-	// debug_prntlst(a, b);
+	push_swap(&a, &b);
+	debug_prntlst(a, b);
 	// pb(&b, &a);
 	// pb(&b, &a);
 	// pb(&b, &a);

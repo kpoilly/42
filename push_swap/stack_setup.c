@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:05:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/04 18:15:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/05 13:42:19 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	issorted(t_stack **a)
 {
-	t_stack	*balai;
+	t_stack	*i;
 
-	balai = *a;
-	while (balai)
+	i = *a;
+	while (i)
 	{
-		if (balai->next && (balai->next)->value < balai->value)
+		if (i->next && (i->next)->value < i->value)
 			return (0);
-		balai = balai->next;
+		i = i->next;
 	}
 	return (1);
 }
