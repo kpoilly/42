@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:35:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/05 13:06:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/06 15:53:58 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@ void	push_swap(t_stack **a, t_stack **b)
 {
 	while ((*a) && (*a)->value)
 	{
-		//printf("\n [%d]", (*a)->value);
-		while (!*b || (*b)->value < (*a)->value)
+		while (!*b || (*b && *a && (*b)->value < (*a)->value))
 		{
 			pb(b, a);
-			debug_prntlst(*a, *b);
+			//debug_prntlst(*a, *b);
 		}
-		rb(b);
+		while (*b && *a && (*b)->value > (*a)->value)
+		{
+			pa(a, b);
+			sa(a);
+			//debug_prntlst(*a, *b);
+		}
 	}
+	while (*b)
+		pa(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -38,9 +44,9 @@ int	main(int argc, char **argv)
 	if (!a)
 		return (-1);
 
-	debug_prntlst(a, b);
+	//debug_prntlst(a, b);
 	push_swap(&a, &b);
-	debug_prntlst(a, b);
+	//debug_prntlst(a, b);
 	// pb(&b, &a);
 	// pb(&b, &a);
 	// pb(&b, &a);

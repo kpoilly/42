@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:05:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/05 13:42:19 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/06 15:23:27 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_stack	*setupstack(int argc, char **argv)
 	}
 	if (!checkdup(a))
 	{
-		write(2, "Error", 5);
+		write(2, "Error\n", 6);
 		return (NULL);
 	}
 	return (a);

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/04 18:25:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/06 15:22:57 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int	checkerror(char *input)
 {
 	if (ft_atoi(input) > 2147483647 || ft_atoi(input) < -2147483647)
 	{
-		write(2, "Error", 5);
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	while (*input)
 	{
 		if (*input <= '0' && *input >= '9')
 		{
-			write(2, "Error", 5);
+			write(2, "Error\n", 6);
 			return (0);
 		}
 		input++;
