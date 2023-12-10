@@ -6,13 +6,13 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2023/12/05 12:28:32 by kpoilly          ###   ########.fr        #
+#    Updated: 2023/12/10 18:03:57 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= push_swap
 FILES 					= push_swap.c push_swap_ops.c push_swap_utils.c rotate_ops.c \
-						  stack_management.c stack_setup.c lst_management.c
+						  stack_management.c stack_setup.c lst_management.c ext_functions.c
 OBJECTS 		= $(FILES:.c=.o)
 RM 						= rm -f
 CC 						= cc

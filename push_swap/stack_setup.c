@@ -6,24 +6,20 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:05:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/06 15:23:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/10 18:20:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	issorted(t_stack **a)
+int	ft_tablen(char **tab)
 {
-	t_stack	*i;
+	int	len;
 
-	i = *a;
-	while (i)
-	{
-		if (i->next && (i->next)->value < i->value)
-			return (0);
-		i = i->next;
-	}
-	return (1);
+	len = 0;
+	while (tab[len])
+		len++;
+	return (len);
 }
 
 t_stack	*ft_lstnew(int value, int index, void *prev, void *next)
@@ -48,14 +44,14 @@ t_stack	*setupstack(int argc, char **argv)
 	int		i;
 
 	i = 0;
-	a = ft_lstnew(ft_atoi(argv[i + 1]), i, NULL, NULL);
+	a = ft_lstnew(ft_atoi(argv[i]), i, NULL, NULL);
 	current = a;
 	i++;
-	while (i < argc - 1)
+	while (i < argc)
 	{
-		if (!checkerror(argv[i + 1]))
+		if (!checkerror(argv[i]))
 			return (NULL);
-		follower = ft_lstnew(ft_atoi(argv[i + 1]), i, current, NULL);
+		follower = ft_lstnew(ft_atoi(argv[i]), i, current, NULL);
 		current->next = follower;
 		current = follower;
 		follower = follower->next;
@@ -67,4 +63,21 @@ t_stack	*setupstack(int argc, char **argv)
 		return (NULL);
 	}
 	return (a);
+}
+
+int	ft_lstsize(t_stack *lst)
+{
+	t_stack	*i;
+	int		size;
+
+	if (!lst)
+		return (0);
+	i = lst->next;
+	size = 1;
+	while (i)
+	{
+		size++;
+		i = i->next;
+	}
+	return (size);
 }

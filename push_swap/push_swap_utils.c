@@ -6,34 +6,19 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/06 15:22:57 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/10 18:07:52 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+char	**get_input(int argc, char **argv)
 {
-	int		i;
-	int		sign;
-	long	nb;
-
-	i = 0;
-	sign = 1;
-	if (nptr[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	else if (nptr[i] == '+')
-		i++;
-	nb = 0;
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		nb = (nb * 10) + (nptr[i] - '0');
-		i++;
-	}
-	return (nb * sign);
+	if (argc >= 3)
+		return (argv + 1);
+	if (argc == 2 && ft_tablen(argv) == 2)
+		return (ft_split(argv[1], ' '));
+	return (NULL);
 }
 
 int	checkerror(char *input)
