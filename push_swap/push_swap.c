@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:35:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/10 18:47:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/11 18:59:34 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	small_sort(t_stack **a)
 {
 	while (!issorted(a))
 	{
-		sa(a);
+		if ((*a)->value > ((*a)->next)->value)
+			sa(a);
 		if (!issorted(a))
 			rra(a);
 	}
@@ -26,21 +27,29 @@ void	push_swap(t_stack **a, t_stack **b)
 {
 	while ((*a) && (*a)->value)
 	{
+		if ((*a)->value > ((*a)->next)->value)
+			sa(a);
 		while (!*b || (*b && *a && (*b)->value < (*a)->value))
-		{
+		{	
+			if (*b && !(*b)->next && (*b)->value < (*a)->value && issorted(a))
+				return (pa(a, b));
 			pb(b, a);
-			debug_prntlst(*a, *b);
 			if (ft_lstsize(*a) <= 3)
-				{small_sort(a);
-				debug_prntlst(*a, *b);
-				break; }
+			{
+				small_sort(a);
+				while ((*b && *a && (*b)->value < (*a)->value))
+					pa(a, b);
+			}
+			if (issorted(a) && !*b)
+				return ;
 		}
 		while (*b && *a && (*b)->value > (*a)->value)
 		{
 			pa(a, b);
 			sa(a);
-			debug_prntlst(*a, *b);
 		}
+		if (issorted(a) && !*b)
+			return ;
 	}
 	while (*b)
 		pa(a, b);
@@ -50,50 +59,36 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		len;
 	char	**inputs;
 
 	if (argc < 2)
 		return (-1);
 	inputs = get_input(argc, argv);
-	a = setupstack(ft_tablen(inputs), inputs);
+	len = ft_tablen(inputs);
+	if (!inputs)
+		return (0);
+	a = setupstack(len, inputs);
 	b = NULL;
+	//ft_free(inputs);
 	if (!a)
 		return (-1);
-	if (issorted(&a))
-		return (0);
-	printf("STARTS:\n");
-	debug_prntlst(a, b);
-	if (ft_tablen(inputs) <= 3)
+	// printf("STARTS:\n");
+	// debug_prntlst(a, b);
+	if (len <= 3 && !issorted(&a))
 	{
-		sa(&a);
-		// small_sort(&a);
-		printf("END:\n");
-		debug_prntlst(a, b);
+		small_sort(&a);
+		// printf("END:\n");
+		// debug_prntlst(a, b);
 		return (0);
 	}
-	push_swap(&a, &b);
-	printf("END:\n");
-	debug_prntlst(a, b);
-	// pb(&b, &a);
-	// pb(&b, &a);
-	// pb(&b, &a);
+	if (!issorted(&a))
+		push_swap(&a, &b);
+	// printf("END:\n");
 	// debug_prntlst(a, b);
-	// rr(&b, &a);
-	// debug_prntlst(a, b);
-	// debug_prntlst(a, b);
-	// sa(&a);
-	// debug_prntlst(a, b);
-	// pa(&a, &b);
-	// pa(&a, &b);
-	// pa(&a, &b);
-	// debug_prntlst(a, b);
-	// rrb(&b);
-	// debug_prntlst(a, b);
-	// rb(&b);
-	// debug_prntlst(a, b);
-	// ra(&a);
-	// debug_prntlst(a, b);
-	// free(a);
-	// free(b);
+	if (a)
+		free(a);
+	if (b)
+		free(b);
 	return (0);
 }

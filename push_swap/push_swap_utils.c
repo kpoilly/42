@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/10 18:07:52 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/11 10:27:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	checkerror(char *input)
 	}
 	while (*input)
 	{
-		if (*input <= '0' && *input >= '9')
+		if (*input < '0' || *input > '9')
 		{
 			write(2, "Error\n", 6);
 			return (0);
@@ -78,7 +78,11 @@ void	debug_prntlst(t_stack *a, t_stack *b)
 	while (i || j)
 	{
 		if (i)
+		{
 			printf("%d : %d", i->index, i->value);
+			// if (i->prev)
+			// 	printf(" // prev: %d", (i->prev)->value);
+		}
 		if (j)
 		{
 			if (!i)

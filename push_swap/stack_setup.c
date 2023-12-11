@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:05:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/10 18:20:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/11 10:28:52 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ t_stack	*setupstack(int argc, char **argv)
 	int		i;
 
 	i = 0;
+	if (!checkerror(argv[i]))
+		return (NULL);
 	a = ft_lstnew(ft_atoi(argv[i]), i, NULL, NULL);
 	current = a;
 	i++;
@@ -58,10 +60,7 @@ t_stack	*setupstack(int argc, char **argv)
 		i++;
 	}
 	if (!checkdup(a))
-	{
-		write(2, "Error\n", 6);
-		return (NULL);
-	}
+		return (write(2, "Error\n", 6), NULL);
 	return (a);
 }
 

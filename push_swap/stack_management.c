@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:16:21 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/10 18:55:06 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/11 08:39:43 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ t_stack	*swap(t_stack **a)
 	t_stack	*temp;
 
 	temp = (*a)->next;
+	if (temp->next)
+		(temp->next)->prev = temp->prev;
 	(*a)->index = temp->index;
 	(*a)->next = temp->next;
-	(*a)->prev = temp->prev;
+	(*a)->prev = temp;
 	ft_lstadd_front(a, temp);
-	printf("%d", ((*a)->next)->value);
 	return (*a);
 }
 

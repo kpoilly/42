@@ -6,13 +6,11 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:52:34 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/10 18:00:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:11:43 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 int	ft_atoi(const char *nptr)
 {
@@ -36,6 +34,16 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (nb * sign);
+}
+
+void	ft_free(char **tab)
+{
+	while (*tab)
+	{
+		free(*tab);
+		tab++;
+	}
+	free(tab);
 }
 
 static int	count_words(char const *s, char c)
@@ -99,6 +107,8 @@ char	**ft_split(char const *s, char c)
 	{
 		add = 0;
 		tab[i++] = add_word(s, c, &add);
+		if (!tab[i - 1])
+			return (ft_free(tab), NULL);
 		s += add;
 	}
 	tab[count] = NULL;
