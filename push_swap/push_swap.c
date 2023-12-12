@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:35:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/11 18:59:34 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/12 09:29:00 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,22 @@ void	small_sort(t_stack **a)
 			rra(a);
 	}
 }
+
+// void	push_swap(t_stack **a, t_stack **b)
+// {
+// 	int	len;
+// 	int	bit;
+
+// 	len = ft_lstsize(*a);
+// 	bit = 1;
+// 	while (!issorted(a))
+// 	{
+// 		while (*a)
+// 		{
+// 			if ((*a))
+// 		}
+// 	}
+// }
 
 void	push_swap(t_stack **a, t_stack **b)
 {
