@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 15:12:15 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/14 12:35:04 by kpoilly          ###   ########.fr       */
+/*   Created: 2023/12/14 11:25:30 by kpoilly           #+#    #+#             */
+/*   Updated: 2023/12/14 17:25:40 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
-int	check_error(char **map)
+int	ft_strlen(char *s)
 {
-	if (!map)
-		return (printf("Map is not readable.\n"), 0);
-	//check les erreurs suivantes :
-	// - meme strlen sur chaque ligne
-	// - ne contient rien d'autres que le charset "01CEP"
-	// - contient au moins 1 : E, C et P
-	// - ne contient pas plusieurs : E et P
-	// - map entouree de 1
-	// - check si tous les collectibles sont accessibles
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

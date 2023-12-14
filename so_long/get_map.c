@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:08:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/13 15:26:21 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:28:06 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//Recupere la map dans un fichier .ber et la met dans un char**
 char	**get_map(char *filename, int *nb_line, int *nb_col)
 {
 	int		fd;
