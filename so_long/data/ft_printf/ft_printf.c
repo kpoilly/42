@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 06:03:37 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/11/16 10:57:00 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/15 18:05:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,32 +58,3 @@ int	ft_printf(const char *input, ...)
 	va_end(args);
 	return (len);
 }
-
-/* int	main(void)
-{
-	int a = -1;
-	int *ptr = &a;
-
-	printf("%s\n", 0);
-	printf("vraie: %X\n", a);
-	ft_printf("ft:    %X\n", a);
-
-	printf("vr: %d\n", printf("%u", 9223372036854775807));
-	printf("ft: %d\n", ft_printf("%u", 9223372036854775807));
-
-	printf("vraie: %d\n", a);
-	ft_printf("ft:    %d\n", a);
-	printf("vraie: %%\n");
-	ft_printf("ft:    %%\n");
-	printf("vraie: %x\n", a);
-	ft_printf("ft:    %x\n", a);
-	printf("vraie: %X\n", a);
-	ft_printf("ft:    %X\n", a);
-	printf("vraie: %p\n", NULL);
-	ft_printf("ft:    %p\n", NULL);
-
-	printf("vraie: %u\n", a);
-	ft_printf("ft:    %u\n", a);
-	ft_printf("len: %d\n", printf("vraie:      %s%c  %% %p %d%c %x %s %X\n", "Adress mem", ':', ptr, a, ':', a, "ou", a));
-	printf("len: %d\n", ft_printf("ft:         %s%c  %% %p %d%c %x %s %X\n", "Adress mem", ':', ptr, a, ':', a, "ou", a));
-} */
