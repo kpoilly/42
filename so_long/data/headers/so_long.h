@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 15:34:42 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:05:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ void			load_character1(t_global *global);
 void			load_character2(t_global *global);
 
 //tile transparency
-unsigned int	get_pixel(t_img img, int x, int y);
-void			put_pixel(t_img img, int x, int y, int color);
 void			put_img_to_img(t_img dst, t_img src, int x, int y);
 
 //map render

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 14:42:53 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:10:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 	global->mlx.width = nb_col * 50;
 	global->mlx.height = nb_line * 50;
 	global->mlx.win = mlx_new_window(global->mlx.ptr, global->mlx.width,
-			global->mlx.height, "Catch the Frogs !");
+			global->mlx.height, "The Grenouille Collector");
+	if (!global->mlx.win)
+		return (0);
 	global->moves = 0;
 	set_paths(&(global->set_of_files));
 	load_walls(global);

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 15:23:37 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:06:45 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 		put_img_to_img(global->bg, global->exit, x * 50, y * 50);
 }
 
+static void	putnbr_mouvements(t_global *global)
+{
+	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 150,
+		global->mlx.height - 22, (int)0x00CCFFFF, "Mouvements : ");
+	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 70,
+		global->mlx.height - 22, (int)0x00CCFFFF, ft_itoa(global->moves));
+}
+
 //Parcours la char**map et affiche les images aux bons endroits
 void	render_map(t_global *global, t_img state)
 {
@@ -52,9 +60,5 @@ void	render_map(t_global *global, t_img state)
 	}
 	mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
 		global->bg.img, 0, 0);
-	ft_printf("Mouvements : %d\n", global->moves);
-	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 150,
-		global->mlx.height - 22, (int)0x00CCFFFF, "Mouvements : ");
-	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 70,
-		global->mlx.height - 22, (int)0x00CCFFFF, ft_itoa(global->moves));
+	putnbr_mouvements(global);
 }

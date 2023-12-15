@@ -6,21 +6,21 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:19:21 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/14 11:09:45 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:03:10 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
 //recupere le pixel a copier
-unsigned int	get_pixel(t_img img, int x, int y)
+static unsigned int	get_pixel(t_img img, int x, int y)
 {
 	return (*(unsigned int *)(
 		(img.addr + (y * img.line_length) + (x * img.bits_per_pixel / 8))));
 }
 
 //copie le pixel sur l'image, en skippant les transparents
-void	put_pixel(t_img img, int x, int y, int color)
+static void	put_pixel(t_img img, int x, int y, int color)
 {
 	char	*dst;
 
