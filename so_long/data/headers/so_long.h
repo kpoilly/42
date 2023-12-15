@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/14 14:20:57 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:34:42 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include "../minilibx-linux/mlx.h"
-# include "get_next_line.h"
-# include "ft_printf.h"
+# include "../GNL/get_next_line.h"
+# include "../ft_printf/ft_printf.h"
 
 # include <stdio.h>
 # include <unistd.h>
@@ -59,6 +59,7 @@ typedef struct s_global {
 	t_mlx	mlx;
 	t_set	set_of_files;
 	char	**map;
+	int		moves;
 	t_img	bg;
 	t_img	wallin;
 	t_img	wallout;
@@ -73,7 +74,7 @@ typedef struct s_global {
 
 //map setup and primary functions
 char			**get_map(char *filename, int *nb_line, int *nb_col);
-int				check_error(char **map);
+char			**check_error(char **map);
 
 //images & data setup
 int				set_global(t_global *global, int nb_col, int nb_line);
@@ -91,6 +92,18 @@ void			put_img_to_img(t_img dst, t_img src, int x, int y);
 //map render
 void			render_map(t_global *global, t_img state);
 
+//events
+int				keypress(int keycode, t_global *global);
+int				no_event(void);
+int				destroy(int keycode, t_global *global);
+
+//perso moves
+void			move_tab_up(t_global *global);
+void			move_tab_down(t_global *global);
+void			move_tab_right(t_global *global);
+void			move_tab_left(t_global *global);
+
 //utils
+char			*ft_itoa(int n);
 
 #endif

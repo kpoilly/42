@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 10:31:28 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/15 14:42:53 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	set_paths(t_set *set_of_files)
 {
 	set_of_files->wallin = "./data/textures/wallin.xpm";
 	set_of_files->wallout = "./data/textures/wallout.xpm";
-	set_of_files->ground = "./data/textures/ground.xpm";
+	set_of_files->ground = "./data/textures/ground2.xpm";
 	set_of_files->exit = "./data/textures/exit.xpm";
 	set_of_files->collectible = "./data/textures/frog.xpm";
 	set_of_files->player_face = "./data/textures/perso_face.xpm";
@@ -37,6 +37,7 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 	global->mlx.height = nb_line * 50;
 	global->mlx.win = mlx_new_window(global->mlx.ptr, global->mlx.width,
 			global->mlx.height, "Catch the Frogs !");
+	global->moves = 0;
 	set_paths(&(global->set_of_files));
 	load_walls(global);
 	load_things(global);

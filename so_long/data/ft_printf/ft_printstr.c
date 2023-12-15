@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 17:29:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/14 12:33:48 by kpoilly          ###   ########.fr       */
+/*   Created: 2023/11/12 15:29:20 by kpoilly           #+#    #+#             */
+/*   Updated: 2023/12/15 16:26:41 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printf.h"
 
-# include "so_long.h"
+void	ft_putstr(char *s)
+{
+	while (*s)
+		write(1, s++, 1);
+}
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <stdio.h>
+int	ft_strlen(const char *s)
+{
+	int	i;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
-char	*get_next_line(int fd);
-int		isnewline(char *str);
-char	*ft_strndup(char *src, int n);
-char	*ft_strjoin(char *s1, char *s2);
-
-#endif
+int	ft_putstrlen(char *str)
+{
+	if (!str)
+	{
+		ft_putstrlen("(null)");
+		return (6);
+	}
+	ft_putstr(str);
+	return (ft_strlen(str));
+}

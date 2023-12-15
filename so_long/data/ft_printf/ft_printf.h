@@ -6,21 +6,19 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:12:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/14 12:33:52 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/15 16:26:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "so_long.h"
-
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdio.h>
+# include "unistd.h"
+# include "stdarg.h"
+# include "stdio.h"
 
 int		ft_printf(const char *input, ...);
-int		ft_strlen(char *s);
+int		ft_strlen(const char *s);
 int		ft_putchar(char c);
 void	ft_putstr(char *s);
 int		ft_putstrlen(char *str);
