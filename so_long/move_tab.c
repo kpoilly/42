@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   move_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:50:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 17:07:44 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/17 16:49:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
+
+//Déplace le P dans le tableau et effectue des verif (collectibles)
+void	move_in_tab(t_global *global, char *dest, char *src)
+{
+	if (*dest == 'C' && global->nbcollec > 0)
+		global->nbcollec--;
+	check_end_game(global);
+	if (*dest == 'E' && !global->nbcollec)
+		end_the_game(global);
+	else
+	{
+		*dest = 'P';
+		*src = '0';
+		global->moves++;
+		ft_printf("Moves : %d\n", global->moves);
+	}
+}
 
 void	move_tab_up(t_global *global)
 {
@@ -24,16 +41,9 @@ void	move_tab_up(t_global *global)
 		while (global->map[y][x])
 		{
 			if (global->map[y][x] == 'P')
-			{
 				if (y && global->map[y - 1][x] != '1')
-				{
-					global->map[y - 1][x] = 'P';
-					global->map[y][x] = '0';
-					global->moves++;
-					ft_printf("Mouvements : %d\n", global->moves);
-					return ;
-				}
-			}
+					return (move_in_tab(global, &(global->map[y - 1][x]),
+						&(global->map[y][x])));
 			x++;
 		}
 		y++;
@@ -52,16 +62,9 @@ void	move_tab_down(t_global *global)
 		while (global->map[y][x])
 		{
 			if (global->map[y][x] == 'P')
-			{
 				if (global->map[y + 1] && global->map[y + 1][x] != '1')
-				{
-					global->map[y + 1][x] = 'P';
-					global->map[y][x] = '0';
-					global->moves++;
-					ft_printf("Mouvements : %d\n", global->moves);
-					return ;
-				}
-			}
+					return (move_in_tab(global, &(global->map[y + 1][x]),
+						&(global->map[y][x])));
 			x++;
 		}
 		y++;
@@ -80,16 +83,9 @@ void	move_tab_right(t_global *global)
 		while (global->map[y][x])
 		{
 			if (global->map[y][x] == 'P')
-			{
 				if (global->map[y][x + 1] && global->map[y][x + 1] != '1')
-				{
-					global->map[y][x + 1] = 'P';
-					global->map[y][x] = '0';
-					global->moves++;
-					ft_printf("Mouvements : %d\n", global->moves);
-					return ;
-				}
-			}
+					return (move_in_tab(global, &(global->map[y][x + 1]),
+						&(global->map[y][x])));
 			x++;
 		}
 		y++;
@@ -108,16 +104,9 @@ void	move_tab_left(t_global *global)
 		while (global->map[y][x])
 		{
 			if (global->map[y][x] == 'P')
-			{
 				if (x && global->map[y][x - 1] != '1')
-				{
-					global->map[y][x - 1] = 'P';
-					global->map[y][x] = '0';
-					global->moves++;
-					ft_printf("Mouvements : %d\n", global->moves);
-					return ;
-				}
-			}
+					return (move_in_tab(global, &(global->map[y][x - 1]),
+						&(global->map[y][x])));
 			x++;
 		}
 		y++;

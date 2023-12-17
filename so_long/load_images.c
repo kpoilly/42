@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:01:06 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 10:16:20 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/17 16:39:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
-//charge les xpm murs dans les buffers
+//Charge les xpm murs dans les buffers
 void	load_walls(t_global *global)
 {
 	int	w;
@@ -36,7 +36,7 @@ void	load_walls(t_global *global)
 	global->wallout.h = h;
 }
 
-//charge le xpm de la sortie dans un buffers + creer le background
+//Charge le xpm de la sortie dans un buffers + creer le background
 void	load_things(t_global *global)
 {
 	int	w;
@@ -62,7 +62,7 @@ void	load_things(t_global *global)
 	global->exit.h = h;
 }
 
-//charge les xpm sol et collectibles dans les buffers
+//Charge les xpm sol et collectibles dans les buffers
 void	load_things2(t_global *global)
 {
 	int	w;
@@ -87,7 +87,7 @@ void	load_things2(t_global *global)
 	global->collec.h = h;
 }
 
-//charge les xpm du personnage (face et dos) dans les buffers
+//Charge les xpm du personnage (face et dos) dans les buffers
 void	load_character1(t_global *global)
 {
 	int	w;
@@ -113,7 +113,7 @@ void	load_character1(t_global *global)
 	global->player_dos.h = 60;
 }
 
-//charge les xpm du personnage (profils) dans les buffers
+//Charge les xpm du personnage (profils) dans les buffers
 void	load_character2(t_global *global)
 {
 	int	w;

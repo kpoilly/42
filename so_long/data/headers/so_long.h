@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 17:05:38 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/17 16:22:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_global {
 	t_set	set_of_files;
 	char	**map;
 	int		moves;
+	int		nbcollec;
 	t_img	bg;
 	t_img	wallin;
 	t_img	wallout;
@@ -74,7 +75,7 @@ typedef struct s_global {
 
 //map setup and primary functions
 char			**get_map(char *filename, int *nb_line, int *nb_col);
-char			**check_error(char **map);
+char			**check_error(char **map, t_global *global);
 
 //images & data setup
 int				set_global(t_global *global, int nb_col, int nb_line);
@@ -89,6 +90,7 @@ void			put_img_to_img(t_img dst, t_img src, int x, int y);
 
 //map render
 void			render_map(t_global *global, t_img state);
+void			putnbr_mouvements(t_global *global);
 
 //events
 int				keypress(int keycode, t_global *global);
@@ -100,6 +102,10 @@ void			move_tab_up(t_global *global);
 void			move_tab_down(t_global *global);
 void			move_tab_right(t_global *global);
 void			move_tab_left(t_global *global);
+
+//end game
+void			check_end_game(t_global *global);
+void			end_the_game(t_global *global);
 
 //utils
 char			*ft_itoa(int n);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 16:38:10 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/17 16:38:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
-//test des keypress
+//Actions en fonction de la touche pressée
 int	keypress(int keycode, t_global *global)
 {
 	if (keycode == 65362 || keycode == 119)
@@ -31,13 +31,13 @@ int	keypress(int keycode, t_global *global)
 	return (0);
 }
 
-//fonction qui tourne quand on ne presse rien
+//Fonction qui tourne quand on ne presse rien (respiration ?)
 int	no_event(void)
 {
 	return (0);
 }
 
-//tentative pour gerer la croix pour fermer
+//Ferme la window de façon propre
 int	destroy(int keycode, t_global *global)
 {
 	(void)keycode;

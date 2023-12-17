@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:54:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 17:05:17 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/17 16:29:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main(int argc, char **argv)
 	t_global	global;
 
 	if (argc < 2)
-		return (printf("No map given.\n"), 0);
-	global.map = check_error(get_map(argv[1], &nb_line, &nb_col));
+		return (ft_printf("Error.\nNo map given.\n"), 0);
+	global.map = check_error(get_map(argv[1], &nb_line, &nb_col), &global);
 	if (!global.map)
 		return (0);
 	if (!set_global(&global, nb_col, nb_line))

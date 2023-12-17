@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:44:44 by kpoilly           #+#    #+#              #
-#    Updated: 2023/12/15 16:40:15 by kpoilly          ###   ########.fr        #
+#    Updated: 2023/12/17 16:23:34 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME 			= so_long
 
 FILES 			= so_long.c set_up.c utils.c get_map.c check_error.c \
 				  load_images.c render_map.c events.c tile_transparency.c \
-				  move_tab.c
+				  move_tab.c end_game.c
 OBJECTS 		= $(FILES:.c=.o)
 
 GNL_FILES 		= ./data/GNL/get_next_line.c ./data/GNL/get_next_line_utils.c
