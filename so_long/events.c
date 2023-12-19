@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/17 16:38:40 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/18 13:42:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	destroy(int keycode, t_global *global)
 {
 	(void)keycode;
 	mlx_destroy_window(global->mlx.ptr, global->mlx.win);
+	exit(0);
 	//mlx_destroy_display(global->mlx.ptr);
 	//free(global->mlx.ptr);
 	//exit(0);
