@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 12:57:12 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 13:07:19 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	spawn_ennemy(t_global *global, int nb_line, int nb_col)
 	y = 0;
 	while (global->map[y][x] != '0')
 	{
-		y = rand() % nb_line + 1;
-		x = rand() % nb_col + 1;
+		y = rand() % nb_line;
+		x = rand() % nb_col;
 	}
 	global->map[y][x] = 'G';
 }
