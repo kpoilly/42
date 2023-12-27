@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 12:54:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 16:06:27 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	putnbr_mouvements(t_global *global)
 //Affiche le nombre de collectibles restants dans la window
 static void	putnbr_collectibles(t_global *global)
 {
-	(void)global;
+	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 500,
+		global->mlx.height - 22, (int)0x00CCFFFF, "Remaining frogs : ");
+	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 390,
+		global->mlx.height - 22, (int)0x00CCFFFF, ft_itoa(global->nbcollec));
 }
 
 //check quelle image il doit afficher
@@ -47,7 +50,7 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 	else if (global->map[y][x] == 'P')
 		put_img_to_img(global->bg, state, x * 50, (y * 50) - 20);
 	else if (global->map[y][x] == 'C')
-		put_img_to_img(global->bg, global->collec, x * 50, y * 50);
+		put_img_to_img(global->bg, global->collec, x * 50, y * 50 + 10);
 	else if (global->map[y][x] == 'E')
 		put_img_to_img(global->bg, global->exit, x * 50, y * 50);
 	else if (global->map[y][x] == 'G')

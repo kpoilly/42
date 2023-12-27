@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 14:27:10 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 15:28:09 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,18 @@ void			move_tab_left(t_global *global);
 
 //ennemy
 void			spawn_ennemy(t_global *global, int nb_line, int nb_col);
+void			ennemy_move(t_global *global);
+void			move_ennemy_tab(t_global *global, char *dest, char *src);
+void			move_ennemy_up(t_global *global);
+void			move_ennemy_down(t_global *global);
+void			move_ennemy_right(t_global *global);
+void			move_ennemy_left(t_global *global);
+
 
 //end game
 void			check_end_game(t_global *global);
 void			end_the_game(t_global *global);
+void			game_over(t_global *global);
 
 //utils
 char			*ft_itoa(int n);

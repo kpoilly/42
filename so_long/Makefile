@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:44:44 by kpoilly           #+#    #+#              #
-#    Updated: 2023/12/27 12:55:14 by kpoilly          ###   ########.fr        #
+#    Updated: 2023/12/27 15:28:59 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME 			= so_long
 
 FILES 			= so_long.c set_up.c utils.c get_map.c check_error.c \
 				  load_images.c render_map.c events.c tile_transparency.c \
-				  move_tab.c end_game.c ennemy.c
+				  move_tab.c end_game.c ennemy.c ennemy_move_tab.c ennemy_events.c
 OBJECTS 		= $(FILES:.c=.o)
 
 GNL_FILES 		= ./data/GNL/get_next_line.c ./data/GNL/get_next_line_utils.c

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/18 13:42:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 15:46:55 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 //Actions en fonction de la touche pressée
 int	keypress(int keycode, t_global *global)
 {
+	ennemy_move(global);
+	int i = 0;
+	while (global->map[i++])
+		ft_printf("%s\n", global->map[i]);
 	if (keycode == 65362 || keycode == 119)
 		return (move_tab_up(global), render_map(global, global->player_dos), 1);
 	else if (keycode == 65364 || keycode == 115)
