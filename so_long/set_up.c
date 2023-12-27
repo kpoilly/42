@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_up.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/17 15:28:14 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/27 14:26:21 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ static int	set_paths(t_set *set_of_files)
 	set_of_files->player_droit = "./data/textures/perso_droit.xpm";
 	set_of_files->player_gauche = "./data/textures/perso_gauche.xpm";
 	return (1);
+}
+
+int	check_images(t_global *global)
+{
+	(void)*global;
+	return (0);
+}
+
+int	free_images(t_global *global)
+{
+	(void)*global;
+	return (0);
 }
 
 //setup de la struct qui contient toutes les data

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 12:54:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 14:27:10 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void			load_things(t_global *global);
 void			load_things2(t_global *global);
 void			load_character1(t_global *global);
 void			load_character2(t_global *global);
+int				free_images(t_global *global);
 
 //tile transparency
 void			put_img_to_img(t_img dst, t_img src, int x, int y);
