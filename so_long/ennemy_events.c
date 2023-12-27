@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:11:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 16:00:17 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 16:31:26 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,23 @@ void	ennemy_move(t_global *global)
 			if (global->map[y][x] == 'G')
 			{
 				if (player && x && global->map[y][x - 1] != '1')
-					return (ft_printf("<"), move_ennemy_tab(global, &(global->map[y][x - 1]),
-						&(global->map[y][x - 1])));
+					return (move_ennemy_tab(global, &(global->map[y][x - 1]),
+						&(global->map[y][x])));
 				else if (player && y && global->map[y - 1][x] != '1')
-					return (ft_printf("^"), move_ennemy_tab(global, &(global->map[y - 1][x]),
-						&(global->map[y - 1][x])));
-				else if (global->map[y + 1][x] && global->map[y + 1][x] != '1')
-					return (ft_printf("v"), move_ennemy_tab(global, &(global->map[y + 1][x]),
-						&(global->map[y + 1][x])));
+					return (move_ennemy_tab(global, &(global->map[y - 1][x]),
+						&(global->map[y][x])));
 				else if (global->map[y][x + 1] && global->map[y][x + 1] != '1')
-					return (ft_printf(">"), move_ennemy_tab(global, &(global->map[y][x + 1]),
-						&(global->map[y][x + 1])));
+					return (move_ennemy_tab(global, &(global->map[y][x + 1]),
+						&(global->map[y][x])));
+				else if (global->map[y + 1][x] && global->map[y + 1][x] != '1')
+					return (move_ennemy_tab(global, &(global->map[y + 1][x]),
+						&(global->map[y][x])));
 				else if (y && global->map[y - 1][x] && global->map[y - 1][x] != '1')
-					return (ft_printf("^"), move_ennemy_tab(global, &(global->map[y - 1][x]),
-						&(global->map[y - 1][x])));
+					return (move_ennemy_tab(global, &(global->map[y - 1][x]),
+						&(global->map[y][x])));
 				else if (x && global->map[y][x - 1] != '1')
-					return (ft_printf("<"), move_ennemy_tab(global, &(global->map[y][x - 1]),
-						&(global->map[y][x - 1])));
+					return (move_ennemy_tab(global, &(global->map[y][x - 1]),
+						&(global->map[y][x])));
 			}
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:50:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 16:01:10 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 16:31:35 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	move_ennemy_tab(t_global *global, char *dest, char *src)
 	{
 		*dest = 'G';
 		*src = '0';
-		printf("OUI\n");
 	}
 	else if (*dest == 'P')
 	{
