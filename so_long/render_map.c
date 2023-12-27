@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/17 16:59:12 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/27 12:54:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 		put_img_to_img(global->bg, global->collec, x * 50, y * 50);
 	else if (global->map[y][x] == 'E')
 		put_img_to_img(global->bg, global->exit, x * 50, y * 50);
+	else if (global->map[y][x] == 'G')
+		put_img_to_img(global->bg, global->ennemy, x * 50, y * 50);
 }
 
 //Parcours la char**map et affiche les images aux bons endroits

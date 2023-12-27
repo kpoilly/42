@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/17 16:22:48 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/27 12:54:27 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <time.h>
 # include <fcntl.h>
 
 //contient les data des pointeurs mlx
@@ -67,6 +68,7 @@ typedef struct s_global {
 	t_img	ground;
 	t_img	collec;
 	t_img	exit;
+	t_img	ennemy;
 	t_img	player_face;
 	t_img	player_dos;
 	t_img	player_droit;
@@ -102,6 +104,9 @@ void			move_tab_up(t_global *global);
 void			move_tab_down(t_global *global);
 void			move_tab_right(t_global *global);
 void			move_tab_left(t_global *global);
+
+//ennemy
+void			spawn_ennemy(t_global *global, int nb_line, int nb_col);
 
 //end game
 void			check_end_game(t_global *global);

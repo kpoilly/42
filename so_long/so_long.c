@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:54:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/17 16:29:57 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/27 12:57:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!set_global(&global, nb_col, nb_line))
 		return (0);
+	spawn_ennemy(&global, nb_line, nb_col);
 	render_map(&global, global.player_face);
 	mlx_loop_hook(global.mlx.ptr, &no_event, &global);
 	mlx_hook(global.mlx.win, 2, 1L << 0, &keypress, &global);

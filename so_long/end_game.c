@@ -27,9 +27,11 @@ void	check_end_game(t_global *global)
 	if (!global->nbcollec)
 	{
 		ft_printf("Hooray, you got all the Frogs !\n");
-		open_exit(global);
+		global->nbcollec = -1;
 	}
-		//animation danse (a voir hein)
+	if (global->nbcollec == -1)
+		open_exit(global);
+	//animation danse (a voir hein)
 }
 
 //Ferme le jeu (Voir pour animation ou écran de fin avant)

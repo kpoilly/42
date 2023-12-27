@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:50:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/17 16:49:50 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/27 13:03:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	move_in_tab(t_global *global, char *dest, char *src)
 	if (*dest == 'C' && global->nbcollec > 0)
 		global->nbcollec--;
 	check_end_game(global);
-	if (*dest == 'E' && !global->nbcollec)
+	if (*dest == 'E' && global->nbcollec == -1)
 		end_the_game(global);
-	else
+	else if (*dest != 'E')
 	{
 		*dest = 'P';
 		*src = '0';
