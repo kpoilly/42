@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 19:59:14 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 20:28:19 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ int	keypress(int keycode, t_global *global)
 }
 
 //Fonction qui tourne quand on ne presse rien (respiration ?)
-int	no_event(void)
+int	no_event(t_global *global)
 {
+	(void)global;
+	// ennemy_move(global);
+	// usleep(200000);
+	// render_map(global, global->player_dos);
 	return (0);
 }
 

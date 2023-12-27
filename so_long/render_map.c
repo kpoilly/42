@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 16:06:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 20:30:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,7 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 	if (global->map[y][x] == '1')
 	{
 		if (!y || !x || !global->map[y + 1] || !global->map[y][x + 1])
-		{
-			put_img_to_img(global->bg, global->wallout, x * 50, y * 50 - 25);
-			if (!global->map[y + 1])
-				put_img_to_img(global->bg, global->wallout, x * 50 - 25,
-					y * 50 - 10);
-		}
+			put_img_to_img(global->bg, global->wallout, x * 50, y * 50);
 		else
 			put_img_to_img(global->bg, global->wallin, x * 50 - 10,
 				y * 50 - 10);

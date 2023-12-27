@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 19:59:24 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/27 20:20:49 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			putnbr_mouvements(t_global *global);
 
 //events
 int				keypress(int keycode, t_global *global);
-int				no_event(void);
+int				no_event(t_global *global);
 int				destroy(int keycode, t_global *global);
 
 //perso moves
