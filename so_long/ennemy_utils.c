@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:11:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 18:56:21 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 20:05:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 //Déplace le G dans le tableau
 void	move_ennemy_tab(t_global *global, char *dest, char *src)
 {
-	if (*dest == '0')
+	if (*dest && *dest == '0')
 	{
 		*dest = 'G';
 		*src = '0';
 	}
-	else if (*dest == 'P')
+	else if (*dest && *dest == 'P')
 	{
 		*dest = 'G';
 		*src = '0';

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:57:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 19:10:00 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 20:04:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	check_up(t_global *global, int x, int y)
 
 static void	check_down(t_global *global, int x, int y)
 {
-	if (global->player.y > y && global->map[y + 1][x]
+	if (global->player.y > y && global->map[y + 1]
 		&& (global->map[y + 1][x] == '0' || global->map[y + 1][x] == 'P'))
 		return (move_ennemy_tab(global, &(global->map[y + 1][x]),
 			&(global->map[y][x])));
