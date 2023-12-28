@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:50:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 20:41:51 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 11:05:16 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	move_in_tab(t_global *global, char *dest, char *src)
 	check_end_game(global);
 	if (*dest == 'E' && !global->nbcollec)
 		end_the_game(global);
-	else if (*dest != 'E')
+	else if (*dest == 'G')
+		game_over(global);
+	else if (*dest == '0' || *dest == 'C')
 	{
 		*dest = 'P';
 		*src = '0';

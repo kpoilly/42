@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:11:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 20:45:26 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 10:53:29 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	ennemy_move(t_global *global)
 					&& global->map[y][x + 1] != '1')
 					return (move_ennemy_tab(global, &(global->map[y][x + 1]),
 						&(global->map[y][x])));
-				else if ((player_y < y && player_y >= y - 3) && y && global->map[y - 1][x] != '1')
+				else if ((player_y < y && player_y >= y - 3 && (player_x >= x - 3 && player_x <= x + 3)) && y && global->map[y - 1][x] != '1')
 					return (move_ennemy_tab(global, &(global->map[y - 1][x]),
 						&(global->map[y][x])));
-				else if ((player_y > y && player_y <= y + 3) && global->map[y + 1][x]
+				else if ((player_y > y && player_y <= y + 3 && (player_x >= x - 3 && player_x <= x + 3)) && global->map[y + 1][x]
 					&& global->map[y + 1][x] != '1')
 					return (move_ennemy_tab(global, &(global->map[y + 1][x]),
 						&(global->map[y][x])));
