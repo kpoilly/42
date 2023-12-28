@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 20:20:49 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 11:28:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ char			**check_error(char **map, t_global *global);
 
 //images & data setup
 int				set_global(t_global *global, int nb_col, int nb_line);
-void			load_walls(t_global *global);
-void			load_things(t_global *global);
-void			load_things2(t_global *global);
-void			load_character1(t_global *global);
-void			load_character2(t_global *global);
+int				load_walls(t_global *global);
+int				load_things(t_global *global);
+int				load_things2(t_global *global);
+int				load_character1(t_global *global);
+int				load_character2(t_global *global);
 int				free_images(t_global *global);
 
 //tile transparency

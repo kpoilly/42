@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 14:26:45 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 11:15:07 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	load_ennemy(t_global *global)
 			&(global->ennemy.endian));
 	global->ennemy.w = w;
 	global->ennemy.h = h;
+
+	if (!global->ennemy.img)
+		return (ft_printf("Error.\nMissing Texture files.\n"),
+			(void)destroy(0, global));
 }
 
 void	spawn_ennemy(t_global *global, int nb_line, int nb_col)

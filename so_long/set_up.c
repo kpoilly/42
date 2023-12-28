@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 14:26:21 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 11:32:14 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ static int	set_paths(t_set *set_of_files)
 	set_of_files->player_droit = "./data/textures/perso_droit.xpm";
 	set_of_files->player_gauche = "./data/textures/perso_gauche.xpm";
 	return (1);
-}
-
-int	check_images(t_global *global)
-{
-	(void)*global;
-	return (0);
 }
 
 int	free_images(t_global *global)
@@ -53,10 +47,11 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 		return (0);
 	global->moves = 0;
 	set_paths(&(global->set_of_files));
-	load_walls(global);
-	load_things(global);
-	load_things2(global);
-	load_character1(global);
-	load_character2(global);
+	if (!load_walls(global)
+		|| !load_things(global)
+		|| !load_things2(global)
+		|| !load_character1(global)
+		|| !load_character2(global))
+		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:54:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 15:36:24 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 11:37:20 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	if (!global.map)
 		return (0);
 	if (!set_global(&global, nb_col, nb_line))
-		return (0);
+		return (destroy(0, &global), 0);
 	spawn_ennemy(&global, nb_line, nb_col);
 	render_map(&global, global.player_face);
 	mlx_loop_hook(global.mlx.ptr, &no_event, &global);
