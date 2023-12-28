@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 19:33:49 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 20:11:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//charge les textures de l'ennemi
 void	load_ennemy(t_global *global)
 {
 	int	w;
@@ -32,6 +33,7 @@ void	load_ennemy(t_global *global)
 	global->ennemy.front.h = h;
 }
 
+//Fait apparaitre l'ennemi aleatoirement sur la map
 void	spawn_ennemy(t_global *global, int nb_line, int nb_col)
 {
 	int		x;

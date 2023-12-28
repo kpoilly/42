@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:11:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 20:05:17 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 20:10:55 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	in_range(int player_x, int player_y, int x, int y)
 		&& (player_y >= y - 3 && player_y <= y + 3));
 }
 
-//L'ennemi cherche un chemin de parcours pour se rapprocher du milieu
+//L'ennemi cherche un chemin de parcours pour se rapprocher approx. du joueur
 void	find_path(t_global *global, int x, int y)
 {
 	if (global->player.x >= ((global->mlx.width / 50) / 2)

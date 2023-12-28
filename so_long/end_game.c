@@ -20,6 +20,7 @@ static void	open_exit(t_global *global)
 	//charger l'xpm de la nouvelle sortie
 }
 
+//Dit au joueur de se grouiller
 void	putstr_endgame(t_global *global)
 {
 	if (!global->nbcollec)
@@ -44,6 +45,7 @@ void	end_the_game(t_global *global)
 	destroy(0, global);
 }
 
+//Game over
 void	game_over(t_global *global)
 {
 	printf("GAME OVER!");

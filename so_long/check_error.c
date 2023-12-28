@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:12:15 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/27 14:25:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 20:09:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//Verifie si la map est entouree de 1
 static int	surrounded(char **map)
 {
 	int	y;
@@ -32,6 +33,7 @@ static int	surrounded(char **map)
 	return (1);
 }
 
+//verifie si un char fait partie d'un charset
 static int	in_charset(char c, char *charset)
 {
 	while (*charset)

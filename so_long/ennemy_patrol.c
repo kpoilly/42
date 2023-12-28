@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:57:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 20:04:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 20:10:41 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//Check si il peut aller a gauche, si oui il y va
 static void	check_left(t_global *global, int x, int y)
 {
 	if (x && (global->map[y][x - 1] == '0' || global->map[y][x - 1] == 'P'))
@@ -21,6 +22,7 @@ static void	check_left(t_global *global, int x, int y)
 		patrol(global, x, y);
 }
 
+//Check si il peut aller a droite, si oui il y va
 static void	check_right(t_global *global, int x, int y)
 {
 	if (global->map[y][x + 1] && (global->map[y][x + 1] == '0'
@@ -31,6 +33,7 @@ static void	check_right(t_global *global, int x, int y)
 		patrol(global, x, y);
 }
 
+//Check si il peut aller en haut, si oui il y va
 static void	check_up(t_global *global, int x, int y)
 {
 	if (y && (global->map[y - 1][x] == '0' || global->map[y - 1][x] == 'P'))
@@ -40,6 +43,7 @@ static void	check_up(t_global *global, int x, int y)
 		patrol(global, x, y);
 }
 
+//Check si il peut aller en bas, si oui il y va
 static void	check_down(t_global *global, int x, int y)
 {
 	if (global->player.y > y && global->map[y + 1]
@@ -50,6 +54,7 @@ static void	check_down(t_global *global, int x, int y)
 		patrol(global, x, y);
 }
 
+//Patrouille de maniere aleatoire
 void	patrol(t_global *global, int x, int y)
 {
 	int	dir;
