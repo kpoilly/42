@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 13:39:58 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 20:55:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,17 @@ static int	set_paths(t_set *set_of_files)
 
 int	free_images(t_global *global)
 {
-	(void)*global;
+	free(global->bg.img);
+	free(global->collec.img);
+	free(global->ground.img);
+	free(global->exit.img);
+	free(global->wallin.img);
+	free(global->wallout.img);
+	free(global->player.front.img);
+	free(global->player.back.img);
+	free(global->player.right.img);
+	free(global->player.left.img);
+	free(global->ennemy.front.img);
 	return (0);
 }
 

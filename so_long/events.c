@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 18:55:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 21:01:28 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 //Actions en fonction de la touche pressée
 int	keypress(int keycode, t_global *global)
 {
+	ft_printf("%d", keycode);
 	if (keycode == 65362 || keycode == 119)
 		return (move_tab_up(global), ennemy_move(global),
 			render_map(global, global->player.back), 1);
@@ -28,7 +29,7 @@ int	keypress(int keycode, t_global *global)
 		return (move_tab_right(global), ennemy_move(global),
 			render_map(global, global->player.right), 1);
 	else if (keycode == 65307)
-		destroy(0, global);
+		destroy(global);
 	return (0);
 }
 
@@ -43,16 +44,12 @@ int	no_event(t_global *global)
 }
 
 //Ferme la window de façon propre
-int	destroy(int keycode, t_global *global)
+int	destroy(t_global *global)
 {
-	(void)keycode;
+	free_images(global);
 	mlx_destroy_window(global->mlx.ptr, global->mlx.win);
+	mlx_destroy_display(global->mlx.ptr);
+	free(global->mlx.ptr);
 	exit(0);
-	//mlx_destroy_display(global->mlx.ptr);
-	//free(global->mlx.ptr);
-	//exit(0);
-	//reste a free chaque truc, donc toutes les addr des img
-	//une par une, voir pour les mettre dans un tableau ou
-	//liste chainee ou autre
 	return (0);
 }

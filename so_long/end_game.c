@@ -42,12 +42,12 @@ void	check_end_game(t_global *global)
 void	end_the_game(t_global *global)
 {
 	ft_printf("Congrats!\nThanks for playing !\n");
-	destroy(0, global);
+	destroy(global);
 }
 
 //Game over
 void	game_over(t_global *global)
 {
 	printf("GAME OVER!");
-	destroy(0, global);
+	destroy(global);
 }

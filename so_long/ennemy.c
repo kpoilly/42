@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 20:11:25 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 21:01:20 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	load_ennemy(t_global *global)
 			"./data/textures/ennemy.xpm", &w, &h);
 	if (!global->ennemy.front.img)
 		return (ft_printf("Error.\nMissing Texture files.\n"),
-			(void)destroy(0, global));
+			(void)destroy(global));
 	global->ennemy.front.addr = mlx_get_data_addr(global->ennemy.front.img,
 			&(global->ennemy.front.bits_per_pixel),
 			&(global->ennemy.front.line_len),
