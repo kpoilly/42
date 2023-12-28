@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:19:21 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 17:03:10 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 19:33:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static unsigned int	get_pixel(t_img img, int x, int y)
 {
 	return (*(unsigned int *)(
-		(img.addr + (y * img.line_length) + (x * img.bits_per_pixel / 8))));
+		(img.addr + (y * img.line_len) + (x * img.bits_per_pixel / 8))));
 }
 
 //copie le pixel sur l'image, en skippant les transparents
@@ -28,7 +28,7 @@ static void	put_pixel(t_img img, int x, int y, int color)
 		return ;
 	if (x >= 0 && y >= 0 && x < img.w && y < img.h)
 	{
-		dst = img.addr + (y * img.line_length + x * (img.bits_per_pixel / 8));
+		dst = img.addr + (y * img.line_len + x * (img.bits_per_pixel / 8));
 		*(unsigned int *) dst = color;
 	}
 }

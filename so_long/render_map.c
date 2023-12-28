@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 14:18:46 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 19:29:43 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ void	putnbr_mouvements(t_global *global)
 //Affiche le nombre de collectibles restants dans la window
 static void	putnbr_collectibles(t_global *global)
 {
-	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 500,
+	mlx_string_put(global->mlx.ptr, global->mlx.win,
+		global->mlx.width - (global->mlx.width / 2) - 50,
 		global->mlx.height - 22, (int)0x00CCFFFF, "Remaining frogs : ");
-	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 390,
+	mlx_string_put(global->mlx.ptr, global->mlx.win,
+		global->mlx.width - (global->mlx.width / 2) + 75,
 		global->mlx.height - 22, (int)0x00CCFFFF, ft_itoa(global->nbcollec));
 }
 
@@ -73,4 +75,5 @@ void	render_map(t_global *global, t_img state)
 		global->bg.img, 0, 0);
 	putnbr_mouvements(global);
 	putnbr_collectibles(global);
+	putstr_endgame(global);
 }

@@ -18,7 +18,15 @@ static void	open_exit(t_global *global)
 	(void)global;
 	//changer le path de exit pour exit2.xpm
 	//charger l'xpm de la nouvelle sortie
-	//afficher en haut "Get out the map !"
+}
+
+void	putstr_endgame(t_global *global)
+{
+	if (!global->nbcollec)
+		mlx_string_put(global->mlx.ptr, global->mlx.win,
+			global->mlx.width - (global->mlx.width / 2) - 100,
+			global->mlx.height - (global->mlx.height / 2), (int)0x00FF00FF,
+			"GOBLINOU IS COMING FOR YOU, HURRY UP !");
 }
 
 //Check si tous les collectibles ont été ramassés

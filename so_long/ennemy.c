@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 14:18:41 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 19:33:49 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	load_ennemy(t_global *global)
 			(void)destroy(0, global));
 	global->ennemy.front.addr = mlx_get_data_addr(global->ennemy.front.img,
 			&(global->ennemy.front.bits_per_pixel),
-			&(global->ennemy.front.line_length),
+			&(global->ennemy.front.line_len),
 			&(global->ennemy.front.endian));
 	global->ennemy.front.w = w;
 	global->ennemy.front.h = h;

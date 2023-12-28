@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 13:47:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 18:55:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	no_event(t_global *global)
 {
 	(void)global;
 	// ennemy_move(global);
-	// usleep(200000);
-	// render_map(global, global->player_dos);
+	// usleep(150000);
+	// render_map(global, global->player.front);
 	return (0);
 }
 

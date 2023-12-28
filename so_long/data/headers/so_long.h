@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 15:59:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 19:33:06 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
-	int		line_length;
+	int		line_len;
 	int		endian;
 	int		w;
 	int		h;
@@ -101,6 +101,7 @@ void			put_img_to_img(t_img dst, t_img src, int x, int y);
 //map render
 void			render_map(t_global *global, t_img state);
 void			putnbr_mouvements(t_global *global);
+void			putstr_endgame(t_global *global);
 
 //events
 int				keypress(int keycode, t_global *global);
@@ -122,6 +123,10 @@ int				in_range(int player_x, int player_y, int x, int y);
 void			find_path(t_global *global, int x, int y);
 void			search_right(t_global *global, int x, int y);
 void			search_left(t_global *global, int x, int y);
+void			search_down(t_global *global, int x, int y);
+void			search_up(t_global *global, int x, int y);
+void			track_player(t_global *global, int x, int y);
+void			patrol(t_global *global, int x, int y);
 
 
 //end game
