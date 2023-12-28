@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 21:01:28 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 21:33:58 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	no_event(t_global *global)
 int	destroy(t_global *global)
 {
 	free_images(global);
+	free_the_map(global->map);
 	mlx_destroy_window(global->mlx.ptr, global->mlx.win);
 	mlx_destroy_display(global->mlx.ptr);
 	free(global->mlx.ptr);

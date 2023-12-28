@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 19:33:06 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 21:33:29 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void			putstr_endgame(t_global *global);
 //events
 int				keypress(int keycode, t_global *global);
 int				no_event(t_global *global);
-int				destroy(int keycode, t_global *global);
+int				destroy(t_global *global);
 
 //perso moves
 void			move_tab_up(t_global *global);
@@ -136,5 +136,7 @@ void			game_over(t_global *global);
 
 //utils
 char			*ft_itoa(int n);
+void			free_the_map(char **map);
+
 
 #endif

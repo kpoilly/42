@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:08:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 21:16:37 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 21:40:07 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,14 @@ char	**get_map(char *filename, int *nb_line, int *nb_col)
 	if (fd < 0)
 		return (NULL);
 	map[i] = get_next_line(fd);
+	if (!map[i])
+		return (free(map), NULL);
 	while (map[i] != NULL)
+	{
 		map[++i] = get_next_line(fd);
+		if (!map[i - 1])
+			return (free_the_map(map), NULL);
+	}
 	*nb_col = ft_strlen(map[0]);
 	close(fd);
 	return (map);

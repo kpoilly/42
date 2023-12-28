@@ -6,11 +6,21 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:25:30 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/15 18:04:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 21:33:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
+
+void	free_the_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
+}
 
 static void	ft_bzero(void *s, size_t n)
 {
