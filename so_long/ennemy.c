@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 11:15:07 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 14:18:41 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,17 @@ void	load_ennemy(t_global *global)
 
 	w = 50;
 	h = 50;
-	global->ennemy.img = mlx_xpm_file_to_image(global->mlx.ptr,
+	global->ennemy.front.img = mlx_xpm_file_to_image(global->mlx.ptr,
 			"./data/textures/ennemy.xpm", &w, &h);
-	global->ennemy.addr = mlx_get_data_addr(global->ennemy.img,
-			&(global->ennemy.bits_per_pixel),
-			&(global->ennemy.line_length),
-			&(global->ennemy.endian));
-	global->ennemy.w = w;
-	global->ennemy.h = h;
-
-	if (!global->ennemy.img)
+	if (!global->ennemy.front.img)
 		return (ft_printf("Error.\nMissing Texture files.\n"),
 			(void)destroy(0, global));
+	global->ennemy.front.addr = mlx_get_data_addr(global->ennemy.front.img,
+			&(global->ennemy.front.bits_per_pixel),
+			&(global->ennemy.front.line_length),
+			&(global->ennemy.front.endian));
+	global->ennemy.front.w = w;
+	global->ennemy.front.h = h;
 }
 
 void	spawn_ennemy(t_global *global, int nb_line, int nb_col)

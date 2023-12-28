@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 10:59:09 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:47:29 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ int	keypress(int keycode, t_global *global)
 {
 	if (keycode == 65362 || keycode == 119)
 		return (move_tab_up(global), ennemy_move(global),
-			render_map(global, global->player_dos), 1);
+			render_map(global, global->player.back), 1);
 	else if (keycode == 65364 || keycode == 115)
 		return (move_tab_down(global), ennemy_move(global),
-			render_map(global, global->player_face), 1);
+			render_map(global, global->player.front), 1);
 	else if (keycode == 65361 || keycode == 97)
 		return (move_tab_left(global), ennemy_move(global),
-			render_map(global, global->player_gauche), 1);
+			render_map(global, global->player.left), 1);
 	else if (keycode == 65363 || keycode == 100)
 		return (move_tab_right(global), ennemy_move(global),
-			render_map(global, global->player_droit), 1);
+			render_map(global, global->player.right), 1);
 	else if (keycode == 65307)
 		destroy(0, global);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:01:06 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 11:28:34 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 13:47:51 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,25 +108,25 @@ int	load_character1(t_global *global)
 
 	w = 50;
 	h = 50;
-	global->player_face.img = mlx_xpm_file_to_image(global->mlx.ptr,
-			global->set_of_files.player_face, &w, &h);
-	if (!global->player_face.img)
+	global->player.front.img = mlx_xpm_file_to_image(global->mlx.ptr,
+			global->set_of_files.player_front, &w, &h);
+	if (!global->player.front.img)
 		return (ft_printf("Error.\nMissing texture files.\n"), 0);
-	global->player_face.addr = mlx_get_data_addr(global->player_face.img,
-			&(global->player_face.bits_per_pixel),
-			&(global->player_face.line_length),
-			&(global->player_face.endian));
-	global->player_face.w = w;
-	global->player_face.h = 70;
-	global->player_dos.img = mlx_xpm_file_to_image(global->mlx.ptr,
-			global->set_of_files.player_dos, &w, &h);
-	if (!global->player_dos.img)
+	global->player.front.addr = mlx_get_data_addr(global->player.front.img,
+			&(global->player.front.bits_per_pixel),
+			&(global->player.front.line_length),
+			&(global->player.front.endian));
+	global->player.front.w = w;
+	global->player.front.h = 70;
+	global->player.back.img = mlx_xpm_file_to_image(global->mlx.ptr,
+			global->set_of_files.player_back, &w, &h);
+	if (!global->player.back.img)
 		return (ft_printf("Error.\nMissing texture files.\n"), 0);
-	global->player_dos.addr = mlx_get_data_addr(global->player_dos.img,
-			&(global->player_dos.bits_per_pixel),
-			&(global->player_dos.line_length), &(global->player_dos.endian));
-	global->player_dos.w = w;
-	global->player_dos.h = 60;
+	global->player.back.addr = mlx_get_data_addr(global->player.back.img,
+			&(global->player.back.bits_per_pixel),
+			&(global->player.back.line_length), &(global->player.back.endian));
+	global->player.back.w = w;
+	global->player.back.h = 60;
 	return (1);
 }
 
@@ -138,25 +138,23 @@ int	load_character2(t_global *global)
 
 	w = 50;
 	h = 50;
-	global->player_droit.img = mlx_xpm_file_to_image(global->mlx.ptr,
-			global->set_of_files.player_droit, &w, &h);
-	if (!global->player_droit.img)
+	global->player.right.img = mlx_xpm_file_to_image(global->mlx.ptr,
+			global->set_of_files.player_right, &w, &h);
+	if (!global->player.right.img)
 		return (ft_printf("Error.\nMissing texture files.\n"), 0);
-	global->player_droit.addr = mlx_get_data_addr(global->player_droit.img,
-			&(global->player_droit.bits_per_pixel),
-			&(global->player_droit.line_length),
-			&(global->player_droit.endian));
-	global->player_droit.w = w;
-	global->player_droit.h = 70;
-	global->player_gauche.img = mlx_xpm_file_to_image(global->mlx.ptr,
-			global->set_of_files.player_gauche, &w, &h);
-	if (!global->player_gauche.img)
+	global->player.right.addr = mlx_get_data_addr(global->player.right.img,
+			&(global->player.right.bits_per_pixel),
+			&(global->player.right.line_length), &(global->player.right.endian));
+	global->player.right.w = w;
+	global->player.right.h = 70;
+	global->player.left.img = mlx_xpm_file_to_image(global->mlx.ptr,
+			global->set_of_files.player_left, &w, &h);
+	if (!global->player.left.img)
 		return (ft_printf("Error.\nMissing texture files.\n"), 0);
-	global->player_gauche.addr = mlx_get_data_addr(global->player_gauche.img,
-			&(global->player_gauche.bits_per_pixel),
-			&(global->player_gauche.line_length),
-			&(global->player_gauche.endian));
-	global->player_gauche.w = w;
-	global->player_gauche.h = 70;
+	global->player.left.addr = mlx_get_data_addr(global->player.left.img,
+			&(global->player.left.bits_per_pixel),
+			&(global->player.left.line_length), &(global->player.left.endian));
+	global->player.left.w = w;
+	global->player.left.h = 70;
 	return (1);
 }

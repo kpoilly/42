@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 11:28:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/28 15:59:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ typedef struct s_set {
 	char	*ground;
 	char	*collectible;
 	char	*exit;
-	char	*player_face;
-	char	*player_dos;
-	char	*player_droit;
-	char	*player_gauche;
+	char	*player_front;
+	char	*player_back;
+	char	*player_right;
+	char	*player_left;
 }				t_set;
 
 //contient les images chargees dans des buffers
@@ -55,6 +55,16 @@ typedef struct s_img {
 	int		h;
 }				t_img;
 
+//contient les data des entitees (joueur et ennemi)
+typedef struct s_ent {
+	t_img	front;
+	t_img	back;
+	t_img	right;
+	t_img	left;
+	int		x;
+	int		y;
+}				t_ent;
+
 //contient toutes les data
 typedef struct s_global {
 	t_mlx	mlx;
@@ -62,17 +72,14 @@ typedef struct s_global {
 	char	**map;
 	int		moves;
 	int		nbcollec;
+	t_ent	player;
+	t_ent	ennemy;
 	t_img	bg;
 	t_img	wallin;
 	t_img	wallout;
 	t_img	ground;
 	t_img	collec;
 	t_img	exit;
-	t_img	ennemy;
-	t_img	player_face;
-	t_img	player_dos;
-	t_img	player_droit;
-	t_img	player_gauche;
 }				t_global;
 
 //map setup and primary functions
@@ -110,10 +117,11 @@ void			move_tab_left(t_global *global);
 void			spawn_ennemy(t_global *global, int nb_line, int nb_col);
 void			ennemy_move(t_global *global);
 void			move_ennemy_tab(t_global *global, char *dest, char *src);
-void			move_ennemy_up(t_global *global);
-void			move_ennemy_down(t_global *global);
-void			move_ennemy_right(t_global *global);
-void			move_ennemy_left(t_global *global);
+void			get_target(t_global *global, int *x, int *y);
+int				in_range(int player_x, int player_y, int x, int y);
+void			find_path(t_global *global, int x, int y);
+void			search_right(t_global *global, int x, int y);
+void			search_left(t_global *global, int x, int y);
 
 
 //end game
