@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/11 10:27:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/29 14:05:58 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	**get_input(int argc, char **argv)
 {
 	if (argc >= 3)
 		return (argv + 1);
-	if (argc == 2 && ft_tablen(argv) == 2)
+	if (argc == 2)
 		return (ft_split(argv[1], ' '));
 	return (NULL);
 }

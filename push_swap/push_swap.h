@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:33 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/11 14:15:59 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/29 13:41:49 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char c);
 int		ft_tablen(char **tab);
 void	ft_free(char **tab);
+void	free_list(t_stack **stack);
 
 char	**get_input(int argc, char **argv);
 int		checkerror(char *input);

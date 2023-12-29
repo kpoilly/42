@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:35:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/12 09:29:00 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/29 14:09:26 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	main(int argc, char **argv)
 		return (0);
 	a = setupstack(len, inputs);
 	b = NULL;
-	//ft_free(inputs);
+	ft_free(inputs);
 	if (!a)
 		return (-1);
 	// printf("STARTS:\n");
@@ -96,15 +96,13 @@ int	main(int argc, char **argv)
 		small_sort(&a);
 		// printf("END:\n");
 		// debug_prntlst(a, b);
-		return (0);
+		return (free_list(&a), free_list(&b), 0);
 	}
 	if (!issorted(&a))
 		push_swap(&a, &b);
 	// printf("END:\n");
 	// debug_prntlst(a, b);
-	if (a)
-		free(a);
-	if (b)
-		free(b);
+	free_list(&a);
+	free_list(&b);
 	return (0);
 }

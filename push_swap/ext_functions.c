@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 17:52:34 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/11 14:11:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/29 14:14:28 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	ft_atoi(const char *nptr)
 
 void	ft_free(char **tab)
 {
-	while (*tab)
-	{
-		free(*tab);
-		tab++;
-	}
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
 	free(tab);
 }
 
@@ -106,9 +106,10 @@ char	**ft_split(char const *s, char c)
 	while (i < count)
 	{
 		add = 0;
-		tab[i++] = add_word(s, c, &add);
-		if (!tab[i - 1])
+		tab[i] = add_word(s, c, &add);
+		if (!tab[i])
 			return (ft_free(tab), NULL);
+		i++;
 		s += add;
 	}
 	tab[count] = NULL;

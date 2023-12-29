@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:05:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/11 10:28:52 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/29 14:33:53 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,18 @@ int	ft_lstsize(t_stack *lst)
 		i = i->next;
 	}
 	return (size);
+}
+
+void	free_list(t_stack **stack)
+{
+	t_stack	*current;
+	t_stack	*next;
+
+	current = *stack;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }
