@@ -6,11 +6,18 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:16:21 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/11 08:39:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/30 15:31:06 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	rrr(t_stack **a, t_stack **b)
+{
+	write(1, "rrr\n", 4);
+	rra(a);
+	rrb(b);
+}
 
 t_stack	*swap(t_stack **a)
 {

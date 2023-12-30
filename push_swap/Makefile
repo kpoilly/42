@@ -6,13 +6,14 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2023/12/29 14:44:48 by kpoilly          ###   ########.fr        #
+#    Updated: 2023/12/30 15:32:05 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= push_swap
 FILES 			= push_swap.c push_swap_ops.c push_swap_utils.c rotate_ops.c \
-				  stack_management.c stack_setup.c lst_management.c ext_functions.c
+				  stack_management.c stack_setup.c lst_management.c ext_functions.c \
+				  sort_algo.c
 BUILD_DIR		=	./objects
 OBJECTS 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(FILES)))
 RM 						= rm -f

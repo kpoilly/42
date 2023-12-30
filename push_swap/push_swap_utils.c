@@ -6,18 +6,46 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/29 14:05:58 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/30 15:31:42 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**get_input(int argc, char **argv)
+void	set_order(t_stack *a)
 {
+	int		min;
+	int		count;
+	t_stack	*current;
+	t_stack	*pars;
+
+	current = a;
+	while (current)
+	{
+		pars = a;
+		count = 0;
+		min = current->value;
+		while (pars)
+		{
+			if (pars->value > min)
+				count++;
+			pars = pars->next;
+		}
+		current->order = ft_lstsize(a) - count - 1;
+		current = current->next;
+	}
+}
+
+char	**get_input(int argc, char **argv, int *to_free)
+{
+	*to_free = 0;
 	if (argc >= 3)
 		return (argv + 1);
 	if (argc == 2)
+	{
+		*to_free = 1;
 		return (ft_split(argv[1], ' '));
+	}
 	return (NULL);
 }
 
@@ -60,13 +88,6 @@ int	checkdup(t_stack *a)
 	return (1);
 }
 
-void	rrr(t_stack **a, t_stack **b)
-{
-	write(1, "rrr\n", 4);
-	rra(a);
-	rrb(b);
-}
-
 void	debug_prntlst(t_stack *a, t_stack *b)
 {
 	t_stack	*i;
@@ -79,7 +100,7 @@ void	debug_prntlst(t_stack *a, t_stack *b)
 	{
 		if (i)
 		{
-			printf("%d : %d", i->index, i->value);
+			printf("%d : %d", i->order, i->value);
 			// if (i->prev)
 			// 	printf(" // prev: %d", (i->prev)->value);
 		}
@@ -87,7 +108,7 @@ void	debug_prntlst(t_stack *a, t_stack *b)
 		{
 			if (!i)
 				printf("     ");
-			printf(" | %d : %d", j->index, j->value);
+			printf(" | %d : %d", j->order, j->value);
 		}
 		if (i)
 			i = i->next;

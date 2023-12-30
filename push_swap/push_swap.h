@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:33 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/29 13:41:49 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/30 15:30:29 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,56 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
+	int				order;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
 
+//external functions
 int		ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char c);
-int		ft_tablen(char **tab);
 void	ft_free(char **tab);
-void	free_list(t_stack **stack);
 
-char	**get_input(int argc, char **argv);
+//setup & free functions
+char	**get_input(int argc, char **argv, int *to_free);
+int		ft_tablen(char **tab);
 int		checkerror(char *input);
 int		checkdup(t_stack *a);
+void	free_list(t_stack **stack);
 void	debug_prntlst(t_stack *a, t_stack *b);
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new);
-void	ft_lstadd_back(t_stack **lst, t_stack *new);
+//stack / list management utils
 t_stack	*setupstack(int argc, char **argv);
 t_stack	*ft_lstnew(int value, int index, void *prev, void *next);
 t_stack	*ft_lstdelelem(t_stack *elem);
 t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
 int		ft_lstsize(t_stack *lst);
 
+//stack management
 t_stack	*swap(t_stack **a);
 int		issorted(t_stack **a);
+void	set_order(t_stack *a);
 void	clear_index(t_stack **stack);
 
+//push/swap operations
 void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **b, t_stack **a);
 
+//rotate operations
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
+
+//sort algorithms
+void	small_sort(t_stack **a);
+void	push_swap(t_stack **a, t_stack **b);
 
 #endif
