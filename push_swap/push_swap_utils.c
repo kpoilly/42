@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/30 15:31:42 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/31 18:16:21 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,25 @@ char	**get_input(int argc, char **argv, int *to_free)
 
 int	checkerror(char *input)
 {
+	int	i;
+
 	if (ft_atoi(input) > 2147483647 || ft_atoi(input) < -2147483647)
 	{
 		write(2, "Error\n", 6);
 		return (0);
 	}
-	while (*input)
+	i = 0;
+	while (input[i])
 	{
-		if (*input < '0' || *input > '9')
+		if (!(input[i] >= '0' && input[i] <= '9'))
 		{
-			write(2, "Error\n", 6);
-			return (0);
+			if (input[i] != '-')
+				return (write(2, "Error\n", 6), 0);
+			else if (input[i] == '-'
+				&& ((i && input[i - 1] != ' ') || !input[i + 1]))
+				return (write(2, "Error\n", 6), 0);
 		}
-		input++;
+		i++;
 	}
 	return (1);
 }
@@ -88,33 +94,33 @@ int	checkdup(t_stack *a)
 	return (1);
 }
 
-void	debug_prntlst(t_stack *a, t_stack *b)
-{
-	t_stack	*i;
-	t_stack	*j;
+// void	debug_prntlst(t_stack *a, t_stack *b)
+// {
+// 	t_stack	*i;
+// 	t_stack	*j;
 
-	i = a;
-	j = b;
-	printf("---------------\n");
-	while (i || j)
-	{
-		if (i)
-		{
-			printf("%d : %d", i->order, i->value);
-			// if (i->prev)
-			// 	printf(" // prev: %d", (i->prev)->value);
-		}
-		if (j)
-		{
-			if (!i)
-				printf("     ");
-			printf(" | %d : %d", j->order, j->value);
-		}
-		if (i)
-			i = i->next;
-		if (j)
-			j = j->next;
-		printf("\n");
-	}
-	printf("    _       _\n    a       b\n");
-}
+// 	i = a;
+// 	j = b;
+// 	printf("---------------\n");
+// 	while (i || j)
+// 	{
+// 		if (i)
+// 		{
+// 			printf("%d : %d", i->order, i->value);
+// 			// if (i->prev)
+// 			// 	printf(" // prev: %d", (i->prev)->value);
+// 		}
+// 		if (j)
+// 		{
+// 			if (!i)
+// 				printf("     ");
+// 			printf(" | %d : %d", j->order, j->value);
+// 		}
+// 		if (i)
+// 			i = i->next;
+// 		if (j)
+// 			j = j->next;
+// 		printf("\n");
+// 	}
+// 	printf("    _       _\n    a       b\n");
+// }

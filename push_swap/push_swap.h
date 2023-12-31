@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:33 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/30 15:30:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/31 18:03:11 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 }	t_stack;
 
 //external functions
-int		ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr);
 char	**ft_split(char const *s, char c);
 void	ft_free(char **tab);
 
@@ -71,6 +71,9 @@ void	rrr(t_stack **a, t_stack **b);
 
 //sort algorithms
 void	small_sort(t_stack **a);
-void	push_swap(t_stack **a, t_stack **b);
+void	medium_sort(t_stack **a, t_stack **b);
+void	radix(t_stack **a, t_stack **b);
+int		get_index(t_stack *a, int target);
+int		get_nbbits(t_stack *a);
 
 #endif

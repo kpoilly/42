@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 15:29:33 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/30 15:30:02 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/31 18:14:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,89 @@ void	small_sort(t_stack **a)
 	}
 }
 
-void	push_swap(t_stack **a, t_stack **b)
+void	medium_sort(t_stack **a, t_stack **b)
 {
-	while ((*a) && (*a)->value)
+	int	target;
+	int	target_index;
+
+	target = 0;
+	while ((!issorted(a) && *b) || target == 0)
 	{
-		if ((*a)->value > ((*a)->next)->value)
-			sa(a);
-		while (!*b || (*b && *a && (*b)->value < (*a)->value))
-		{	
-			if (*b && !(*b)->next && (*b)->value < (*a)->value && issorted(a))
-				return (pa(a, b));
-			pb(b, a);
-			if (ft_lstsize(*a) <= 3)
-			{
-				small_sort(a);
-				while ((*b && *a && (*b)->value < (*a)->value))
-					pa(a, b);
-			}
-			if (issorted(a) && !*b)
-				return ;
-		}
-		while (*b && *a && (*b)->value > (*a)->value)
+		target_index = get_index(*a, target);
+		while ((*a)->order != target)
 		{
-			pa(a, b);
-			sa(a);
+			if (target_index <= (ft_lstsize(*a) / 2))
+				ra(a);
+			else
+				rra(a);
 		}
-		if (issorted(a) && !*b)
-			return ;
+		pb(b, a);
+		if (ft_lstsize(*a) == 3)
+			small_sort(a);
+		target++;
+		if (issorted(a))
+			while (*b)
+				pa(a, b);
 	}
-	while (*b)
-		pa(a, b);
 }
+
+void	radix(t_stack **a, t_stack **b)
+{
+	int	size_a;
+	int	nbbits;
+	int	bit_check;
+	int	i;
+
+	size_a = ft_lstsize(*a);
+	nbbits = get_nbbits(*a);
+	bit_check = 0;
+	while (bit_check < nbbits)
+	{
+		i = 0;
+		while (i < size_a)
+		{
+			if ((((*a)->order >> bit_check) & 1) == 0)
+				pb(b, a);
+			else
+				ra(a);
+			i++;
+		}
+		while (*b)
+			pa(a, b);
+		bit_check++;
+	}
+}
+
+// void	push_swap(t_stack **a, t_stack **b)
+// {
+// 	int	target;
+// 	int	target_index;
+
+// 	target = 0;
+// 	target_index = get_index(*a, target);
+// 	while ((!issorted(a) && *b) || target == 0)
+// 	{
+// 		while ((*a)->order != target)
+// 		{
+// 			if (target_index <= (ft_lstsize(*a) / 2))
+// 				ra(a);
+// 			else
+// 				rra(a);
+// 		}
+// 		if (issorted(a))
+// 		{
+// 			while (*b)
+// 				pa(a, b);
+// 			break ;
+// 		}
+// 		pb(b, a);
+// 		target++;
+// 		target_index = get_index(*a, target);
+// 		if (ft_lstsize(*a) == 1)
+// 		{
+// 			while (*b)
+// 				pa(a, b);
+// 			break ;
+// 		}
+// 	}
+// }
