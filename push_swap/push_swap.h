@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:44:33 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/31 18:03:11 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/01 15:01:18 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**ft_split(char const *s, char c);
 void	ft_free(char **tab);
 
 //setup & free functions
-char	**get_input(int argc, char **argv, int *to_free);
+char	**get_input(int argc, char **inputs, int *to_free);
 int		ft_tablen(char **tab);
 int		checkerror(char *input);
 int		checkdup(t_stack *a);
