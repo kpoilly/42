@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:35:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/31 17:41:26 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/01 14:52:53 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	int		len;
 	char	**inputs;
 
-	if (argc < 2)
+	if (argc < 2 || (argc == 2 && !ft_strlen(argv[1])))
 		return (-1);
 	inputs = get_input(argc, argv, &to_free);
 	if (!inputs || !*inputs)
