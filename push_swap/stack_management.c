@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:16:21 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/30 15:31:06 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/01 14:54:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,29 @@ void	clear_index(t_stack **stack)
 	{
 		i->index = index++;
 		i = i->next;
+	}
+}
+
+void	set_order(t_stack *a)
+{
+	int		min;
+	int		count;
+	t_stack	*current;
+	t_stack	*pars;
+
+	current = a;
+	while (current)
+	{
+		pars = a;
+		count = 0;
+		min = current->value;
+		while (pars)
+		{
+			if (pars->value > min)
+				count++;
+			pars = pars->next;
+		}
+		current->order = ft_lstsize(a) - count - 1;
+		current = current->next;
 	}
 }

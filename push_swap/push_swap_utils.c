@@ -6,35 +6,11 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/31 18:16:21 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/01 14:54:28 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	set_order(t_stack *a)
-{
-	int		min;
-	int		count;
-	t_stack	*current;
-	t_stack	*pars;
-
-	current = a;
-	while (current)
-	{
-		pars = a;
-		count = 0;
-		min = current->value;
-		while (pars)
-		{
-			if (pars->value > min)
-				count++;
-			pars = pars->next;
-		}
-		current->order = ft_lstsize(a) - count - 1;
-		current = current->next;
-	}
-}
 
 char	**get_input(int argc, char **argv, int *to_free)
 {
