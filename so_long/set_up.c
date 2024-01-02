@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 21:06:47 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/02 08:12:26 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ static int	set_paths(t_set *set_of_files)
 
 int	free_images(t_global *global)
 {
-	free(global->bg.img);
-	free(global->collec.img);
-	free(global->ground.img);
-	free(global->exit.img);
-	free(global->wallin.img);
-	free(global->wallout.img);
-	free(global->player.front.img);
-	free(global->player.back.img);
-	free(global->player.right.img);
-	free(global->player.left.img);
-	free(global->ennemy.front.img);
+	mlx_destroy_image(global->mlx.ptr, global->bg.img);
+	mlx_destroy_image(global->mlx.ptr, global->collec.img);
+	mlx_destroy_image(global->mlx.ptr, global->ground.img);
+	mlx_destroy_image(global->mlx.ptr, global->exit.img);
+	mlx_destroy_image(global->mlx.ptr, global->wallin.img);
+	mlx_destroy_image(global->mlx.ptr, global->wallout.img);
+	mlx_destroy_image(global->mlx.ptr, global->player.front.img);
+	mlx_destroy_image(global->mlx.ptr, global->player.back.img);
+	mlx_destroy_image(global->mlx.ptr, global->player.right.img);
+	mlx_destroy_image(global->mlx.ptr, global->player.left.img);
+	mlx_destroy_image(global->mlx.ptr, global->ennemy.front.img);
 	return (0);
 }
 

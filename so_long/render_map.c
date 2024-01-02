@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 19:29:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2023/12/31 15:51:26 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,29 @@
 //Affiche le nombre de mouvements dans la window (BONUS)
 void	putnbr_mouvements(t_global *global)
 {
+	char	*str;
+
+	str = ft_itoa(global->moves);
 	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 125,
 		global->mlx.height - 22, (int)0x00CCFFFF, "Moves : ");
 	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 70,
-		global->mlx.height - 22, (int)0x00CCFFFF, ft_itoa(global->moves));
+		global->mlx.height - 22, (int)0x00CCFFFF, str);
+	free(str);
 }
 
 //Affiche le nombre de collectibles restants dans la window
 static void	putnbr_collectibles(t_global *global)
 {
+	char	*str;
+
+	str = ft_itoa(global->nbcollec);
 	mlx_string_put(global->mlx.ptr, global->mlx.win,
 		global->mlx.width - (global->mlx.width / 2) - 50,
 		global->mlx.height - 22, (int)0x00CCFFFF, "Remaining frogs : ");
 	mlx_string_put(global->mlx.ptr, global->mlx.win,
 		global->mlx.width - (global->mlx.width / 2) + 75,
-		global->mlx.height - 22, (int)0x00CCFFFF, ft_itoa(global->nbcollec));
+		global->mlx.height - 22, (int)0x00CCFFFF, str);
+	free(str);
 }
 
 //check quelle image il doit afficher
@@ -41,7 +49,7 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 		if (!y || !x || !global->map[y + 1] || !global->map[y][x + 1])
 			put_img_to_img(global->bg, global->wallout, x * 50, y * 50);
 		else
-			put_img_to_img(global->bg, global->wallin, x * 50 - 10,
+			put_img_to_img(global->bg, global->wallin, x * 50,
 				y * 50 - 10);
 	}
 	else if (global->map[y][x] == 'P')

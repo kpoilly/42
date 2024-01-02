@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:12:15 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 20:09:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/02 08:13:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	**check_error(char **map, t_global *global)
 		return (ft_printf("Error.\nToo many exit on the map.\n"), NULL);
 	if (nb_player > 1)
 		return (ft_printf("Error.\nThe game is not multiplayer !\n"), NULL);
-	// if (!fullfill(map))
+	// if (!flood fill(map))
 	// 	return (ft_printf("Error.\nCollectibles not accessible.\n"), NULL);
 	return (map);
 }
