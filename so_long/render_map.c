@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/31 15:51:26 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/02 14:41:41 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 		put_img_to_img(global->bg, global->exit, x * 50, y * 50);
 	else if (global->map[y][x] == 'G')
 		put_img_to_img(global->bg, global->ennemy.front, x * 50, y * 50);
+	global->last_state = state;
 }
 
 //Parcours la char**map et affiche les images aux bons endroits

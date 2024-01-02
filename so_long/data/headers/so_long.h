@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 21:33:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/02 14:41:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ typedef struct s_global {
 	t_img	ground;
 	t_img	collec;
 	t_img	exit;
+	t_img	last_state;
+	clock_t	last;
 }				t_global;
 
 //map setup and primary functions

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/02 08:12:26 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/02 14:31:18 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	free_images(t_global *global)
 //setup de la struct qui contient toutes les data
 int	set_global(t_global *global, int nb_col, int nb_line)
 {
+	global->last = clock();
 	global->mlx.ptr = mlx_init();
 	if (!global->mlx.ptr)
 		return (0);
