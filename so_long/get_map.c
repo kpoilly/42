@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:08:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/29 14:27:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/03 17:21:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//Recupere la taille totale de la map pour la malloc
 static int	maplen(char *filename)
 {
 	char	*str;

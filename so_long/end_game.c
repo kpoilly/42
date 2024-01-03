@@ -45,9 +45,32 @@ void	end_the_game(t_global *global)
 	destroy(global);
 }
 
-//Game over
+//Affiche Game over et quitte proprement le programme
 void	game_over(t_global *global)
 {
-	printf("GAME OVER!");
+	int		w;
+	int		h;
+	int		i;
+	t_img	gameover;
+
+	w = 300;
+	h = 150;
+	gameover.img = mlx_xpm_file_to_image(global->mlx.ptr,
+			"./data/textures/gameover.xpm", &w, &h);
+	if (!gameover.img)
+		return (ft_printf("Error.\nMissing Texture files.\n"),
+			(void)destroy(global));
+	gameover.addr = mlx_get_data_addr(gameover.img, &(gameover.bits_per_pixel),
+			&(gameover.line_len), &(gameover.endian));
+	gameover.w = w;
+	gameover.h = h;
+	put_img_to_img(global->bg, gameover,
+		(global->mlx.width / 2) - 150, (global->mlx.height / 2) - 75);
+	ft_printf("Game Over !");
+	i = 0;
+	while (i++ < 5000)
+		mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
+			global->bg.img, 0, 0);
+	mlx_destroy_image(global->mlx.ptr, gameover.img);
 	destroy(global);
 }
