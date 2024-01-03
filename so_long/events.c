@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/03 15:59:23 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/03 17:11:05 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,7 @@ int	keypress(int keycode, t_global *global)
 //Fonction qui tourne quand on ne presse rien (respiration ?)
 int	no_event(t_global *global)
 {
-	int		time;
-	int		rage;
-
-	time = ((long double)(clock() - global->last) / CLOCKS_PER_SEC) * 1000;
-	get_target(global, &global->player);
-	get_target(global, &global->ennemy);
-	if (in_range(global->player.x, global->player.y,
-			global->ennemy.x, global->ennemy.y) || !global->nbcollec)
-		rage = 100;
-	else
-		rage = 250;
-	if (time >= rage)
-	{
-		global->last = clock();
-		ennemy_move(global);
-		render_map(global, global->last_state);
-	}
+	move_ennemy(global);
 	return (0);
 }
 
