@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:11:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 20:10:55 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/03 16:42:00 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,26 @@ void	move_ennemy_tab(t_global *global, char *dest, char *src)
 }
 
 //Recupere la coordonne du joueur dans la map
-void	get_target(t_global *global, int *x, int *y)
+void	get_target(t_global *global, t_ent *target)
 {
-	*x = 0;
-	*y = 0;
-	while (global->map[*y])
+	int	x;
+	int	y;
+
+	y = 0;
+	while (global->map[y])
 	{
-		*x = 0;
-		while (global->map[*y][*x])
+		x = 0;
+		while (global->map[y][x])
 		{
-			if (global->map[*y][*x] == 'P')
+			if (global->map[y][x] == target->chara)
+			{
+				target->x = x;
+				target->y = y;
 				return ;
-			(*x)++;
+			}
+			x++;
 		}
-		(*y)++;
+		y++;
 	}
 }
 
@@ -53,47 +59,12 @@ int	in_range(int player_x, int player_y, int x, int y)
 		&& (player_y >= y - 3 && player_y <= y + 3));
 }
 
-//L'ennemi cherche un chemin de parcours pour se rapprocher approx. du joueur
-void	find_path(t_global *global, int x, int y)
-{
-	if (global->player.x >= ((global->mlx.width / 50) / 2)
-		&& x <= ((global->mlx.width / 50) / 2))
-		return (search_right(global, x, y));
-	else if (global->player.x < ((global->mlx.width / 50) / 2)
-		&& x > ((global->mlx.width / 50) / 2))
-		return (search_left(global, x, y));
-	else if (global->player.y >= ((global->mlx.height / 50) / 2)
-		&& y <= ((global->mlx.height / 50) / 2))
-		return (search_down(global, x, y));
-	else if (global->player.y < ((global->mlx.height / 50) / 2)
-		&& y > ((global->mlx.height / 50) / 2))
-		return (search_up(global, x, y));
-	else
-		return (patrol(global, x, y));
-}
-
 //choisi la direction du gobelin en fonction de si le joueur est dans sa range
 void	ennemy_move(t_global *global)
 {
-	int	y;
-	int	x;
-
-	get_target(global, &global->player.x, &global->player.y);
-	y = 0;
-	while (global->map[y])
-	{
-		x = 0;
-		while (global->map[y][x])
-		{
-			if (global->map[y][x] == 'G')
-			{
-				if (!in_range(global->player.x, global->player.y, x, y))
-					return (find_path(global, x, y));
-				else
-					return (track_player(global, x, y));
-			}
-			x++;
-		}
-		y++;
-	}
+	if (!in_range(global->player.x, global->player.y,
+			global->ennemy.x, global->ennemy.y))
+		return (patrol(global, global->ennemy.x, global->ennemy.y));
+	else
+		return (track_player(global, global->ennemy.x, global->ennemy.y));
 }

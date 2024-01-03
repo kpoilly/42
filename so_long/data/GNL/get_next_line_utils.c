@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:06:56 by lleciak           #+#    #+#             */
-/*   Updated: 2023/12/17 14:34:13 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/02 08:53:44 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	i = 0;
 	if (size <= 0)
 		return (0);
+	if (!*src)
+	{
+		dest[0] = '\0';
+		return (0);
+	}
 	while (src[i] && i < size - 1)
 	{
 		dest[i] = src[i];
@@ -73,6 +78,8 @@ char	*ft_strdup(const char *s)
 	int		i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	dest = malloc(((ft_strlen(s) + 1) * sizeof(char)));
 	if (!dest)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/02 14:31:18 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/03 15:28:15 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 	if (!global->mlx.win)
 		return (0);
 	global->moves = 0;
+	global->player.chara = 'P';
 	set_paths(&(global->set_of_files));
 	if (!load_walls(global)
 		|| !load_things(global)

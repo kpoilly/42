@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/02 14:41:38 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/03 15:32:55 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_ent {
 	t_img	back;
 	t_img	right;
 	t_img	left;
+	char	chara;
 	int		x;
 	int		y;
 }				t_ent;
@@ -72,6 +73,7 @@ typedef struct s_global {
 	char	**map;
 	int		moves;
 	int		nbcollec;
+	char	last_gobdir;
 	t_ent	player;
 	t_ent	ennemy;
 	t_img	bg;
@@ -120,9 +122,9 @@ void			move_tab_left(t_global *global);
 void			spawn_ennemy(t_global *global, int nb_line, int nb_col);
 void			ennemy_move(t_global *global);
 void			move_ennemy_tab(t_global *global, char *dest, char *src);
-void			get_target(t_global *global, int *x, int *y);
+void			get_target(t_global *global, t_ent *target);
+void			set_lastdir(t_global *global, char dir);
 int				in_range(int player_x, int player_y, int x, int y);
-void			find_path(t_global *global, int x, int y);
 void			search_right(t_global *global, int x, int y);
 void			search_left(t_global *global, int x, int y);
 void			search_down(t_global *global, int x, int y);

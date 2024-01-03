@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 21:01:20 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/03 15:28:35 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	load_ennemy(t_global *global)
 			&(global->ennemy.front.endian));
 	global->ennemy.front.w = w;
 	global->ennemy.front.h = h;
+	global->ennemy.chara = 'G';
 }
 
 //Fait apparaitre l'ennemi aleatoirement sur la map
