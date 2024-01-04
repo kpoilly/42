@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:57:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/03 17:10:56 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:01:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	move_ennemy(t_global *global)
 	{
 		global->last = clock();
 		ennemy_decision(global);
-		render_map(global, global->last_state);
+		render_map(global, global->player.last_state);
 	}
 }
 

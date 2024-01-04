@@ -66,7 +66,7 @@ void	game_over(t_global *global)
 	gameover.h = h;
 	put_img_to_img(global->bg, gameover,
 		(global->mlx.width / 2) - 150, (global->mlx.height / 2) - 75);
-	ft_printf("Game Over !");
+	ft_printf("Game Over !\n");
 	i = 0;
 	while (i++ < 5000)
 		mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,

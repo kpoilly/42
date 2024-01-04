@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/03 17:25:24 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:08:50 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,18 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 	put_img_to_img(global->bg, global->ground, x * 50, y * 50);
 	if (global->map[y][x] == '1')
 	{
-		if (!y || !x || !global->map[y + 1] || !global->map[y][x + 1])
-			put_img_to_img(global->bg, global->wallout, x * 50, y * 50);
+		if (!y || !global->map[y + 1])
+			put_img_to_img(global->bg, global->wallout, x * 50,
+				y * 50 - 35);
+		else if (!x)
+			put_img_to_img(global->bg, global->wallout_l, x * 50,
+				y * 50 - 35);
+		else if (!global->map[y][x + 1])
+			put_img_to_img(global->bg, global->wallout, x * 50,
+				y * 50 - 35);
 		else
-			put_img_to_img(global->bg, global->wallin, x * 50, y * 50);
+			put_img_to_img(global->bg, global->wallin, x * 50 -10,
+				y * 50 - 10);
 	}
 	else if (global->map[y][x] == 'P')
 		put_img_to_img(global->bg, state, x * 50, (y * 50) - 20);
@@ -59,7 +67,8 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 		put_img_to_img(global->bg, global->exit, x * 50, y * 50);
 	else if (global->map[y][x] == 'G')
 		put_img_to_img(global->bg, global->ennemy.front, x * 50, y * 50);
-	global->last_state = state;
+	global->player.last_state = state;
+	//global->ennemy.last_state = en_state;
 }
 
 //Parcours la char**map et affiche les images aux bons endroits
@@ -84,4 +93,23 @@ void	render_map(t_global *global, t_img state)
 	putnbr_mouvements(global);
 	putnbr_collectibles(global);
 	putstr_endgame(global);
+}
+
+int	load_others(t_global *global)
+{
+	int	w;
+	int	h;
+
+	w = 50;
+	h = 85;
+	global->wallout_l.img = mlx_xpm_file_to_image(global->mlx.ptr,
+			global->set_of_files.wallout_l, &w, &h);
+	if (!global->wallout_l.img)
+		return (ft_printf("Error.\nMissing texture files.\n"), 0);
+	global->wallout_l.addr = mlx_get_data_addr(global->wallout_l.img,
+			&(global->wallout_l.bits_per_pixel), &(global->wallout_l.line_len),
+			&(global->wallout_l.endian));
+	global->wallout_l.w = w;
+	global->wallout_l.h = h;
+	return (1);
 }

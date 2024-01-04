@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/03 17:11:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:10:21 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_mlx {
 //contient les paths vers le .xpm
 typedef struct s_set {
 	char	*wallin;
+	char	*wallout_l;
 	char	*wallout;
 	char	*ground;
 	char	*collectible;
@@ -46,13 +47,14 @@ typedef struct s_set {
 
 //contient les images chargees dans des buffers
 typedef struct s_img {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_len;
-	int		endian;
-	int		w;
-	int		h;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_len;
+	int				endian;
+	int				w;
+	int				h;
+	struct s_img	*next;
 }				t_img;
 
 //contient les data des entitees (joueur et ennemi)
@@ -61,9 +63,11 @@ typedef struct s_ent {
 	t_img	back;
 	t_img	right;
 	t_img	left;
+	t_img	last_state;
 	char	chara;
 	int		x;
 	int		y;
+	void	*next;
 }				t_ent;
 
 //contient toutes les data
@@ -78,11 +82,11 @@ typedef struct s_global {
 	t_ent	ennemy;
 	t_img	bg;
 	t_img	wallin;
+	t_img	wallout_l;
 	t_img	wallout;
 	t_img	ground;
 	t_img	collec;
 	t_img	exit;
-	t_img	last_state;
 	clock_t	last;
 }				t_global;
 
@@ -97,6 +101,7 @@ int				load_things(t_global *global);
 int				load_things2(t_global *global);
 int				load_character1(t_global *global);
 int				load_character2(t_global *global);
+int				load_others(t_global *global);
 int				free_images(t_global *global);
 
 //tile transparency

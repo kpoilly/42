@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/03 15:28:15 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:10:48 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 //setup des chemins vers les fichiers xpm
 static int	set_paths(t_set *set_of_files)
 {
-	set_of_files->wallin = "./data/textures/wallin.xpm";
-	set_of_files->wallout = "./data/textures/wallout.xpm";
+	set_of_files->wallin = "./data/textures/testwallin.xpm";
+	set_of_files->wallout_l = "./data/textures/testwallout_l.xpm";
+	set_of_files->wallout = "./data/textures/testwallout.xpm";
 	set_of_files->ground = "./data/textures/ground2.xpm";
 	set_of_files->exit = "./data/textures/exit.xpm";
 	set_of_files->collectible = "./data/textures/frog.xpm";
@@ -63,7 +64,10 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 		|| !load_things(global)
 		|| !load_things2(global)
 		|| !load_character1(global)
-		|| !load_character2(global))
+		|| !load_character2(global)
+		|| !load_others(global))
 		return (0);
+	global->player.front.next = &global->player.back;
+	global->player.back.next = &global->player.front;
 	return (1);
 }
