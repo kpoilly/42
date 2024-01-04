@@ -6,11 +6,11 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:50:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:35:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:51:22 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./data/headers/so_long.h"
+#include "../data/headers/so_long.h"
 
 //L'ennemi cherche a aller vers la droite
 void	search_right(t_global *global, int x, int y)

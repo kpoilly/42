@@ -6,11 +6,11 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:57:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:32:18 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:51:28 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./data/headers/so_long.h"
+#include "../data/headers/so_long.h"
 
 //bouge le gobelin toutes les x milliseconds
 void	move_enemy(t_global *global)

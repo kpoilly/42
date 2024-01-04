@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:44:44 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/04 11:29:33 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/04 12:19:18 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,14 @@ NAME 			= so_long
 
 FILES 			= so_long.c set_up.c utils.c get_map.c check_error.c \
 				  load_images.c load_images2.c render_map.c events.c \
-				  tile_transparency.c move_tab.c end_game.c enemy.c \
-				  enemy_directions.c enemy_utils.c enemy_move.c
+				  tile_transparency.c move_tab.c end_game.c 
 BUILD_DIR		=	./data/objects
 OBJECTS 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(FILES)))
+HEAD			= ./data/headers/so_long.h
+
+BONUS_SRCS		= enemy.c enemy_directions.c enemy_utils.c enemy_move.c
+BONUS_BUILD_DIR	= ./bonus/objects
+BONUS_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRCS)))
 
 GNL_FILES 		= ./data/GNL/get_next_line.c ./data/GNL/get_next_line_utils.c
 GNL_OBJECTS 	= $(GNL_FILES:.c=.o)
@@ -34,16 +38,20 @@ all:			$(NAME)
 
 .c.o:
 				$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
+				
 $(BUILD_DIR)/%.o:%.c
 				mkdir -p $(BUILD_DIR)
 				$(CC) $(CFLAGS) -c $< -o $@
+$(BONUS_BUILD_DIR)/%.o:./bonus/%.c
+				mkdir -p $(BONUS_BUILD_DIR)
+				$(CC) $(CFLAGS) -c $< -o $@
 				
-$(NAME):		$(OBJECTS) $(GNL_OBJECTS) $(PRINTF_OBJECTS)
-				$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(OBJECTS)	$(GNL_OBJECTS) $(PRINTF_OBJECTS) \
+$(NAME):		$(OBJECTS) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) $(HEAD)
+				$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(OBJECTS) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) \
 				-L./data/minilibx-linux -lmlx_Linux -lX11 -lXext
 							
 clean:
-						$(RM) $(OBJECTS) $(GNL_OBJECTS) $(PRINTF_OBJECTS)				
+						$(RM) $(OBJECTS) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS)				
 fclean:			clean
 						$(RM) $(NAME)
 re:						fclean all
