@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 16:35:53 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 20:00:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,16 @@ static void	putnbr_collectibles(t_global *global)
 static void	render_wall(t_global *global, int x, int y)
 {
 	if (!y)
-		put_img_to_img(global->bg, global->wallout.front, x * 50, y * 50);
+		put_img_to_img(global->bg, global->wallout.front, x * 50 - 5, y * 50);
 	else if (!global->map[y + 1])
-		put_img_to_img(global->bg, global->wallout.back, x * 50, y * 50 - 20);
+		put_img_to_img(global->bg, global->wallout.back, x * 50 - 5,
+			y * 50 - 35);
 	else if (!x)
 		put_img_to_img(global->bg, global->wallout.left, x * 50, y * 50 - 35);
 	else if (!global->map[y][x + 1])
 		put_img_to_img(global->bg, global->wallout.right, x * 50, y * 50 - 35);
 	else
-		put_img_to_img(global->bg, global->wallin, x * 50 -10, y * 50 - 10);
+		put_img_to_img(global->bg, global->wallin, x * 50 - 10, y * 50 - 10);
 }
 
 //check quelle image il doit afficher
