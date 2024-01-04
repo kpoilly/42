@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_up.c                                           :+:      :+:    :+:   */
+/*   set_up_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 17:20:42 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 17:20:12 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./data/headers/so_long.h"
+#include "../data/headers/so_long.h"
 
 //setup des chemins vers les fichiers xpm
 static int	set_paths(t_set *set_of_files)
@@ -27,7 +27,7 @@ static int	set_paths(t_set *set_of_files)
 	set_of_files->player_back = "./data/textures/perso_dos.xpm";
 	set_of_files->player_right = "./data/textures/perso_droit.xpm";
 	set_of_files->player_left = "./data/textures/perso_gauche.xpm";
-	return (0);
+	return (1);
 }
 
 int	free_images(t_global *global)
@@ -87,5 +87,6 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 		|| !load_walls_updown(global)
 		|| !load_walls_leftright(global))
 		return (0);
+	set_next(global);
 	return (1);
 }

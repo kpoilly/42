@@ -6,22 +6,27 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:44:44 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/04 12:19:18 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/04 17:21:45 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= so_long
-
-FILES 			= so_long.c set_up.c utils.c get_map.c check_error.c \
-				  load_images.c load_images2.c render_map.c events.c \
-				  tile_transparency.c move_tab.c end_game.c 
-BUILD_DIR		=	./data/objects
-OBJECTS 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(FILES)))
 HEAD			= ./data/headers/so_long.h
 
-BONUS_SRCS		= enemy.c enemy_directions.c enemy_utils.c enemy_move.c
+BUILD_DIR		=	./data/objects
+
+CONST_FILES 		= utils.c get_map.c check_error.c load_images.c load_walls.c \
+				  tile_transparency.c move_tab.c
+CONST_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(CONST_FILES)))
+
+MANDATORY 		= so_long.c events.c end_game.c render_map.c set_up.c
+MANDATORY_OBJ 	= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(MANDATORY)))
+
 BONUS_BUILD_DIR	= ./bonus/objects
-BONUS_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_SRCS)))
+BONUS_FILES		= enemy.c enemy_directions.c enemy_utils.c enemy_move.c \
+				  anim_setup.c so_long_bonus.c events_bonus.c end_game_bonus.c \
+				  render_map_bonus.c set_up_bonus.c
+BONUS_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_FILES)))
 
 GNL_FILES 		= ./data/GNL/get_next_line.c ./data/GNL/get_next_line_utils.c
 GNL_OBJECTS 	= $(GNL_FILES:.c=.o)
@@ -30,8 +35,8 @@ PRINTF_FILES	= ./data/ft_printf/ft_printf.c ./data/ft_printf/ft_printnbr.c \
 				  ./data/ft_printf/ft_printstr.c ./data/ft_printf/ft_utils.c
 PRINTF_OBJECTS 	= $(PRINTF_FILES:.c=.o)
 
-RM 						= rm -f
-CC 						= cc
+RM 				= rm -f
+CC 				= cc
 CFLAGS 			= -Wall -Wextra -Werror -g3
 
 all:			$(NAME)
@@ -46,13 +51,19 @@ $(BONUS_BUILD_DIR)/%.o:./bonus/%.c
 				mkdir -p $(BONUS_BUILD_DIR)
 				$(CC) $(CFLAGS) -c $< -o $@
 				
-$(NAME):		$(OBJECTS) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) $(HEAD)
-				$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(OBJECTS) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) \
+$(NAME):		$(CONST_OBJ) $(MANDATORY_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) $(HEAD)
+				$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(CONST_OBJ) $(MANDATORY_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) \
 				-L./data/minilibx-linux -lmlx_Linux -lX11 -lXext
-							
+
+bonus:			fclean $(CONST_OBJ) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) $(HEAD)
+						$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(CONST_OBJ) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) \
+						-L./data/minilibx-linux -lmlx_Linux -lX11 -lXext
+										
 clean:
-						$(RM) $(OBJECTS) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS)				
+						$(RM) $(CONST_OBJ) $(MANDATORY_OBJ) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS)				
 fclean:			clean
 						$(RM) $(NAME)
-re:						fclean all
-.PHONY:		all clean fclean re
+
+re:				fclean all
+
+.PHONY:			all bonus clean fclean re

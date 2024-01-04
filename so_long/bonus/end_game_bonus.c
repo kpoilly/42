@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./data/headers/so_long.h"
+#include "../data/headers/so_long.h"
 
 //Charge l'image de la sortie "ouverte"
 static void	open_exit(t_global *global)
@@ -18,6 +18,16 @@ static void	open_exit(t_global *global)
 	(void)global; //a suppr quand fonction faite
 	//destroy exit
 	//charger l'xpm de la nouvelle sortie dans exit
+}
+
+//Dit au joueur de se grouiller
+void	putstr_endgame(t_global *global)
+{
+	if (!global->nbcollec)
+		mlx_string_put(global->mlx.ptr, global->mlx.win,
+			global->mlx.width - (global->mlx.width / 2) - 100,
+			global->mlx.height - (global->mlx.height / 2), (int)0x00FF00FF,
+			"GOBLINOU IS COMING FOR YOU, HURRY UP !");
 }
 
 //Check si tous les collectibles ont été ramassés

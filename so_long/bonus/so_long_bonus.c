@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:54:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 17:03:02 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 17:04:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./data/headers/so_long.h"
+#include "../data/headers/so_long.h"
 
 int	main(int argc, char **argv)
 {
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error.\nMap not set.\n"), 0);
 	if (!set_global(&global, nb_col, nb_line))
 		return (destroy(&global), 0);
+	spawn_enemy(&global, nb_line, nb_col);
 	render_map(&global, global.player.front);
 	mlx_hook(global.mlx.win, 2, 1L << 0, &keypress, &global);
 	mlx_hook(global.mlx.win, 17, 1L << 17, &destroy, &global);

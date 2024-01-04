@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 16:36:28 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 17:19:06 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./data/headers/so_long.h"
+#include "../data/headers/so_long.h"
 
 //Actions en fonction de la touche pressée
 int	keypress(int keycode, t_global *global)
@@ -35,7 +35,15 @@ int	keypress(int keycode, t_global *global)
 //Fonction qui tourne quand on ne presse rien (respiration ?)
 int	no_event(t_global *global)
 {
-	(void)global;
+	int	timer;
+
+	move_enemy(global);
+	timer = ((long double)(clock() - global->anim) / CLOCKS_PER_SEC) * 1000;
+	if (timer >= 200)
+	{
+		global->anim = clock();
+		render_map(global, *(global->player.last_state.next));
+	}
 	return (0);
 }
 

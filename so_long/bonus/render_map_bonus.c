@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_map.c                                       :+:      :+:    :+:   */
+/*   render_map_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 16:35:53 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 16:48:37 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./data/headers/so_long.h"
+#include "../data/headers/so_long.h"
 
 //Affiche le nombre de mouvements dans la window (BONUS)
 void	putnbr_mouvements(t_global *global)
@@ -66,6 +66,9 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 		put_img_to_img(global->bg, global->collec, x * 50, y * 50 + 10);
 	else if (global->map[y][x] == 'E')
 		put_img_to_img(global->bg, global->exit, x * 50, y * 50);
+	else if (global->map[y][x] == 'G')
+		put_img_to_img(global->bg, global->enemy.front, x * 50 -10,
+			y * 50 - 40);
 	global->player.last_state = state;
 	//global->ennemy.last_state = en_state;
 }
@@ -89,5 +92,7 @@ void	render_map(t_global *global, t_img state)
 	}
 	mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
 		global->bg.img, 0, 0);
+	putnbr_mouvements(global);
 	putnbr_collectibles(global);
+	putstr_endgame(global);
 }

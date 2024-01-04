@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 12:34:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 16:08:26 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ typedef struct s_mlx {
 //contient les paths vers les .xpm
 typedef struct s_set {
 	char	*wallin;
-	char	*wallout_l;
-	char	*wallout;
+	char	*wallout_up;
+	char	*wallout_down;
+	char	*wallout_left;
+	char	*wallout_right;
 	char	*ground;
 	char	*collectible;
 	char	*exit;
@@ -67,7 +69,6 @@ typedef struct s_ent {
 	char	chara;
 	int		x;
 	int		y;
-	void	*next;
 }				t_ent;
 
 //contient toutes les data du jeu
@@ -80,14 +81,14 @@ typedef struct s_global {
 	char	last_gobdir;
 	t_ent	player;
 	t_ent	enemy;
+	t_ent	wallout;
 	t_img	bg;
 	t_img	wallin;
-	t_img	wallout_l;
-	t_img	wallout;
 	t_img	ground;
 	t_img	collec;
 	t_img	exit;
 	clock_t	last;
+	clock_t	anim;
 }				t_global;
 
 //map setup and primary functions
@@ -101,7 +102,8 @@ int				load_things(t_global *global);
 int				load_things2(t_global *global);
 int				load_character1(t_global *global);
 int				load_character2(t_global *global);
-int				load_others(t_global *global);
+int				load_walls_updown(t_global *global);
+int				load_walls_leftright(t_global *global);
 int				free_images(t_global *global);
 
 //tile transparency
@@ -122,6 +124,9 @@ void			move_tab_up(t_global *global);
 void			move_tab_down(t_global *global);
 void			move_tab_right(t_global *global);
 void			move_tab_left(t_global *global);
+
+//animations
+void			set_next(t_global *global);
 
 //enemy spawn and setup
 void			spawn_enemy(t_global *global, int nb_line, int nb_col);

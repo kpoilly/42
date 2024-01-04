@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 12:26:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 16:32:57 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	load_enemy(t_global *global)
 	int	w;
 	int	h;
 
-	w = 50;
-	h = 50;
+	w = 65;
+	h = 90;
 	global->enemy.front.img = mlx_xpm_file_to_image(global->mlx.ptr,
 			"./data/textures/enemy_face.xpm", &w, &h);
 	if (!global->enemy.front.img)

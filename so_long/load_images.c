@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:01:06 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 19:33:26 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 17:07:18 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,6 @@ int	load_walls(t_global *global)
 			&(global->wallin.endian));
 	global->wallin.w = w;
 	global->wallin.h = h;
-	global->wallout.img = mlx_xpm_file_to_image(global->mlx.ptr,
-			global->set_of_files.wallout, &w, &h);
-	if (!global->wallout.img)
-		return (ft_printf("Error.\nMissing texture files.\n"), 0);
-	global->wallout.addr = mlx_get_data_addr(global->wallout.img,
-			&(global->wallout.bits_per_pixel), &(global->wallout.line_len),
-			&(global->wallout.endian));
-	global->wallout.w = w;
-	global->wallout.h = h;
 	return (1);
 }
 
@@ -107,7 +98,7 @@ int	load_character1(t_global *global)
 	int	h;
 
 	w = 50;
-	h = 50;
+	h = 70;
 	global->player.front.img = mlx_xpm_file_to_image(global->mlx.ptr,
 			global->set_of_files.player_front, &w, &h);
 	if (!global->player.front.img)
@@ -137,7 +128,7 @@ int	load_character2(t_global *global)
 	int	h;
 
 	w = 50;
-	h = 50;
+	h = 70;
 	global->player.right.img = mlx_xpm_file_to_image(global->mlx.ptr,
 			global->set_of_files.player_right, &w, &h);
 	if (!global->player.right.img)
