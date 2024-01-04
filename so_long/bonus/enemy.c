@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:51:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:26:36 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ void	spawn_enemy(t_global *global, int nb_line, int nb_col)
 		y = rand() % nb_line;
 		x = rand() % nb_col;
 	}
-	global->map[y][x] = 'G';
+	global->map[y][x] = global->enemy.chara;
 }

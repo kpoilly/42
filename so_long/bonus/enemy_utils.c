@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:11:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:51:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:27:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	move_enemy_tab(t_global *global, char *dest, char *src)
 {
 	if (*dest && *dest == '0')
 	{
-		*dest = 'G';
+		*dest = global->enemy.chara;
 		*src = '0';
 	}
 	else if (*dest && *dest == 'P')
 	{
-		*dest = 'G';
+		*dest = global->enemy.chara;
 		*src = '0';
 		game_over(global);
 	}
