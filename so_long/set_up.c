@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:33:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:24:59 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	free_images(t_global *global)
 	mlx_destroy_image(global->mlx.ptr, global->exit.img);
 	mlx_destroy_image(global->mlx.ptr, global->wallin.img);
 	mlx_destroy_image(global->mlx.ptr, global->wallout.img);
+	mlx_destroy_image(global->mlx.ptr, global->wallout_l.img);
 	mlx_destroy_image(global->mlx.ptr, global->player.front.img);
 	mlx_destroy_image(global->mlx.ptr, global->player.back.img);
 	mlx_destroy_image(global->mlx.ptr, global->player.right.img);
@@ -59,6 +60,8 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 		return (0);
 	global->moves = 0;
 	global->player.chara = 'P';
+	global->enemy.chara = 'G';
+	global->last_gobdir = 'W';
 	set_paths(&(global->set_of_files));
 	if (!load_walls(global)
 		|| !load_things(global)
@@ -67,7 +70,5 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 		|| !load_character2(global)
 		|| !load_others(global))
 		return (0);
-	global->player.front.next = &global->player.back;
-	global->player.back.next = &global->player.front;
 	return (1);
 }
