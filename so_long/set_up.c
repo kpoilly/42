@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:10:48 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:33:29 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	free_images(t_global *global)
 	mlx_destroy_image(global->mlx.ptr, global->player.back.img);
 	mlx_destroy_image(global->mlx.ptr, global->player.right.img);
 	mlx_destroy_image(global->mlx.ptr, global->player.left.img);
-	mlx_destroy_image(global->mlx.ptr, global->ennemy.front.img);
+	mlx_destroy_image(global->mlx.ptr, global->enemy.front.img);
 	return (0);
 }
 

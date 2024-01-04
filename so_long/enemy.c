@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ennemy.c                                           :+:      :+:    :+:   */
+/*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/03 15:28:35 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:33:02 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
 //charge les textures de l'ennemi
-void	load_ennemy(t_global *global)
+void	load_enemy(t_global *global)
 {
 	int	w;
 	int	h;
 
 	w = 50;
 	h = 50;
-	global->ennemy.front.img = mlx_xpm_file_to_image(global->mlx.ptr,
-			"./data/textures/ennemy.xpm", &w, &h);
-	if (!global->ennemy.front.img)
+	global->enemy.front.img = mlx_xpm_file_to_image(global->mlx.ptr,
+			"./data/textures/enemy_face.xpm", &w, &h);
+	if (!global->enemy.front.img)
 		return (ft_printf("Error.\nMissing Texture files.\n"),
 			(void)destroy(global));
-	global->ennemy.front.addr = mlx_get_data_addr(global->ennemy.front.img,
-			&(global->ennemy.front.bits_per_pixel),
-			&(global->ennemy.front.line_len),
-			&(global->ennemy.front.endian));
-	global->ennemy.front.w = w;
-	global->ennemy.front.h = h;
-	global->ennemy.chara = 'G';
+	global->enemy.front.addr = mlx_get_data_addr(global->enemy.front.img,
+			&(global->enemy.front.bits_per_pixel),
+			&(global->enemy.front.line_len),
+			&(global->enemy.front.endian));
+	global->enemy.front.w = w;
+	global->enemy.front.h = h;
+	global->enemy.chara = 'G';
 }
 
 //Fait apparaitre l'ennemi aleatoirement sur la map
-void	spawn_ennemy(t_global *global, int nb_line, int nb_col)
+void	spawn_enemy(t_global *global, int nb_line, int nb_col)
 {
 	int		x;
 	int		y;
 
-	load_ennemy(global);
+	load_enemy(global);
 	srand(time(NULL));
 	x = 0;
 	y = 0;

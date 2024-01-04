@@ -6,16 +6,16 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:44:44 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/03 17:06:26 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/04 11:29:33 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= so_long
 
 FILES 			= so_long.c set_up.c utils.c get_map.c check_error.c \
-				  load_images.c render_map.c events.c tile_transparency.c \
-				  move_tab.c end_game.c ennemy.c ennemy_directions.c ennemy_utils.c \
-				  ennemy_move.c
+				  load_images.c load_images2.c render_map.c events.c \
+				  tile_transparency.c move_tab.c end_game.c enemy.c \
+				  enemy_directions.c enemy_utils.c enemy_move.c
 BUILD_DIR		=	./data/objects
 OBJECTS 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(FILES)))
 

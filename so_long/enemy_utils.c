@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ennemy_utils.c                                     :+:      :+:    :+:   */
+/*   enemy_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:11:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/03 17:20:39 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:30:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
 //Déplace le G dans le tableau
-void	move_ennemy_tab(t_global *global, char *dest, char *src)
+void	move_enemy_tab(t_global *global, char *dest, char *src)
 {
 	if (*dest && *dest == '0')
 	{

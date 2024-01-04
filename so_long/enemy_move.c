@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ennemy_move.c                                      :+:      :+:    :+:   */
+/*   enemy_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:57:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:01:31 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 11:32:18 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
 //bouge le gobelin toutes les x milliseconds
-void	move_ennemy(t_global *global)
+void	move_enemy(t_global *global)
 {
 	int		time;
 	int		rage;
 
 	time = ((long double)(clock() - global->last) / CLOCKS_PER_SEC) * 1000;
 	get_target(global, &global->player);
-	get_target(global, &global->ennemy);
+	get_target(global, &global->enemy);
 	if (in_range(global->player.x, global->player.y,
-			global->ennemy.x, global->ennemy.y) || !global->nbcollec)
+			global->enemy.x, global->enemy.y) || !global->nbcollec)
 		rage = 100;
 	else
 		rage = 250;
 	if (time >= rage)
 	{
 		global->last = clock();
-		ennemy_decision(global);
+		enemy_decision(global);
 		render_map(global, global->player.last_state);
 	}
 }
 
 //choisi la direction du gobelin en fonction de si le joueur est dans sa range
-void	ennemy_decision(t_global *global)
+void	enemy_decision(t_global *global)
 {
 	if (!in_range(global->player.x, global->player.y,
-			global->ennemy.x, global->ennemy.y))
-		return (patrol(global, global->ennemy.x, global->ennemy.y));
+			global->enemy.x, global->enemy.y))
+		return (patrol(global, global->enemy.x, global->enemy.y));
 	else
-		return (track_player(global, global->ennemy.x, global->ennemy.y));
+		return (track_player(global, global->enemy.x, global->enemy.y));
 }
 
 //Joueur vu, l'ennemi le traque
