@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 12:32:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:34:22 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_mlx {
 	int		height;
 }				t_mlx;
 
-//contient les paths vers le .xpm
+//contient les paths vers les .xpm
 typedef struct s_set {
 	char	*wallin;
 	char	*wallout_l;
@@ -45,7 +45,7 @@ typedef struct s_set {
 	char	*player_left;
 }				t_set;
 
-//contient les images chargees dans des buffers
+//contient les donnes d'une image
 typedef struct s_img {
 	void			*img;
 	char			*addr;
@@ -70,7 +70,7 @@ typedef struct s_ent {
 	void	*next;
 }				t_ent;
 
-//contient toutes les data
+//contient toutes les data du jeu
 typedef struct s_global {
 	t_mlx	mlx;
 	t_set	set_of_files;
@@ -94,7 +94,7 @@ typedef struct s_global {
 char			**get_map(char *filename, int *nb_line, int *nb_col);
 char			**check_error(char **map, t_global *global);
 
-//images & data setup
+//images loading & data setup
 int				set_global(t_global *global, int nb_col, int nb_line);
 int				load_walls(t_global *global);
 int				load_things(t_global *global);
@@ -107,17 +107,17 @@ int				free_images(t_global *global);
 //tile transparency
 void			put_img_to_img(t_img dst, t_img src, int x, int y);
 
-//map render
+//map rendering
 void			render_map(t_global *global, t_img state);
 void			putnbr_mouvements(t_global *global);
 void			putstr_endgame(t_global *global);
 
-//events
+//events (keypress, idle events, kill process etc...)
 int				keypress(int keycode, t_global *global);
 int				no_event(t_global *global);
 int				destroy(t_global *global);
 
-//perso moves
+//player mouvements in tab
 void			move_tab_up(t_global *global);
 void			move_tab_down(t_global *global);
 void			move_tab_right(t_global *global);
@@ -131,7 +131,7 @@ void			set_lastdir(t_global *global, char dir);
 void			set_coord(t_global *global, t_ent *target);
 int				in_range(int player_x, int player_y, int x, int y);
 
-//enemy moves
+//enemy mouvements
 void			move_enemy(t_global *global);
 void			enemy_decision(t_global *global);
 void			move_enemy_tab(t_global *global, char *dest, char *src);
