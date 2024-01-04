@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:31:38 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:32:22 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void			spawn_enemy(t_global *global, int nb_line, int nb_col);
 
 //enemy utils
 void			set_lastdir(t_global *global, char dir);
-void			get_target(t_global *global, t_ent *target);
+void			set_coord(t_global *global, t_ent *target);
 int				in_range(int player_x, int player_y, int x, int y);
 
 //enemy moves

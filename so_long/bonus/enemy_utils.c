@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:11:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 12:27:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:32:10 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	move_enemy_tab(t_global *global, char *dest, char *src)
 }
 
 //Recupere la coordonne du joueur (ou ennemy) dans la map
-void	get_target(t_global *global, t_ent *target)
+void	set_coord(t_global *global, t_ent *target)
 {
 	int	x;
 	int	y;

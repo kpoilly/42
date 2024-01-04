@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:57:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:51:28 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:32:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	move_enemy(t_global *global)
 	int		rage;
 
 	time = ((long double)(clock() - global->last) / CLOCKS_PER_SEC) * 1000;
-	get_target(global, &global->player);
-	get_target(global, &global->enemy);
+	set_coord(global, &global->player);
+	set_coord(global, &global->enemy);
 	if (in_range(global->player.x, global->player.y,
 			global->enemy.x, global->enemy.y) || !global->nbcollec)
 		rage = 100;
