@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 17:20:12 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 17:30:52 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 		|| !load_walls_updown(global)
 		|| !load_walls_leftright(global))
 		return (0);
+	load_anim(global);
 	set_next(global);
 	return (1);
 }

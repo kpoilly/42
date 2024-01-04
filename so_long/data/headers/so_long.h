@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 16:08:26 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 17:32:14 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_img {
 //contient les data des entitees (joueur et ennemi)
 typedef struct s_ent {
 	t_img	front;
+	t_img	front2;
 	t_img	back;
 	t_img	right;
 	t_img	left;
@@ -127,6 +128,7 @@ void			move_tab_left(t_global *global);
 
 //animations
 void			set_next(t_global *global);
+int				load_anim(t_global *global);
 
 //enemy spawn and setup
 void			spawn_enemy(t_global *global, int nb_line, int nb_col);
