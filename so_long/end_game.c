@@ -15,9 +15,9 @@
 //Charge l'image de la sortie "ouverte"
 static void	open_exit(t_global *global)
 {
-	(void)global;
-	//changer le path de exit pour exit2.xpm
-	//charger l'xpm de la nouvelle sortie
+	(void)global; //a suppr quand fonction faite
+	//destroy exit
+	//charger l'xpm de la nouvelle sortie dans exit
 }
 
 //Dit au joueur de se grouiller
@@ -35,7 +35,7 @@ void	check_end_game(t_global *global)
 {
 	if (!global->nbcollec)
 		open_exit(global);
-	//animation danse (a voir hein)
+		//animation danse
 }
 
 //Ferme le jeu (Voir pour animation ou écran de fin avant)

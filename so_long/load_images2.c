@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:26:26 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 11:39:28 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:39:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//charge des trucs
 int	load_others(t_global *global)
 {
 	int	w;
