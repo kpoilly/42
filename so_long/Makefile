@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:44:44 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/05 11:32:55 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/05 14:17:01 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEAD			= ./data/headers/so_long.h ./data/headers/so_long_struct.h
 BUILD_DIR		= ./data/objects
 
 CONST_FILES 	= utils.c get_map.c check_error.c load_images.c load_walls.c \
-				  tile_transparency.c move_tab.c free.c
+				  tile_transparency.c move_tab.c free.c check_path.c
 CONST_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(CONST_FILES)))
 
 MANDATORY 		= so_long.c events.c end_game.c render_map.c set_up.c

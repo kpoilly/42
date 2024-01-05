@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:19:47 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 09:58:53 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/05 14:44:06 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,14 @@ void	free_images(t_global *global)
 	if (global->wallout.left.img)
 		mlx_destroy_image(global->mlx.ptr, global->wallout.left.img);
 	free_player(global);
+}
+
+void	free_the_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
 }

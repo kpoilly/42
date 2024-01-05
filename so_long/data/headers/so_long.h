@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 11:15:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/05 14:35:35 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@
 //map setup and primary functions
 char			**get_map(char *filename, int *nb_line, int *nb_col);
 char			**check_error(char **map, t_global *global);
+int				check_path(t_global *global);
+char			**map_dup(char **map);
+char			**flood_fill(char **map, int x, int y);
+int				is_reachable(char **map);
+void			free_the_map(char **map);
 
 //images loading & data setup
 int				set_global(t_global *global, int nb_col, int nb_line);
@@ -65,7 +70,7 @@ void			game_over(t_global *global);
 
 //utils
 char			*ft_itoa(int n);
-void			free_the_map(char **map);
+void			set_coord(t_global *global, t_ent *target);
 
 //--- BONUS ---
 

@@ -6,20 +6,34 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:25:30 by kpoilly           #+#    #+#             */
-/*   Updated: 2023/12/28 21:33:17 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/05 13:44:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
-void	free_the_map(char **map)
+//Recupere la coordonne du joueur (ou ennemy) dans la map
+void	set_coord(t_global *global, t_ent *target)
 {
-	int	i;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (map[i])
-		free(map[i++]);
-	free(map);
+	y = 0;
+	while (global->map[y])
+	{
+		x = 0;
+		while (global->map[y][x])
+		{
+			if (global->map[y][x] == target->chara)
+			{
+				target->x = x;
+				target->y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
 }
 
 static void	ft_bzero(void *s, size_t n)
