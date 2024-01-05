@@ -15,9 +15,21 @@
 //Charge l'image de la sortie "ouverte"
 static void	open_exit(t_global *global)
 {
-	(void)global; //a suppr quand fonction faite
+	int		w;
+	int		h;
+	int		i;
+	t_img	black;
+
 	//destroy exit
 	//charger l'xpm de la nouvelle sortie dans exit
+	w = global->mlx.width;
+	h = global->mlx.height;
+	black.img = mlx_new_image(global->mlx.ptr,
+			global->mlx.width, global->mlx.height);
+	i = 0;
+	while (i++ < 10000)
+		mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
+			black.img, 0, 0);
 }
 
 //Dit au joueur de se grouiller
@@ -68,7 +80,7 @@ void	game_over(t_global *global)
 		(global->mlx.width / 2) - 150, (global->mlx.height / 2) - 75);
 	ft_printf("Game Over !\n");
 	i = 0;
-	while (i++ < 5000)
+	while (i++ < 8000)
 		mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
 			global->bg.img, 0, 0);
 	mlx_destroy_image(global->mlx.ptr, gameover.img);

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:50:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 11:10:58 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/05 15:28:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void	move_in_tab(t_global *global, char *dest, char *src)
 	{
 		global->nbcollec--;
 		if (!global->nbcollec)
+		{
 			ft_printf("Hooray, you got all the Frogs !\n");
+			check_end_game(global);
+		}
 	}
-	check_end_game(global);
 	if (*dest == 'E' && !global->nbcollec)
 		end_the_game(global);
 	else if (*dest == 'G')
