@@ -15,15 +15,11 @@
 //Charge l'image de la sortie "ouverte"
 static void	open_exit(t_global *global)
 {
-	int		w;
-	int		h;
 	int		i;
 	t_img	black;
 
 	//destroy exit
 	//charger l'xpm de la nouvelle sortie dans exit
-	w = global->mlx.width;
-	h = global->mlx.height;
 	black.img = mlx_new_image(global->mlx.ptr,
 			global->mlx.width, global->mlx.height);
 	i = 0;
