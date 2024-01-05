@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:54:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 17:03:02 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/05 08:41:00 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error.\nNo map given.\n"), 0);
 	global.map = check_error(get_map(argv[1], &nb_line, &nb_col), &global);
 	if (!global.map)
-		return (ft_printf("Error.\nMap not set.\n"), 0);
+		return (0);
 	if (!set_global(&global, nb_col, nb_line))
 		return (destroy(&global), 0);
 	render_map(&global, global.player.front);

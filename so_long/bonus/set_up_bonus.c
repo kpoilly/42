@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_up_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 19:58:20 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/05 08:40:03 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 static int	set_paths(t_set *set_of_files)
 {
 	set_of_files->wallin = "./data/textures/testwallin.xpm";
-	set_of_files->wallout_up = "./data/textures/wallout_upnosol.xpm";
-	set_of_files->wallout_down = "./data/textures/wallout_downnosol.xpm";
-	set_of_files->wallout_left = "./data/textures/wallout_leftnosol.xpm";
-	set_of_files->wallout_right = "./data/textures/wallout_rightnosol.xpm";
+	set_of_files->wallout_up = "./data/textures/wallout_updemisol.xpm";
+	set_of_files->wallout_down = "./data/textures/wallout_demisol.xpm";
+	set_of_files->wallout_left = "./data/textures/wallout_leftdemisol.xpm";
+	set_of_files->wallout_right = "./data/textures/wallout_rightdemisol.xpm";
 	set_of_files->ground = "./data/textures/ground2.xpm";
 	set_of_files->exit = "./data/textures/exit.xpm";
 	set_of_files->collectible = "./data/textures/frog.xpm";
