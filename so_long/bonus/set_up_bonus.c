@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 09:20:20 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/05 10:13:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ static int	set_paths(t_set *set_of_files)
 	return (1);
 }
 
-
-
 //setup de la struct qui contient toutes les data
 int	set_global(t_global *global, int nb_col, int nb_line)
 {
@@ -50,14 +48,10 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 	global->player.chara = 'P';
 	global->last_gobdir = 'W';
 	set_paths(&(global->set_of_files));
-	if (!load_walls(global)
-		|| !load_things(global)
-		|| !load_things2(global)
-		|| !load_character1(global)
-		|| !load_character2(global)
-		|| !load_walls_updown(global)
-		|| !load_walls_leftright(global)
-		|| !load_anim(global))
+	if ((load_walls(global) + load_things(global)
+			+ load_things2(global) + load_character1(global)
+			+ load_character2(global) + load_walls_updown(global)
+			+ load_walls_leftright(global) + load_anim(global)) != 8)
 		return (0);
 	set_next(global);
 	return (1);
