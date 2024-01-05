@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 17:32:14 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/05 09:30:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,29 @@ typedef struct s_img {
 	struct s_img	*next;
 }				t_img;
 
+//contient les paths vers les .xpm des anims
+typedef struct s_setanim {
+	char	*front2;
+	char	*back2;
+	char	*right2;
+	char	*left2;
+}				t_setanim;
+
 //contient les data des entitees (joueur et ennemi)
 typedef struct s_ent {
-	t_img	front;
-	t_img	front2;
-	t_img	back;
-	t_img	right;
-	t_img	left;
-	t_img	last_state;
-	char	chara;
-	int		x;
-	int		y;
+	t_img		front;
+	t_img		front2;
+	t_img		back;
+	t_img		back2;
+	t_img		right;
+	t_img		right2;
+	t_img		left;
+	t_img		left2;
+	t_img		last_state;
+	t_setanim	paths;
+	char		chara;
+	int			x;
+	int			y;
 }				t_ent;
 
 //contient toutes les data du jeu
@@ -105,7 +117,7 @@ int				load_character1(t_global *global);
 int				load_character2(t_global *global);
 int				load_walls_updown(t_global *global);
 int				load_walls_leftright(t_global *global);
-int				free_images(t_global *global);
+void			free_images(t_global *global);
 
 //tile transparency
 void			put_img_to_img(t_img dst, t_img src, int x, int y);
@@ -126,9 +138,24 @@ void			move_tab_down(t_global *global);
 void			move_tab_right(t_global *global);
 void			move_tab_left(t_global *global);
 
+//end game
+void			check_end_game(t_global *global);
+void			end_the_game(t_global *global);
+void			game_over(t_global *global);
+
+//utils
+char			*ft_itoa(int n);
+void			free_the_map(char **map);
+
+//--- BONUS ---
+
+//bonus management
+void			free_bonus(t_global *global);
+
 //animations
-void			set_next(t_global *global);
+void			set_paths_anim(t_global *global);
 int				load_anim(t_global *global);
+void			set_next(t_global *global);
 
 //enemy spawn and setup
 void			spawn_enemy(t_global *global, int nb_line, int nb_col);
@@ -148,15 +175,5 @@ void			search_down(t_global *global, int x, int y);
 void			search_up(t_global *global, int x, int y);
 void			track_player(t_global *global, int x, int y);
 void			patrol(t_global *global, int x, int y);
-
-//end game
-void			check_end_game(t_global *global);
-void			end_the_game(t_global *global);
-void			game_over(t_global *global);
-
-//utils
-char			*ft_itoa(int n);
-void			free_the_map(char **map);
-
 
 #endif

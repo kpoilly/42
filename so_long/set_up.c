@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 08:40:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/05 09:24:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +27,6 @@ static int	set_paths(t_set *set_of_files)
 	set_of_files->player_back = "./data/textures/perso_dos.xpm";
 	set_of_files->player_right = "./data/textures/perso_droit.xpm";
 	set_of_files->player_left = "./data/textures/perso_gauche.xpm";
-	return (0);
-}
-
-int	free_images(t_global *global)
-{
-	if (global->bg.img)
-		mlx_destroy_image(global->mlx.ptr, global->bg.img);
-	if (global->collec.img)
-		mlx_destroy_image(global->mlx.ptr, global->collec.img);
-	if (global->ground.img)
-		mlx_destroy_image(global->mlx.ptr, global->ground.img);
-	if (global->exit.img)
-		mlx_destroy_image(global->mlx.ptr, global->exit.img);
-	if (global->wallin.img)
-		mlx_destroy_image(global->mlx.ptr, global->wallin.img);
-	if (global->wallout.front.img)
-		mlx_destroy_image(global->mlx.ptr, global->wallout.front.img);
-	if (global->wallout.back.img)
-		mlx_destroy_image(global->mlx.ptr, global->wallout.back.img);
-	if (global->wallout.right.img)
-		mlx_destroy_image(global->mlx.ptr, global->wallout.right.img);
-	if (global->wallout.left.img)
-		mlx_destroy_image(global->mlx.ptr, global->wallout.left.img);
-	if (global->player.front.img)
-		mlx_destroy_image(global->mlx.ptr, global->player.front.img);
-	if (global->player.back.img)
-		mlx_destroy_image(global->mlx.ptr, global->player.back.img);
-	if (global->player.right.img)
-		mlx_destroy_image(global->mlx.ptr, global->player.right.img);
-	if (global->player.left.img)
-		mlx_destroy_image(global->mlx.ptr, global->player.left.img);
 	return (0);
 }
 

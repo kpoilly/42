@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:44:44 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/04 17:31:24 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/05 09:31:55 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ HEAD			= ./data/headers/so_long.h
 
 BUILD_DIR		=	./data/objects
 
-CONST_FILES 		= utils.c get_map.c check_error.c load_images.c load_walls.c \
-				  tile_transparency.c move_tab.c
+CONST_FILES 	= utils.c get_map.c check_error.c load_images.c load_walls.c \
+				  tile_transparency.c move_tab.c free.c
 CONST_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(CONST_FILES)))
 
 MANDATORY 		= so_long.c events.c end_game.c render_map.c set_up.c
@@ -25,7 +25,7 @@ MANDATORY_OBJ 	= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(MANDATORY)))
 BONUS_BUILD_DIR	= ./bonus/objects
 BONUS_FILES		= enemy.c enemy_directions.c enemy_utils.c enemy_move.c \
 				  anim_setup.c so_long_bonus.c events_bonus.c end_game_bonus.c \
-				  render_map_bonus.c set_up_bonus.c anim_load.c
+				  render_map_bonus.c set_up_bonus.c anim_load.c free_bonus.c
 BONUS_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_FILES)))
 
 GNL_FILES 		= ./data/GNL/get_next_line.c ./data/GNL/get_next_line_utils.c
