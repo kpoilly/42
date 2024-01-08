@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/08 19:26:50 by marvin           ###   ########.fr        #
+#    Updated: 2024/01/08 20:47:47 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,10 @@ $(BUILD_DIR)/%.o:%.c
 				
 $(NAME):		$(OBJECTS) $(HEAD)
 				$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(OBJECTS)	
-							
+
+bonus: 			$(OBJECTS) $(HEAD)
+				$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(OBJECTS)
+				
 clean:
 						$(RM) $(OBJECTS)				
 fclean:			clean
