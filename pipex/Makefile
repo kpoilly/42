@@ -6,12 +6,12 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/02 10:13:26 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/07 11:40:12 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= pipex
-FILES 			= pipex.c pipex_utils.c
+FILES 			= pipex.c pipex_utils.c ft_split.c
 HEAD			= ./data/headers/pipex.h 
 BUILD_DIR		=	./objects
 OBJECTS 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(FILES)))

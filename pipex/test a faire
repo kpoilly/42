@@ -1,0 +1,5 @@
+pipex cat ls (pas de boucle inf)
+pipex "sleep 5" ls (tu dois avoir ls apres 5sec)
+pipex ls cat cat cat cat cat cat cat cat cat cat cat cat cat cat (Si segfault tu fait pas bien tes pipes)
+
+Tu dois bien lancer valgrind --trace-children=yes --track-fds=yes ./pipex (cela va te montrer si tu oublie de close des fds dans l'enfant et le parent)
