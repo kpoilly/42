@@ -1,1 +1,2 @@
-0
+pipex cat ls (pas de boucle inf)
+pipex "sleep 5" ls (tu dois avoir ls apres 5sec)

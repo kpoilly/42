@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:12:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/08 15:25:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/08 19:39:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/pipex.h"
-
-int	is_valid(char *cmd)
-{
-	(void)cmd;
-	//check tous les path si cmd existent sinon
-	//return (write(2, "Error.\nCmd does not exist.\n", 27), 0);
-	return (1);
-}
 
 int	ft_strlen(char *s)
 {
@@ -72,4 +64,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	str[len] = '\0';
 	return (str);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s)
+		write(fd, s++, 1);
 }

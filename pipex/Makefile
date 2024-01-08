@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/07 11:40:12 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/08 19:26:50 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= pipex
-FILES 			= pipex.c pipex_utils.c ft_split.c
+FILES 			= pipex.c pipex_utils.c ft_split.c check_exec.c check_path.c
 HEAD			= ./data/headers/pipex.h 
 BUILD_DIR		=	./objects
 OBJECTS 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(FILES)))
