@@ -6,11 +6,19 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:12:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/08 14:56:15 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:25:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/pipex.h"
+
+int	is_valid(char *cmd)
+{
+	(void)cmd;
+	//check tous les path si cmd existent sinon
+	//return (write(2, "Error.\nCmd does not exist.\n", 27), 0);
+	return (1);
+}
 
 int	ft_strlen(char *s)
 {

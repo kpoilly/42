@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:16:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/08 14:55:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:22:15 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ int	execute_cmd(char *cmd, int read_fd, int write_fd)
 	int		process;
 
 	args = ft_split(cmd, ' ');
+	if (!is_valid(cmd))
+		return (ft_free(args), 0);
 	path = ft_strjoin("/bin/", args[0]);
 	process = fork();
+	if (process == -1)
+		return (0);
 	if (!process)
 	{
 		dup2(write_fd, 1);
@@ -29,31 +33,8 @@ int	execute_cmd(char *cmd, int read_fd, int write_fd)
 		close(read_fd);
 		execve(path, args, NULL);
 	}
-	free(path);
-	ft_free(args);
-	return (0);
+	return (free(path), ft_free(args), 1);
 }
-
-// int	is_valid(char *cmd)
-// {
-// 	(void)cmd;
-// 	return (1);
-// }
-
-// int	check_and_exec(char	*cmd, int fd, int (*tube)[2])
-// {
-// 	char	**args;
-
-// 	args = ft_split(cmd, ' ');
-// 	if (!is_valid(args[0]))
-// 		return (ft_free(args), 0);
-// 	pipe(tube);
-// 	execute_cmd(args, fd, tube[1]);
-// 	close(tube[1]);
-// 	dup2(tube[0], fd);
-// 	close(tube[0]);
-// 	return (ft_free(args), 1);
-// }
 
 int	main(int argc, char	**argv)
 {
@@ -70,21 +51,16 @@ int	main(int argc, char	**argv)
 	i = 2;
 	while (i < argc - 2)
 	{
-		// if (!check_and_exec(argv[i++], fd, &tube))
-		// 	return (close(fd), 0);
 		pipe(tube);
-		execute_cmd(argv[i++], fd, tube[1]);
+		if (!execute_cmd(argv[i++], fd, tube[1]))
+			return (close(tube[1]), close(tube[0]), close(fd), 0);
 		close(tube[1]);
 		dup2(tube[0], fd);
 		close(tube[0]);
 	}
 	unlink(argv[argc -1]);
 	fdout = open(argv[argc - 1], O_WRONLY | O_CREAT, 0666);
-	// if (!check_and_exec(argv[i], fd, &tube))
-	// 	return (close(fd), 0);
-	execute_cmd(argv[i], fd, fdout);
-	close(fdout);
-	close(fd);
-	wait(NULL);
-	return (0);
+	if (!execute_cmd(argv[i], fd, fdout))
+		return (close(fdout), close(fd), 0);
+	return (close(fdout), close(fd), wait(NULL), 0);
 }
