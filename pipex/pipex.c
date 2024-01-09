@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:16:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/09 12:56:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/09 16:20:05 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	pipex(int fd, char **argv, char **path_lst)
 		close(tube[1]);
 		close(tube[0]);
 	}
-	fdout = clean_make(argv[argc - 1]);
+	fdout = clean_make(argv[argc - 1], argv[0]);
 	if (fdout < 0)
 		return (close(fd), 0);
 	check_and_exec(path_lst, argv[i], fd, fdout);

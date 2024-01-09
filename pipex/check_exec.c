@@ -45,12 +45,17 @@ int	check_and_exec(char **path_lst, char *cmd, int read_fd, int write_fd)
 	return (ft_free(args), free(path), 1);
 }
 
-int	clean_make(char *filename)
+int	clean_make(char *filename, char *check_infile)
 {
 	int	fd;
 
-	unlink(filename);
-	fd = open(filename, O_WRONLY | O_CREAT, 0666);
+	if (ft_strncmp(check_infile, "here_doc", 8) == 0)
+		fd = open(filename, O_WRONLY | O_APPEND | O_CREAT, 0666);
+	else
+	{
+		unlink(filename);
+		fd = open(filename, O_WRONLY | O_CREAT, 0666);
+	}
 	if (fd < 0)
 		return (-1);
 	return (fd);

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:53:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/09 12:24:16 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/09 16:29:15 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	get_here_doc(char *limiter)
 	input = get_next_line(0);
 	while (ft_strncmp(input, limiter, ft_strlen(limiter)))
 	{
+		ft_putstr_fd(input, tube[1]);
 		free(input);
 		input = get_next_line(0);
-		ft_putstr_fd(input, tube[1]);
 	}
 	close(tube[1]);
 	return (free(input), tube[0]);
