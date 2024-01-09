@@ -23,19 +23,18 @@ char	*is_valid(char *cmd, char **path_lst)
 	while (path_lst[i])
 	{
 		path = ft_strjoin(path_lst[i], bin);
-		//printf("%s\n", path);
 		if (access(path, F_OK) == 0)
-			return (path);
+			return (free(bin), path);
+		free(path);
 		i++;
 	}
-	free(path);
 	free(bin);
 	return (write(2, "Error.\nCommand \"", 17),
 		ft_putstr_fd(cmd, 2),
 		write(2, "\" not found.\n", 13), NULL);
 }
 
-static int	ft_strncmp(char *s1, char *s2, int n)
+int	ft_strncmp(char *s1, char *s2, int n)
 {
 	int	i;
 
@@ -67,7 +66,7 @@ char	**get_path(char	**envp)
 	int	i;
 
 	i = 0;
-	while (!ft_strnstr(envp[i], "PATH=", ft_strlen(envp[i])))
+	while (!ft_strnstr(envp[i], "PATH=/home/", ft_strlen(envp[i])))
 		i++;
 	return (ft_split(envp[i] + 5, ':'));
 }
