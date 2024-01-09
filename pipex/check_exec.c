@@ -12,7 +12,7 @@
 
 #include "./data/headers/pipex.h"
 
-int	execute_cmd(char *path, char **args, int read_fd, int write_fd)
+int	execute_cmd(char **envp, char **args, int read_fd, int write_fd)
 {
 	int		process;
 
@@ -25,24 +25,28 @@ int	execute_cmd(char *path, char **args, int read_fd, int write_fd)
 		dup2(read_fd, 0);
 		close(write_fd);
 		close(read_fd);
-		execve(path, args, NULL);
+		execve(args[0], args, envp);
 	}
-	// waitpid(process, NULL, 0);
 	return (1);
 }
 
-int	check_and_exec(char **path_lst, char *cmd, int read_fd, int write_fd)
+int	check_and_exec(char **envp, char *cmd, int read_fd, int write_fd)
 {
+	char	**path_lst;
 	char	**args;
 	char	*path;
 
+	path_lst = get_path(envp);
 	args = ft_split(cmd, ' ');
 	path = is_valid(args[0], path_lst);
+	ft_free(path_lst);
+	free(args[0]);
+	args[0] = path;
 	if (!path)
 		return (ft_free(args), 0);
-	if (!execute_cmd(path, args, read_fd, write_fd))
-		return (ft_free(args), free(path), 0);
-	return (ft_free(args), free(path), 1);
+	if (!execute_cmd(envp, args, read_fd, write_fd))
+		return (ft_free(args), 0);
+	return (ft_free(args), 1);
 }
 
 int	clean_make(char *filename, char *check_infile)

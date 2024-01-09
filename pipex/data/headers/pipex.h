@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:08:46 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/09 17:13:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/09 17:41:15 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 //
 int		get_infile(char *filename, char *limiter, int *skip);
-int		check_and_exec(char **path_lst, char *cmd, int read_fd, int write_fd);
-int		execute_cmd(char *path, char **args, int read_fd, int write_fd);
+int		check_and_exec(char **envp, char *cmd, int read_fd, int write_fd);
+int		execute_cmd(char **envp, char **args, int read_fd, int write_fd);
 int		clean_make(char *filename, char *check_infile);
 
 //check path
