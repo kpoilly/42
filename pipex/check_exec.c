@@ -27,7 +27,7 @@ int	execute_cmd(char *path, char **args, int read_fd, int write_fd)
 		close(read_fd);
 		execve(path, args, NULL);
 	}
-	waitpid(process, NULL, 0);
+	// waitpid(process, NULL, 0);
 	return (1);
 }
 

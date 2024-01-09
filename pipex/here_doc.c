@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:53:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/09 16:29:15 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/09 16:59:51 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	get_infile(char *filename, char *limiter, int *skip)
 		*skip = 1;
 		return (get_here_doc(limiter));
 	}
-	if (access(filename, R_OK) == -1)
+	if (access(filename, F_OK | R_OK) == -1)
 		return (-1);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)

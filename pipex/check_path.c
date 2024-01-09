@@ -68,7 +68,7 @@ char	**get_path(char	**envp)
 	int	i;
 
 	i = 0;
-	while (!ft_strnstr(envp[i], "PATH=/home/", ft_strlen(envp[i])))
+	while (!ft_strnstr(envp[i], "PATH=", 5))
 		i++;
 	return (ft_split(envp[i] + 5, ':'));
 }
