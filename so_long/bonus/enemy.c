@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 16:37:04 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/09 21:51:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../data/headers/so_long.h"
 
 //charge les textures de l'ennemi
-void	load_enemy(t_global *global)
+int	load_enemy(t_global *global)
 {
 	int	w;
 	int	h;
@@ -24,7 +24,7 @@ void	load_enemy(t_global *global)
 			"./data/textures/enemy_face.xpm", &w, &h);
 	if (!global->enemy.front.img)
 		return (ft_printf("Error.\nMissing Texture files.\n"),
-			(void)destroy(global));
+			destroy(global), 0);
 	global->enemy.front.addr = mlx_get_data_addr(global->enemy.front.img,
 			&(global->enemy.front.bits_per_pixel),
 			&(global->enemy.front.line_len),
@@ -32,6 +32,7 @@ void	load_enemy(t_global *global)
 	global->enemy.front.w = w;
 	global->enemy.front.h = h;
 	global->enemy.chara = 'G';
+	return (1);
 }
 
 //Fait apparaitre l'ennemi aleatoirement sur la map
@@ -40,7 +41,6 @@ void	spawn_enemy(t_global *global, int nb_line, int nb_col)
 	int		x;
 	int		y;
 
-	load_enemy(global);
 	srand(time(NULL));
 	x = 0;
 	y = 0;

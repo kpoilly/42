@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_up_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 10:13:38 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/09 21:50:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 	if ((load_walls(global) + load_things(global)
 			+ load_things2(global) + load_character1(global)
 			+ load_character2(global) + load_walls_updown(global)
-			+ load_walls_leftright(global) + load_anim(global)) != 8)
+			+ load_walls_leftright(global) + load_anim(global)
+			+ load_enemy(global)) != 9)
 		return (0);
 	set_next(global);
 	return (1);

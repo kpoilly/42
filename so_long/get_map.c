@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:08:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/03 17:21:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/09 21:55:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**get_map(char *filename, int *nb_line, int *nb_col)
 
 	i = maplen(filename);
 	if (!i)
-		return (NULL);
+		return (ft_printf("Error.\nMap is empty or doesn't exist.\n"), NULL);
 	map = malloc((i + 1) * sizeof(char *));
 	*nb_line = i;
 	i = 0;

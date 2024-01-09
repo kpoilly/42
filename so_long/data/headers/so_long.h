@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 14:35:35 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/09 21:52:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void			set_next(t_global *global);
 
 //enemy spawn and setup
 void			spawn_enemy(t_global *global, int nb_line, int nb_col);
+int				load_enemy(t_global *global);
 
 //enemy utils
 void			set_lastdir(t_global *global, char dir);
