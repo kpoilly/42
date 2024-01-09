@@ -18,14 +18,14 @@ char	*is_valid(char *cmd, char **path_lst)
 	char	*path;
 	char	*bin;
 
-	if (access(cmd, F_OK) == 0)
+	if (access(cmd, F_OK | X_OK) == 0)
 		return (ft_strdup(cmd));
 	bin = ft_strjoin("/", cmd);
 	i = 0;
 	while (path_lst[i])
 	{
 		path = ft_strjoin(path_lst[i], bin);
-		if (access(path, F_OK) == 0)
+		if (access(path, F_OK | X_OK) == 0)
 			return (free(bin), path);
 		free(path);
 		i++;
