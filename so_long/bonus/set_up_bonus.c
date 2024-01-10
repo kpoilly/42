@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_up_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/09 21:50:17 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/10 10:37:45 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 		return (ft_printf("Error.\n(mlx win setup)\n"), 0);
 	global->moves = 0;
 	global->player.chara = 'P';
-	global->last_gobdir = 'W';
 	set_paths(&(global->set_of_files));
 	if ((load_walls(global) + load_things(global)
 			+ load_things2(global) + load_character1(global)

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:25:57 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 09:34:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 08:42:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	free_enemy(t_global *global)
 	// 	mlx_destroy_image(global->mlx.ptr, global->enemy.right.img);
 	// if (global->enemy.left.img)
 	// 	mlx_destroy_image(global->mlx.ptr, global->enemy.left.img);
-// 	if (global->enemy.front2.img)
-// 		mlx_destroy_image(global->mlx.ptr, global->enemy.front2.img);
+	if (global->enemy.front2.img)
+		mlx_destroy_image(global->mlx.ptr, global->enemy.front2.img);
 // 	if (global->enemy.back2.img)
 // 		mlx_destroy_image(global->mlx.ptr, global->enemy.back2.img);
 // 	if (global->enemy.right2.img)

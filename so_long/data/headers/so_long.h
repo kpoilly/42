@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/09 21:52:02 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/10 10:39:03 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void			set_next(t_global *global);
 
 //enemy spawn and setup
 void			spawn_enemy(t_global *global, int nb_line, int nb_col);
+void			enemy_setup(t_global *global);
 int				load_enemy(t_global *global);
 
 //enemy utils
@@ -92,6 +93,7 @@ void			set_coord(t_global *global, t_ent *target);
 int				in_range(int player_x, int player_y, int x, int y);
 
 //enemy mouvements
+void			set_state(t_ent *entity, char direction);
 void			move_enemy(t_global *global);
 void			enemy_decision(t_global *global);
 void			move_enemy_tab(t_global *global, char *dest, char *src);

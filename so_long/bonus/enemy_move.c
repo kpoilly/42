@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:57:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/04 12:32:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 10:39:14 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,24 @@
 void	move_enemy(t_global *global)
 {
 	int		time;
-	int		rage;
+	int		speed;
 
 	time = ((long double)(clock() - global->last) / CLOCKS_PER_SEC) * 1000;
 	set_coord(global, &global->player);
 	set_coord(global, &global->enemy);
 	if (in_range(global->player.x, global->player.y,
 			global->enemy.x, global->enemy.y) || !global->nbcollec)
-		rage = 100;
+		speed = 100;
 	else
-		rage = 250;
-	if (time >= rage)
+		speed = 250;
+	if (time >= speed)
 	{
 		global->last = clock();
 		enemy_decision(global);
+		if (speed == 100 && global->enemy.last_state.next)
+			global->enemy.last_state = *global->enemy.last_state.next;
+		if (speed != 100 && global->enemy.last_state.prev)
+			global->enemy.last_state = *global->enemy.last_state.prev;
 		render_map(global, global->player.last_state);
 	}
 }
@@ -58,29 +62,23 @@ void	track_player(t_global *global, int x, int y)
 	return (patrol(global, x, y));
 }
 
-//set la derniere direction de l'ennemi, pour eviter de revenir en arriere
-void	set_lastdir(t_global *global, char dir)
-{
-		global->last_gobdir = dir;
-}
-
 //Patrouille de maniere aleatoire
 void	patrol(t_global *global, int x, int y)
 {
 	int	dir;
 
 	dir = rand() % 4;
-	if (dir == 0 && global->last_gobdir != 'R')
+	if (dir == 0 && global->enemy.last_dir != 'R')
 		search_left(global, x, y);
-	else if (dir == 1 && global->last_gobdir != 'L')
+	else if (dir == 1 && global->enemy.last_dir != 'L')
 		search_right(global, x, y);
-	else if (dir == 2 && global->last_gobdir != 'D')
+	else if (dir == 2 && global->enemy.last_dir != 'D')
 		search_up(global, x, y);
-	else if (dir == 3 && global->last_gobdir != 'U')
+	else if (dir == 3 && global->enemy.last_dir != 'U')
 		search_down(global, x, y);
 	else
 	{
-		set_lastdir(global, 'W');
+		set_state(&global->enemy, 'W');
 		patrol(global, x, y);
 	}
 }

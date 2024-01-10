@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:14:56 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 16:31:03 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 10:31:00 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_img {
 	int				w;
 	int				h;
 	struct s_img	*next;
+	struct s_img	*prev;
 }				t_img;
 
 //contient les paths vers les .xpm des anims
@@ -72,6 +73,7 @@ typedef struct s_ent {
 	t_img		last_state;
 	t_setanim	paths;
 	char		chara;
+	char		last_dir;
 	int			x;
 	int			y;
 }				t_ent;
@@ -83,7 +85,6 @@ typedef struct s_global {
 	char	**map;
 	int		moves;
 	int		nbcollec;
-	char	last_gobdir;
 	t_ent	player;
 	t_ent	enemy;
 	t_ent	wallout;
