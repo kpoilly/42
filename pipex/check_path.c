@@ -48,27 +48,16 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-static char	*ft_strnstr(char *big, char *little, int n)
-{
-	if (!ft_strlen(little))
-		return ((char *)big);
-	while (n > 0 && *big)
-	{
-		if (*big == little[0] && !ft_strncmp(big, little, ft_strlen(little))
-			&& ft_strlen(little) <= n)
-			return ((char *)big);
-		big++;
-		n--;
-	}
-	return (NULL);
-}
-
 char	**get_path(char	**envp)
 {
 	int	i;
 
 	i = 0;
-	while (!ft_strnstr(envp[i], "PATH=", 5))
+	while (envp[i])
+	{
+		if (!ft_strncmp(envp[i], "PATH=", 5))
+			return (ft_split(envp[i] + 5, ':'));
 		i++;
-	return (ft_split(envp[i] + 5, ':'));
+	}
+	return (NULL);
 }
