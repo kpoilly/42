@@ -12,7 +12,7 @@
 
 #include "./data/headers/pipex.h"
 
-int	execute_cmd(char **envp, char **args, int read_fd, int write_fd)
+int	execute_cmd(char **envp, char **args, int read_fd, int write_tube[2])
 {
 	int		process;
 
@@ -21,16 +21,17 @@ int	execute_cmd(char **envp, char **args, int read_fd, int write_fd)
 		return (0);
 	if (!process)
 	{
-		dup2(write_fd, 1);
+		close(write_tube[0]);
+		dup2(write_tube[1], 1);
 		dup2(read_fd, 0);
-		close(write_fd);
+		close(write_tube[1]);
 		close(read_fd);
 		execve(args[0], args, envp);
 	}
 	return (1);
 }
 
-int	check_and_exec(char **envp, char *cmd, int read_fd, int write_fd)
+int	check_and_exec(char **envp, char *cmd, int read_fd, int write_tube[2])
 {
 	char	**path_lst;
 	char	**args;
@@ -44,7 +45,7 @@ int	check_and_exec(char **envp, char *cmd, int read_fd, int write_fd)
 	args[0] = path;
 	if (!path)
 		return (ft_free(args), 0);
-	if (!execute_cmd(envp, args, read_fd, write_fd))
+	if (!execute_cmd(envp, args, read_fd, write_tube))
 		return (ft_free(args), 0);
 	return (ft_free(args), 1);
 }
