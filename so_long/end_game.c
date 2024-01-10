@@ -25,13 +25,13 @@ void	check_end_game(t_global *global)
 {
 	if (!global->nbcollec)
 		open_exit(global);
-		//animation danse
 }
 
 //Ferme le jeu (Voir pour animation ou écran de fin avant)
 void	end_the_game(t_global *global)
 {
 	ft_printf("Congrats!\nThanks for playing !\n");
+	//anim joueur qui danse
 	destroy(global);
 }
 

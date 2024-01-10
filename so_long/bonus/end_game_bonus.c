@@ -14,18 +14,11 @@
 
 //Charge l'image de la sortie "ouverte"
 static void	open_exit(t_global *global)
-{
-	int		i;
-	t_img	black;
-
+{	
+	(void)global; //a suppr quand fonction faite
 	//destroy exit
 	//charger l'xpm de la nouvelle sortie dans exit
-	black.img = mlx_new_image(global->mlx.ptr,
-			global->mlx.width, global->mlx.height);
-	i = 0;
-	while (i++ < 10000)
-		mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
-			black.img, 0, 0);
+	//ensuite a voir pour faire une anim qui montre la sortie s'ouvrir
 }
 
 //Dit au joueur de se grouiller
@@ -43,13 +36,13 @@ void	check_end_game(t_global *global)
 {
 	if (!global->nbcollec)
 		open_exit(global);
-		//animation danse
 }
 
 //Ferme le jeu (Voir pour animation ou écran de fin avant)
 void	end_the_game(t_global *global)
 {
 	ft_printf("Congrats!\nThanks for playing !\n");
+	//animation joueur qui danse
 	destroy(global);
 }
 
