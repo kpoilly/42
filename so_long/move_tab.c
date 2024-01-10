@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:50:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 15:28:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:26:20 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void	move_tab_up(t_global *global)
 		while (global->map[y][x])
 		{
 			if (global->map[y][x] == 'P')
-				if (y && global->map[y - 1][x] != '1')
+				if (y && (global->map[y - 1][x] != '1'
+					&& global->map[y - 1][x] != '2'
+					&& global->map[y - 1][x] != '3'))
 					return (move_in_tab(global, &(global->map[y - 1][x]),
 						&(global->map[y][x])));
 			x++;
@@ -70,7 +72,9 @@ void	move_tab_down(t_global *global)
 		while (global->map[y][x])
 		{
 			if (global->map[y][x] == 'P')
-				if (global->map[y + 1] && global->map[y + 1][x] != '1')
+				if (global->map[y + 1] && (global->map[y + 1][x] != '1'
+					&& global->map[y + 1][x] != '2'
+					&& global->map[y + 1][x] != '3'))
 					return (move_in_tab(global, &(global->map[y + 1][x]),
 						&(global->map[y][x])));
 			x++;
@@ -91,7 +95,9 @@ void	move_tab_right(t_global *global)
 		while (global->map[y][x])
 		{
 			if (global->map[y][x] == 'P')
-				if (global->map[y][x + 1] && global->map[y][x + 1] != '1')
+				if (global->map[y][x + 1] && (global->map[y][x + 1] != '1' &&
+					global->map[y][x + 1] != '2'
+					&& global->map[y][x + 1] != '3'))
 					return (move_in_tab(global, &(global->map[y][x + 1]),
 						&(global->map[y][x])));
 			x++;
@@ -112,7 +118,9 @@ void	move_tab_left(t_global *global)
 		while (global->map[y][x])
 		{
 			if (global->map[y][x] == 'P')
-				if (x && global->map[y][x - 1] != '1')
+				if (x && (global->map[y][x - 1] != '1'
+					&& global->map[y][x - 1] != '2'
+					&& global->map[y][x - 1] != '3'))
 					return (move_in_tab(global, &(global->map[y][x - 1]),
 						&(global->map[y][x])));
 			x++;

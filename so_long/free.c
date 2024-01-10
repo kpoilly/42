@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:19:47 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/09 21:54:12 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/10 19:20:44 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ void	free_images(t_global *global)
 		mlx_destroy_image(global->mlx.ptr, global->ground.img);
 	if (global->exit.img)
 		mlx_destroy_image(global->mlx.ptr, global->exit.img);
-	if (global->wallin.img)
-		mlx_destroy_image(global->mlx.ptr, global->wallin.img);
+	if (global->wallin.front.img)
+		mlx_destroy_image(global->mlx.ptr, global->wallin.front.img);
+	if (global->wallin.back.img)
+		mlx_destroy_image(global->mlx.ptr, global->wallin.back.img);
+	if (global->wallin.left.img)
+		mlx_destroy_image(global->mlx.ptr, global->wallin.left.img);
 	if (global->wallout.front.img)
 		mlx_destroy_image(global->mlx.ptr, global->wallout.front.img);
 	if (global->wallout.back.img)

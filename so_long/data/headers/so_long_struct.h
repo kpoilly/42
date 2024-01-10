@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:14:56 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 10:31:00 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:39:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_mlx {
 
 //contient les paths vers les .xpm
 typedef struct s_set {
-	char	*wallin;
 	char	*wallout_up;
 	char	*wallout_down;
 	char	*wallout_left;
@@ -64,7 +63,7 @@ typedef struct s_setanim {
 typedef struct s_ent {
 	t_img		front;
 	t_img		front2;
-	t_img		back;
+	t_img	back;
 	t_img		back2;
 	t_img		right;
 	t_img		right2;
@@ -88,8 +87,8 @@ typedef struct s_global {
 	t_ent	player;
 	t_ent	enemy;
 	t_ent	wallout;
+	t_ent	wallin;
 	t_img	bg;
-	t_img	wallin;
 	t_img	ground;
 	t_img	collec;
 	t_img	exit;

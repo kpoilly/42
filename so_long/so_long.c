@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:54:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 14:51:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:37:03 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 		return (free_the_map(global.map), 0);
 	if (!set_global(&global, nb_col, nb_line) || !check_path(&global))
 		return (destroy(&global), 0);
+	wallin_random(&global);
 	render_map(&global, global.player.front);
 	mlx_hook(global.mlx.win, 2, 1L << 0, &keypress, &global);
 	mlx_hook(global.mlx.win, 17, 1L << 17, &destroy, &global);

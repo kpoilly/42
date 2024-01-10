@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:10:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 14:38:00 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:44:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ char	**flood_fill(char **map, int x, int y)
 		|| map[y][x] == 'P' || map[y][x] == 'E'))
 	{
 		map[y][x] = '#';
-		flood_fill(map, x, (y - 1));//north
-		flood_fill(map, x, (y + 1));//south
-		flood_fill(map, (x + 1), y);//east
-		flood_fill(map, (x - 1), y);//west
+		flood_fill(map, x, (y - 1));
+		flood_fill(map, x, (y + 1));
+		flood_fill(map, (x + 1), y);
+		flood_fill(map, (x - 1), y);
 	}
 	return (map);
 }

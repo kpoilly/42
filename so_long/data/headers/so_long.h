@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 10:39:03 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:19:36 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ char			**map_dup(char **map);
 char			**flood_fill(char **map, int x, int y);
 int				is_reachable(char **map);
 void			free_the_map(char **map);
+void			wallin_random(t_global *global);
 
 //images loading & data setup
 int				set_global(t_global *global, int nb_col, int nb_line);
-int				load_walls(t_global *global);
+int				load_wallin(t_global *global);
+int				load_wallin2(t_global *global);
 int				load_things(t_global *global);
 int				load_things2(t_global *global);
 int				load_character1(t_global *global);

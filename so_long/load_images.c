@@ -6,31 +6,11 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:01:06 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 13:16:55 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:12:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
-
-//Charge les xpm murs dans les buffers
-int	load_walls(t_global *global)
-{
-	int	w;
-	int	h;
-
-	w = 50;
-	h = 50;
-	global->wallin.img = mlx_xpm_file_to_image(global->mlx.ptr,
-			global->set_of_files.wallin, &w, &h);
-	if (!global->wallin.img)
-		return (ft_printf("Error.\nMissing texture files.\n"), 0);
-	global->wallin.addr = mlx_get_data_addr(global->wallin.img,
-			&(global->wallin.bits_per_pixel), &(global->wallin.line_len),
-			&(global->wallin.endian));
-	global->wallin.w = w;
-	global->wallin.h = h;
-	return (1);
-}
 
 //Charge le xpm de la sortie dans un buffers + creer le background
 int	load_things(t_global *global)

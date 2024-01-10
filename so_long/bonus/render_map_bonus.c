@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 13:01:48 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:36:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,22 @@ static void	render_wall(t_global *global, int x, int y)
 	else if (!global->map[y][x + 1])
 		put_img_to_img(global->bg, global->wallout.right, x * 50, y * 50 - 35);
 	else
-		put_img_to_img(global->bg, global->wallin, x * 50 - 10, y * 50 - 10);
+	{
+		if (global->map[y][x] == '1')
+			put_img_to_img(global->bg, global->wallin.front, x * 50, y * 50);
+		else if (global->map[y][x] == '2')
+			put_img_to_img(global->bg, global->wallin.back, x * 50, y * 50);
+		else if (global->map[y][x] == '3')
+			put_img_to_img(global->bg, global->wallin.left, x * 50, y * 50);
+	}
 }
 
 //check quelle image il doit afficher
 static void	check_item(t_global *global, t_img state, int x, int y)
 {
 	put_img_to_img(global->bg, global->ground, x * 50, y * 50);
-	if (global->map[y][x] == '1')
+	if (global->map[y][x] == '1'
+		|| global->map[y][x] == '2' || global->map[y][x] == '3')
 		render_wall(global, x, y);
 	else if (global->map[y][x] == 'P')
 		put_img_to_img(global->bg, state, x * 50, (y * 50) - 20);
