@@ -13,11 +13,23 @@
 #include "../data/headers/so_long.h"
 
 //Charge l'image de la sortie "ouverte"
-static void	open_exit(t_global *global)
-{	
-	(void)global; //a suppr quand fonction faite
-	//destroy exit
-	//charger l'xpm de la nouvelle sortie dans exit
+int	open_exit(t_global *global)
+{
+	int	h;
+	int	w;
+
+	h = 50;
+	w = 50;
+	mlx_destroy_image(global->mlx.ptr, global->exit.img);
+	global->exit.img = mlx_xpm_file_to_image(global->mlx.ptr,
+			"./data/textures/exit2.xpm", &w, &h);
+	if (!global->exit.img)
+		return (ft_printf("Error.\nExit caca.\n"),
+			destroy(global), 0);
+	global->exit.addr = mlx_get_data_addr(global->exit.img,
+			&(global->exit.bits_per_pixel),
+			&(global->exit.line_len), &(global->exit.endian));
+	return (1);
 	//ensuite a voir pour faire une anim qui montre la sortie s'ouvrir
 }
 
