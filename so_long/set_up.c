@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 10:54:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 13:18:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	set_paths(t_set *set_of_files)
 	set_of_files->wallout_down = "./data/textures/wallout_demisol.xpm";
 	set_of_files->wallout_left = "./data/textures/wallout_leftdemisol.xpm";
 	set_of_files->wallout_right = "./data/textures/wallout_rightdemisol.xpm";
-	set_of_files->ground = "./data/textures/ground2.xpm";
+	set_of_files->ground = "./data/textures/ground.xpm";
 	set_of_files->exit = "./data/textures/exit.xpm";
 	set_of_files->collectible = "./data/textures/frog.xpm";
 	set_of_files->player_front = "./data/textures/perso_face.xpm";
@@ -46,7 +46,6 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 		return (ft_printf("Error.\n(mlx win setup)\n"), 0);
 	global->moves = 0;
 	global->player.chara = 'P';
-	global->last_gobdir = 'W';
 	set_paths(&(global->set_of_files));
 	if ((load_walls(global) + load_things(global)
 			+ load_things2(global) + load_character1(global)

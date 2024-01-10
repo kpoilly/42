@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 10:37:45 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 13:18:29 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	set_paths(t_set *set_of_files)
 	set_of_files->wallout_down = "./data/textures/wallout_demisol.xpm";
 	set_of_files->wallout_left = "./data/textures/wallout_leftdemisol.xpm";
 	set_of_files->wallout_right = "./data/textures/wallout_rightdemisol.xpm";
-	set_of_files->ground = "./data/textures/ground2.xpm";
+	set_of_files->ground = "./data/textures/ground.xpm";
 	set_of_files->exit = "./data/textures/exit.xpm";
 	set_of_files->collectible = "./data/textures/frog.xpm";
 	set_of_files->player_front = "./data/textures/perso_face.xpm";

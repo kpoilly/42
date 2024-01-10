@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 10:19:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/10 13:01:48 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	check_item(t_global *global, t_img state, int x, int y)
 	else if (global->map[y][x] == 'C')
 		put_img_to_img(global->bg, global->collec, x * 50, y * 50 + 10);
 	else if (global->map[y][x] == 'E')
-		put_img_to_img(global->bg, global->exit, x * 50, y * 50);
+		put_img_to_img(global->bg, global->exit, x * 50 - 25, y * 50 - 25);
 	else if (global->map[y][x] == 'G')
 		put_img_to_img(global->bg, global->enemy.last_state, x * 50 -10,
 			y * 50 - 40);
