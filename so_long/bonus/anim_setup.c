@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:42:45 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/05 09:17:45 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 17:38:58 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	set_next(t_global *global)
 {
-	//truc qui va set up les next de chaque img
-	//pour faire une rotation dans les imgs
-	//donc une animation
 	global->player.front.next = &global->player.front2;
 	global->player.front2.next = &global->player.front;
 	global->player.back.next = &global->player.back2;

@@ -30,7 +30,7 @@ int	open_exit(t_global *global)
 			&(global->exit.bits_per_pixel),
 			&(global->exit.line_len), &(global->exit.endian));
 	return (1);
-	//ensuite a voir pour faire une anim qui montre la sortie s'ouvrir
+	//anim qui montre la sortie s'ouvrir
 }
 
 //Dit au joueur de se grouiller
@@ -50,7 +50,7 @@ void	check_end_game(t_global *global)
 		open_exit(global);
 }
 
-//Ferme le jeu (Voir pour animation ou écran de fin avant)
+//Ferme le jeu apres avoir gagne
 void	end_the_game(t_global *global)
 {
 	ft_printf("Congrats!\nThanks for playing !\n");
