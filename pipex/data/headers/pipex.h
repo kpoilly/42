@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:08:46 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 18:32:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:55:16 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,5 @@ int		ft_strncmp(char *s1, char *s2, int n);
 char	*ft_strdup(char *src);
 void	ft_putstr_fd(char *s, int fd);
 int		ft_strlen(char *s);
-int		ft_tablen(char **tab);
 
 #endif
