@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:42:45 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 17:38:58 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:44:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../data/headers/so_long.h"
 
+//set les listes circulaires pour les anim
 void	set_next(t_global *global)
 {
 	global->player.front.next = &global->player.front2;

@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:10:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 19:44:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:43:32 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//verifie si tous les collectibles et la sortie sont accessibles
 int	check_path(t_global *global)
 {
 	char	**dup;
@@ -27,6 +28,7 @@ int	check_path(t_global *global)
 	return (1);
 }
 
+//duplique la map pour ne pas l'alterer
 char	**map_dup(char **map)
 {
 	char	**dup;
@@ -46,6 +48,7 @@ char	**map_dup(char **map)
 	return (dup);
 }
 
+//check si il reste des C et E non touches pas le floodfill
 int	is_reachable(char **map)
 {
 	int	x;
@@ -68,6 +71,7 @@ int	is_reachable(char **map)
 	return (1);
 }
 
+//repends des # dans tous les espaces accessibles de la map
 char	**flood_fill(char **map, int x, int y)
 {
 	if (y >= 0 && x >= 0 && map[y] && map[y][x]

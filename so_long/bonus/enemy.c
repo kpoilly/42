@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 11:27:34 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:47:05 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../data/headers/so_long.h"
 
+//set les next et prev des images enemy pour anim
 void	enemy_setup(t_global *global)
 {
 	global->enemy.front.next = &global->enemy.front2;

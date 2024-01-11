@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 15:09:05 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:41:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//genere un nombre aleatoire (plus ou moins)
 int	ft_random(long seed)
 {
 	int	res;
@@ -34,6 +35,7 @@ int	ft_random(long seed)
 	return (ft_random(res));
 }
 
+//rajoute de l'aleatoire dans les murs interieurs
 void	wallin_random(t_global *global)
 {
 	int		y;

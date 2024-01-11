@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 17:44:06 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:40:42 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	putnbr_collectibles(t_global *global)
 	free(str);
 }
 
+//check quel mur il doit afficher
 static void	render_wall(t_global *global, int x, int y)
 {
 	if (!y)

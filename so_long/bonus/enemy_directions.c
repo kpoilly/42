@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:50:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 11:23:38 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:46:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../data/headers/so_long.h"
 
+//set la derniere orientation de l'entite, et sa derniere direction
 void	set_state(t_ent *entity, char direction)
 {
 	if (direction == 'U')

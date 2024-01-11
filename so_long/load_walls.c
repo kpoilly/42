@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:07:08 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 15:06:07 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:42:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//Charge les xpm murs dans les buffers
 int	load_walls_updown(t_global *global)
 {
 	int	w;
@@ -38,6 +39,7 @@ int	load_walls_updown(t_global *global)
 	return (1);
 }
 
+//Charge les xpm murs dans les buffers
 int	load_walls_leftright(t_global *global)
 {
 	int	w;

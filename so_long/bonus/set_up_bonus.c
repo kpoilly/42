@@ -6,18 +6,45 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 17:41:12 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:48:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../data/headers/so_long.h"
 
+//genere un nombre aleatoire (plus ou moins)
+int	ft_random(long seed)
+{
+	int	res;
+
+	seed *= seed;
+	seed /= 10;
+	res = seed % 10;
+	seed /= 10;
+	res += (seed % 10) * 10;
+	if (res < 0)
+		res *= -1;
+	if ((res % 4) != 0)
+		return (res % 4);
+	if (res < 10)
+		res += 10;
+	if (!res)
+		res = 42;
+	if (res == 60)
+		return (3);
+	return (ft_random(res));
+}
+
+//rajoute de l'aleatoire dans les murs interieurs
 void	wallin_random(t_global *global)
 {
-	int	y;
-	int	x;
-	int	new;
+	int		y;
+	int		x;
+	long	seed;
+	int		add_seed;
 
+	seed = (long)&x;
+	add_seed = 0;
 	y = 0;
 	while (global->map[y])
 	{
@@ -25,16 +52,10 @@ void	wallin_random(t_global *global)
 		while (global->map[y][x])
 		{
 			if (x && y && global->map[y + 1] && global->map[y][x + 1])
-			{
 				if (global->map[y][x] == '1')
-				{
-					new = 0;
-					while (!new)
-						new = (rand() % 4);
-					global->map[y][x] = new + '0';
-				}
-			}
+					global->map[y][x] = ft_random(seed + add_seed) + '0';
 			x++;
+			add_seed++;
 		}
 		y++;
 	}
