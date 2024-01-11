@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 19:19:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:59:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void			game_over(t_global *global);
 //utils
 char			*ft_itoa(int n);
 void			set_coord(t_global *global, t_ent *target);
+int				ft_random(long seed);
 
 //--- BONUS ---
 

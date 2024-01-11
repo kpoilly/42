@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:07:08 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 19:41:38 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 15:06:07 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	load_wallin2(t_global *global)
 	w = 50;
 	h = 50;
 	global->wallin.left.img = mlx_xpm_file_to_image(global->mlx.ptr,
-			"./data/textures/wallin3.xpm", &w, &h);
+			"./data/textures/testwallin.xpm", &w, &h);
 	if (!global->wallin.left.img)
 		return (ft_printf("Error.\nMissing texture files.\n"), 0);
 	global->wallin.left.addr = mlx_get_data_addr(global->wallin.left.img,
