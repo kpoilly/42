@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:16:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 22:13:13 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/11 10:23:39 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	pipex(int fd, int argc, char **argv, char **envp)
 {
 	int	fdout[2];
 	int	tube[2];
+	int	fdtemp;
 	int	i;
 
 	i = 2;
@@ -28,7 +29,9 @@ static int	pipex(int fd, int argc, char **argv, char **envp)
 		close(tube[0]);
 	}
 	pipe(fdout);
-	dup2(clean_make(argv[argc - 1], argv[0]), fdout[1]);
+	fdtemp = clean_make(argv[argc - 1], argv[0]);
+	dup2(fdtemp, fdout[1]);
+	close(fdtemp);
 	if (fdout[1] < 0)
 		return (close(fd), 0);
 	check_and_exec(envp, argv[i], fd, fdout);
@@ -51,5 +54,5 @@ int	main(int argc, char	**argv, char **envp)
 	if (fd < 0)
 		return (write(2, "Error.\nInvalid infile.\n", 22), 1);
 	exit = pipex(fd, argc, argv, envp);
-	return (wait(NULL), !exit);
+	return (wait(NULL), wait(NULL), !exit);
 }
