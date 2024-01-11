@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:14:56 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 19:39:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/11 17:45:02 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_setanim {
 typedef struct s_ent {
 	t_img		front;
 	t_img		front2;
-	t_img	back;
+	t_img		back;
 	t_img		back2;
 	t_img		right;
 	t_img		right2;
