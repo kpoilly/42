@@ -54,7 +54,7 @@ void	check_end_game(t_global *global)
 void	end_the_game(t_global *global)
 {
 	ft_printf("Congrats!\nThanks for playing !\n");
-	//animation joueur qui danse
+	end_anim(global);
 	destroy(global);
 }
 

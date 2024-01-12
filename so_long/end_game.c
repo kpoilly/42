@@ -12,42 +12,6 @@
 
 #include "./data/headers/so_long.h"
 
-void	test_anim(t_global *global)
-{
-	t_img	bg;
-	t_img	img1;
-	t_img	img2;
-	int		h;
-	int		w;
-	int		i;
-	int		j;
-
-	h = 1080;
-	w = 1920;
-	bg.img = mlx_new_image(global->mlx.ptr, 1080, 1920);
-	img1.img = mlx_xpm_file_to_image(global->mlx.ptr, "./data/textures/end_anim1.xpm", &w, &h);
-	img2.img = mlx_xpm_file_to_image(global->mlx.ptr, "./data/textures/end_anim2.xpm", &w, &h);
-	//img1.addr = mlx_get_data_addr(img1.img, &img1.bits_per_pixel, &img1.line_len, &img1.endian);
-	//img2.addr = mlx_get_data_addr(img2.img, &img2.bits_per_pixel, &img2.line_len, &img2.endian);
-	i = 0;
-
-	while (i++ < 20)
-	{
-		j = 0;
-		if (!(i % 2))
-			{
-				mlx_put_image_to_window(global->mlx.ptr, global->mlx.win, bg.img, 0, 0);
-				mlx_put_image_to_window(global->mlx.ptr, global->mlx.win, img1.img, global->mlx.width /2 -25, global->mlx.height /2 -100);
-			}
-		else
-			while(j++ < 800)
-			{
-				mlx_put_image_to_window(global->mlx.ptr, global->mlx.win, bg.img, 0, 0);
-				mlx_put_image_to_window(global->mlx.ptr, global->mlx.win, img2.img, global->mlx.width /2 -25, global->mlx.height /2 -100);
-			}
-	}
-}
-
 //Charge l'image de la sortie "ouverte"
 int	open_exit(t_global *global)
 {
@@ -79,7 +43,6 @@ void	check_end_game(t_global *global)
 void	end_the_game(t_global *global)
 {
 	ft_printf("Congrats!\nThanks for playing !\n");
-	test_anim(global);
 	destroy(global);
 }
 

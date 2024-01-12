@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 14:59:47 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/12 18:51:05 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void			free_bonus(t_global *global);
 void			set_paths_anim(t_global *global);
 int				load_anim(t_global *global);
 void			set_next(t_global *global);
+void			end_anim(t_global *global);
 
 //enemy spawn and setup
 void			spawn_enemy(t_global *global, int nb_line, int nb_col);
