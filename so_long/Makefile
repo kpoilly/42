@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:44:44 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/12 18:51:44 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/12 19:12:38 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ BONUS_BUILD_DIR	= ./bonus/objects
 BONUS_FILES		= enemy.c enemy_directions.c enemy_utils.c enemy_move.c \
 				  anim_setup.c so_long_bonus.c events_bonus.c end_game_bonus.c \
 				  render_map_bonus.c set_up_bonus.c anim_load.c free_bonus.c \
-				  enemy_load.c animations.c
+				  enemy_load.c anim_end.c
 BONUS_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_FILES)))
 
 GNL_FILES 		= ./data/GNL/get_next_line.c ./data/GNL/get_next_line_utils.c

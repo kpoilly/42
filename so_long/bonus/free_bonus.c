@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:25:57 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 19:40:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/12 19:09:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,18 @@ void	free_player_anim(t_global *global)
 		mlx_destroy_image(global->mlx.ptr, global->player.left2.img);
 }
 
+void	free_anim(t_global *global)
+{
+	if (global->wallin.front2.img)
+		mlx_destroy_image(global->mlx.ptr, global->wallin.front2.img);
+	if (global->wallin.back2.img)
+		mlx_destroy_image(global->mlx.ptr, global->wallin.back2.img);
+}
+
 void	free_bonus(t_global *global)
 {
 	free_enemy(global);
 	free_player_anim(global);
+	if (!global->nbcollec)
+		free_anim(global);
 }
