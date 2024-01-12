@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 18:41:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:23:34 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	set_paths(t_set *set_of_files)
 	set_of_files->ground = "./data/textures/ground.xpm";
 	set_of_files->exit = "./data/textures/exit.xpm";
 	set_of_files->collectible = "./data/textures/frog.xpm";
-	set_of_files->player_front = "./data/textures/perso_face_old.xpm";
+	set_of_files->player_front = "./data/textures/perso_face.xpm";
 	set_of_files->player_back = "./data/textures/perso_dos.xpm";
 	set_of_files->player_right = "./data/textures/perso_droit.xpm";
 	set_of_files->player_left = "./data/textures/perso_gauche.xpm";

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:01:06 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/10 19:12:17 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:36:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ int	load_character1(t_global *global)
 			&(global->player.front.line_len),
 			&(global->player.front.endian));
 	global->player.front.w = w;
-	global->player.front.h = 70;
+	global->player.front.h = h;
 	global->player.back.addr = mlx_get_data_addr(global->player.back.img,
 			&(global->player.back.bits_per_pixel),
 			&(global->player.back.line_len), &(global->player.back.endian));
 	global->player.back.w = w;
-	global->player.back.h = 60;
+	global->player.back.h = h;
 	return (1);
 }
 
@@ -113,11 +113,11 @@ int	load_character2(t_global *global)
 			&(global->player.right.bits_per_pixel),
 			&(global->player.right.line_len), &(global->player.right.endian));
 	global->player.right.w = w;
-	global->player.right.h = 70;
+	global->player.right.h = h;
 	global->player.left.addr = mlx_get_data_addr(global->player.left.img,
 			&(global->player.left.bits_per_pixel),
 			&(global->player.left.line_len), &(global->player.left.endian));
 	global->player.left.w = w;
-	global->player.left.h = 70;
+	global->player.left.h = h;
 	return (1);
 }
