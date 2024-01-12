@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/12 10:55:10 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/12 11:35:09 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,12 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 	global->anim = clock();
 	global->mlx.ptr = mlx_init();
 	if (!global->mlx.ptr)
-		return (ft_printf("Error.\n(mlx init)\n"), 0);
+		return (ft_printf("Error.\n(mlx init)\n"),
+			free_the_map(global->map), exit(0), 0);
 	global->mlx.width = nb_col * 50;
 	global->mlx.height = nb_line * 50;
+	if (global->mlx.height > 1080 || global->mlx.width > 1920)
+		return (ft_printf("Error.\nMap is too big.\n"), 0);
 	global->mlx.win = mlx_new_window(global->mlx.ptr, global->mlx.width,
 			global->mlx.height, "The Grenouille Collector");
 	if (!global->mlx.win)
