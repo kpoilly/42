@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/12 11:05:09 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/12 12:03:34 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 //Actions en fonction de la touche pressée
 int	keypress(int keycode, t_global *global)
 {
-	//global->anim = clock();
 	if (keycode == 65362 || keycode == 119)
 		return (move_tab_up(global),
 			render_map(global, global->player.back), 1);
