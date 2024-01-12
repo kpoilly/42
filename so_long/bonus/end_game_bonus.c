@@ -24,7 +24,7 @@ int	open_exit(t_global *global)
 	global->exit.img = mlx_xpm_file_to_image(global->mlx.ptr,
 			"./data/textures/exit2.xpm", &w, &h);
 	if (!global->exit.img)
-		return (ft_printf("Error.\nExit caca.\n"),
+		return (ft_printf("Error.\nMissing Texture files.\n"),
 			destroy(global), 0);
 	global->exit.addr = mlx_get_data_addr(global->exit.img,
 			&(global->exit.bits_per_pixel),
@@ -81,7 +81,7 @@ void	game_over(t_global *global)
 		(global->mlx.width / 2) - 150, (global->mlx.height / 2) - 75);
 	ft_printf("Game Over !\n");
 	i = 0;
-	while (i++ < 8000)
+	while (i++ < 6000)
 		mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
 			global->bg.img, 0, 0);
 	mlx_destroy_image(global->mlx.ptr, gameover.img);
