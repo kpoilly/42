@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 09:16:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/14 10:51:26 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/14 10:56:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char	**argv, char **envp)
 	if (argc != 5)
 		return (write(2, "Error.\nToo few arguments.\n", 26), 1);
 	if (access(argv[1], R_OK) == -1)
-		return (write(2, "Error.\nPermission denied.\n", 26), 1);
+		return (write(2, "Error.\nInvalid infile.\n", 23), 1);
 	check_envp = get_path(envp);
 	if (!check_envp)
 		return (write(2, "Error.\nNo Path variable in envp.\n", 33), 1);
