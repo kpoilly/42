@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:12:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 18:55:06 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/14 10:44:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strlen(char *s)
 	int	i;
 
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 		i++;
 	return (i);
 }
@@ -57,7 +57,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		str[len++] = *s1;
 		s1++;
 	}
-	while (*s2)
+	while (s2 && *s2)
 	{
 		str[len++] = *s2;
 		s2++;
