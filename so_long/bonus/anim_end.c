@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:38:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/15 09:25:31 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:04:52 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	load_end_img(t_global *global)
 	int	w;
 	int	h;
 
-	w = 137;
-	h = 250;
+	w = 598;
+	h = 450;
 	//mlx_destroy_image(global->mlx.ptr, global->wallin.front2.img); utilises par
 	//mlx_destroy_image(global->mlx.ptr, global->wallin.back2.img); anim open exit
 	global->wallin.front2.img = mlx_xpm_file_to_image(global->mlx.ptr,

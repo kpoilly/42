@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:42:45 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/15 09:34:46 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:18:55 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	set_paths_anim(t_global *global)
 void	putimg(t_global *global, t_img img)
 {
 	load_blackscreen(global);
-	put_img_to_img(global->bg, img, (global->mlx.width / 2) - 65,
-		(global->mlx.height / 2) - 130);
+	put_img_to_img(global->bg, img, (global->mlx.width / 2) - img.w / 2,
+		(global->mlx.height / 2) - img.h / 2);
 	mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
 		global->bg.img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/12 18:10:39 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/15 14:27:15 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	render_wall(t_global *global, int x, int y)
 	{
 		if (global->map[y][x] == '1')
 			put_img_to_img(global->bg, global->wallin.front, x * 50,
-				y * 50 + 5);
+				y * 50);
 		else if (global->map[y][x] == '2')
 			put_img_to_img(global->bg, global->wallin.back, x * 50,
 				y * 50 - 5);

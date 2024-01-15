@@ -79,7 +79,7 @@ void	game_over(t_global *global)
 	gameover.w = w;
 	gameover.h = h;
 	put_img_to_img(global->bg, gameover,
-		(global->mlx.width / 2) - 150, (global->mlx.height / 2) - 75);
+		(global->mlx.width / 2) - w / 2, (global->mlx.height / 2) - h / 2);
 	ft_printf("Game Over !\n");
 	i = 0;
 	while (i++ < 6000)
