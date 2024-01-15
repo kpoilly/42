@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:27:31 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/15 09:19:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/15 09:33:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,4 @@ int	load_anim(t_global *global)
 		+ load_rightleft(global, &global->player) != 2)
 		return (0);
 	return (1);
-}
-
-//affiche une image sur toute la window avec un fond noir (anim)
-void	putimg(t_global *global, t_img img)
-{
-	load_blackscreen(global);
-	put_img_to_img(global->bg, img, (global->mlx.width / 2) - 50,
-		(global->mlx.height / 2) - 130);
-	mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
-		global->bg.img, 0, 0);
 }

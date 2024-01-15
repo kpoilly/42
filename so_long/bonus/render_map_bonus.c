@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/12 18:11:03 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/15 09:32:11 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	render_wall(t_global *global, int x, int y)
 				y * 50 - 5);
 		else if (global->map[y][x] == '3')
 			put_img_to_img(global->bg, global->wallin.left, x * 50,
-				y * 50 - 10);
+				y * 50 - 5);
 	}
 }
 
