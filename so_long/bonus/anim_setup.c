@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:42:45 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/12 10:57:15 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/15 09:13:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	set_next(t_global *global)
 	global->player.left2.next = &global->player.left;
 }
 
+//set les paths des xpm qui servent aux anims
 void	set_paths_anim(t_global *global)
 {
 	global->player.paths.front2 = "./data/textures/perso_face2.xpm";

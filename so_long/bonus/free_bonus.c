@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:25:57 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/12 19:09:04 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/15 09:07:48 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,4 @@ void	free_bonus(t_global *global)
 {
 	free_enemy(global);
 	free_player_anim(global);
-	if (!global->nbcollec)
-		free_anim(global);
 }
