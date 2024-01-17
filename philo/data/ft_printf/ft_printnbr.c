@@ -6,13 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 15:31:11 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/16 11:37:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 08:59:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_long(int fd, long int nb, int *len)
+void	ft_putnbr_long(int fd, long long nb, int *len)
 {
 	if (nb < 0)
 	{

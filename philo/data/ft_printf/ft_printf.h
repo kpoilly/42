@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:12:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/16 11:51:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 08:59:07 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_putstr(int fd, char *s);
 int		ft_putstrlen(int fd, char *str);
 int		ft_putptr(int fd, void *ptr);
 void	ft_putnbr_base(int fd, size_t nb, char *base, int *len);
-void	ft_putnbr_long(int fd, long int nb, int *len);
+void	ft_putnbr_long(int fd, long long nb, int *len);
 void	ft_putnbr_unsigned(int fd, unsigned int nb, int *len);
 
 #endif

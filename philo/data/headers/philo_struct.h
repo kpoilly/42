@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:31:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/16 13:59:35 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 08:41:07 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PHILO_STRUCT_H
 
 # include "./philo.h"
-# include <pthread.h>
 
 typedef struct s_philosopher
 {
@@ -24,18 +23,20 @@ typedef struct s_philosopher
 	int						eating;
 	int						sleeping;
 	int						thinking;
+	long					last_eat;
 	struct s_philosopher	*prev;
 	struct s_philosopher	*next;
 }	t_philosopher;
 
 typedef struct s_global
 {
-	int				nb_philo;
-	int				time_die;
-	int				time_eat;
-	int				ime_sleep;
-	int				nb_eat;
-	t_philosopher	*philo_list;
+	struct timeval		start;
+	int					nb_philo;
+	int					nb_eat; //nb de fois que tous doivent manger pour gagner
+	long				time_die; //temps avant de mourrir de faim
+	long				time_eat; //temps que ca prends de manger (usleep)
+	long				time_sleep; //temps que ca prends de dormir (usleep)
+	t_philosopher		*philo_list;
 }	t_global;
 
 #endif
