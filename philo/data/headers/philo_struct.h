@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:31:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 08:41:07 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 12:46:28 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_philosopher
 	int						eating;
 	int						sleeping;
 	int						thinking;
-	long					last_eat;
+	struct timeval			last_eat;
 	struct s_philosopher	*prev;
 	struct s_philosopher	*next;
 }	t_philosopher;

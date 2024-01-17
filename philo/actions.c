@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 08:59:59 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 13:35:43 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	philo_routine(t_global *global, t_philosopher *philo)
 {
 	while (philo->alive)
 	{
-		if (philo->last_eat >= global->time_die)
+		printf("TIME : %ld\n", get_time_ms(philo->last_eat));
+		if (get_time_ms(philo->last_eat) >= global->time_die)
 			ft_die(philo, global);
 	}
 }
@@ -54,7 +55,7 @@ void	philo_routine(t_global *global, t_philosopher *philo)
 
 void	ft_die(t_philosopher *philo, t_global *global)
 {
-	ft_printf(1, "%d : Philo #%d died.\n", get_time_ms(global->start.tv_usec),
+	ft_printf(1, "%d : Philo #%d died.\n", get_time_ms(global->start),
 		philo->id);
 	philo->alive = 0;
 }

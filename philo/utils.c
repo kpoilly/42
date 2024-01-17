@@ -6,18 +6,21 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:52:19 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 08:48:06 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 14:24:22 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/philo.h"
 
-suseconds_t	get_time_ms(long start)
+long	get_time_ms(struct timeval start)
 {	
 	struct timeval	current;
+	time_t			ret;
 
 	gettimeofday(&current, NULL);
-	return (current.tv_usec - start);
+	ret = current.tv_sec - start.tv_sec;
+	ret = ((ret * 1000000) + (current.tv_usec - start.tv_usec)) / 1000;
+	return (ret);
 }
 
 int	ft_isdigit(int c)

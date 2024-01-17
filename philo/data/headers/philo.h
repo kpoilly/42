@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:27:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 08:48:35 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 13:35:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 int					ft_atoi(const char *nptr);
 void				ft_freetab(t_philosopher **tab);
 int					check_args(char **argv);
-suseconds_t			get_time_ms(long start);
+long				get_time_ms(struct timeval start);
 
 //list setup
 void				lst_setup(t_global *global, t_philosopher *philo);

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 06:03:37 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/16 11:40:34 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:10:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_check_format(int fd, va_list args, char c, int *len)
 	else if (c == 's')
 		*len += ft_putstrlen(fd, va_arg(args, char *));
 	else if (c == 'd' || c == 'i')
-		ft_putnbr_long(fd, va_arg(args, int), len);
+		ft_putnbr_long(fd, va_arg(args, long), len);
 	else if (c == 'p')
 		*len += ft_putptr(fd, va_arg(args, void *));
 	else if (c == 'u')
