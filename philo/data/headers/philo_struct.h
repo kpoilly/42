@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:31:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 12:46:28 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:37:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_global
 	long				time_eat; //temps que ca prends de manger (usleep)
 	long				time_sleep; //temps que ca prends de dormir (usleep)
 	t_philosopher		*philo_list;
+	t_philosopher		*current;
 }	t_global;
 
 #endif

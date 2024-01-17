@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:03:34 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 08:44:21 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:09:43 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,13 @@ void	ft_lstiter(t_global *global, void (*f)(t_global *, t_philosopher *))
 		f(global, balai);
 		balai = balai->next;
 	}
+}
+
+void	set_lst_loop(t_global *global)
+{
+	t_philosopher	*last;
+
+	last = ft_lstlast(global->philo_list);
+	global->philo_list->prev = last;
+	last->next = global->philo_list;
 }

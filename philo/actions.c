@@ -6,14 +6,17 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 14:30:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:39:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/philo.h"
 
-void	philo_routine(t_global *global, t_philosopher *philo)
+void	philo_routine(t_global *global)
 {
+	t_philosopher	*philo;
+
+	philo = global->current;
 	while (philo->alive)
 	{
 		if (get_time_ms(philo->last_eat) >= global->time_die)
