@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/17 08:52:08 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/17 14:55:14 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME 			= philo
 HEAD			= ./data/headers/philo.h
 
 BUILD_DIR		= ./data/objects
-CONST_FILES 	= philo.c utils.c philo_lst_setup.c actions.c check_error.c
+CONST_FILES 	= philo.c utils.c philo_lst_setup.c actions.c check_error.c \
+				  philo_setup.c
 CONST_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(CONST_FILES)))
 
 MAND_FILES 		= 

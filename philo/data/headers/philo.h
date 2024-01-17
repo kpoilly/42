@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:27:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 13:35:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/17 14:51:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include "./philo_struct.h"
+
+//setup
+void				lst_setup(t_global *global, t_philosopher *philo);
+void				get_args(int argc, char **argv, t_global *global);
 
 //utils
 int					ft_atoi(const char *nptr);
