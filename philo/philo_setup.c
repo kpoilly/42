@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:36:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/18 15:34:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 17:23:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ void	get_args(int argc, char **argv, t_global *global)
 	global->time_eat = ft_atoi(argv[3]);
 	global->time_sleep = ft_atoi(argv[4]);
 	global->nb_full = 0;
+	global->active = 1;
 }
