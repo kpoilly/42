@@ -3,17 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:52:19 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 14:24:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/18 15:32:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/philo.h"
 
+void	end_simu(t_global *global)
+{
+	printf("%ldms : Simulation ended.\n",
+		get_time_ms(global->start));
+}
+
 long	get_time_ms(struct timeval start)
-{	
+{
 	struct timeval	current;
 	time_t			ret;
 
@@ -21,6 +27,18 @@ long	get_time_ms(struct timeval start)
 	ret = current.tv_sec - start.tv_sec;
 	ret = ((ret * 1000000) + (current.tv_usec - start.tv_usec)) / 1000;
 	return (ret);
+}
+
+void	check_nbeat(t_global *global, t_philosopher *philo)
+{
+	//printf("HEY: #%d : %d\n", global->nb_philo, global->nb_full);
+	if (philo->nb_meals == global->nb_eat)
+	{
+		global->nb_full++;
+		philo->nb_meals++;
+		printf("%ldms : Every Philosophers ate enough.\n",
+			get_time_ms(global->start));
+	}
 }
 
 int	ft_isdigit(int c)

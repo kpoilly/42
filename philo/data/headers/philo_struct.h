@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:31:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 15:37:24 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/18 15:15:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_philosopher
 	int						eating;
 	int						sleeping;
 	int						thinking;
+	int						nb_meals;
 	struct timeval			last_eat;
 	struct s_philosopher	*prev;
 	struct s_philosopher	*next;
@@ -33,6 +34,7 @@ typedef struct s_global
 	struct timeval		start;
 	int					nb_philo;
 	int					nb_eat; //nb de fois que tous doivent manger pour gagner
+	int					nb_full;//combien ont atteint ce nb eat
 	long				time_die; //temps avant de mourrir de faim
 	long				time_eat; //temps que ca prends de manger (usleep)
 	long				time_sleep; //temps que ca prends de dormir (usleep)

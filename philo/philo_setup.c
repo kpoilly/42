@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_setup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:36:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 15:14:38 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/18 15:34:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	set_philo_list(char **argv, t_global *global)
 	set_lst_loop(global);
 }
 
-void	data_setup(t_global *global, t_philosopher *philo)
+void	data_setup(t_philosopher *philo)
 {
-	(void)global;
 	philo->alive = 1;
 	philo->eating = 0;
 	philo->thinking = 1;
 	philo->sleeping = 0;
+	philo->nb_meals = 0;
 	philo->thread = 0;
 	gettimeofday(&philo->last_eat, NULL);
 }
@@ -42,5 +42,9 @@ void	get_args(int argc, char **argv, t_global *global)
 		global->nb_eat = 0;
 	else
 		global->nb_eat = ft_atoi(argv[5]);
+	global->nb_philo = ft_atoi(argv[1]);
 	global->time_die = ft_atoi(argv[2]);
+	global->time_eat = ft_atoi(argv[3]);
+	global->time_sleep = ft_atoi(argv[4]);
+	global->nb_full = 0;
 }

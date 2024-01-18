@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/17 14:55:14 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/18 14:54:58 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,6 @@ MAND_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(MAND_FILES)))
 BONUS_FILES 	= 
 BONUS_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(BONUS_FILES)))
 
-PRINTF_FILES	= ./data/ft_printf/ft_printf.c ./data/ft_printf/ft_printnbr.c \
-				  ./data/ft_printf/ft_printstr.c ./data/ft_printf/ft_utils.c
-PRINTF_OBJECTS 	= $(PRINTF_FILES:.c=.o)
-
 RM 						= rm -f
 CC 						= cc
 CFLAGS 			= -Wall -Wextra -Werror -g3
@@ -40,14 +36,14 @@ $(BUILD_DIR)/%.o:%.c
 				mkdir -p $(BUILD_DIR)
 				$(CC) $(CFLAGS) -c $< -o $@
 				
-$(NAME):		$(CONST_OBJ) $(MAND_OBJ) $(PRINTF_OBJECTS) $(HEAD)
-				$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(CONST_OBJ) $(MAND_OBJ) $(PRINTF_OBJECTS)
+$(NAME):		$(CONST_OBJ) $(MAND_OBJ) $(HEAD)
+				$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(CONST_OBJ) $(MAND_OBJ)
 
-bonus: 			fclean $(CONST_OBJ) $(BONUS_OBJ) $(PRINTF_OBJECTS) $(HEAD)
-					$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(CONST_OBJ) $(BONUS_OBJ) $(PRINTF_OBJECTS)
+bonus: 			fclean $(CONST_OBJ) $(BONUS_OBJ) $(HEAD)
+					$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(CONST_OBJ) $(BONUS_OBJ)
 				
 clean:
-					$(RM) $(CONST_OBJ) $(MAND_OBJ) $(BONUS_OBJ)	$(PRINTF_OBJECTS)	
+					$(RM) $(CONST_OBJ) $(MAND_OBJ) $(BONUS_OBJ)
 fclean:			clean
 					$(RM) $(NAME)
 re:				fclean all

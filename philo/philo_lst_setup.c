@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_lst_setup.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 14:03:34 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/17 15:09:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/18 15:36:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	ft_lstadd_back(t_philosopher **lst, t_philosopher *new)
 	}
 }
 
-void	ft_lstiter(t_global *global, void (*f)(t_global *, t_philosopher *))
+void	ft_lstiter(t_global *global, void (*f)(t_philosopher *))
 {
 	t_philosopher	*balai;
 
 	balai = global->philo_list;
 	while (balai)
 	{
-		f(global, balai);
+		f(balai);
 		balai = balai->next;
 	}
 }
