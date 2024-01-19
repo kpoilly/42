@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 15:13:25 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:19:20 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,28 @@ int	ft_eat(t_philosopher *philo, t_global *global)
 		usleep(global->time_eat * 1000);
 		printf("%ldms : Philo #%d put down a fork\n",
 			get_time_ms(global->start), philo->id);
+		if (philo->nb_meals < global->nb_eat)
+			philo->nb_meals++;
 	}
 	pthread_mutex_lock(&global->mutex);
 	philo->eating = 0;
 	pthread_mutex_unlock(&global->mutex);
-	if (philo->nb_meals < global->nb_eat)
-		philo->nb_meals++;
 	return (check_nbeat(global, philo), 1);
 }
 
 int	ft_sleep(t_philosopher *philo, t_global *global)
-{
-	philo->sleeping = 1;
-	printf("%ldms : Philo #%d is sleeping\n", get_time_ms(global->start),
-		philo->id);
-	if (global->time_eat + global->time_sleep > global->time_die)
-		return (usleep((global->time_die - global->time_eat)
-				* 1000), ft_die(philo, global), 0);
-	usleep(global->time_sleep * 1000);
-	philo->sleeping = 0;
+{	
+	if (global->active)
+	{	
+		philo->sleeping = 1;
+		printf("%ldms : Philo #%d is sleeping\n", get_time_ms(global->start),
+			philo->id);
+		if (global->time_eat + global->time_sleep > global->time_die)
+			return (usleep((global->time_die - global->time_eat)
+					* 1000), ft_die(philo, global), 0);
+		usleep(global->time_sleep * 1000);
+		philo->sleeping = 0;
+	}
 	return (1);
 }
 
@@ -95,11 +98,9 @@ void	ft_die(t_philosopher *philo, t_global *global)
 	philo->eating = 0;
 	philo->thinking = 0;
 	philo->sleeping = 0;
+	global->active = 0;
 	pthread_mutex_unlock(&global->mutex);
 	printf("%ldms : Philo #%d died\n", get_time_ms(global->start),
 		philo->id);
-	pthread_mutex_lock(&global->mutex);
-	global->active = 0;
-	pthread_mutex_unlock(&global->mutex);
 	philo->alive = 0;
 }
