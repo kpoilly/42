@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 14:59:35 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:13:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	ft_eat(t_philosopher *philo, t_global *global)
 			return (usleep((global->time_die) * 1000),
 				ft_die(philo, global), 0);
 		usleep(global->time_eat * 1000);
+		printf("%ldms : Philo #%d put down a fork\n",
+			get_time_ms(global->start), philo->id);
 	}
 	pthread_mutex_lock(&global->mutex);
 	philo->eating = 0;
