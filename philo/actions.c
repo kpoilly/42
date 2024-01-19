@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 14:42:12 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:59:35 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	*philo_routine(void *thing)
 		philo->id);
 	while (philo->alive && global->active)
 	{
+		if (get_time_ms(philo->last_eat) > global->time_die)
+			return (ft_die(philo, global), NULL);
 		if (philo->prev && !philo->prev->eating
 			&& philo->next && !philo->next->eating)
 		{
@@ -32,8 +34,6 @@ void	*philo_routine(void *thing)
 			if (!ft_eat(philo, global) || !ft_sleep(philo, global))
 				return (NULL);
 		}
-		if (get_time_ms(philo->last_eat) > global->time_die)
-			return (ft_die(philo, global), NULL);
 		ft_think(philo, global);
 	}
 	return (NULL);
@@ -85,7 +85,6 @@ void	ft_think(t_philosopher *philo, t_global *global)
 		printf("%ldms : Philo #%d is thinking\n",
 			get_time_ms(global->start), philo->id);
 	}
-	usleep(1000);
 }
 
 void	ft_die(t_philosopher *philo, t_global *global)
