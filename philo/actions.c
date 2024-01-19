@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 11:56:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:21:11 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	*philo_routine(void *thing)
 			if (!ft_sleep(philo, global))
 				return (NULL);
 		}
-		else
-			ft_think(philo, global);
+		ft_think(philo, global);
 		check_nbeat(global, philo);
 	}
 	return (NULL);
