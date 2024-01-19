@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:28:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 01:53:27 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/19 12:02:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,16 @@ int	main(int argc, char **argv)
 	global.current = global.philo_list;
 	pthread_create(&global.current->thread, NULL,
 		philo_routine, (void *)&global);
-	printf("Process for Philo #%d created.\n", global.current->id);
+	usleep(80);
 	global.current = global.current->next;
-	i = 1;
-	while (i < ft_atoi(argv[1]))
+	i = 0;
+	while (++i < ft_atoi(argv[1]))
 	{
 		pthread_create(&global.current->thread, NULL, philo_routine, &global);
+		usleep(80);
 		global.current = global.current->next;
-		i++;
 	}
-	i = 0;
-	while (i < ft_atoi(argv[1]))
-	{
-		global.current = global.current->next;
-		pthread_join(global.current->thread, NULL);
-		i++;
-	}
-	printf("%ldms : Simulation ended.\n",
-		get_time_ms(global.start));
-	return (free_all(&global), 0);
+	return (wait_process(&global, ft_atoi(argv[1])),
+		printf("%ldms : Simulation ended.\n", get_time_ms(global.start)),
+		free_all(&global), 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:31:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/18 19:03:34 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/19 11:56:27 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ typedef struct s_global
 	pthread_mutex_t		mutex;
 	int					active;
 	int					nb_philo;
-	int					nb_eat; //nb de fois que tous doivent manger pour gagner
-	int					nb_full;//combien ont atteint ce nb eat
-	long				time_die; //temps avant de mourrir de faim
-	long				time_eat; //temps que ca prends de manger (usleep)
-	long				time_sleep; //temps que ca prends de dormir (usleep)
+	int					nb_eat;
+	int					nb_full;
+	long				time_die;
+	long				time_eat;
+	long				time_sleep;
 	t_philosopher		*philo_list;
 	t_philosopher		*current;
 }	t_global;

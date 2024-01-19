@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_setup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:36:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/18 19:05:41 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/19 12:08:07 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_all(t_global *global)
 {
-	//free la liste de philos
+	free_lst(global);
 	pthread_mutex_destroy(&global->mutex);
 }
 
