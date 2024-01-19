@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:27:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 13:27:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:07:09 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 //setup
 void				get_args(int argc, char **argv, t_global *global);
 void				data_setup(t_philosopher *philo);
+t_philosopher		*get_philo(t_global *global);
 int					check_nbeat(t_global *global, t_philosopher *philo);
 void				end_simu(t_global *global);
 void				free_all(t_global *global);

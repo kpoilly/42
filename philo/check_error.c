@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:04:42 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 13:14:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:05:48 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void	free_lst(t_global *global)
 		i++;
 	}
 	global->philo_list = NULL;
+}
+
+void	free_all(t_global *global)
+{
+	free_lst(global);
+	pthread_mutex_destroy(&global->mutex);
 }
 
 int	check_args(char **argv)

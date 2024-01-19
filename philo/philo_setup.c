@@ -6,16 +6,23 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:36:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 13:10:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:06:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/philo.h"
 
-void	free_all(t_global *global)
+t_philosopher	*get_philo(t_global *global)
 {
-	free_lst(global);
-	pthread_mutex_destroy(&global->mutex);
+	t_philosopher	*philo;
+
+	pthread_mutex_lock(&global->mutex);
+	philo = global->current;
+	global->can_go = 1;
+	pthread_mutex_unlock(&global->mutex);
+	printf("%ldms : Philo #%d woke up\n", get_time_ms(global->start),
+		philo->id);
+	return (philo);
 }
 
 void	set_philo_list(char **argv, t_global *global)

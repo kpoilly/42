@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 15:19:20 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:03:45 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,23 @@ void	*philo_routine(void *thing)
 	t_philosopher	*philo;
 
 	global = (t_global *)thing;
-	pthread_mutex_lock(&global->mutex);
-	philo = global->current;
-	pthread_mutex_unlock(&global->mutex);
-	printf("%ldms : Philo #%d woke up\n", get_time_ms(global->start),
-		philo->id);
+	philo = get_philo(global);
 	while (philo->alive && global->active)
 	{
+		pthread_mutex_lock(&global->mutex);
 		if (get_time_ms(philo->last_eat) > global->time_die)
-			return (ft_die(philo, global), NULL);
+			return (pthread_mutex_unlock(&global->mutex),
+				ft_die(philo, global), NULL);
 		if (philo->prev && !philo->prev->eating
 			&& philo->next && !philo->next->eating)
 		{
+			pthread_mutex_unlock(&global->mutex);
 			philo->thinking = 0;
 			if (!ft_eat(philo, global) || !ft_sleep(philo, global))
 				return (NULL);
 		}
+		else
+			pthread_mutex_unlock(&global->mutex);
 		ft_think(philo, global);
 	}
 	return (NULL);
