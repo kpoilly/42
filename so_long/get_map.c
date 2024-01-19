@@ -6,11 +6,21 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:08:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 16:51:48 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:03:27 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
+
+static void	replace_nl(char	*str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	str[i] = '\0';
+}
 
 //Recupere la taille totale de la map pour la malloc
 static int	maplen(char *filename)
@@ -56,13 +66,11 @@ char	**get_map(char *filename, int *nb_line, int *nb_col)
 		return (free(map), NULL);
 	while (map[i] != NULL)
 	{
+		replace_nl(map[i]);
 		map[++i] = get_next_line(fd);
-		if (map[i])
-			map[i - 1][ft_strlen(map[i - 1]) - 1] = '\0';
 		if (!map[i] && i < *nb_line)
 			return (free_the_map(map), NULL);
 	}
 	*nb_col = ft_strlen(map[0]);
-	close(fd);
-	return (map);
+	return (close(fd), map);
 }
