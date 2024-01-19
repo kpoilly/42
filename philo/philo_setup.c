@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:36:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 12:08:07 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:10:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,20 @@ void	set_philo_list(char **argv, t_global *global)
 	while (i < ft_atoi(argv[1]))
 		ft_lstadd_back(&global->philo_list, ft_lstnew(i++));
 	ft_lstiter(global, &data_setup);
-	set_lst_loop(global);
+	if (ft_atoi(argv[1]) > 1)
+		set_lst_loop(global);
+	else
+	{
+		global->philo_list->prev = NULL;
+		global->philo_list->next = NULL;
+	}
 }
 
 void	data_setup(t_philosopher *philo)
 {
 	philo->alive = 1;
 	philo->eating = 0;
-	philo->thinking = 1;
+	philo->thinking = 0;
 	philo->sleeping = 0;
 	philo->nb_meals = 0;
 	philo->thread = 0;

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:52:19 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 11:59:31 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:08:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	wait_process(t_global *global, int nb_process)
 {
 	int	i;
 
-	i = 0;
+	pthread_join(global->current->thread, NULL);
+	i = 1;
 	while (i < nb_process)
 	{
 		global->current = global->current->next;

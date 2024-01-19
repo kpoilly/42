@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:04:42 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 12:11:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:14:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,13 @@ void	free_lst(t_global *global)
 
 int	check_args(char **argv)
 {
-	while (*argv)
-		if (ft_atoi(*(argv++)) < 0)
+	int	i;
+
+	i = 0;
+	while (argv[i])
+		if (ft_atoi((argv[i++])) < 0)
 			return (0);
+	if (ft_atoi(argv[0]) <= 0)
+		return (0);
 	return (1);
 }

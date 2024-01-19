@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:27:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 12:07:53 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:27:22 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void				set_lst_loop(t_global *global);
 
 //actions
 void				*philo_routine(void *thing);
-void				ft_eat(t_philosopher *philo, t_global *global);
+int					ft_eat(t_philosopher *philo, t_global *global);
 int					ft_sleep(t_philosopher *philo, t_global *global);
 void				ft_think(t_philosopher *philo, t_global *global);
 void				ft_die(t_philosopher *philo, t_global *global);
