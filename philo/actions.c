@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 13:35:40 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:42:12 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	*philo_routine(void *thing)
 		philo->id);
 	while (philo->alive && global->active)
 	{
-		if (get_time_ms(philo->last_eat) > global->time_die)
-			return (ft_die(philo, global), NULL);
 		if (philo->prev && !philo->prev->eating
 			&& philo->next && !philo->next->eating)
 		{
@@ -34,7 +32,8 @@ void	*philo_routine(void *thing)
 			if (!ft_eat(philo, global) || !ft_sleep(philo, global))
 				return (NULL);
 		}
-		check_nbeat(global, philo);
+		if (get_time_ms(philo->last_eat) > global->time_die)
+			return (ft_die(philo, global), NULL);
 		ft_think(philo, global);
 	}
 	return (NULL);
@@ -42,14 +41,14 @@ void	*philo_routine(void *thing)
 
 int	ft_eat(t_philosopher *philo, t_global *global)
 {	
-	printf("%ldms : Philo #%d has taken a fork\n",
-		get_time_ms(global->start), philo->id);
-	pthread_mutex_lock(&global->mutex);
-	philo->eating = 1;
-	pthread_mutex_unlock(&global->mutex);
-	gettimeofday(&philo->last_eat, NULL);
 	if (global->active)
 	{
+		printf("%ldms : Philo #%d has taken a fork\n",
+			get_time_ms(global->start), philo->id);
+		pthread_mutex_lock(&global->mutex);
+		philo->eating = 1;
+		pthread_mutex_unlock(&global->mutex);
+		gettimeofday(&philo->last_eat, NULL);
 		printf("%ldms : Philo #%d is eating\n", get_time_ms(global->start),
 			philo->id);
 		if (global->time_eat > global->time_die)
@@ -62,7 +61,7 @@ int	ft_eat(t_philosopher *philo, t_global *global)
 	pthread_mutex_unlock(&global->mutex);
 	if (philo->nb_meals < global->nb_eat)
 		philo->nb_meals++;
-	return (1);
+	return (check_nbeat(global, philo), 1);
 }
 
 int	ft_sleep(t_philosopher *philo, t_global *global)

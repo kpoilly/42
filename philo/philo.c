@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:28:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/19 13:34:58 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:44:59 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_global		global;
 
 	if (argc < 5 || argc > 6 || !check_args(argv + 1))
-		return (printf("Error.\nInvalid arguments.\n"), 1);
+		return (write(2, "Error.\nInvalid arguments.\n", 26), 1);
 	get_args(argc, argv, &global);
 	set_philo_list(argv, &global);
 	gettimeofday(&global.start, NULL);
