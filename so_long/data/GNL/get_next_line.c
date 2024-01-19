@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:21:12 by lleciak           #+#    #+#             */
-/*   Updated: 2023/12/17 15:12:40 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/19 16:47:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,14 @@ char	*get_next_line(int fd)
 	stock = read_line(stock, fd, &r);
 	if (!stock || !ft_free(&stock))
 		return (NULL);
-	len = ft_len(stock);
+	len = ft_len(stock) + 1;
 	line = malloc((len + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
 	ft_strlcpy(line, stock, len + 1);
 	if (!*line)
 		return (free(stock), free(line), NULL);
-	ft_strlcpy(stock, stock + len + 1, ft_strlen(stock) - len + 1);
+	ft_strlcpy(stock, stock + len, ft_strlen(stock) - len + 1);
 	if (!r)
 	{
 		free(stock);
