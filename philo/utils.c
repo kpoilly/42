@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:52:19 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/18 17:36:05 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 19:11:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ long	get_time_ms(struct timeval start)
 
 void	check_nbeat(t_global *global, t_philosopher *philo)
 {
-	if (philo->nb_meals == global->nb_eat)
+	if (global->nb_eat && philo->nb_meals == global->nb_eat)
 	{
 		global->nb_full++;
 		philo->nb_meals++;
-		printf("%ldms : Every Philosophers ate enough.\n",
-			get_time_ms(global->start));
 	}
 }
 

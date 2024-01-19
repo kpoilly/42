@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/18 17:56:05 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/19 01:53:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ void	*philo_routine(void *thing)
 		check_nbeat(global, philo);
 		if (global->nb_eat && global->nb_full == global->nb_philo)
 		{
+			if (global->active)
+				printf("%ldms : Every Philosophers ate enough.\n",
+					get_time_ms(global->start));
+			pthread_mutex_lock(&global->mutex);
 			global->active = 0;
-			printf("%ldms : Every Philosophers ate enough.\n",
-				get_time_ms(global->start));
+			pthread_mutex_unlock(&global->mutex);
 			return (NULL);
 		}
 	}
@@ -57,12 +60,15 @@ void	ft_eat(t_philosopher *philo, t_global *global)
 	//mutex lock (philo->eating)
 	printf("%ldms : Philo #%d has taken a fork.\n",
 		get_time_ms(global->start), philo->id);
+	pthread_mutex_lock(&global->mutex);
 	philo->eating = 1;
+	pthread_mutex_unlock(&global->mutex);
 	printf("%ldms : Philo #%d is eating.\n", get_time_ms(global->start),
 		philo->id);
 	usleep(global->time_eat * 1000);
+	pthread_mutex_lock(&global->mutex);
 	philo->eating = 0;
-	//mutex unlock (philo->eating)
+	pthread_mutex_unlock(&global->mutex);
 	if (philo->nb_meals < global->nb_eat)
 		philo->nb_meals++;
 	gettimeofday(&philo->last_eat, NULL);

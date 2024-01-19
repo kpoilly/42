@@ -6,11 +6,17 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:36:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/18 17:23:56 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 19:05:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/philo.h"
+
+void	free_all(t_global *global)
+{
+	//free la liste de philos
+	pthread_mutex_destroy(&global->mutex);
+}
 
 void	set_philo_list(char **argv, t_global *global)
 {
@@ -48,4 +54,5 @@ void	get_args(int argc, char **argv, t_global *global)
 	global->time_sleep = ft_atoi(argv[4]);
 	global->nb_full = 0;
 	global->active = 1;
+	pthread_mutex_init(&global->mutex, NULL);
 }

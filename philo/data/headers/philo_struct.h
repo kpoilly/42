@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:31:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/18 17:23:03 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 19:03:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_philosopher
 typedef struct s_global
 {
 	struct timeval		start;
+	pthread_mutex_t		mutex;
 	int					active;
 	int					nb_philo;
 	int					nb_eat; //nb de fois que tous doivent manger pour gagner

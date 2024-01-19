@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:27:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/18 15:36:30 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 19:05:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void				get_args(int argc, char **argv, t_global *global);
 void				data_setup(t_philosopher *philo);
 void				check_nbeat(t_global *global, t_philosopher *philo);
 void				end_simu(t_global *global);
+void				free_all(t_global *global);
 
 //utils
 int					ft_atoi(const char *nptr);
