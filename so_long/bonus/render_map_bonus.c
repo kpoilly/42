@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/15 14:27:25 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:01:49 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,15 @@
 //Affiche le nombre de mouvements dans la window (BONUS)
 void	putnbr_mouvements(t_global *global)
 {
-	char	*str;
-
-	str = ft_itoa(global->moves);
-	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 125,
-		global->mlx.height - 22, (int)0x00CCFFFF, "Moves : ");
-	mlx_string_put(global->mlx.ptr, global->mlx.win, global->mlx.width - 70,
-		global->mlx.height - 22, (int)0x00CCFFFF, str);
-	free(str);
+	putnbr_window(global, global->moves,
+		global->mlx.width - 70, global->mlx.height - 30);
 }
 
 //Affiche le nombre de collectibles restants dans la window
 static void	putnbr_collectibles(t_global *global)
 {
-	char	*str;
-
-	str = ft_itoa(global->nbcollec);
-	mlx_string_put(global->mlx.ptr, global->mlx.win,
-		global->mlx.width - (global->mlx.width / 2) - 50,
-		global->mlx.height - 22, (int)0x00CCFFFF, "Remaining frogs : ");
-	mlx_string_put(global->mlx.ptr, global->mlx.win,
-		global->mlx.width - (global->mlx.width / 2) + 75,
-		global->mlx.height - 22, (int)0x00CCFFFF, str);
-	free(str);
+	putnbr_window(global, global->nbcollec,
+		(global->mlx.width / 2) + 75, global->mlx.height - 30);
 }
 
 //check quel mur il doit afficher
@@ -102,9 +88,9 @@ void	render_map(t_global *global, t_img state)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
-		global->bg.img, 0, 0);
 	putnbr_mouvements(global);
 	putnbr_collectibles(global);
+	mlx_put_image_to_window(global->mlx.ptr, global->mlx.win,
+		global->bg.img, 0, 0);
 	putstr_endgame(global);
 }

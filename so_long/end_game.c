@@ -22,7 +22,7 @@ int	open_exit(t_global *global)
 	w = 50;
 	mlx_destroy_image(global->mlx.ptr, global->exit.img);
 	global->exit.img = mlx_xpm_file_to_image(global->mlx.ptr,
-			"./data/textures/exit2.xpm", &w, &h);
+			"./data/textures/exit00.xpm", &w, &h);
 	if (!global->exit.img)
 		return (ft_printf("Error.\nMissing Texture files.\n"),
 			destroy(global), 0);

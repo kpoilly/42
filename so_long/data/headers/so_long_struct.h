@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 11:14:56 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 17:45:02 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:07:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_global {
 	t_img	ground;
 	t_img	collec;
 	t_img	exit;
+	t_img	numbers[10];
 	clock_t	last;
 	clock_t	anim;
 }				t_global;

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/12 11:55:19 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:29:36 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	set_paths(t_set *set_of_files)
 	set_of_files->wallout_left = "./data/textures/wallout_leftdemisol.xpm";
 	set_of_files->wallout_right = "./data/textures/wallout_rightdemisol.xpm";
 	set_of_files->ground = "./data/textures/ground.xpm";
-	set_of_files->exit = "./data/textures/exit.xpm";
+	set_of_files->exit = "./data/textures/exit09.xpm";
 	set_of_files->collectible = "./data/textures/frog.xpm";
 	set_of_files->player_front = "./data/textures/perso_face.xpm";
 	set_of_files->player_back = "./data/textures/perso_dos.xpm";
@@ -100,7 +100,8 @@ int	set_global(t_global *global, int nb_col, int nb_line)
 			+ load_things(global) + load_things2(global)
 			+ load_character1(global) + load_character2(global)
 			+ load_walls_updown(global) + load_walls_leftright(global)
-			+ load_anim(global) + load_enemy(global)) != 10)
+			+ load_anim(global) + load_enemy(global)
+			+ numbers_setup(global)) != 11)
 		return (0);
 	set_next(global);
 	return (1);
