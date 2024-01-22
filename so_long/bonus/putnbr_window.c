@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:58:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/22 15:45:11 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:24:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 // void	free_numbers(t_global global, int nb)
 // {
-	
 // }
 
 int	load_number(t_global *global, int nb)
@@ -24,8 +23,8 @@ int	load_number(t_global *global, int nb)
 	int		h;
 	int		w;
 
-	h = 20;
-	w = 15;
+	h = 21;
+	w = 20;
 	path = ft_strjoin("./data/textures/numbers/", ft_itoa(nb));
 	tmp = ft_strdup(path);
 	free(path);
@@ -64,7 +63,7 @@ void	putnbr_window(t_global *global, int n, int x, int y)
 
 	if (nb > 9)
 	{
-		putnbr_window(global, n / 10, x - 25, y);
+		putnbr_window(global, n / 10, x - 21, y);
 		putnbr_window(global, n % 10, x, y);
 	}
 	else

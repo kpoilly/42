@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/22 16:01:49 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:21:59 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	putnbr_mouvements(t_global *global)
 static void	putnbr_collectibles(t_global *global)
 {
 	putnbr_window(global, global->nbcollec,
-		(global->mlx.width / 2) + 75, global->mlx.height - 30);
+		(global->mlx.width / 2) - 10, global->mlx.height - 30);
 }
 
 //check quel mur il doit afficher
