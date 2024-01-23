@@ -6,14 +6,14 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/23 10:48:09 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/23 10:48:50 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= philo
-HEAD			= ./data/headers/philo.h ./data/headers/philo_struct.h
+NAME 			= philo_bonus
+HEAD			= ./headers/philo_bonus.h ./headers/philo_struct_bonus.h
 
-BUILD_DIR		= ./data/objects
+BUILD_DIR		= ./objects_bonus
 CONST_FILES 	= philo.c utils.c philo_lst_setup.c actions.c check_error.c \
 				  philo_setup.c
 CONST_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(CONST_FILES)))
