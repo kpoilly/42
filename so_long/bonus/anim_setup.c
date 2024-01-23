@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:42:45 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/15 13:18:55 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 08:48:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	set_paths_anim(t_global *global)
 }
 
 //affiche une image sur toute la window avec un fond noir (anim)
-void	putimg(t_global *global, t_img img)
+void	putimg_blackscreen(t_global *global, t_img img)
 {
 	load_blackscreen(global);
 	put_img_to_img(global->bg, img, (global->mlx.width / 2) - img.w / 2,

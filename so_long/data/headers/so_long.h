@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/22 15:29:06 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 08:49:05 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void			putnbr_window(t_global *global, int n, int x, int y);
 void			load_blackscreen(t_global *global);
 int				end_anim(t_global *global);
 void			exit_anim(t_global *global);
-void			putimg(t_global *global, t_img img);
+void			putimg_blackscreen(t_global *global, t_img img);
 
 //enemy spawn and setup
 void			spawn_enemy(t_global *global, int nb_line, int nb_col);

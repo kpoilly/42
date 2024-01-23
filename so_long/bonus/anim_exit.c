@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 09:18:03 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/22 15:12:10 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 10:26:59 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	exit_anim(t_global *global)
 		if (timer >= wait && i >= 0)
 		{
 			global->anim = clock();
-			load_exit_anim(ft_itoa(i), global);
-			putimg(global, global->exit);
+			if (!load_exit_anim(ft_itoa(i), global))
+				return ((void)destroy(global));
+			putimg_blackscreen(global, global->exit);
 			i--;
 		}
 		if (i == -1 && timer >= wait * 10)

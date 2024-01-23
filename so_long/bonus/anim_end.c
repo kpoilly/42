@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:38:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/15 13:04:52 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 10:26:43 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ int	end_anim(t_global *global)
 		if (timer >= 200 && !(next % 2))
 		{
 			global->anim = clock();
-			putimg(global, global->wallin.front2);
+			putimg_blackscreen(global, global->wallin.front2);
 			next++;
 		}
 		else if (timer >= 200 && (next % 2))
 		{
 			global->anim = clock();
-			putimg(global, global->wallin.back2);
+			putimg_blackscreen(global, global->wallin.back2);
 			next++;
 		}
 	}
