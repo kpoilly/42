@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   putnbr_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:58:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 15:47:35 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:42:19 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../data/headers/so_long.h"
-
-void	free_numbers(t_global *global)
-{
-	int	i;
-
-	i = 0;
-	while (global->numbers[i].img && i < 10)
-	{
-		mlx_destroy_image(global->mlx.ptr, global->numbers[i].img);
-		i++;
-	}
-}
 
 int	load_number(t_global *global, int nb)
 {

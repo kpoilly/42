@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anim_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 09:18:03 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 10:26:59 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:44:39 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ int	load_exit_anim(char *nb, t_global *global)
 
 void	exit_anim(t_global *global)
 {
-	int	i;
-	int	timer;
-	int	wait;
+	int		i;
+	int		timer;
+	int		wait;
+	char	*stri;
 
 	i = 9;
 	wait = 0;
@@ -48,8 +49,10 @@ void	exit_anim(t_global *global)
 		if (timer >= wait && i >= 0)
 		{
 			global->anim = clock();
-			if (!load_exit_anim(ft_itoa(i), global))
+			stri = ft_itoa(i);
+			if (!load_exit_anim(stri, global))
 				return ((void)destroy(global));
+			free(stri);
 			putimg_blackscreen(global, global->exit);
 			i--;
 		}

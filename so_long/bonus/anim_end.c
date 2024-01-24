@@ -6,13 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:38:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 11:32:04 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:44:52 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../data/headers/so_long.h"
 
-void	load_end_img(t_global *global)
+int	load_end_img(t_global *global)
 {
 	int	w;
 	int	h;
@@ -25,7 +25,7 @@ void	load_end_img(t_global *global)
 			"./data/textures/end_anim2.xpm", &w, &h);
 	if (!global->wallin.front2.img || !global->wallin.back2.img)
 		return (ft_printf("Error.\nMissing texture files.\n"),
-			destroy(global), (void)0);
+			destroy(global), 0);
 	global->wallin.front2.addr = mlx_get_data_addr(global->wallin.front2.img,
 			&global->wallin.front2.bits_per_pixel,
 			&global->wallin.front2.line_len, &global->wallin.front2.endian);
@@ -36,6 +36,7 @@ void	load_end_img(t_global *global)
 	global->wallin.front2.w = w;
 	global->wallin.back2.h = h;
 	global->wallin.back2.w = w;
+	return (1);
 }
 
 void	load_blackscreen(t_global *global)
@@ -58,7 +59,8 @@ int	end_anim(t_global *global)
 	int		timer;
 
 	next = 0;
-	load_end_img(global);
+	if (!load_end_img(global))
+		return (0);
 	while (next < 15)
 	{
 		load_blackscreen(global);

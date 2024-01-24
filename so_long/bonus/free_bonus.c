@@ -6,13 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:25:57 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/22 14:58:47 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 12:45:57 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../data/headers/so_long.h"
 
-void	free_enemy(t_global *global)
+static void	free_enemy(t_global *global)
 {
 	if (global->enemy.front.img)
 		mlx_destroy_image(global->mlx.ptr, global->enemy.front.img);
@@ -32,7 +32,7 @@ void	free_enemy(t_global *global)
 		mlx_destroy_image(global->mlx.ptr, global->enemy.left2.img);
 }
 
-void	free_player_anim(t_global *global)
+static void	free_player_anim(t_global *global)
 {
 	if (global->player.front2.img)
 		mlx_destroy_image(global->mlx.ptr, global->player.front2.img);
@@ -52,8 +52,21 @@ void	free_anim(t_global *global)
 		mlx_destroy_image(global->mlx.ptr, global->wallin.back2.img);
 }
 
+void	free_numbers(t_global *global)
+{
+	int	i;
+
+	i = 0;
+	while (global->numbers[i].img && i < 10)
+	{
+		mlx_destroy_image(global->mlx.ptr, global->numbers[i].img);
+		i++;
+	}
+}
+
 void	free_bonus(t_global *global)
 {
 	free_enemy(global);
 	free_player_anim(global);
+	free_numbers(global);
 }
