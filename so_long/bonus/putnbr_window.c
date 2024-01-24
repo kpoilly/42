@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:58:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 12:42:19 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 13:14:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ int	numbers_setup(t_global *global)
 	check = 0;
 	while (i < 10)
 		check += load_number(global, i++);
-	return (check == 10);
+	if (check != 10)
+		return (0);
+	return (1);
 }
 
 void	putnbr_window(t_global *global, int n, int x, int y)
