@@ -3,18 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   putnbr_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:58:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/22 16:24:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:47:35 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../data/headers/so_long.h"
 
-// void	free_numbers(t_global global, int nb)
-// {
-// }
+void	free_numbers(t_global *global)
+{
+	int	i;
+
+	i = 0;
+	while (global->numbers[i].img && i < 10)
+	{
+		mlx_destroy_image(global->mlx.ptr, global->numbers[i].img);
+		i++;
+	}
+}
 
 int	load_number(t_global *global, int nb)
 {
@@ -22,10 +30,13 @@ int	load_number(t_global *global, int nb)
 	char	*tmp;
 	int		h;
 	int		w;
+	char	*nbr;
 
 	h = 21;
 	w = 20;
-	path = ft_strjoin("./data/textures/numbers/", ft_itoa(nb));
+	nbr = ft_itoa(nb);
+	path = ft_strjoin("./data/textures/numbers/", nbr);
+	free(nbr);
 	tmp = ft_strdup(path);
 	free(path);
 	path = ft_strjoin(tmp, ".xpm");
@@ -39,8 +50,7 @@ int	load_number(t_global *global, int nb)
 	global->numbers[nb].addr = mlx_get_data_addr(global->numbers[nb].img,
 			&global->numbers[nb].bits_per_pixel, &global->numbers[nb].line_len,
 			&global->numbers[nb].endian);
-	free(path);
-	return (1);
+	return (free(path), 1);
 }
 
 int	numbers_setup(t_global *global)
@@ -60,7 +70,6 @@ void	putnbr_window(t_global *global, int n, int x, int y)
 	long	nb;
 
 	nb = n;
-
 	if (nb > 9)
 	{
 		putnbr_window(global, n / 10, x - 21, y);

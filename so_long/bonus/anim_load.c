@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anim_load.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:27:31 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/15 09:33:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:21:48 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	load_rightleft(t_global *global, t_ent *entity)
 
 int	load_anim(t_global *global)
 {
+	global->last = clock();
+	global->anim = clock();
 	set_paths_anim(global);
 	if (load_faceback(global, &global->player)
 		+ load_rightleft(global, &global->player) != 2)

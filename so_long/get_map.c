@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:08:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/22 17:47:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:15:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./data/headers/so_long.h"
 
+//remplace le \n par un \0
 static void	replace_nl(char	*str)
 {
 	int	i;

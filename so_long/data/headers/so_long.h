@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 08:49:05 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:42:48 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int				ft_random(long seed);
 //bonus management
 void			free_bonus(t_global *global);
 void			free_anim(t_global *global);
+void			free_numbers(t_global *global);
 int				load_anim(t_global *global);
 void			set_paths_anim(t_global *global);
 void			set_next(t_global *global);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_up_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:25:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/22 15:29:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:18:54 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,30 +78,38 @@ static int	set_paths(t_set *set_of_files)
 	return (1);
 }
 
+void	fire_exit(t_global *global)
+{
+	free_the_map(global->map);
+	mlx_destroy_display(global->mlx.ptr);
+	free(global->mlx.ptr);
+}
+
 //setup de la struct qui contient toutes les data
 int	set_global(t_global *global, int nb_col, int nb_line)
 {
-	global->last = clock();
-	global->anim = clock();
 	global->mlx.ptr = mlx_init();
 	if (!global->mlx.ptr)
 		return (ft_printf("Error.\n(mlx init)\n"),
 			free_the_map(global->map), exit(0), 0);
 	global->mlx.width = nb_col * 50;
 	global->mlx.height = nb_line * 50;
+	if (global->mlx.height > 1080 || global->mlx.width > 1920)
+		return (ft_printf("Error.\nMap is too big.\n"),
+			fire_exit(global), exit(0), 0);
 	global->mlx.win = mlx_new_window(global->mlx.ptr, global->mlx.width,
 			global->mlx.height, "The Grenouille Collector");
 	if (!global->mlx.win)
-		return (ft_printf("Error.\n(mlx win setup)\n"), 0);
+		return (ft_printf("Error.\n(mlx win setup)\n"),
+			fire_exit(global), exit(0), 0);
 	global->moves = 0;
 	global->player.chara = 'P';
 	set_paths(&(global->set_of_files));
-	if ((load_wallin(global) + load_wallin2(global)
-			+ load_things(global) + load_things2(global)
-			+ load_character1(global) + load_character2(global)
-			+ load_walls_updown(global) + load_walls_leftright(global)
-			+ load_anim(global) + load_enemy(global)
-			+ numbers_setup(global)) != 11)
+	if ((load_wallin(global) + load_wallin2(global) + load_things(global)
+			+ load_things2(global) + load_character1(global)
+			+ load_character2(global) + load_walls_updown(global)
+			+ load_walls_leftright(global) + load_anim(global)
+			+ load_enemy(global) + numbers_setup(global)) != 11)
 		return (0);
 	set_next(global);
 	return (1);

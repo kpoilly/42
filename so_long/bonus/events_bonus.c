@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:31:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/12 12:03:34 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:37:29 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	no_event(t_global *global)
 int	destroy(t_global *global)
 {
 	free_images(global);
+	free_numbers(global);
 	free_bonus(global);
 	free_the_map(global->map);
 	mlx_destroy_window(global->mlx.ptr, global->mlx.win);
