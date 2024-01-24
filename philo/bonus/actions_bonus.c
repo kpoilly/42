@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions.c                                          :+:      :+:    :+:   */
+/*   actions_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 18:43:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:03:29 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ void	*lt_eat(void *data)
 	philo = global->current;
 	while (philo->alive && global->active)
 	{
-		if (!philo->alive && !global->active)
-			return (NULL);
-		philo->thinking = 0;
 		sem_wait(global->forks);
-		if (!ft_eat(philo, global) || !ft_sleep(philo, global))
+		if ((!philo->alive && !global->active)
+			|| !ft_eat(philo, global) || !ft_sleep(philo, global))
 			return (NULL);
 	}
 	return (NULL);
@@ -35,6 +33,7 @@ int	ft_eat(t_philosopher *philo, t_global *global)
 {	
 	if (global->active)
 	{
+		philo->thinking = 0;
 		printf("%ldms : Philo #%d has taken a fork\n",
 			get_time_ms(global->start), philo->id);
 		philo->eating = 1;
@@ -59,6 +58,7 @@ int	ft_sleep(t_philosopher *philo, t_global *global)
 {	
 	if (global->active)
 	{	
+		philo->thinking = 0;
 		philo->sleeping = 1;
 		printf("%ldms : Philo #%d is sleeping\n", get_time_ms(global->start),
 			philo->id);

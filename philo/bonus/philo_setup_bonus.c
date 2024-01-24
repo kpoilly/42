@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_setup.c                                      :+:      :+:    :+:   */
+/*   philo_setup_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:36:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 18:03:51 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:01:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_philosopher	*get_philo(t_global *global)
 
 	pthread_mutex_lock(&global->mutex);
 	philo = global->current;
-	pthread_create(&philo->process, NULL, lt_eat, global);
 	pthread_mutex_unlock(&global->mutex);
+	pthread_create(&philo->process, NULL, lt_eat, global);
 	usleep(80);
 	global->can_go = 1;
 	printf("%ldms : Philo #%d woke up\n", get_time_ms(global->start),
