@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:18:07 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/22 16:21:59 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 15:25:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	putnbr_mouvements(t_global *global)
 {
 	putnbr_window(global, global->moves,
 		global->mlx.width - 70, global->mlx.height - 30);
+	put_img_to_img(global->bg, global->wallin.back2,
+		global->mlx.width - 45, global->mlx.height - 33);
 }
 
 //Affiche le nombre de collectibles restants dans la window
@@ -24,6 +26,8 @@ static void	putnbr_collectibles(t_global *global)
 {
 	putnbr_window(global, global->nbcollec,
 		(global->mlx.width / 2) - 10, global->mlx.height - 30);
+	put_img_to_img(global->bg, global->wallin.front2,
+		(global->mlx.width / 2) + 15, global->mlx.height - 27);
 }
 
 //check quel mur il doit afficher

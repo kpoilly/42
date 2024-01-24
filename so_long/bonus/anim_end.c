@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:38:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 12:44:52 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 15:21:52 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	load_end_img(t_global *global)
 
 	w = 598;
 	h = 450;
+	mlx_destroy_image(global->mlx.ptr, global->wallin.front2.img);
+	mlx_destroy_image(global->mlx.ptr, global->wallin.back2.img);
 	global->wallin.front2.img = mlx_xpm_file_to_image(global->mlx.ptr,
 			"./data/textures/end_anim1.xpm", &w, &h);
 	global->wallin.back2.img = mlx_xpm_file_to_image(global->mlx.ptr,

@@ -37,9 +37,9 @@ void	putstr_endgame(t_global *global)
 {
 	if (!global->nbcollec)
 		mlx_string_put(global->mlx.ptr, global->mlx.win,
-			global->mlx.width - (global->mlx.width / 2) - 100,
-			global->mlx.height - (global->mlx.height / 2), (int)0x00FF00FF,
-			"GOBLINOU IS COMING FOR YOU, HURRY UP !");
+			global->mlx.width - (global->mlx.width / 2) - 5,
+			global->mlx.height - (global->mlx.height / 2), (int)0x00FF0000,
+			"RUN !");
 }
 
 //Check si tous les collectibles ont été ramassés
