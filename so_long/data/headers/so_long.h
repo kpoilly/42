@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:57:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 15:42:48 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:31:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void			set_next(t_global *global);
 //print numbers on screen;
 int				numbers_setup(t_global *global);
 void			putnbr_window(t_global *global, int n, int x, int y);
-
 
 //animations
 void			load_blackscreen(t_global *global);

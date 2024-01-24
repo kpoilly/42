@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:42:45 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 08:48:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:31:49 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	set_paths_anim(t_global *global)
 	global->player.paths.back2 = "./data/textures/perso_dos2.xpm";
 	global->player.paths.right2 = "./data/textures/perso_droit2.xpm";
 	global->player.paths.left2 = "./data/textures/perso_gauche2.xpm";
-	//pareil pour enemy;
 }
 
 //affiche une image sur toute la window avec un fond noir (anim)
