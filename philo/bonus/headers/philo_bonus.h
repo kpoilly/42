@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:27:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 10:40:18 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 17:28:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <pthread.h>
+# include <fcntl.h>
 # include <semaphore.h>
 # include <sys/time.h>
+# include <signal.h>
 # include "./philo_struct_bonus.h"
 
 //setup
@@ -51,5 +53,6 @@ int					ft_eat(t_philosopher *philo, t_global *global);
 int					ft_sleep(t_philosopher *philo, t_global *global);
 void				ft_think(t_philosopher *philo, t_global *global);
 void				ft_die(t_philosopher *philo, t_global *global);
+void				*lt_eat(void *data);
 
 #endif

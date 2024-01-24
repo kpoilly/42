@@ -6,11 +6,30 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 11:23:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 18:00:00 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./headers/philo_bonus.h"
+
+void	*lt_eat(void *data)
+{
+	t_global		*global;
+	t_philosopher	*philo;
+
+	global = (t_global *)data;
+	philo = global->current;
+	while (philo->alive && global->active)
+	{
+		if (!philo->alive && !global->active)
+			return (NULL);
+		philo->thinking = 0;
+		sem_wait(global->forks);
+		if (!ft_eat(philo, global) || !ft_sleep(philo, global))
+			return (NULL);
+	}
+	return (NULL);
+}
 
 void	*philo_routine(void *thing)
 {
@@ -23,12 +42,12 @@ void	*philo_routine(void *thing)
 	{
 		if (get_time_ms(philo->last_eat) > global->time_die)
 			return (ft_die(philo, global), NULL);
-		if (global->nb_philo / 2 > 0)
+		if (global->nb_philo / 2 > 0 && philo->lteat)
 		{
-			sem_wait(&global->forks);
-			philo->thinking = 0;
-			if (!ft_eat(philo, global) || !ft_sleep(philo, global))
-				return (NULL);
+			pthread_mutex_lock(&global->mutex);
+			philo->lteat = 0;
+			pthread_mutex_unlock(&global->mutex);
+			lt_eat(global);
 		}
 		ft_think(philo, global);
 	}
@@ -54,7 +73,7 @@ int	ft_eat(t_philosopher *philo, t_global *global)
 		if (philo->nb_meals < global->nb_eat)
 			philo->nb_meals++;
 	}
-	sem_post(&global->forks);
+	sem_post(global->forks);
 	philo->eating = 0;
 	return (check_nbeat(global, philo), 1);
 }
@@ -88,6 +107,7 @@ void	ft_think(t_philosopher *philo, t_global *global)
 void	ft_die(t_philosopher *philo, t_global *global)
 {
 	pthread_mutex_lock(&global->mutex);
+	philo->alive = 0;
 	philo->eating = 0;
 	philo->thinking = 0;
 	philo->sleeping = 0;
@@ -95,5 +115,5 @@ void	ft_die(t_philosopher *philo, t_global *global)
 	pthread_mutex_unlock(&global->mutex);
 	printf("%ldms : Philo #%d died\n", get_time_ms(global->start),
 		philo->id);
-	philo->alive = 0;
+	sem_close(global->forks);
 }

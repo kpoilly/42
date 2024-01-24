@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:36:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 10:50:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 18:03:51 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ t_philosopher	*get_philo(t_global *global)
 
 	pthread_mutex_lock(&global->mutex);
 	philo = global->current;
-	global->can_go = 1;
+	pthread_create(&philo->process, NULL, lt_eat, global);
 	pthread_mutex_unlock(&global->mutex);
+	usleep(80);
+	global->can_go = 1;
 	printf("%ldms : Philo #%d woke up\n", get_time_ms(global->start),
 		philo->id);
 	return (philo);
@@ -47,6 +49,7 @@ void	set_philo_list(char **argv, t_global *global)
 void	data_setup(t_philosopher *philo)
 {
 	philo->alive = 1;
+	philo->lteat = 1;
 	philo->eating = 0;
 	philo->thinking = 0;
 	philo->sleeping = 0;
@@ -68,5 +71,6 @@ void	get_args(int argc, char **argv, t_global *global)
 	global->nb_full = 0;
 	global->active = 1;
 	pthread_mutex_init(&global->mutex, NULL);
-	sem_init(&global->forks, 0, global->nb_philo / 2);
+	global->forks = sem_open("forks", O_CREAT,
+			0666, global->nb_philo / 2);
 }

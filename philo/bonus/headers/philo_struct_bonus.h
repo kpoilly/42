@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 12:31:04 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 10:40:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 17:25:55 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 typedef struct s_philosopher
 {
 	pthread_t				thread;
+	pthread_t				process;
 	int						id;
 	int						alive;
 	int						eating;
 	int						sleeping;
 	int						thinking;
 	int						nb_meals;
+	int						lteat;
 	struct timeval			last_eat;
 	struct s_philosopher	*prev;
 	struct s_philosopher	*next;
@@ -33,7 +35,7 @@ typedef struct s_global
 {
 	struct timeval		start;
 	pthread_mutex_t		mutex;
-	sem_t				forks;
+	sem_t				*forks;
 	int					active;
 	int					nb_philo;
 	int					nb_eat;

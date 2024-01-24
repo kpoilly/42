@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 08:04:42 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 11:13:03 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/23 13:40:19 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	free_all(t_global *global)
 {
 	free_lst(global);
 	pthread_mutex_destroy(&global->mutex);
-	sem_unlink(&global->forks);
+	sem_close(global->forks);
+	sem_unlink("forks");
 }
 
 int	check_args(char **argv)
