@@ -56,8 +56,7 @@ void	check_end_game(t_global *global)
 void	end_the_game(t_global *global)
 {
 	ft_printf("Congrats!\nThanks for playing !\n");
-	if (end_anim(global))
-		free_anim(global);
+	end_anim(global);
 	destroy(global);
 }
 

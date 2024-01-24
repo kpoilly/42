@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 09:25:57 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 13:06:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 15:57:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ void	free_numbers(t_global *global)
 	int	i;
 
 	i = 0;
-	while (global->numbers[i].img && i < 10)
+	while (i < 10)
 	{
-		mlx_destroy_image(global->mlx.ptr, global->numbers[i].img);
+		if (global->numbers[i].img)
+			mlx_destroy_image(global->mlx.ptr, global->numbers[i].img);
 		i++;
 	}
 }
@@ -67,6 +68,6 @@ void	free_numbers(t_global *global)
 void	free_bonus(t_global *global)
 {
 	free_enemy(global);
+	free_anim(global);
 	free_player_anim(global);
-	free_numbers(global);
 }
