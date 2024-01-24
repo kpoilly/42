@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 18:00:00 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 18:43:22 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,6 @@ void	*lt_eat(void *data)
 		sem_wait(global->forks);
 		if (!ft_eat(philo, global) || !ft_sleep(philo, global))
 			return (NULL);
-	}
-	return (NULL);
-}
-
-void	*philo_routine(void *thing)
-{
-	t_global		*global;
-	t_philosopher	*philo;
-
-	global = (t_global *)thing;
-	philo = get_philo(global);
-	while (philo->alive && global->active)
-	{
-		if (get_time_ms(philo->last_eat) > global->time_die)
-			return (ft_die(philo, global), NULL);
-		if (global->nb_philo / 2 > 0 && philo->lteat)
-		{
-			pthread_mutex_lock(&global->mutex);
-			philo->lteat = 0;
-			pthread_mutex_unlock(&global->mutex);
-			lt_eat(global);
-		}
-		ft_think(philo, global);
 	}
 	return (NULL);
 }

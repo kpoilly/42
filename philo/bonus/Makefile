@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/23 10:48:50 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/24 18:47:23 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME 			= philo_bonus
 HEAD			= ./headers/philo_bonus.h ./headers/philo_struct_bonus.h
 
 BUILD_DIR		= ./objects_bonus
-CONST_FILES 	= philo.c utils.c philo_lst_setup.c actions.c check_error.c \
-				  philo_setup.c
+CONST_FILES 	= philo_bonus.c utils_bonus.c philo_lst_setup_bonus.c actions_bonus.c\
+				  check_error_bonus.c philo_setup_bonus.c
 CONST_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(CONST_FILES)))
 
 MAND_FILES 		= 
