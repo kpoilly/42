@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 19:03:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:21:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void	*lt_eat(void *data)
 	while (philo->alive && global->active)
 	{
 		sem_wait(global->forks);
-		if ((!philo->alive && !global->active)
-			|| !ft_eat(philo, global) || !ft_sleep(philo, global))
+		if (!philo->alive && !global->active)
+			return (sem_post(global->forks), NULL);
+		else if (!ft_eat(philo, global) || !ft_sleep(philo, global))
 			return (NULL);
 	}
 	return (NULL);
@@ -33,7 +34,6 @@ int	ft_eat(t_philosopher *philo, t_global *global)
 {	
 	if (global->active)
 	{
-		philo->thinking = 0;
 		printf("%ldms : Philo #%d has taken a fork\n",
 			get_time_ms(global->start), philo->id);
 		philo->eating = 1;
@@ -58,7 +58,6 @@ int	ft_sleep(t_philosopher *philo, t_global *global)
 {	
 	if (global->active)
 	{	
-		philo->thinking = 0;
 		philo->sleeping = 1;
 		printf("%ldms : Philo #%d is sleeping\n", get_time_ms(global->start),
 			philo->id);
@@ -67,6 +66,9 @@ int	ft_sleep(t_philosopher *philo, t_global *global)
 					* 1000), ft_die(philo, global), 0);
 		usleep(global->time_sleep * 1000);
 		philo->sleeping = 0;
+		pthread_mutex_lock(&global->mutex);
+		philo->thinking = 0;
+		pthread_mutex_unlock(&global->mutex);
 	}
 	return (1);
 }
@@ -83,6 +85,7 @@ void	ft_think(t_philosopher *philo, t_global *global)
 
 void	ft_die(t_philosopher *philo, t_global *global)
 {
+	pthread_detach(philo->process);
 	pthread_mutex_lock(&global->mutex);
 	philo->alive = 0;
 	philo->eating = 0;

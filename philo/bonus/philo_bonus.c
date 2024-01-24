@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   philo_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:28:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 18:43:51 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:17:21 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,10 @@ void	*philo_routine(void *thing)
 	{
 		if (get_time_ms(philo->last_eat) > global->time_die)
 			return (ft_die(philo, global), NULL);
-		if (global->nb_philo / 2 > 0 && philo->lteat)
-		{
-			pthread_mutex_lock(&global->mutex);
-			philo->lteat = 0;
-			pthread_mutex_unlock(&global->mutex);
-			lt_eat(global);
-		}
-		ft_think(philo, global);
+		if (!philo->thinking)
+			ft_think(philo, global);
 	}
-	return (NULL);
+	return (pthread_detach(philo->process), NULL);
 }
 
 int	main(int argc, char **argv)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:52:19 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 10:42:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:23:34 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	check_nbeat(t_global *global, t_philosopher *philo)
 	{
 		pthread_mutex_lock(&global->mutex);
 		global->nb_full++;
-		pthread_mutex_unlock(&global->mutex);
 		philo->nb_meals++;
+		pthread_mutex_unlock(&global->mutex);
 	}
 	if (global->nb_eat && global->nb_full == global->nb_philo && global->active)
 	{

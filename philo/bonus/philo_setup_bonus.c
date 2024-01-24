@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:36:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 19:01:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:24:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_philosopher	*get_philo(t_global *global)
 	philo = global->current;
 	pthread_mutex_unlock(&global->mutex);
 	pthread_create(&philo->process, NULL, lt_eat, global);
-	usleep(80);
+	usleep(50);
 	global->can_go = 1;
 	printf("%ldms : Philo #%d woke up\n", get_time_ms(global->start),
 		philo->id);
