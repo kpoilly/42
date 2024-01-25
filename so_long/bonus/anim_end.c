@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:38:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/24 15:21:52 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/25 11:27:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	load_end_img(t_global *global)
 	int	w;
 	int	h;
 
-	w = 598;
-	h = 450;
+	w = 565;
+	h = 425;
 	mlx_destroy_image(global->mlx.ptr, global->wallin.front2.img);
 	mlx_destroy_image(global->mlx.ptr, global->wallin.back2.img);
 	global->wallin.front2.img = mlx_xpm_file_to_image(global->mlx.ptr,
@@ -51,8 +51,8 @@ void	load_blackscreen(t_global *global)
 	global->bg.addr = mlx_get_data_addr(global->bg.img,
 			&global->bg.bits_per_pixel, &global->bg.line_len,
 			&global->bg.endian);
-	global->bg.h = 1080;
-	global->bg.w = 1920;
+	global->bg.h = global->mlx.height;
+	global->bg.w = global->mlx.width;
 }
 
 int	end_anim(t_global *global)
