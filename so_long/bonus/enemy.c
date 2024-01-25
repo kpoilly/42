@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:33:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/11 18:47:05 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/25 13:28:41 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,23 @@ void	spawn_enemy(t_global *global, int nb_line, int nb_col)
 {
 	int		x;
 	int		y;
+	int		tries;
 
 	srand(time(NULL));
 	x = 0;
 	y = 0;
-	while (global->map[y][x] != '0'
+	tries = 0;
+	while ((global->map[y][x] != '0'
 		|| in_range(x, y, global->player.x, global->player.y))
+		&& tries < 500)
 	{
 		y = rand() % nb_line;
 		x = rand() % nb_col;
+		tries++;
 	}
+	if (tries == 500)
+		return (write(2, "Error.\nNot enough space for enemy.\n", 35),
+			(void)destroy(global));
 	enemy_setup(global);
 	global->map[y][x] = global->enemy.chara;
 }
