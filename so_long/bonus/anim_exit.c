@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anim_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 09:18:03 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 15:44:39 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/01/25 11:15:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void	exit_anim(t_global *global)
 		}
 		if (i == -1 && timer >= wait * 10)
 			i--;
-		wait = 300;
+		wait = 225;
 	}
 }
