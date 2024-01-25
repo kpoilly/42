@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:10:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/25 13:07:42 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/25 17:51:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char	**map_dup(char **map)
 	while (map[i])
 		i++;
 	dup = malloc((i + 1) * sizeof(char *));
+	if (!dup)
+		return (NULL);
 	i = 0;
 	while (map[i])
 	{
