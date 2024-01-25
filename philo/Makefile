@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 12:24:39 by kpoilly           #+#    #+#              #
-#    Updated: 2024/01/23 10:48:09 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/01/25 18:23:32 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,9 @@ NAME 			= philo
 HEAD			= ./data/headers/philo.h ./data/headers/philo_struct.h
 
 BUILD_DIR		= ./data/objects
-CONST_FILES 	= philo.c utils.c philo_lst_setup.c actions.c check_error.c \
+MAND_FILES 		= philo.c utils.c philo_lst_setup.c actions.c check_error.c \
 				  philo_setup.c
-CONST_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(CONST_FILES)))
-
-MAND_FILES 		= 
 MAND_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(MAND_FILES)))
-
-BONUS_FILES 	= 
-BONUS_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(BONUS_FILES)))
 
 RM 						= rm -f
 CC 						= cc
@@ -36,14 +30,11 @@ $(BUILD_DIR)/%.o:%.c
 				mkdir -p $(BUILD_DIR)
 				$(CC) $(CFLAGS) -c $< -o $@
 				
-$(NAME):		$(CONST_OBJ) $(MAND_OBJ) $(HEAD)
+$(NAME):		$(MAND_OBJ) $(HEAD)
 				$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(CONST_OBJ) $(MAND_OBJ)
-
-bonus: 			fclean $(CONST_OBJ) $(BONUS_OBJ) $(HEAD)
-					$(CC) $(CFLAGS) -I ./data/headers -o $(NAME) $(CONST_OBJ) $(BONUS_OBJ)
 				
 clean:
-					$(RM) $(CONST_OBJ) $(MAND_OBJ) $(BONUS_OBJ)
+					$(RM) $(MAND_OBJ)
 fclean:			clean
 					$(RM) $(NAME)
 re:				fclean all
