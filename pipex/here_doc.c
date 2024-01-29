@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:53:58 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/14 10:45:35 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/26 13:43:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	get_here_doc(char *limiter)
 	pipe(tube);
 	write(1, "heredoc> ", 9);
 	input = get_next_line(0);
-	while (ft_strncmp(input, limiter, ft_strlen(limiter)))
+	while (ft_strncmp(input, ft_strjoin(limiter, "\n"), ft_strlen(limiter) + 1))
 	{
 		ft_putstr_fd(input, tube[1]);
 		free(input);
