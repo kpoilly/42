@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/01 14:59:04 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/29 16:59:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,33 +67,33 @@ int	checkdup(t_stack *a)
 	return (1);
 }
 
-// void	debug_prntlst(t_stack *a, t_stack *b)
-// {
-// 	t_stack	*i;
-// 	t_stack	*j;
+void	debug_prntlst(t_stack *a, t_stack *b)
+{
+	t_stack	*i;
+	t_stack	*j;
 
-// 	i = a;
-// 	j = b;
-// 	printf("---------------\n");
-// 	while (i || j)
-// 	{
-// 		if (i)
-// 		{
-// 			printf("%d : %d", i->order, i->value);
-// 			// if (i->prev)
-// 			// 	printf(" // prev: %d", (i->prev)->value);
-// 		}
-// 		if (j)
-// 		{
-// 			if (!i)
-// 				printf("     ");
-// 			printf(" | %d : %d", j->order, j->value);
-// 		}
-// 		if (i)
-// 			i = i->next;
-// 		if (j)
-// 			j = j->next;
-// 		printf("\n");
-// 	}
-// 	printf("    _       _\n    a       b\n");
-// }
+	i = a;
+	j = b;
+	printf("---------------\n");
+	while (i || j)
+	{
+		if (i)
+		{
+			printf("%d : %d", i->order, i->value);
+			// if (i->prev)
+			// 	printf(" // prev: %d", (i->prev)->value);
+		}
+		if (j)
+		{
+			if (!i)
+				printf("     ");
+			printf(" | %d : %d", j->order, j->value);
+		}
+		if (i)
+			i = i->next;
+		if (j)
+			j = j->next;
+		printf("\n");
+	}
+	printf("    _       _\n    a       b\n");
+}

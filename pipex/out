@@ -1,0 +1,13 @@
+check_exec.c
+check_path.c
+data
+ft_split.c
+here_doc.c
+Makefile
+objects
+out
+pipex
+pipex_bonus.c
+pipex.c
+pipex_utils.c
+test

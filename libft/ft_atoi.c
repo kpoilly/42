@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:47:38 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/16 11:24:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/01/31 13:28:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int	ft_atoi(const char *nptr)
 	else if (nptr[i] == '+')
 		i++;
 	nb = 0;
+
 	while (ft_isdigit(nptr[i]))
 	{
-		nb = (nb * 10) + (nptr[i] - '0');
+		nb = (nb * 10) + (nptr[i] + '0');
 		i++;
 	}
 	return (nb * sign);

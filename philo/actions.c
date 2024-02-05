@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 07:58:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/01/23 14:15:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/02/05 08:55:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_eat(t_philosopher *philo, t_global *global)
 {	
 	if (global->active)
 	{
-		printf("%ldms : Philo #%d has taken a fork\n",
+		printf("%ldms : Philo #%d has taken 2 forks\n",
 			get_time_ms(global->start), philo->id);
 		pthread_mutex_lock(&global->mutex);
 		philo->eating = 1;
@@ -56,7 +56,7 @@ int	ft_eat(t_philosopher *philo, t_global *global)
 			return (usleep((global->time_die) * 1000),
 				ft_die(philo, global), 0);
 		usleep(global->time_eat * 1000);
-		printf("%ldms : Philo #%d put down a fork\n",
+		printf("%ldms : Philo #%d put down 2 forks\n",
 			get_time_ms(global->start), philo->id);
 		if (philo->nb_meals < global->nb_eat)
 			philo->nb_meals++;
