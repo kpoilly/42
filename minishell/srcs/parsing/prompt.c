@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:54:57 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/28 11:41:25 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/02/29 16:08:51 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,13 @@ static void	errno_pipex(t_shell *sh)
 	free(errno_str);
 }
 
+static int	unex_token(char *input)
+{
+	while (*input && *input == ' ')
+		input++;
+	return (*input == '|');
+}
+
 void	mini_prompt(t_shell *sh)
 {
 	char	*input;
@@ -76,7 +83,9 @@ void	mini_prompt(t_shell *sh)
 		set_minimal_env(sh);
 		ft_set_sig();
 		input = readline(sh->prompt);
-		if (input && ft_strlen(input))
+		if (unex_token(input))
+			ft_putstr_fd("syntax error near unexpected token `|'\n", 2);
+		else if (input && ft_strlen(input))
 		{
 			bi_add_history(sh, input);
 			save_history(sh);
