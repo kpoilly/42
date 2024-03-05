@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 12:01:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/05 12:26:28 by kpoilly          ###   ########.fr       */
+/*   Created: 2024/03/05 12:09:41 by kpoilly           #+#    #+#             */
+/*   Updated: 2024/03/05 12:52:28 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "Weapon.hpp"
 
-int	main(int ac, char **av)
+#ifndef HumanA_HPP
+# define HumanA_HPP
+
+class HumanA
 {
-	std::string str = "HI THIS IS BRAIN";
-	std::string* stringPTR = &str;
-	std::string& stringREF = *stringPTR;
+	private:
+		std::string name;
+		Weapon& weapon_type;
 
-	std::cout<<"address:"<<std::endl;
-	std::cout<<&str<<std::endl;
-	std::cout<<stringPTR<<std::endl;
-	std::cout<<&stringREF<<std::endl;
+	public:
+		HumanA(std::string name, Weapon weapon);
+		~HumanA();
+		void attack();
+};
 
-	std::cout<<std::endl<<"value:"<<std::endl;
-	std::cout<<str<<std::endl;
-	std::cout<<*stringPTR<<std::endl;
-	std::cout<<stringREF<<std::endl;
-}
+#endif
