@@ -6,12 +6,11 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:15:45 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/12 11:42:25 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/12 11:47:53 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include "minishell.h"
 
 //file[2] values:
 // 2 = start, 1 = end, 0 = middle, 3 = start + end

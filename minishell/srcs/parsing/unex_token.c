@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:51:12 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/12 10:35:59 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/12 11:46:37 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	count_char(char *input, int *nb_char)
 		(*nb_char)++;
 		i++;
 	}
-	return (i);
+	return (i);	//rl_redisplay();
 }
 
 int	unex_token(t_shell *sh, char *input)

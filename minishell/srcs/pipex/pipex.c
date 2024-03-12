@@ -6,12 +6,11 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:50:14 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/12 11:42:19 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/12 11:48:08 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include "minishell.h"
 
 static void	ft_sigquit(void)
 {
