@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:50:14 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/08 14:05:55 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:42:19 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include "minishell.h"
 
 static void	ft_sigquit(void)
 {
 	struct sigaction	sa;
+	struct sigaction	sa2;
 
 	ft_bzero(&sa, sizeof(sa));
-	sa.sa_handler = &handle_sig;
+	ft_bzero(&sa, sizeof(sa2));
+	sa.sa_handler = &handle_sig_child;
+	sa2.sa_handler = &handle_sig_child;
 	sa.sa_flags = SA_RESTART;
+	sa2.sa_flags = SA_RESTART;
 	sigaction(SIGQUIT, &sa, NULL);
+	sigaction(SIGINT, &sa2, NULL);
 }
 
 int	ft_end(int bi_ret, int *pid, int *pip, int *file)

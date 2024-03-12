@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:15:50 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/07 15:31:25 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/12 11:32:49 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include "mini_built_ins.h"
 
 //Signals.c
-void	handle_sig(int sig);
+void	handle_sig_parent(int sig);
+void	handle_sig_child(int sig);
 void	ft_set_sig(void);
 int		*ssig(void);
 

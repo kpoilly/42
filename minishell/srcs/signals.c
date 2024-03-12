@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:57:21 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/07 14:30:09 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:42:52 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	*ssig(void)
 	return (&val);
 }
 
-void	handle_sig(int sig)
+void	handle_sig_parent(int sig)
 {
 	if (sig == SIGINT)
 	{
@@ -35,6 +35,21 @@ void	handle_sig(int sig)
 	return ;
 }
 
+void	handle_sig_child(int sig)
+{
+	if (sig == SIGINT)
+	{
+		write(1, "\n", 1);
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		*(ssig()) = 130;
+	}
+	else if (sig == SIGQUIT)
+		ft_putstr_fd("Quit (core dumped)\n", 2);
+	return ;
+}
+
 void	ft_set_sig(void)
 {
 	struct sigaction	sa;
@@ -42,7 +57,7 @@ void	ft_set_sig(void)
 
 	ft_bzero(&sa, sizeof(sa));
 	ft_bzero(&sa2, sizeof(sa2));
-	sa.sa_handler = &handle_sig;
+	sa.sa_handler = &handle_sig_parent;
 	sa2.sa_handler = SIG_IGN;
 	sa.sa_flags = SA_RESTART;
 	sa2.sa_flags = SA_RESTART;
