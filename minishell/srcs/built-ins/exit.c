@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:22:36 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/29 15:15:43 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/12 07:30:11 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	is_num(char	*arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg && arg[i])
+	{
+		if (!ft_isdigit(arg[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 void	ft_stat_quotes_remover(char *str)
 {
@@ -39,14 +53,20 @@ int	bi_exit(t_shell *sh, char **full_cmd)
 {
 	int	exit_code;
 
-	if (full_cmd[1] && full_cmd[2])
-		return (ft_putstr_fd("exit: too many arguments\n", 2), 1);
-	else if (full_cmd[1] && full_cmd[1][0] && ft_isalpha(full_cmd[1][0]))
-		return (ft_putstr_fd("exit: numeric argument required\n", 2), 2);
-	else if (full_cmd[1])
-		exit_code = ft_atoi(full_cmd[1]);
-	else
-		exit_code = 0;
+	exit_code = 0;
+	if (ft_strtablen(full_cmd) > 1)
+	{
+		if (is_num(full_cmd[1]) && ft_strtablen(full_cmd) == 2)
+			exit_code = ft_atoi(full_cmd[1]);
+		else if (is_num(full_cmd[1]) && ft_strtablen(full_cmd) > 2)
+			return (ft_perror(sh, "exit: ", NULL, "too many arguments"), 1);
+		else if (!is_num(full_cmd[1]))
+		{
+			exit_code = 2;
+			ft_perror(sh, "exit: ", full_cmd[1],
+				": numeric argument required");
+		}
+	}
 	if (exit_code < 0)
 		return (156);
 	save_history(sh);

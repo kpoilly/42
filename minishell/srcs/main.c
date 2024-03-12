@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:32:31 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/17 15:03:01 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:18:30 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int	main(int argc, char **argv, char **envp)
 	ft_init_sh(&sh);
 	prg_flags(argc, argv);
 	dup_envp(&sh, envp);
+	if (!get_var(&sh, "PATH"))
+		bi_export(&sh, "PATH", \
+		"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin");
 	set_minimal_env(&sh);
 	shlvl = ft_itoa(ft_atoi(get_var(&sh, "SHLVL")) + 1);
 	if (!shlvl)

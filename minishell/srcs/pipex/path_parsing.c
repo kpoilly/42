@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:09:44 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/29 15:29:54 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:12:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	ft_str_exist_but_empty(char **str)
 	}
 }
 
-char	*absolute_path(char **str, char **envp)
+char	*absolute_path(t_shell *sh, char **str, char **envp)
 {
 	int		i;
 	char	*absolute_path;
@@ -62,13 +62,12 @@ char	*absolute_path(char **str, char **envp)
 	char	**path;
 
 	(ft_str_exist_but_empty(str), i = 0);
-	if (!str[0][0] || (is_built_in(str[0], 0) || \
-	((!ft_strncmp(str[0], "./", 2) || !ft_strncmp(str[0], "/", 1)) \
-	&& !access(str[0], F_OK & X_OK))))
+	if ((str[0] &&!str[0][0]) || (is_built_in(str[0], -1) || \
+	(ft_strchr(str[0], '/') && !access(str[0], F_OK & X_OK))))
 		return (ft_strdup(str[0]));
 	path = get_path(envp);
 	if (!path)
-		return (ft_putstr_fd("path not found", 2), NULL);
+		return (ft_putstr_fd("path not found\n", 2), NULL);
 	cmd = ft_strjoin("/", str[0]);
 	while (cmd && path && path[i])
 	{
@@ -79,6 +78,6 @@ char	*absolute_path(char **str, char **envp)
 			return (ft_free_absolute(path, cmd), absolute_path);
 		free(absolute_path);
 	}
-	return (ft_putstr_fd(str[0], 2), ft_putstr_fd(": command not found\n", 2) \
-	, ft_free_absolute(path, cmd), NULL);
+	return (ft_perror(sh, str[0], NULL, ": command not found"), \
+	ft_free_absolute(path, cmd), NULL);
 }

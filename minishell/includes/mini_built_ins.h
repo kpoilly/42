@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:03:26 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/17 16:14:11 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:13:22 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		bi_exit(t_shell *sh, char **full_cmd);
 int		bi_force_export(t_shell *sh, char *var, char *value);
 int		bi_export(t_shell *sh, char *var, char *value);
 int		bi_pwd(t_shell *sh);
-int		bi_unset(t_shell *sh, char *var);
+int		bi_unset(t_shell *sh, char **vars);
 
 //bonus built-ins
 int		bi_history(t_shell *sh);

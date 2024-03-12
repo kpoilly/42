@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:52:10 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/28 13:33:12 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:48:58 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,20 @@ static void	ft_if_quotes(t_shell *sh, int i, int *j, int *k)
 	c = sh->input[i][*j][*k];
 	while (sh->input[i][*j][*k + n] && sh->input[i][*j][*k + n] != c)
 		n++;
-	if (sh->input[i][*j][*k + n] && sh->input[i][*j][*k + n] == c && \
-	ft_quotes_remover(&sh->input[i][*j][*k], k, n--))
+	if (sh->input[i][*j][*k + n] && sh->input[i][*j][*k + n] == c)
 	{
-		while (*k < n - 1)
+		if (ft_quotes_remover(&sh->input[i][*j][(*k)], k, n))
 		{
-			if (ft_needs_expand(&sh->input[i][*j][*k]))
+			while ((*k) < n - 1)
 			{
-				sh->bi_ret = n;
-				n += ft_replace(sh, i, j, k);
-				break ;
+				if (ft_needs_expand(&sh->input[i][*j][*k]))
+				{
+					sh->bi_ret = n - 1;
+					n += ft_replace(sh, i, j, k);
+					(*k)--;
+				}
+				(*k)++;
 			}
-			(*k)++;
 		}
 	}
 }
@@ -48,8 +50,9 @@ void	ft_quotes_and_expand(t_shell *sh, int i, int j)
 		sh->input[i][j][k] == '\''))
 			ft_if_quotes(sh, i, &j, &k);
 		else if (ft_needs_expand(&sh->input[i][j][k]))
-			ft_replace(sh, i, &j, &k);
-		k++;
+			(ft_replace(sh, i, &j, &k));
+		else
+			k++;
 	}
 }
 
@@ -68,7 +71,7 @@ int	ft_quotes_remover(char *str, int *k, int n)
 		i++;
 	}
 	if (!ret_code)
-		(*k) += n - 2;
+		(*k) += n - 1;
 	while (str[i] && str[i + 1])
 	{
 		str[i] = str[i + 2];

@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:04:02 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/28 16:28:33 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:59:42 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@
 # include <poll.h>
 
 int		fork_exec(t_shell *sh, int *pip, char **full_cmd, int *file);
-char	*absolute_path(char **cmd_str, char **envp);
+char	*absolute_path(t_shell *sh, char **cmd_str, char **envp);
 int		putpipe_to_fd(int pip, int fd);
 void	heredocs(char *limiter, int *pip);
 void	ft_free(char **str);
 void	print_error(char *msg, int plz_exit);
 void	ft_remove_input_file(t_shell *sh, int i, int j);
 
-void	ft_output_file(t_shell *sh, int *file, int i);
-void	ft_input_file(t_shell *sh, int *file, int *pip, int i);
+void	ft_putpipe_to_fone(int *pip, int *file);
+int		ft_end(int bi_ret, int *pid, int *pip, int *file);
+int		ft_output_file(t_shell *sh, int *file, int i);
+int		ft_input_file(t_shell *sh, int *file, int *pip, int *i);
 
 #endif

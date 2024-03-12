@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:22:52 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/14 16:05:01 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/05 08:55:59 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 //BUILT-IN
 //Removes a var from envp.
-int	bi_unset(t_shell *sh, char *var)
+int	bi_unset(t_shell *sh, char **vars)
 {
 	int	i;
 	int	last;
+	int	k;
 
-	if (!check_word(var, "_", 0) && get_var(sh, var))
+	k = 1;
+	while (vars && vars[k] && !check_word(vars[k], "_", 0)
+		&& get_var(sh, vars[k]))
 	{
-		i = get_env_index(sh, var);
+		i = get_env_index(sh, vars[k]);
 		if (i < 0)
 			return (0);
 		last = ft_strtablen(sh->envp) - 1;
@@ -29,6 +32,7 @@ int	bi_unset(t_shell *sh, char *var)
 			free(sh->envp[i]);
 		sh->envp[i] = sh->envp[last];
 		sh->envp[last] = NULL;
+		k++;
 	}
 	return (0);
 }

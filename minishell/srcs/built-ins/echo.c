@@ -3,59 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:23:00 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/14 16:02:44 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/05 08:56:11 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//TODO strlcpy withoug the first word beginning with '-'
-static char	**ft_parse_flag(t_shell *sh, char **tab)
+static int	ft_parse_flag(t_shell *sh, char **tab)
 {
-	int		i;
-	int		j;
+	int	j;
+	int	i;
+	int	flag;
 
-	return (NULL);
-	i = 0;
-	j = 0;
+	flag = 0;
 	if (!tab)
 		on_crash(sh);
-	while (tab[i] && tab[i][0] && tab[i][0] == '-')
+	while (tab[1] && tab[1][0] && tab[1][0] == '-' && \
+			tab[1][1] && tab[1][1] == 'n')
 	{
-		while (tab[i][j] && tab[i][++j] && tab[i][j] == 'n')
-			;
-		if (tab[i][j] != 0)
-			return (&tab[i]);
-		else
-			(void) tab;
-		i++;
+		j = 1;
+		while (tab[1][j])
+			if (tab[1][j++] != 'n')
+				return (flag);
+		i = 0;
+		free(tab[1]);
+		while (tab[++i] && tab[i + 1])
+			tab[i] = tab[i + 1];
+		tab[i] = NULL;
+		flag = 1;
 	}
-	return (NULL);
+	return (flag);
 }
 
 //BUILT-IN
 //Prints a string, -n flag possible only.
-//TODO Parse flag
 int	bi_echo(t_shell *sh, char **cmd)
 {
 	int	i;
 	int	flag;
 	int	len;
 
-	flag = 0;
-	if (ft_parse_flag(sh, cmd))
-		flag = 1;
 	i = 1;
+	flag = ft_parse_flag(sh, cmd);
 	len = ft_strtablen(cmd);
 	while (i < len)
 	{
-		ft_printf("%s", cmd[i]);
-		i++;
+		ft_printf("%s", cmd[i++]);
+		if (i < len)
+			write(1, " ", 1);
 	}
-	if (flag)
+	if (!flag)
 		write(1, "\n", 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:34:19 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/26 15:58:50 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:17:28 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //forked if exit(0) needed.
 int	is_built_in(char *cmd, int forked)
 {
-	if ((!forked && \
+	if (((!forked || forked == -1) && \
 	(check_word(cmd, "cd", 0) || check_word(cmd, "exit", 0) || \
 	check_word(cmd, "export", 0) || check_word(cmd, "unset", 0))) || \
 	(forked && \
@@ -27,23 +27,50 @@ int	is_built_in(char *cmd, int forked)
 	return (0);
 }
 
+static int	ft_set_export(t_shell *sh, char **full_cmd)
+{
+	int		exit_code;
+	int		i;
+	char	**cmd;
+
+	i = 0;
+	exit_code = 0;
+	while (full_cmd[++i])
+	{
+		if (full_cmd[i][0] == '=')
+			exit_code = bi_export(sh, full_cmd[i], NULL);
+		else
+		{
+			cmd = ft_split(full_cmd[i], '=');
+			if (!cmd)
+				on_crash(sh);
+			if (!exit_code)
+				exit_code = bi_export(sh, cmd[0], cmd[1]);
+			else
+				bi_export(sh, cmd[0], cmd[1]);
+			ft_free_strtab(cmd);
+		}
+	}
+	return (exit_code);
+}
+
 static int	stat_export(t_shell *sh, char **full_cmd)
 {
-	char	**cmd;
-	int		exit_code;
+	int		i;
 
-	if (full_cmd[1])
+	i = 0;
+	if (!full_cmd[1])
 	{
-		if (full_cmd[1][0] == '=')
-			return (bi_export(sh, full_cmd[1], NULL));
-		cmd = ft_split(full_cmd[1], '=');
-		if (!cmd)
-			on_crash(sh);
-		exit_code = bi_export(sh, cmd[0], cmd[1]);
-		ft_free_strtab(cmd);
-		return (exit_code);
+		while (sh->envp && sh->envp[i] && sh->envp[i][0])
+		{
+			if (!(sh->envp[i][0] == '_' || sh->envp[i][0] == '-' || \
+			sh->envp[i][0] == '0' || sh->envp[i][0] == '?'))
+				ft_printf("declare -x %s\n", sh->envp[i]);
+			i++;
+		}
+		return (0);
 	}
-	return (bi_env(sh), 0);
+	return (ft_set_export(sh, full_cmd));
 }
 
 //Call the built-in after having called is_builtin
@@ -63,7 +90,7 @@ int	built_ins(t_shell *sh, char **full_cmd)
 	else if (check_word(full_cmd[0], "export", 1))
 		return (stat_export(sh, full_cmd));
 	else if (full_cmd[1] && check_word(full_cmd[0], "unset", 1))
-		return (bi_unset(sh, full_cmd[1]));
+		return (bi_unset(sh, full_cmd));
 	else if (check_word(full_cmd[0], "history", 1))
 		return (bi_history(sh));
 	else if (check_word(full_cmd[0], "help", 1))

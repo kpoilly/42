@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:22:47 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/28 12:03:17 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:04:31 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_edit_env(t_shell *sh, char *var, char *value)
 	{
 		free(sh->envp[i]);
 		sh->envp[i] = NULL;
-		sh->envp[i] = malloc(new_len * sizeof (char));
+		sh->envp[i] = ft_calloc(new_len, sizeof (char));
 		if (!sh->envp[i])
 			on_crash(sh);
 	}
@@ -47,7 +47,7 @@ static void	ft_create_env(t_shell *sh, char *var, char *value)
 	i = 0;
 	envp = sh->envp;
 	lenvp = ft_strtablen(envp);
-	sh->envp = malloc((lenvp + 2) * sizeof (char *));
+	sh->envp = ft_calloc((lenvp + 2), sizeof (char *));
 	if (!sh->envp)
 		on_crash(sh);
 	while (i < lenvp)
@@ -61,25 +61,26 @@ static void	ft_create_env(t_shell *sh, char *var, char *value)
 		(ft_free_strtab(envp), on_crash(sh));
 	(ft_free_strtab(envp), sh->envp[i][0] = 0);
 	ft_strlcat(sh->envp[i], var, ft_strlen(var) + ft_strlen(value) + 2);
-	ft_strlcat(sh->envp[i], "=", ft_strlen(var) + ft_strlen(value) + 2);
+	if (value)
+		ft_strlcat(sh->envp[i], "=", ft_strlen(var) + ft_strlen(value) + 2);
 	if (value)
 		ft_strlcat(sh->envp[i], value, ft_strlen(var) + ft_strlen(value) + 2);
-	sh->envp[++i] = NULL;
 }
 
 //BUILT-IN
 //Adds or edit a var from envp.
 int	bi_export(t_shell *sh, char *var, char *value)
 {
-	if (var && get_var(sh, var))
+	if (var && value && get_var(sh, var))
 		ft_edit_env(sh, var, value);
-	else if (var && var[0] && (ft_isalpha(var[0]) || var[0] == '_'))
+	else if (var && !value && get_var(sh, var))
+		return (0);
+	else if (var && var[0] && !get_var(sh, var) && \
+	(ft_isalpha(var[0]) || var[0] == '_'))
 		ft_create_env(sh, var, value);
 	else
 	{
-		ft_putstr_fd("export : '", 2);
-		ft_putstr_fd(var, 2);
-		ft_putstr_fd("': not a valid identifier\n", 2);
+		ft_perror(sh, "export : `", var, "': not a valid identifier");
 		return (1);
 	}
 	return (0);

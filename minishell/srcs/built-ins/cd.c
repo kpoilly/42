@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:23:03 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/16 17:33:55 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/02/29 19:08:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ int	bi_cd(t_shell *sh, char **cmd)
 	if (!abs_path)
 		return (1);
 	if (access(abs_path, F_OK) < 0)
-		return (ft_putstr_fd("cd: no such file or directory: ", 2), \
-		ft_putstr_fd(cmd[1], 2), ft_putchar_fd('\n', 2), free(abs_path), 1);
+		return (ft_perror(sh, "cd: ", cmd[1], " no such file or directory"), \
+		free(abs_path), 1);
 	check_chdir = chdir(abs_path);
 	if (!check_chdir)
 	{
@@ -126,7 +126,7 @@ int	bi_cd(t_shell *sh, char **cmd)
 	}
 	else
 	{
-		ft_putstr_fd("cd: ", 2);
+		ft_perror(sh, "cd: ", NULL, NULL);
 		perror(cmd[1]);
 	}
 	return (free(abs_path), 1);

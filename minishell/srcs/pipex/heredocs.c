@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:34:56 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/29 14:08:38 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/08 10:34:21 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,25 @@ void	heredocs(char *limiter, int *pip)
 	char	*hd_file;
 	char	*prev_file;
 
-	ft_printf("heredoc> ");
-	buf = get_next_line(0);
+	buf = readline("heredoc> ");
 	if (!buf)
 		return ;
 	hd_file = NULL;
-	while (buf && limiter && !check_word(buf, limiter, 1))
+	while (buf && limiter && !check_word(buf, limiter, 0))
 	{
+		prev_file = buf;
+		buf = ft_strjoin("\n", buf);
+		free(prev_file);
 		prev_file = hd_file;
 		hd_file = ft_strjoin(hd_file, buf);
 		if (prev_file)
 			free(prev_file);
 		if (!hd_file)
 			return (free(buf));
-		free(buf);
-		ft_printf("heredoc> ");
-		buf = get_next_line(0);
+		(free(buf), buf = readline("heredoc> "));
 	}
-	free(buf);
-	ft_putstr_fd(hd_file, pip[1]);
-	free(hd_file);
+	(free(buf), prev_file = hd_file);
+	hd_file = ft_strjoin(hd_file, "\n");
+	(ft_putstr_fd(hd_file, pip[1]), close(pip[1]));
+	(free(prev_file), free(hd_file));
 }

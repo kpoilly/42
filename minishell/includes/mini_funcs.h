@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_funcs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:15:50 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/28 13:29:43 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:31:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include "mini_built_ins.h"
 
 //Signals.c
-void	handle_sigint(int sig);
+void	handle_sig(int sig);
 void	ft_set_sig(void);
+int		*ssig(void);
 
 //Flags for main.c
 void	prg_flags(int argc, char **argv);
@@ -32,7 +33,7 @@ int		pipex(t_shell *sh);
 // parsing
 
 void	ft_resplit(t_shell *sh, int i, int *j, int *k);
-
+int		unex_token(t_shell *sh, char *input);
 void	lexer(t_shell *sh, char *prompt);
 void	expander(t_shell *sh);
 void	ft_quotes_and_expand(t_shell *sh, int i, int j);
@@ -42,7 +43,6 @@ int		ft_replace(t_shell *sh, int i, int *j, int *k);
 
 // bash variables
 void	set_underscore(t_shell *sh);
-
 void	save_history(t_shell *sh);
 void	load_history(t_shell *sh);
 void	refresh_prompt(t_shell *sh);
@@ -55,6 +55,8 @@ int		get_env_index(t_shell *sh, char *var);
 int		check_word(char *s, const char *word, int nl);
 void	on_crash(t_shell *sh);
 void	dup_envp(t_shell *sh, char **envp);
+
+void	ft_perror(t_shell *sh, char *cmd, char *var, char *msg);
 
 void	ft_tilde(t_shell *sh, char **cmd);
 void	split_redirects(t_shell *sh);

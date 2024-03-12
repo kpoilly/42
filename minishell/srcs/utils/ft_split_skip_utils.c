@@ -3,41 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_skip_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:37:35 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/18 13:54:50 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/05 08:55:34 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static char	*ft_newline_append(char *dest, char *read)
+{
+	char	*tmp;
+
+	tmp = ft_strjoin(dest, "\n");
+	if (dest)
+		free(dest);
+	if (!tmp && read)
+		return (free (read), NULL);
+	dest = tmp;
+	tmp = ft_strjoin(dest, read);
+	if (!tmp && read && dest)
+		return (free (read), free(dest), NULL);
+	if (dest)
+		free(dest);
+	if (read)
+		free(read);
+	dest = tmp;
+	return (dest);
+}
+
 char	*get_missing(char c)
 {
 	char	*dest;
-	char	*tmp;
 	char	*read;
 
-	read = NULL;
-	dest = ft_strdup("\n");
-	while (!ft_strchr(dest, c))
+	dest = NULL;
+	while (1)
 	{
 		if (c == '"')
-			ft_printf("dquote> ");
+			read = readline("dquote> ");
 		else
-			ft_printf("quote> ");
-		read = get_next_line(0);
-		tmp = ft_strjoin(dest, read);
-		if (!tmp && read && dest)
-			return (free (read), free(dest), get_next_line(-1), NULL);
-		if (dest)
-			free(dest);
-		if (read)
-			free(read);
-		dest = tmp;
+			read = readline("quote> ");
+		dest = ft_newline_append(dest, read);
+		if (!dest)
+			return (NULL);
+		if (ft_strchr(dest, c))
+			break ;
 	}
-	get_next_line(-1);
-	dest[ft_strlen(dest) - 1] = 0;
 	return (dest);
 }
 

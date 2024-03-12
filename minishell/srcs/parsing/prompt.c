@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:54:57 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/29 16:08:51 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/07 15:31:02 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,20 @@ static void	errno_pipex(t_shell *sh)
 	errno_str = ft_itoa(pipex(sh));
 	if (!errno_str)
 		on_crash(sh);
-	bi_export(sh, "?", errno_str);
+	bi_force_export(sh, "?", errno_str);
 	free(errno_str);
 }
 
-static int	unex_token(char *input)
+static void	ft_sigint_return(t_shell *sh)
 {
-	while (*input && *input == ' ')
-		input++;
-	return (*input == '|');
+	int	*sigint_ret;
+
+	sigint_ret = ssig();
+	if (*sigint_ret == 130)
+	{
+		bi_force_export(sh, "?", "130");
+		*sigint_ret = 0;
+	}
 }
 
 void	mini_prompt(t_shell *sh)
@@ -80,13 +85,13 @@ void	mini_prompt(t_shell *sh)
 	load_history(sh);
 	while (1)
 	{
-		set_minimal_env(sh);
-		ft_set_sig();
+		(set_minimal_env(sh), ft_set_sig());
 		input = readline(sh->prompt);
-		if (unex_token(input))
-			ft_putstr_fd("syntax error near unexpected token `|'\n", 2);
+		if (unex_token(sh, input))
+			(bi_add_history(sh, input), save_history(sh), free(input));
 		else if (input && ft_strlen(input))
 		{
+			ft_sigint_return(sh);
 			bi_add_history(sh, input);
 			save_history(sh);
 			lexer(sh, input);

@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:03:58 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/28 13:29:34 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:13:11 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	ft_var_noexists(t_shell *sh, int *index, int *k, char *env)
 	free(sh->input[index[0]][index[1]]);
 	sh->input[index[0]][index[1]] = temp;
 	*k = final_k;
-	return (-ft_strlen(env) - 1);
+	return (-ft_strlen(env) - 2);
 }
 
 static int	ft_var_exists(t_shell *sh, int *index, int *k, char *env)

@@ -6,15 +6,29 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:50:14 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/29 15:40:54 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:05:55 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static int	ft_end(int bi_ret, int *pid, int pip)
+static void	ft_sigquit(void)
 {
-	close(pip);
+	struct sigaction	sa;
+
+	ft_bzero(&sa, sizeof(sa));
+	sa.sa_handler = &handle_sig;
+	sa.sa_flags = SA_RESTART;
+	sigaction(SIGQUIT, &sa, NULL);
+}
+
+int	ft_end(int bi_ret, int *pid, int *pip, int *file)
+{
+	ft_sigquit();
+	ft_putpipe_to_fone(pip, file);
+	close(pip[0]);
+	if (file[1] == -2)
+		return (0);
 	if (pid[0] != 0)
 	{
 		while (waitpid(pid[0], &pid[1], 0) < 0)
@@ -29,16 +43,18 @@ static int	ft_end(int bi_ret, int *pid, int pip)
 	return (bi_ret);
 }
 
-static void	ft_putpipe_to_fone(int *pip, int outfile)
+void	ft_putpipe_to_fone(int *pip, int *file)
 {
 	close(pip[1]);
-	if (outfile)
+	if (file[1] && file[1] != -2)
 	{
-		putpipe_to_fd(pip[0], outfile);
-		close(outfile);
+		putpipe_to_fd(pip[0], file[1]);
+		close(file[1]);
 	}
 }
 
+//file[2] values:
+// 2 = start, 1 = end, 0 = middle, 3 = start + end
 static int	ft_init_file(int *file)
 {
 	file[0] = 0;
@@ -57,21 +73,20 @@ int	pipex(t_shell *sh)
 	i = ft_init_file(file);
 	if (pipe(pip) == -1)
 		(perror("pipe"), exit(1));
+	close(pip[1]);
 	while (sh->input && sh->input[i] && sh->input[i][0])
 	{
-		ft_input_file(sh, file, pip, i);
-		if (!sh->input || !sh->input[0] || !sh->input[0][0])
-			return (close (pip[0]), 1);
+		if (ft_input_file(sh, file, pip, &i))
+			return (close(pip[1]), close(pip[0]), sh->bi_ret);
 		if ((int) ft_tabtablen(sh->input) - 1 == i)
 			file[2]++;
-		ft_putpipe_to_fone(pip, file[1]);
-		ft_output_file(sh, file, i);
-		pid[0] = fork_exec(sh, pip, &sh->input[i++][0], file);
+		if (!ft_output_file(sh, file, i))
+			pid[0] = fork_exec(sh, pip, &sh->input[i++][0], file);
+		ft_putpipe_to_fone(pip, file);
 		if (pid[0] == -1)
 			return (127);
 		if (file[0] && file[0] != 1)
 			close(file[0]);
 	}
-	ft_putpipe_to_fone(pip, file[1]);
-	return (ft_end(sh->bi_ret, pid, pip[0]));
+	return (ft_end(sh->bi_ret, pid, pip, file));
 }
