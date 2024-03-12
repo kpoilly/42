@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   foutput.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:29:38 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/08 14:00:21 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/12 10:45:26 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,16 @@ int	ft_output_file(t_shell *sh, int *file, int i)
 {
 	int	j;
 
-	j = -1;
+	j = 0;
 	file[1] = 0;
 	sh->bi_ret = 0;
-	while (sh->input && sh->input[i][++j])
+	while (sh->input && sh->input[i][j])
 	{
 		if (sh->input[i][j + 1] && (check_word(sh->input[i][j], ">", 0) || \
 		check_word(sh->input[i][j], ">>", 0)))
 			ft_open_out(sh, file, i, j);
+		else
+			j++;
 	}
 	return (sh->bi_ret);
 }
