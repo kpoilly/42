@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_funcs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:15:50 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/12 11:32:49 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/12 15:10:45 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_set_sig(void);
 int		*ssig(void);
 
 //Flags for main.c
-void	prg_flags(int argc, char **argv);
+void	prg_flags(t_shell *sh, int argc, char **argv);
 
 // pipex
 

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:22:36 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/12 07:30:11 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/13 13:31:48 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	is_num(char	*arg)
 	int	i;
 
 	i = 0;
+	if (arg[0] == '-' || arg[0] == '+')
+		i++;
 	while (arg && arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
@@ -68,7 +70,7 @@ int	bi_exit(t_shell *sh, char **full_cmd)
 		}
 	}
 	if (exit_code < 0)
-		return (156);
+		exit_code = 156;
 	save_history(sh);
 	free_sh(sh);
 	printf("exit\n");

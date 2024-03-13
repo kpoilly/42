@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:03:26 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/04 16:13:22 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:35:06 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		bi_history(t_shell *sh);
 void	bi_add_history(t_shell *sh, char *prompt);
 int		bi_help(t_shell *sh);
 
-# define HELP_MESSAGE "\n	Minishell, version 0.98.1\n\
+# define HELP_MESSAGE "\n	Minishell, version 2.98.1\n\
 	Code worked on by kpoilly and jdoukhan.\n\n\
 	Use 'help' to show this help message.\n\n\
 	cd [- | dir] : change active directory.\n\

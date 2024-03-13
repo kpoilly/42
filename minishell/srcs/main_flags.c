@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:03:31 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/13 13:38:53 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:10:19 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_clear_history_file(void)
 	unlink(HISTORY_FILE);
 }
 
-void	prg_flags(int argc, char **argv)
+void	prg_flags(t_shell *sh, int argc, char **argv)
 {
 	int	i;
 
@@ -33,6 +33,8 @@ void	prg_flags(int argc, char **argv)
 		else if (check_word(argv[i], "--history-clear", 0) \
 		|| check_word(argv[i], "--clear-history", 0))
 			ft_clear_history_file();
+		else if (check_word(argv[i], "-colors", 0))
+			sh->colors = 1;
 		else
 		{
 			ft_putstr_fd(argv[0], 2);

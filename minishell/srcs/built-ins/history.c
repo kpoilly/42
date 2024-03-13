@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:43:42 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/16 17:35:49 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:37:16 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	save_history(t_shell *sh)
 	ft_history_cap(sh);
 	fd = open(sh->hist_path, O_WRONLY | O_TRUNC | O_CREAT, 0710);
 	if (fd < 0)
-		on_crash(sh);
+		return ;
 	sh->openf = fd;
 	cursor = sh->h;
 	while (cursor && cursor->line)

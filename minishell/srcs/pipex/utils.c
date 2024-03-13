@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:09:29 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/02/28 14:18:09 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:58:52 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_error(char *msg, int exit_code)
 		exit(exit_code);
 }
 
-void	ft_remove_input_file(t_shell *sh, int i, int j)
+void	ft_remove_file(t_shell *sh, int i, int j)
 {
 	int	k;
 

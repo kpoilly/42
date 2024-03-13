@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 14:15:45 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/12 11:47:53 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/13 13:37:16 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	ft_execve(char *abs_path, char **full_cmd, t_shell *sh)
 	sa2.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &sa, NULL);
 	sigaction(SIGQUIT, &sa2, NULL);
-	if (is_built_in(abs_path, 1))
+	if (is_built_in(abs_path, -1))
 	{
 		free(abs_path);
 		exit(built_ins(sh, full_cmd));
@@ -82,11 +82,13 @@ int	fork_exec(t_shell *sh, int *pip, char **full_cmd, int *file)
 
 	fid = 0;
 	sh->bi_ret = 0;
+	if (!full_cmd[0])
+		return (close(pip[0]), 0);
 	abs_path = absolute_path(sh, full_cmd, sh->envp);
 	if (!abs_path)
 		return (close(pip[0]), -1);
 	prev_pip = pip[0];
-	if (is_built_in(abs_path, 0))
+	if (is_built_in(abs_path, 0) && !sh->input[1])
 		(free(abs_path), close(pip[0]), sh->bi_ret = built_ins(sh, full_cmd));
 	else
 	{
@@ -97,7 +99,5 @@ int	fork_exec(t_shell *sh, int *pip, char **full_cmd, int *file)
 			ft_execve(abs_path, full_cmd, sh);
 		free(abs_path);
 	}
-	close(prev_pip);
-	file[2] = 0;
-	return (fid);
+	return (close(prev_pip), file[2] = 0, fid);
 }

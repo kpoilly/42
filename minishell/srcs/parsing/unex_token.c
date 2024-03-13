@@ -6,11 +6,22 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:51:12 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/12 11:46:37 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/13 10:17:10 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	is_empty(char *str)
+{
+	while (*str)
+	{
+		if (*str && !in_charset(*str, " \n\t\v\r"))
+			return (0);
+		str++;
+	}
+	return (1);
+}
 
 int	count_char(char *input, int *nb_char)
 {
@@ -30,12 +41,13 @@ int	count_char(char *input, int *nb_char)
 	}
 	if (input[i] && input[i + 1]
 		&& in_charset(input[i], "<>")
-		&& (input[i + 1] == input[i] || !i))
+		&& (input[i + 1] == input[i] || !i)
+		&& !is_empty(input + i + 2))
 	{
 		(*nb_char)++;
 		i++;
 	}
-	return (i);	//rl_redisplay();
+	return (i);
 }
 
 int	unex_token(t_shell *sh, char *input)
@@ -47,7 +59,7 @@ int	unex_token(t_shell *sh, char *input)
 		while (*input && *input == ' ')
 			input++;
 		if (!(*input))
-			return (1);
+			return (nb_char != 0);
 		nb_char = 0;
 		input += count_char(input, &nb_char);
 		if (nb_char < 0)

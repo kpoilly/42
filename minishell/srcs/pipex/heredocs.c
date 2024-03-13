@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:34:56 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/08 10:34:21 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:50:12 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	heredocs(char *limiter, int *pip)
 	while (buf && limiter && !check_word(buf, limiter, 0))
 	{
 		prev_file = buf;
-		buf = ft_strjoin("\n", buf);
+		buf = ft_strjoin(buf, "\n");
 		free(prev_file);
 		prev_file = hd_file;
 		hd_file = ft_strjoin(hd_file, buf);
@@ -35,8 +35,6 @@ void	heredocs(char *limiter, int *pip)
 			return (free(buf));
 		(free(buf), buf = readline("heredoc> "));
 	}
-	(free(buf), prev_file = hd_file);
-	hd_file = ft_strjoin(hd_file, "\n");
 	(ft_putstr_fd(hd_file, pip[1]), close(pip[1]));
-	(free(prev_file), free(hd_file));
+	(free(buf), free(hd_file));
 }

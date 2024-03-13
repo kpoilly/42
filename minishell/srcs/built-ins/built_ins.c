@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 17:34:19 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/06 14:17:28 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:20:34 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	is_built_in(char *cmd, int forked)
 	(forked && \
 	(check_word(cmd, "echo", 0) || check_word(cmd, "env", 0) || \
 	check_word(cmd, "history", 0) || check_word(cmd, "help", 0) || \
-	check_word(cmd, "pwd", 0) || check_word(cmd, "exit", 0))))
+	check_word(cmd, "pwd", 0))))
 		return (1);
 	return (0);
 }

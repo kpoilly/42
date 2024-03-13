@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:54:57 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/07 15:31:02 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/13 13:37:37 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,17 @@ void	refresh_prompt(t_shell *sh)
 		free(sh->prompt);
 	sh->prompt = NULL;
 	short_home = home_shortener(sh);
-	semi_prompt = ft_strjoin(PROMPT_START, short_home);
+	if (sh->colors)
+		semi_prompt = ft_strjoin(PROMPT_START, short_home);
+	else
+		semi_prompt = ft_strjoin("[", short_home);
 	free(short_home);
 	if (!semi_prompt)
 		on_crash(sh);
-	sh->prompt = ft_strjoin(semi_prompt, PROMPT_END);
+	if (sh->colors)
+		sh->prompt = ft_strjoin(semi_prompt, PROMPT_END);
+	else
+		sh->prompt = ft_strjoin(semi_prompt, "] ");
 	if (!sh->prompt)
 		(free(semi_prompt), on_crash(sh));
 	free(semi_prompt);
@@ -97,8 +103,8 @@ void	mini_prompt(t_shell *sh)
 			lexer(sh, input);
 			split_redirects(sh);
 			expander(sh);
-			set_underscore(sh);
 			errno_pipex(sh);
+			set_underscore(sh);
 		}
 		else if (!input)
 			(printf("exit\n"), on_crash(sh));

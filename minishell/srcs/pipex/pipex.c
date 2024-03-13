@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:50:14 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/12 11:48:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/13 13:12:23 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_sigquit(void)
 	struct sigaction	sa2;
 
 	ft_bzero(&sa, sizeof(sa));
-	ft_bzero(&sa, sizeof(sa2));
+	ft_bzero(&sa2, sizeof(sa2));
 	sa.sa_handler = &handle_sig_child;
 	sa2.sa_handler = &handle_sig_child;
 	sa.sa_flags = SA_RESTART;

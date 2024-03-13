@@ -6,92 +6,88 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:30:28 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/12 10:45:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/13 14:09:59 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static int	ft_hereing_doc(t_shell *sh, int *pip, int i, int j)
+static int	ft_hereing_doc(t_shell *sh, int *pip, int i)
 {
-	int	k;
+	int	j;
+	int	ret;
 
-	k = j;
-	close(pip[0]);
-	if (pipe(pip) == -1)
-		(perror("pipe"), exit(1));
-	heredocs(sh->input[i][j + 1], pip);
-	if (sh->input[i][j])
-		free(sh->input[i][j]);
-	sh->input[i][j] = NULL;
-	if (sh->input[i][j + 1])
-		free(sh->input[i][j + 1]);
-	sh->input[i][j + 1] = NULL;
-	while (sh->input[i][j + 2])
+	ret = 0;
+	j = 0;
+	sh->int_save = 0;
+	while (sh->input && sh->input[i][j])
 	{
-		sh->input[i][j] = sh->input[i][j + 2];
-		sh->input[i][j + 2] = NULL;
-		j++;
+		if (sh->input[i] && sh->input[i][j] && sh->input[i][j + 1]
+				&& check_word(sh->input[i][j], "<", 0))
+			sh->int_save = 0;
+		if (sh->input[i] && sh->input[i][j] && sh->input[i][j + 1]
+				&& check_word(sh->input[i][j], "<<", 0))
+		{
+			close(pip[0]);
+			if (pipe(pip) == -1)
+				(perror("pipe"), exit(1));
+			(heredocs(sh->input[i][j + 1], pip), ft_remove_file(sh, i, j));
+			ret = 1;
+			sh->int_save = 1;
+		}
+		else
+			j++;
 	}
-	return (0);
+	return (ret);
 }
 
-static int	ft_redirect_nothing_else(t_shell *sh, int *file, int i)
+static int	ft_access_file(t_shell *sh, int *file, int *i, int j)
 {
-	if (!sh->input[i] || !sh->input[i][0])
-	{
+	if (file[0] > 1)
 		close(file[0]);
-		file[0] = 0;
-		sh->bi_ret = 0;
-		return (1);
+	if (access(sh->input[*i][j + 1], R_OK))
+	{
+		ft_perror(sh, NULL, sh->input[*i][j + 1], \
+		": No such file or directory");
+		ft_remove_file(sh, *i, j);
+		if (!sh->int_save)
+			file[0] = open("/dev/null", O_RDONLY);
+		return (sh->bi_ret = 1, 1);
 	}
-	return (0);
-}
-
-static void	ft_input_open(t_shell *sh, int *file, int *i, int j)
-{
-	file[0] = open(sh->input[*i][j + 1], O_RDONLY);
+	if (!sh->int_save)
+		file[0] = open(sh->input[*i][j + 1], O_RDONLY);
 	if (file[0] == -1)
 	{
 		perror("open");
 		exit(1);
 	}
-}
-
-static int	ft_access_file(t_shell *sh, int *file, int *i, int j)
-{
-	if (access(sh->input[*i][j + 1], R_OK))
-		return (perror("file"), sh->bi_ret = 1, 1);
-	ft_input_open(sh, file, i, j);
-	ft_remove_input_file(sh, *i, j);
+	ft_remove_file(sh, *i, j);
 	return (0);
 }
 
 int	ft_input_file(t_shell *sh, int *file, int *pip, int *i)
 {
 	int	j;
+	int	ret;
 
-	j = -1;
-	while (sh->input && sh->input[*i][++j])
+	j = 0;
+	ret = 0;
+	file[0] = ft_hereing_doc(sh, pip, *i);
+	while (sh->input && sh->input[*i][j])
 	{
-		if (sh->input[*i] && sh->input[*i][j] && sh->input[*i][j + 1]
-				&& check_word(sh->input[*i][j], "<<", 0))
-		{
-			if (!ft_hereing_doc(sh, pip, *i, j) && !sh->input[*i][0])
-				return (sh->bi_ret = 0, 1);
-			return (file[0] = 1, 0);
-		}
-		else if (sh->input && sh->input[*i] && sh->input[*i][j] && \
+		if (sh->input && sh->input[*i] && sh->input[*i][j] && \
 			sh->input[*i][j + 1] && check_word(sh->input[*i][j], "<", 0))
 		{
 			if (ft_access_file(sh, file, i, j))
+			{
+				if (sh->input[*i + 1] && j != 0)
+					return ((*i)++, file[2] = 0, \
+					ft_input_file(sh, file, pip, i));
 				return (1);
-			if (ft_redirect_nothing_else(sh, file, *i) && sh->input[*i + 1])
-				return (file[2] = 3, (*i)++, ft_input_file(sh, file, pip, i));
-			if (!sh->input[*i + 1] && !file[0])
-				return (sh->bi_ret = 0, 1);
-			return (0);
+			}
 		}
+		else
+			j++;
 	}
-	return (file[0] = 0, 0);
+	return (ret);
 }

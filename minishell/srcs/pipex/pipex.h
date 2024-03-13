@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:04:02 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/08 13:59:42 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:59:31 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		putpipe_to_fd(int pip, int fd);
 void	heredocs(char *limiter, int *pip);
 void	ft_free(char **str);
 void	print_error(char *msg, int plz_exit);
-void	ft_remove_input_file(t_shell *sh, int i, int j);
+void	ft_remove_file(t_shell *sh, int i, int j);
 
 void	ft_putpipe_to_fone(int *pip, int *file);
 int		ft_end(int bi_ret, int *pid, int *pip, int *file);
