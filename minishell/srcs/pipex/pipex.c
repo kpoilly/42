@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:50:14 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/03/13 13:12:23 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:28:39 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ void	ft_putpipe_to_fone(int *pip, int *file)
 
 //file[2] values:
 // 2 = start, 1 = end, 0 = middle, 3 = start + end
-static int	ft_init_file(int *file)
+static int	ft_init_file(int *file, int *pid)
 {
 	file[0] = 0;
 	file[1] = 0;
 	file[2] = 2;
+	pid[0] = 0;
 	return (0);
 }
 
@@ -75,7 +76,7 @@ int	pipex(t_shell *sh)
 	int	file[3];
 	int	pid[2];
 
-	i = ft_init_file(file);
+	i = ft_init_file(file, pid);
 	if (pipe(pip) == -1)
 		(perror("pipe"), exit(1));
 	close(pip[1]);
