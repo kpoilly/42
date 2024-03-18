@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/15 13:20:46 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/18 08:18:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class fixed
 		fixed(fixed& nb);
 		fixed& operator= (fixed& nb);
 		~fixed();
-		const int getRawBits(void);
+		int getRawBits(void) const;
 		void setRawBits(int const raw);
 };
 

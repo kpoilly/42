@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/15 13:24:28 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/18 08:18:43 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ fixed& fixed::operator=(fixed& nb)
 	return (*this);
 }
 
-const int fixed::getRawBits(void)
+int fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member called :" << std::endl;
 	return (this->value);

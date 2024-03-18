@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/18 08:30:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/18 08:41:03 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 fixed::fixed():value(0)
 {std::cout << "Default Constructor called." <<std::endl;};
 
-fixed::fixed(const int nb):value(nb * pow(2, this->frac))
+fixed::fixed(const int nb):value(nb * 256)
 {std::cout << "Int Constructor called." <<std::endl;}
 
 fixed::fixed(const float nb)
@@ -24,15 +24,8 @@ fixed::fixed(const float nb)
 	float temp;
 	int conv;
 	
-	temp = nb * pow(2, this->frac);
-	conv = int(round(temp));
-
-	if (temp < 0)
-	{
-		conv = abs(conv);
-		conv = ~conv;
-		conv = conv + 1;
-	}
+	temp = nb * 256;
+	conv = int(roundf(temp));
 	this->value = conv;
 }
 fixed::fixed(const fixed& nb)
@@ -74,7 +67,7 @@ float fixed::toFloat(void) const
 	float res;
 	
 	res = (float)this->value * 1.0;
-	res /= pow(2, this->frac);
+	res /= 256;
 
 	return (res);
 }
