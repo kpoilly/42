@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 09:11:08 by kpoilly           #+#    #+#              #
-#    Updated: 2024/03/05 11:04:12 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/03/19 07:33:08 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ FILES 			= megaphone.cpp
 OBJECTS 		= $(FILES:.cpp=.o)
 RM 						= rm -f
 CC 						= c++
-CFLAGS 			= -Wall -Wextra -Werror -std=c++98
+CFLAGS 			= -Wall -Wextra -Werror -std=c++98 -MMD
 
 all:			$(NAME)
 
