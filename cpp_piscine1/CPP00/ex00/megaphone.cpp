@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:59:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/20 09:58:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:19:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	main(int argc, char **argv)
 	for(int i = 1; i < argc; i++)
 	{
 		megaphone(argv[i]);
-		if (i < argc - 1)
+		std::string str = argv[i];
+		if (i < argc - 1 && *(argv[i + 1]) != ' ' && str.back() != ' ')
 			std::cout << " ";
 	}
 	std::cout<<std::endl;
