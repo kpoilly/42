@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/20 12:35:20 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:31:37 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,9 @@ fixed::fixed(const int nb):value(nb * 256)
 fixed::fixed(const float nb)
 {
 	//std::cout << "Float Constructor called." <<std::endl;
-	float temp;
-	int conv;
 	
-	temp = nb * 256; //pow(2, this->frac);
-	conv = int(roundf(temp));
+	long temp = nb * 256; //pow(2, this->frac);
+	int conv = int(roundf(temp));
 	this->value = conv;
 }
 fixed::fixed(const fixed& nb)
@@ -105,6 +103,36 @@ fixed& fixed::operator/ (const fixed& other)
 	return (*res);
 }
 
+fixed& fixed::operator++ ()
+{
+	fixed *tmp = new fixed(this->toInt());
+	float res = this->toFloat();
+	this->value = toFixed(++res);
+	return (*tmp);
+}
+
+fixed& fixed::operator++ (int)
+{
+	float res = this->toFloat();
+	this->value = toFixed(++res);
+	return (*this);
+}
+
+fixed& fixed::operator-- ()
+{
+	fixed *tmp = new fixed(this->toInt());
+	float res = this->toFloat();
+	this->value = toFixed(--res);
+	return (*tmp);
+}
+
+fixed& fixed::operator-- (int)
+{
+	float res = this->toFloat();
+	this->value = toFixed(--res);
+	return (*this);
+}
+
 std::ostream& operator<<(std::ostream& os, const fixed& nb)
 {
 	os << nb.toFloat();
@@ -155,4 +183,11 @@ fixed& fixed::max (fixed& a, fixed& b)
 const fixed& fixed::max (const fixed& a, const fixed& b)
 {
 	return (a.value >= b.value ? a : b);
+}
+
+int fixed::toFixed(float nb)
+{
+	long temp = nb * 256; //pow(2, this->frac);
+	int conv = int(roundf(temp));
+	return (conv);
 }

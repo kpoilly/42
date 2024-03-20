@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/20 12:34:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 13:30:10 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,17 @@ class fixed
 		fixed& operator- (const fixed& other);
 		fixed& operator* (const fixed& other);
 		fixed& operator/ (const fixed& other);
+		fixed& operator++ ();
+		fixed& operator++ (int);
+		fixed& operator-- ();
+		fixed& operator-- (int);
 		
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
 		
 		float toFloat(void) const;
 		int toInt(void) const;
+		int toFixed(float nb);
 		static fixed& min (fixed& a, fixed& b);
 		static const fixed& min (const fixed& a, const fixed& b);
 		static fixed& max (fixed& a, fixed& b);
