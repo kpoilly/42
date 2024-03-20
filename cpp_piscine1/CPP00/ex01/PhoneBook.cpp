@@ -6,25 +6,27 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:07:02 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/20 09:29:31 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 09:40:34 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_awesome_phonebook.hpp"
 
-PhoneBook::PhoneBook():contacts(){}
+PhoneBook::PhoneBook():contacts(), pb_size(0){}
 
 PhoneBook::PhoneBook(Contact newcontact)
 {
-	contacts.push_back(newcontact);
+	contacts[pb_size] = newcontact;
+	this->pb_size++;
 }
 
 void PhoneBook::add(int nbcontacts)
 {
-	if (contacts.size() < 8)
+	if (pb_size < 8)
 	{
 		Contact newcontact(nbcontacts);
-		contacts.push_back(newcontact);
+		contacts[pb_size] = newcontact;
+		this->pb_size++;
 	}
 	else
 	{
@@ -40,7 +42,7 @@ void PhoneBook::display()
 	int 		i;
 	std::string	input;
 	
-	for (i = 0; i < contacts.size(); i++)
+	for (i = 0; i < pb_size; i++)
 		contacts[i].info_summary();
 	if (!i)
 	{
@@ -51,6 +53,6 @@ void PhoneBook::display()
 	do {
 		std::cout<<"Contact index: ";
 		std::getline(std::cin, input);
-	} while (!isnumber(input) || stoi(input) > contacts.size());
+	} while (!isnumber(input) || stoi(input) >= pb_size);
 	contacts[std::stoi(input)].display_info();
 }
