@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:12:50 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/02/13 12:48:16 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 10:32:57 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define MY_AWESOME_PHONEBOOK_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <unistd.h>
 

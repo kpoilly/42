@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:01:26 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/20 09:24:48 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 10:41:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,24 @@ Contact::Contact(int nb)
 
 void Contact::info_summary()
 {
+	std::string format_name = name;
+	std::string format_lname = lastname;
+	std::string format_nname = nickname;
+
+	if (name.size() > 10)
+		format_name = name.substr(0, 9) + ".";
+	if (lastname.size() > 10)
+		format_lname = name.substr(0, 9) + ".";
+	if (nickname.size() > 10)
+		format_nname = name.substr(0, 9) + ".";
+	
 	std::cout<<index; std::cout<<": ";
-	std::cout<<name + " | ";
-	std::cout<<lastname + " | ";
-	std::cout<<nickname<<std::endl;
+	std::cout << std::setw(13);
+	std::cout<<format_name + " | ";
+	std::cout << std::setw(13);
+	std::cout<<format_lname + " | ";
+	std::cout << std::setw(10);
+	std::cout<<format_nname<<std::endl;
 }
 
 void Contact::display_info()
