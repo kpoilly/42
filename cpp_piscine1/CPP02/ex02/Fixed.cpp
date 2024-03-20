@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/18 09:17:16 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 12:35:20 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,61 +47,61 @@ fixed& fixed::operator=(const fixed& nb)
 	return (*this);
 }
 
-bool operator> (const fixed& a, const fixed& b)
+bool fixed::operator> (const fixed& other)
 {
-	return(a.value > b.value);
+	return(this->toInt() > other.toInt());
 }
 
-bool operator< (const fixed& a, const fixed& b)
+bool fixed::operator< (const fixed& other)
 {
-	return(a.value < b.value);
+	return(this->toInt() < other.toInt());
 }
 
-bool operator>= (const fixed& a, const fixed& b)
+bool fixed::operator>= (const fixed& other)
 {
-	return(a.value >= b.value);
+	return(this->toInt() >= other.toInt());
 }
 
-bool operator<= (const fixed& a, const fixed& b)
+bool fixed::operator<= (const fixed& other)
 {
-	return(a.value <= b.value);
+	return(this->toInt() <= other.toInt());
 }
 
-bool operator== (const fixed& a, const fixed& b)
+bool fixed::operator== (const fixed& other)
 {
-	return(a.value == b.value);
+	return(this->toInt() == other.toInt());
 }
 
-bool operator!= (const fixed& a, const fixed& b)
+bool fixed::operator!= (const fixed& other)
 {
-	return(a.value != b.value);
+	return(this->toInt() != other.toInt());
 }
 
-fixed& operator+ (const fixed& a, const fixed& b)
+fixed& fixed::operator+ (const fixed& other)
 {
-	fixed *res = new fixed();
-	res->value = a.value + b.value;
+	float value = this->toFloat() + other.toFloat();
+	fixed *res = new fixed(value);
 	return (*res);
 }
 
-fixed& operator- (const fixed& a, const fixed& b)
+fixed& fixed::operator- (const fixed& other)
 {
-	fixed *res = new fixed();
-	res->value = a.value - b.value;
+	float value = this->toFloat() - other.toFloat();
+	fixed *res = new fixed(value);
 	return (*res);
 }
 
-fixed& operator* (const fixed& a, const fixed& b)
+fixed& fixed::operator* (const fixed& other)
 {
-	fixed *res = new fixed();
-	res->value = a.value * b.value;
+	float value = this->toFloat() * other.toFloat();
+	fixed *res = new fixed(value);
 	return (*res);
 }
 
-fixed& operator/ (const fixed& a, const fixed& b)
+fixed& fixed::operator/ (const fixed& other)
 {
-	fixed *res = new fixed();
-	res->value = a.value / b.value;
+	float value = this->toFloat() / other.toFloat();
+	fixed *res = new fixed(value);
 	return (*res);
 }
 
@@ -135,4 +135,24 @@ float fixed::toFloat(void) const
 int fixed::toInt(void) const
 {
 	return ((int)this->toFloat());
+}
+
+fixed& fixed::min (fixed& a, fixed& b)
+{
+	return (a.value <= b.value ? a : b);
+}
+
+const fixed& fixed::min (const fixed& a, const fixed& b)
+{
+	return (a.value <= b.value ? a : b);
+}
+
+fixed& fixed::max (fixed& a, fixed& b)
+{
+	return (a.value >= b.value ? a : b);
+}
+
+const fixed& fixed::max (const fixed& a, const fixed& b)
+{
+	return (a.value >= b.value ? a : b);
 }

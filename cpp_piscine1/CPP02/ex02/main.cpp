@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:10 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/18 09:18:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 12:27:14 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ int	main(void)
 	std::cout << "a - b : " << a - b << std::endl;
 	std::cout << "a * b : " << a * b << std::endl;
 	std::cout << "a / b : " << a / b << std::endl;
+	std::cout << "max : " << fixed::max(a, b) << std::endl;
+	std::cout << "min : " << fixed::min(a, b) << std::endl;
+
 	
 }

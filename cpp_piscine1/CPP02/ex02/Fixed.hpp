@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/18 09:03:44 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 12:34:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,28 @@ class fixed
 		~fixed();
 		
 		fixed& operator= (const fixed& nb);
-		friend bool operator> (const fixed& a, const fixed& b);
-		friend bool operator>= (const fixed& a, const fixed& b);
-		friend bool operator< (const fixed& a, const fixed& b);
-		friend bool operator<= (const fixed& a, const fixed& b);
-		friend bool operator== (const fixed& a, const fixed& b);
-		friend bool operator!= (const fixed& a, const fixed& b);
-		friend fixed& operator+ (const fixed& a, const fixed& b);
-		friend fixed& operator- (const fixed& a, const fixed& b);
-		friend fixed& operator* (const fixed& a, const fixed& b);
-		friend fixed& operator/ (const fixed& a, const fixed& b);
-		friend std::ostream& operator<<(std::ostream& os, const fixed& nb);
-
+		bool operator> (const fixed& other);
+		bool operator>= (const fixed& other);
+		bool operator< (const fixed& other);
+		bool operator<= (const fixed& other);
+		bool operator== (const fixed& other);
+		bool operator!= (const fixed& other);
+		fixed& operator+ (const fixed& other);
+		fixed& operator- (const fixed& other);
+		fixed& operator* (const fixed& other);
+		fixed& operator/ (const fixed& other);
+		
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
 		
 		float toFloat(void) const;
 		int toInt(void) const;
-		fixed& min (fixed& a, fixed& b);
-		fixed& min (const fixed& a, const fixed& b) const;
-		fixed& max (fixed& a, fixed& b);
-		fixed& max (const fixed& a, const fixed& b) const;
+		static fixed& min (fixed& a, fixed& b);
+		static const fixed& min (const fixed& a, const fixed& b);
+		static fixed& max (fixed& a, fixed& b);
+		static const fixed& max (const fixed& a, const fixed& b);
 };
+
+std::ostream& operator<<(std::ostream& os, const fixed& nb);
 
 #endif
