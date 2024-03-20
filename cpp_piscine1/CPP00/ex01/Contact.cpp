@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:01:26 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/02/13 12:52:00 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 09:24:48 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ Contact::Contact(int nb)
 	std::cout<<"Nickname : ";
 	std::getline(std::cin, nickname);
 
-	std::cout<<"Phone Number : ";
-	std::getline(std::cin, phnumber);
-
+	do
+	{
+		std::cout<<"Phone Number : ";
+		std::getline(std::cin, phnumber);
+	} while (!isnumber(phnumber));
+	
 	std::cout<<"Darkest secret : ";
 	std::getline(std::cin, darksecret);
 }

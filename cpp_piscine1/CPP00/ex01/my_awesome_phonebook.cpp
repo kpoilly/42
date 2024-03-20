@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:11:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/02/13 12:52:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 08:54:58 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void interface(PhoneBook book, int *nbcontacts)
 		std::cout<<"\033[2J\033[;H"<<"------------------"<<std::endl;
 		std::cout<<"\nPlease use one of the 3 commands below\nADD, SEARCH, EXIT\n(you can also use HELP to get informations about what they do)\n"<<std::endl;
 		std::getline(std::cin, input);
-		
+		if (std::cin.eof())
+			break;
 		for(int i = 0; i < input.length(); i++)
 			input[i] = toupper(input[i]);
 		

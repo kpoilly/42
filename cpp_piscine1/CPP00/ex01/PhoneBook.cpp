@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:07:02 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/02/26 11:06:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/20 09:29:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ void PhoneBook::display()
 	do {
 		std::cout<<"Contact index: ";
 		std::getline(std::cin, input);
-	} while (!isnumber(input) || stoi(input) < contacts.size());
+	} while (!isnumber(input) || stoi(input) > contacts.size());
 	contacts[std::stoi(input)].display_info();
 }
