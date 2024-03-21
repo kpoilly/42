@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:11:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/20 08:54:58 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 11:01:05 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	isnumber(std::string s)
 {
 	for (int i = 0; s[i]; i++)
-		if (!isdigit(s[i]))
+		if (!std::isdigit(s[i]))
 			return (0);
 	return (1);
 }
@@ -25,7 +25,7 @@ void help(void)
 	std::cout<<"ADD: create a new contact.\nSEARCH: display a specific contact.\nEXIT: quit.\nHELP: well...\n"<<std::endl;
 }
 
-void interface(PhoneBook book, int *nbcontacts)
+void interface(PhoneBook book)
 {
 	std::string input;
 	
@@ -46,10 +46,7 @@ void interface(PhoneBook book, int *nbcontacts)
 			std::getline(std::cin, input);
 		}
 		else if (input == "ADD")
-		{
-			book.add(*nbcontacts);
-			(*nbcontacts)++;
-		}
+			book.add();
 		else if (input == "SEARCH")
 		{
 			book.display();
@@ -61,8 +58,7 @@ void interface(PhoneBook book, int *nbcontacts)
 
 int main(void)
 {
-	int nbcontacts = 0;
 	PhoneBook book;
-	interface(book, &nbcontacts);
+	interface(book);
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:59:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/20 13:19:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 10:49:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	megaphone(std::string str)
 {
 	for(int i = 0; i < str.size(); i++)
-			std::cout << (char)toupper(str[i]);
+			std::cout << (char)std::toupper(str[i]);
 }
 
 int	main(int argc, char **argv)

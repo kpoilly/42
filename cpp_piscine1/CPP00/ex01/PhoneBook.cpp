@@ -6,55 +6,49 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:07:02 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/20 10:25:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:48:59 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "my_awesome_phonebook.hpp"
 
-PhoneBook::PhoneBook():contacts(), pb_size(0){}
+PhoneBook::PhoneBook():_contacts(), _pb_size(0){}
 
 PhoneBook::PhoneBook(Contact newcontact)
 {
-	contacts[pb_size] = newcontact;
-	this->pb_size++;
+	_contacts[_pb_size % 8] = newcontact;
+	this->_pb_size++;
 }
 
-void PhoneBook::add(int nbcontacts)
+void PhoneBook::add()
 {
-	if (pb_size < 8)
-	{
-		Contact newcontact(nbcontacts);
-		contacts[pb_size] = newcontact;
-		this->pb_size++;
-	}
-	else
-	{
-		Contact newcontact(7);
-		contacts[7] = newcontact;
-	}
+	Contact newcontact(_pb_size % 8);
+	_contacts[_pb_size % 8] = newcontact;
+	this->_pb_size++;
 	std::cout<<"\nAdded! :)"<<std::endl;
 	sleep(1);
 }
 
 void PhoneBook::display()
 {
-	int 		i;
 	std::string	input;
 	
-	for (i = 0; i < pb_size; i++)
-		contacts[i].info_summary();
-	if (!i)
+	if (!_pb_size)
 	{
 		std::cout<<"Phonebook is empty."<<std::endl;
 		return ;
 	}
-	std::cout<<"\n";
+	int nb = _pb_size;
+	if (nb > 8)
+		nb = 8;
+	for (int i = 0; i < nb; i++)
+		_contacts[i].info_summary();
+	std::cout<<std::endl;
 	do {
 		std::cout<<"Contact index: ";
 		std::getline(std::cin, input);
 		if (std::cin.eof())
 			exit(1);
-	} while (!isnumber(input) || input.size() > 2  ||  stoi(input) >= pb_size);
-	contacts[std::stoi(input)].display_info();
+	} while (input.empty() || !isnumber(input) || input.size() > 2  ||  std::stoi(input) >= nb);
+	_contacts[std::stoi(input)].display_info();
 }
