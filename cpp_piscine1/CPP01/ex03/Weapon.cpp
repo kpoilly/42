@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:09:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/06 07:50:39 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:58:03 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 Weapon::Weapon(std::string type)
 {
 	if (type.empty())
-		this->type = "fists";
+		this->_type = "fists";
 	else
-		this->type = type;
+		this->_type = type;
 }
 
 Weapon::~Weapon(){};
 
 void Weapon::setType(std::string type)
 {
-	this->type = type;
+	this->_type = type;
 }
 
 const std::string Weapon::getType()
 {
-	if (this->type.empty())
-		this->type = "fists";
-	return (this->type);
+	if (this->_type.empty())
+		this->_type = "fists";
+	return (this->_type);
 }

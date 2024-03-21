@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:09:57 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/06 07:25:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:57:50 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Weapon
 {
 	private:
-		std::string type;
+		std::string _type;
 
 	public:
 		Weapon (std::string type);

@@ -6,31 +6,31 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:09:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/06 09:03:25 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:57:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 
-HumanA::HumanA(std::string name, Weapon& weapon) : weapon_type(weapon)
+HumanA::HumanA(std::string name, Weapon& weapon) : _weapon_type(weapon)
 {
 	if (name.empty())
-		this->name = "Pouet";
+		this->_name = "Bobette";
 	else
-		this->name = name;
+		this->_name = name;
 }
 
 HumanA::~HumanA()
 {
-	std::cout << this->name << " died." << std::endl;
+	std::cout << this->_name << " died." << std::endl;
 }
 
 void HumanA::attack()
 {
-	std::cout << this->name << " attacks with their " << this->weapon_type.getType() << "." << std::endl;
+	std::cout << this->_name << " attacks with their " << this->_weapon_type.getType() << "." << std::endl;
 }
 
 void HumanA::setWeapon(Weapon& weapon)
 {
-	this->weapon_type = weapon;
+	this->_weapon_type = weapon;
 }

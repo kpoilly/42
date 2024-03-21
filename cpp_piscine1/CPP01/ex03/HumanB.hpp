@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:09:48 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/06 09:02:52 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:57:05 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class HumanB
 {
 	private:
-		std::string name;
-		Weapon *weapon_type;
+		std::string _name;
+		Weapon *_weapon_type;
 
 	public:
 		HumanB(std::string name);

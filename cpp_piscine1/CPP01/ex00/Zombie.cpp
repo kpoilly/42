@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 10:42:39 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/05 11:09:20 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:54:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 Zombie::Zombie(std::string name)
 {
 	if (name.empty())
-		this->name = "default";
+		this->_name = "default";
 	else
-		this->name = name;
+		this->_name = name;
 	this->announce();
 }
 
 Zombie::~Zombie()
 {
-	std::cout<<this->name<<": died."<<std::endl;
+	std::cout<<this->_name<<": died."<<std::endl;
 }
 
 void Zombie::announce()
 {
-	std::cout<<this->name<<": BraiiiiiiinnnzzzZ..."<<std::endl;
+	std::cout<<this->_name<<": BraiiiiiiinnnzzzZ..."<<std::endl;
 }

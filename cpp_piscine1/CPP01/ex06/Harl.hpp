@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:54:25 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/15 12:22:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:59:45 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 class Harl
 {
 	private:
-		void debug(void);
-		void info(void);
-		void warning(void);
-		void error(void);
+		void _debug(void);
+		void _info(void);
+		void _warning(void);
+		void _error(void);
 
 	public:
 		Harl();

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:05:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/06 09:52:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:58:19 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 	if (infile.is_open())
 	{
 		while (infile.good())
-			getline(infile, str, '\0');
+			std::getline(infile, str, '\0');
 	}
 	infile.close();
 	if (str.empty())

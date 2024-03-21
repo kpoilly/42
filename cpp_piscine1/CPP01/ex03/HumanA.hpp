@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:09:41 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/06 09:03:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/03/21 12:56:34 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class HumanA
 {
 	private:
-		std::string name;
-		Weapon& weapon_type;
+		std::string _name;
+		Weapon& _weapon_type;
 
 	public:
 		HumanA(std::string name, Weapon& weapon);
