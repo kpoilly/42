@@ -42,6 +42,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& copy)
 	this->_HitPoints = copy._HitPoints;
 	this->_gateKeeper = copy._gateKeeper;
 	std::cout << "\033[1;36mScavTrap " << this->_Name << " copied. (via =)\033[0m" << std::endl;
+	return (*this);
 }
 
 ScavTrap::~ScavTrap()
