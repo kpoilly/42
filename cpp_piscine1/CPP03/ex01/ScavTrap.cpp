@@ -35,6 +35,14 @@ ScavTrap::ScavTrap(const ScavTrap& copy): ClapTrap(copy)
 	std::cout << "\033[1;36mScavTrap " << this->_Name << " copied.\033[0m" << std::endl;
 }
 
+ScavTrap& ScavTrap::operator=(const ScavTrap& copy)
+{
+	this->_Name = copy._Name;
+	this->_EnergyPoints = copy._EnergyPoints;
+	this->_HitPoints = copy._HitPoints;
+	this->_gateKeeper = copy._gateKeeper;
+	std::cout << "\033[1;36mScavTrap " << this->_Name << " copied. (via =)\033[0m" << std::endl;
+}
 
 ScavTrap::~ScavTrap()
 {
