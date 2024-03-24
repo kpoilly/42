@@ -20,10 +20,10 @@ int main(void)
 	eric.attack("Bob");
 	eric.takeDamage(5);
 	eric.beRepaired(2);
-	eric.guardGate();
+	eric.highFivesGuys();
 	eric.takeDamage(97);
 	eric.beRepaired(5);
-	eric.guardGate();
+	eric.highFivesGuys();
 
 	return (0);
 }

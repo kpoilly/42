@@ -50,7 +50,7 @@ FragTrap::~FragTrap()
 	std::cout << "\033[1;31mFragTrap " << this->_Name << " destructed.\033[0m" << std::endl;
 }
 
-void	FragTrap::guardGate()
+void	FragTrap::highFivesGuys()
 {
 	if (this->_wfHighFive)
 	{
