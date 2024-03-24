@@ -26,6 +26,13 @@ ClapTrap::ClapTrap(const ClapTrap& copy)
 	std::cout << "\033[1;33mClapTrap " << this->_Name << " copied.\033[0m" << std::endl;
 }
 
+ClapTrap& ClapTrap::operator=(const ClapTrap& copy)
+{
+	this->_EnergyPoints = copy._EnergyPoints;
+	this->_HitPoints = copy._HitPoints;
+	std::cout << "\033[1;33mClapTrap " << this->_Name << " copied. (via =)\033[0m" << std::endl;
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "\033[1;33mClapTrap " << this->_Name << " destructed.\033[0m" << std::endl;
