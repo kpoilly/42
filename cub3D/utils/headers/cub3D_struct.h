@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 07:36:37 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/08 09:57:26 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/11 16:17:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 # define SC_W 1280
 # define SC_H 720
-# define TILE_SIZE 25
+# define TILE_SIZE 64
 # define FOV 66
-# define ROT_SPEED 3.5
-# define PLAY_SPEED 2
+# define ROT_SPEED 5
+# define PLAY_SPEED 5
 
 # define KEY_UP 65362
 # define KEY_DOWN 65364
@@ -83,6 +83,21 @@ typedef struct s_minimap
 	int		h;
 }	t_minimap;
 
+typedef struct s_micromap
+{
+	t_img	map;
+	t_img	hand;
+	t_img	thumb;
+	int		sq_size;
+	int		w_color;
+	int		g_color;
+	int		p_color;
+	float	x;
+	float	y;
+	int		w;
+	int		h;
+}	t_micromap;
+
 typedef struct s_ray
 {
 	float	x;
@@ -90,12 +105,14 @@ typedef struct s_ray
 	float	a;
 	float	xo;
 	float	yo;
-	int		mapx;
-	int		mapy;
 	int		texx;
 	int		texy;
 	int		color;
 	int		hit;
+	int		side;
+	int		mapx;
+	float	wall_h;
+	int		nb;
 }	t_ray;
 
 typedef struct s_wall_line
@@ -127,6 +144,12 @@ typedef struct s_data
 	int			r_right;
 	int			r_left;
 	int			open_map;
+	int			open_mmap;
+	int			time_no;
+	int			time_so;
+	t_img		*anim_no;
+	t_img		*anim_so;
+	t_img		*anim_we;
 	t_img		bg;
 	t_img		no;
 	t_img		so;
@@ -135,6 +158,7 @@ typedef struct s_data
 	t_ray		ray;
 	t_player	player;
 	t_minimap	mini;
+	t_micromap	micro;
 	t_wall_line	wine;
 }	t_data;
 

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 09:36:48 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/08 09:16:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/11 15:57:39 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	check_hit(t_data *data, t_ray ray)
 	int	mx;
 	int	my;
 
-	mx = get_mapx(data, ray.x);
-	my = get_mapy(data, ray.y);
+	mx = get_mapx(ray.x);
+	my = get_mapy(ray.y);
 	if (mx >= 0 && mx < data->map_w && my >= 0 && my < data->map_h
 		&& data->map[my][mx] && data->map[my][mx] == '1')
 		data->ray.hit = 1;
@@ -35,19 +35,17 @@ void	check_hit(t_data *data, t_ray ray)
 //draw_ray(data, data->ray.a, data->ray.x, data->ray.y);
 void	raycasting(t_data *data)
 {
-	int	nb_ray;
-
 	data->ray.a = (data->player.a - ((FOV / 2) * DEG));
-	nb_ray = 0;
-	while (nb_ray < SC_W)
+	data->ray.nb = 0;
+	while (data->ray.nb < SC_W)
 	{
 		data->ray.x = data->player.x;
 		data->ray.y = data->player.y;
 		data->ray.hit = 0;
 		while (!data->ray.hit)
 			check_hit(data, data->ray);
-		draw_wall(data, data->ray, nb_ray);
+		draw_wall(data);
 		data->ray.a += ((float)FOV / (float)SC_W) * DEG;
-		nb_ray++;
+		data->ray.nb++;
 	}
 }

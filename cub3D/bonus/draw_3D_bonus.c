@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_3D.c                                          :+:      :+:    :+:   */
+/*   draw_3D_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:25:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/11 15:59:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/11 15:59:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./utils/headers/cub3D.h"
+#include "../utils/headers/cub3D.h"
 
 static int	set_x_color(t_data *data, t_img texture, int y_wall, float wall_h)
 {
@@ -56,19 +56,19 @@ static int	set_color(t_data *data, t_ray *ray, float wall_h, int y_wall)
 		if ((int)(ray->x) == roundf(case_x))
 			return (set_x_color(data, data->ea, y_wall, wall_h));
 		if ((int)(ray->x) == roundf(case_x + TILE_SIZE - 1.0))
-			return (set_x_color(data, data->we, y_wall, wall_h));
+			return (set_x_color(data, *(data->anim_we), y_wall, wall_h));
 	}
 	ray->side = 1;
 	if ((int)(ray->y) == roundf(case_y))
-		return (set_y_color(data, data->so, y_wall, wall_h));
+		return (set_y_color(data, *(data->anim_so), y_wall, wall_h));
 	if ((int)(ray->y) == roundf(case_y + TILE_SIZE - 1.0))
-		return (set_y_color(data, data->no, y_wall, wall_h));
+		return (set_y_color(data, *(data->anim_no), y_wall, wall_h));
 	ray->side = 0;
 	ray->mapx = get_mapx(ray->x);
 	if ((int)(ray->x) == roundf(case_x))
 		return (set_x_color(data, data->ea, y_wall, wall_h));
 	if ((int)(ray->x) == roundf(case_x + TILE_SIZE - 1.0))
-		return (set_x_color(data, data->we, y_wall, wall_h));
+		return (set_x_color(data, *(data->anim_we), y_wall, wall_h));
 	return (0xff0015);
 }
 

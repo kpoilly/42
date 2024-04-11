@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_and_free.c                                    :+:      :+:    :+:   */
+/*   load_and_free_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:33:17 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/10 14:17:19 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/04/11 09:45:29 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./utils/headers/cub3D.h"
+#include "../utils/headers/cub3D.h"
 
 t_img	load_img(t_data *data, t_img toload, int width, int height)
 {
@@ -51,8 +51,26 @@ void	free_paths(t_data *data)
 		free(data->ea_text);
 }
 
+// void	free_anim(t_data *data, t_anim *texture)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < texture->size)
+// 	{
+// 		if (texture->tex->img)
+// 			mlx_destroy_image(data->mlx.ptr, texture->tex->img);
+// 		if (texture->tex->next)
+// 			texture->tex = texture->tex->next;
+// 	}
+// }
+
 int	free_textures(t_data *data)
 {
+	//free_anim(data, &data->no);
+	//free_anim(data, &data->so);
+	//free_anim(data, &data->we);
+	//free_anim(data, &data->ea);
 	if (data->no.img)
 		mlx_destroy_image(data->mlx.ptr, data->no.img);
 	if (data->so.img)

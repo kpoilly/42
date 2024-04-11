@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:10:28 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/10 13:32:15 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/04/11 09:52:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./utils/headers/cub3D.h"
+#include "../utils/headers/cub3D.h"
 
 int	keypress(int keycode, t_data *data)
 {
@@ -28,16 +28,7 @@ int	keypress(int keycode, t_data *data)
 		data->r_left = 1;
 	else if (keycode == KEY_RIGHT)
 		data->r_right = 1;
-	else if (keycode == KEY_INT)
-	{
-		if (data->open_mmap == 1)
-		{
-			data->open_mmap = 0;
-			draw_bg(data);
-		}
-		else if (data->open_mmap == 0)
-			data->open_mmap = 1;
-	}
+	show_maps(data, keycode);
 	return (0);
 }
 
@@ -66,6 +57,9 @@ int	no_event(t_data *data)
 	moves_leftright(data);
 	rotate(data);
 	raycasting(data);
+	switch_anim(data);
+	if (data->open_map)
+		draw_minimap(data);
 	if (data->open_mmap)
 		draw_micromap(data);
 	mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, data->bg.img, 0, 0);

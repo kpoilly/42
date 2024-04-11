@@ -1,0 +1,18 @@
+NO ./utils/textures/NOtest.xpm
+SO ./utils/textures/SO.xpm
+WE ./utils/textures/WEtest.xpm
+EA ./utils/textures/EAtest.xpm
+
+F 143, 118, 109
+C 65, 73, 74
+
+
+111111111
+1S1111101
+110111011
+111010111
+111101111
+111010111
+110111011
+101111101
+111111111

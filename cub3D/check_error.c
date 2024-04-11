@@ -6,14 +6,43 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:57:03 by lleciak           #+#    #+#             */
-/*   Updated: 2024/03/28 10:06:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/09 10:29:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./utils/headers/cub3D.h"
 
+// is the map valid ?
+static int	valid_map(char **map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if ((y == 0 && map[y][x] != '1' && map[y][x] != ' ')
+				|| (x == 0 && map[y][x] != '1' && map[y][x] != ' ')
+				|| (!map[y + 1] && map[y][x] != ' ' && map[y][x] != '1')
+				|| (!map[y][x + 1] && map[y][x] != ' ' && map[y][x] != '1'))
+				return (ft_printf(2, "Error.\nInvalid map.\n"), 0);
+			else if (map[y][x] == '0'
+				&& (y && map[y + 1] && x && map[y][x + 1])
+				&& (!map_charset(map[y + 1][x]) || !map_charset(map[y - 1][x])
+				|| !map_charset(map[y][x + 1]) || !map_charset(map[y][x - 1])))
+				return (ft_printf(2, "Error.\nInvalid map.\n"), 0);
+			x++;
+		}
+		y++;
+	}
+	return (1);
+}
+
 //check if the color is in the [0, 255] limit
-int	check_colors(t_data *data)
+static int	check_colors(t_data *data)
 {
 	int	i;
 
@@ -31,7 +60,7 @@ int	check_colors(t_data *data)
 }
 
 //did the img load ? texture exist ?
-int	check_textures(t_data *data)
+static int	check_textures(t_data *data)
 {
 	int	check;
 
@@ -50,7 +79,7 @@ int	check_textures(t_data *data)
 
 int	check_error(t_data *data, char **map)
 {
-	if (!check_textures(data) || !check_colors(data) || !map)
+	if (!check_textures(data) || !check_colors(data) || !map || !valid_map(map))
 		return (0);
 	return (1);
 }

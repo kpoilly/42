@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 12:40:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/05 09:09:37 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/09 10:17:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	draw_miniray(t_data *data, float a)
 	dix = cosf(a);
 	diy = sinf(a);
 	i = 0;
-	x = data->player.x - data->mini.x;
-	y = data->player.y - data->mini.y;
+	x = (data->player.x / TILE_SIZE) * data->mini.sq_size;
+	y = (data->player.y / TILE_SIZE) * data->mini.sq_size;
 	while (i < 45)
 	{
 		put_pixel(data->mini.map, x, y, data->mini.p_color);
@@ -64,7 +64,8 @@ void	draw_player(t_data *data)
 {
 	int		i;
 	int		j;
-	float	a;
+	int		px;
+	int		py;
 
 	if (data->mini.player.img)
 		mlx_destroy_image(data->mlx.ptr, data->mini.player.img);
@@ -77,13 +78,13 @@ void	draw_player(t_data *data)
 		while (j++ < data->mini.sq_size / 2)
 			put_pixel(data->mini.player, j, i, data->mini.p_color);
 	}
+	px = (data->player.x / TILE_SIZE) * data->mini.sq_size;
+	py = (data->player.y / TILE_SIZE) * data->mini.sq_size;
 	put_img_to_img(data->mini.map, data->mini.player,
-		data->player.x - data->mini.x - ((data->mini.sq_size / 2) / 2),
-		data->player.y - data->mini.y - ((data->mini.sq_size / 2) / 2));
-	a = data->player.a - ((FOV / 2) * DEG);
-	draw_miniray(data, a);
-	a = data->player.a + ((FOV / 2) * DEG);
-	draw_miniray(data, a);
+		px - ((data->mini.sq_size / 2) / 2),
+		py - ((data->mini.sq_size / 2) / 2));
+	draw_miniray(data, data->player.a - ((FOV / 2) * DEG));
+	draw_miniray(data, data->player.a + ((FOV / 2) * DEG));
 }
 
 void	draw_miniwall(t_data *data, int x, int y, int color)

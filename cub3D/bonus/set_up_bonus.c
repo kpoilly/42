@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_up.c                                           :+:      :+:    :+:   */
+/*   set_up_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:16:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/10 15:34:03 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/04/11 08:39:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./utils/headers/cub3D.h"
+#include "../utils/headers/cub3D.h"
 
 void	get_player_angle(char c, t_data *data)
 {
@@ -73,6 +73,7 @@ void	set_up_img(t_data *data)
 	data->micro.thumb.img = NULL;
 	data->mini.player.img = NULL;
 	data->wine.line.img = NULL;
+	setup_img_anim(data);
 }
 
 void	set_up(t_data *data)
@@ -91,6 +92,8 @@ void	set_up(t_data *data)
 	data->r_left = 0;
 	data->ray.side = 1;
 	data->ray.mapx = -1;
+	data->time_no = clock();
+	data->time_so = clock();
 }
 
 void	set_up_mini(t_data *data)

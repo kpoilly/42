@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 08:50:49 by lleciak           #+#    #+#              #
-#    Updated: 2024/04/05 07:25:51 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/04/11 11:09:49 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,16 +17,16 @@ HEAD			= ./utils/headers/cub3D.h ./utils/headers/cub3D_struct.h
 
 BUILD_DIR		= ./utils/objects
 
-CONST_FILES 	= main.c draw_background.c utils.c get_map_data.c ft_split.c get_map_utils.c\
-				  tile_transparency.c load_and_free.c check_error.c events.c utils2.c set_up.c\
-				  minimap.c minimap_utils.c moves.c raycasting.c draw_3D.c draw_game.c
+CONST_FILES 	= main.c draw_background.c utils.c get_map_data.c ft_split.c tile_transparency.c\
+                  check_error.c raycast_utils.c minimap.c minimap_utils.c raycasting.c
 CONST_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(CONST_FILES)))
 
-MANDATORY 		= 
+MANDATORY 		= moves.c events.c micromap.c set_up.c draw_3D.c load_and_free.c get_map_utils.c
 MANDATORY_OBJ 	= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(MANDATORY)))
 
 BONUS_BUILD_DIR	= ./bonus/objects
-BONUS_FILES		= 
+BONUS_FILES		= moves_bonus.c micromap_bonus.c micromap_utils.c events_bonus.c events_utils.c\
+				  anim.c set_up_bonus.c draw_3D_bonus.c load_and_free_bonus.c  get_map_utils_bonus.c
 BONUS_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_FILES)))
 
 GNL_FILES 		= ./utils/GNL/get_next_line.c ./utils/GNL/get_next_line_utils.c
@@ -63,7 +63,7 @@ $(NAME):		$(CONST_OBJ) $(MANDATORY_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) $(HEAD)
 
 bonus:			fclean $(CONST_OBJ) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) $(HEAD)
 						@$(CC) $(CFLAGS) -I ./utils/headers -o $(NAME) $(CONST_OBJ) $(BONUS_OBJ) $(GNL_OBJECTS) $(PRINTF_OBJECTS) \
-						-L./utils/minilibx-linux -lmlx_Linux -lX11 -lXext
+						-L./utils/minilibx-linux -lmlx_Linux -lX11 -lXext -lm
 				@echo "\033c\033[0;32mBonus part compiled 👽\033[0;37m"
 				@echo "\033[0;32mStart the game with \033[0;3m./cub3D map_of_your_choice.cub\033[0;32m, have fun!\033[0;37m"
 										
