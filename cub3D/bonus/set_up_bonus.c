@@ -6,25 +6,28 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:16:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/11 08:39:25 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/23 09:05:03 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils/headers/cub3D.h"
 
-void	get_player_angle(char c, t_data *data)
+//set the angle the player is looking for on spawn
+static void	get_player_angle(char *c, t_data *data)
 {
-	if (c == 'N')
+	if (*c == 'N')
 		data->player.a = (3 * PI) / 2;
-	else if (c == 'S')
+	else if (*c == 'S')
 		data->player.a = PI / 2;
-	else if (c == 'E')
+	else if (*c == 'E')
 		data->player.a = 2 * PI;
-	else if (c == 'W')
+	else if (*c == 'W')
 		data->player.a = PI;
+	*c = '0';
 }
 
-void	map_size(t_data *data)
+//get values like player coord, size of map...
+static void	map_size(t_data *data)
 {
 	int	i;
 	int	len;
@@ -42,7 +45,7 @@ void	map_size(t_data *data)
 			{
 				data->player.mapx = len;
 				data->player.mapy = i;
-				get_player_angle(data->map[i][len], data);
+				get_player_angle(&data->map[i][len], data);
 			}
 			len++;
 		}
@@ -53,6 +56,7 @@ void	map_size(t_data *data)
 	data->map_w = cmp;
 }
 
+//set images
 void	set_up_img(t_data *data)
 {
 	data->no_text = NULL;
@@ -70,12 +74,35 @@ void	set_up_img(t_data *data)
 	data->mini.map.img = NULL;
 	data->micro.map.img = NULL;
 	data->micro.hand.img = NULL;
-	data->micro.thumb.img = NULL;
 	data->mini.player.img = NULL;
 	data->wine.line.img = NULL;
-	setup_img_anim(data);
+	data->lol.img = NULL;
+	data->anim_ea.lst = NULL;
+	data->anim_no.lst = NULL;
+	data->anim_so.lst = NULL;
+	data->anim_we.lst = NULL;
+	data->door_tex.lst = NULL;
 }
 
+//set mini and micro maps values
+void	set_up_mini(t_data *data)
+{
+	data->mini.sq_size = 20;
+	data->mini.h = data->map_h * data->mini.sq_size;
+	data->mini.w = data->map_w * data->mini.sq_size;
+	data->mini.map.img = NULL;
+	data->mini.player.img = NULL;
+	data->mini.g_color = 0x080606;
+	data->mini.w_color = 0x333633;
+	data->mini.p_color = 0x04ff00;
+	data->mini.x = ((float)SC_W / 2.0) - ((float)data->mini.w / 2.0);
+	data->mini.y = ((float)SC_H / 2.0) - ((float)data->mini.h / 2.0);
+	data->micro.sq_size = 25;
+	data->micro.w = 9 * data->micro.sq_size;
+	data->micro.h = 11 * data->micro.sq_size;
+}
+
+//set diffrent things up
 void	set_up(t_data *data)
 {
 	map_size(data);
@@ -90,27 +117,17 @@ void	set_up(t_data *data)
 	data->right = 0;
 	data->r_right = 0;
 	data->r_left = 0;
+	data->mr_right = 0;
+	data->mr_left = 0;
+	data->open_map = 0;
+	data->open_mmap = 0;
+	data->open_lol = 0;
+	data->open_door = 0;
+	data->mouse.h = 0;
+	data->mouse.sen = 1;
+	data->nb_doors = -1;
 	data->ray.side = 1;
 	data->ray.mapx = -1;
-	data->time_no = clock();
-	data->time_so = clock();
-}
-
-void	set_up_mini(t_data *data)
-{
-	data->mini.sq_size = 20;
-	data->mini.h = data->map_h * data->mini.sq_size;
-	data->mini.w = data->map_w * data->mini.sq_size;
-	data->mini.map.img = NULL;
-	data->mini.player.img = NULL;
-	data->mini.g_color = 0x080606;
-	data->mini.w_color = 0x333633;
-	data->mini.p_color = 0x04ff00;
-	data->mini.x = ((float)SC_W / 2.0) - ((float)data->mini.w / 2.0);
-	data->mini.y = ((float)SC_H / 2.0) - ((float)data->mini.h / 2.0);
-	data->open_map = 0;
-	data->micro.sq_size = 25;
-	data->micro.w = 9 * data->micro.sq_size;
-	data->micro.h = 11 * data->micro.sq_size;
-	data->open_mmap = 0;
+	setup_img_anim(data);
+	set_door_list(data);
 }

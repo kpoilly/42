@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 08:50:49 by lleciak           #+#    #+#              #
-#    Updated: 2024/04/11 11:09:49 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/04/19 10:19:41 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,16 +17,19 @@ HEAD			= ./utils/headers/cub3D.h ./utils/headers/cub3D_struct.h
 
 BUILD_DIR		= ./utils/objects
 
-CONST_FILES 	= main.c draw_background.c utils.c get_map_data.c ft_split.c tile_transparency.c\
-                  check_error.c raycast_utils.c minimap.c minimap_utils.c raycasting.c
+CONST_FILES 	= draw_background.c utils.c get_map_data.c ft_split.c tile_transparency.c\
+                  raycast_utils.c
 CONST_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(CONST_FILES)))
 
-MANDATORY 		= moves.c events.c micromap.c set_up.c draw_3D.c load_and_free.c get_map_utils.c
+MANDATORY 		= main.c moves.c events.c micromap.c set_up.c draw_3D.c load_and_free.c\
+				  check_error.c raycasting.c get_map_utils.c
 MANDATORY_OBJ 	= $(patsubst %.c, %.o, $(addprefix $(BUILD_DIR)/, $(MANDATORY)))
 
 BONUS_BUILD_DIR	= ./bonus/objects
-BONUS_FILES		= moves_bonus.c micromap_bonus.c micromap_utils.c events_bonus.c events_utils.c\
-				  anim.c set_up_bonus.c draw_3D_bonus.c load_and_free_bonus.c  get_map_utils_bonus.c
+BONUS_FILES		= main_bonus.c micromap_bonus.c events_bonus.c events_utils.c\
+				  anim.c set_up_bonus.c draw_3D_bonus.c load_and_free_bonus.c  get_map_utils_bonus.c\
+				  check_error_bonus.c minimap.c minimap_utils.c doors.c draw_obj.c raycasting_bonus.c\
+				  draw_door.c micromap_utils.c utils_bonus.c doors_utils.c moves_bonus.c
 BONUS_OBJ 		= $(patsubst %.c, %.o, $(addprefix $(BONUS_BUILD_DIR)/, $(BONUS_FILES)))
 
 GNL_FILES 		= ./utils/GNL/get_next_line.c ./utils/GNL/get_next_line_utils.c

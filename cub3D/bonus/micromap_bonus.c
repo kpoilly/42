@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   micromap_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 09:30:42 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/10 15:53:19 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/04/16 11:04:48 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils/headers/cub3D.h"
 
-void	draw_microray(t_data *data, float a)
+//draw a ray on the micro map
+static void	draw_microray(t_data *data, float a)
 {
 	int		i;
 	float	x;
@@ -34,6 +35,7 @@ void	draw_microray(t_data *data, float a)
 	}
 }
 
+//draw the player's position on the micromap
 void	draw_microplayer(t_data *data, int x, int y, int color)
 {
 	int	i;
@@ -58,6 +60,7 @@ void	draw_microplayer(t_data *data, int x, int y, int color)
 	}
 }
 
+//draw a wall on the micromap
 void	draw_microwall(t_data *data, int x, int y, int color)
 {
 	int	i;
@@ -80,42 +83,23 @@ void	draw_microwall(t_data *data, int x, int y, int color)
 	}
 }
 
-void	draw_square(t_data *data)
+//draw a square on the micromap
+static void	draw_square(t_data *data, int mapy, int y)
 {
-	int	mapy;
 	int	mapx;
-	int	x;
-	int	y;
 
-	mapy = get_mapy(data->player.y) - 5;
-	y = 0;
-	while (mapy < 0)
-	{
-		mapy++;
+	while (++mapy < 0)
 		y++;
-	}
 	while (data->map[mapy] && y <= 11)
 	{
-		mapx = get_mapx(data->player.x) - 4;
-		x = 0;
-		while (mapx < 0)
+		mapx = get_mapx(data->player.x) - 5;
+		data->micro.objx = 0;
+		while (++mapx < 0)
+			data->micro.objx++;
+		while (data->map[mapy][mapx] && data->micro.objx <= 9)
 		{
-			mapx++;
-			x++;
-		}
-		while (data->map[mapy][mapx] && x <= 9)
-		{
-			if (data->map[mapy][mapx] == '1')
-				draw_microwall(data, x * data->micro.sq_size,
-					y * data->micro.sq_size, data->mini.w_color);
-			else if (data->map[mapy][mapx] != ' ')
-				draw_microwall(data, x * data->micro.sq_size,
-					y * data->micro.sq_size, data->mini.g_color);
-			if (mapy == get_mapy(data->player.y)
-				&& mapx == get_mapx(data->player.x))
-				draw_microplayer(data, x * data->micro.sq_size,
-					y * data->micro.sq_size, data->mini.p_color);
-			x++;
+			draw_microthing(data, mapx, mapy, y);
+			data->micro.objx++;
 			mapx++;
 		}
 		y++;
@@ -123,16 +107,16 @@ void	draw_square(t_data *data)
 	}
 }
 
+//draw the whole micromap with every components
 void	draw_micromap(t_data *data)
 {
-	draw_hand(data, data->micro.hand, "./utils/textures/TABLETTEV2.xpm");
 	if (data->micro.map.img)
 		mlx_destroy_image(data->mlx.ptr, data->micro.map.img);
 	data->micro.map = load_img(data, data->micro.map,
 			data->micro.w, data->micro.h);
-	draw_square(data);
+	draw_square(data, get_mapy(data->player.y) - 6, 0);
 	draw_microray(data, data->player.a);
 	put_img_to_img(data->bg, data->micro.map,
 		(SC_W / 2) - (data->micro.w / 2) - 197, SC_H - data->micro.h - 78);
-	draw_hand(data, data->micro.thumb, "./utils/textures/pouce.xpm");
+	put_img_to_img(data->bg, data->micro.hand, (SC_W / 2) - 500, SC_H - 535);
 }

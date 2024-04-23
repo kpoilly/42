@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 08:45:44 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/09 11:09:41 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/23 07:55:47 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	draw_floor(t_data *data)
 	int		color_hex;
 
 	color_hex = rgb_to_hex(data->floor_colors);
-	y = SC_H / 2;
+	y = (SC_H / 2) + data->mouse.h;
 	while (y < SC_H)
 	{
 		x = 0;
@@ -64,7 +64,7 @@ void	draw_ceiling(t_data *data)
 
 	color_hex = rgb_to_hex(data->ceiling_colors);
 	y = 0;
-	while (y < SC_H / 2)
+	while (y < (SC_H / 2) + data->mouse.h)
 	{
 		x = 0;
 		while (x < SC_W)

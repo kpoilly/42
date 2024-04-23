@@ -6,14 +6,17 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:33:17 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/11 09:45:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/22 15:08:03 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils/headers/cub3D.h"
 
+//load a new mlx image (not a texture)
 t_img	load_img(t_data *data, t_img toload, int width, int height)
 {
+	if (height <= 0)
+		return (toload.img = NULL, toload);
 	toload.img = mlx_new_image(data->mlx.ptr, width,
 			height);
 	if (!toload.img)
@@ -26,6 +29,7 @@ t_img	load_img(t_data *data, t_img toload, int width, int height)
 	return (toload);
 }
 
+//load a texture into an mlx image
 int	load_texture(t_data *data, t_img *img, char *path)
 {
 	img->w = TILE_SIZE;
@@ -39,6 +43,7 @@ int	load_texture(t_data *data, t_img *img, char *path)
 	return (1);
 }
 
+//free the paths char *
 void	free_paths(t_data *data)
 {
 	if (data->no_text)
@@ -51,34 +56,40 @@ void	free_paths(t_data *data)
 		free(data->ea_text);
 }
 
-// void	free_anim(t_data *data, t_anim *texture)
-// {
-// 	int	i;
+//free every frame of animations (not complete yet, need to free the t_img)
+static void	free_anim(t_data *data, t_anim *texture, int loop)
+{
+	int		i;
+	t_img	*current;
+	t_img	*next;
 
-// 	i = 0;
-// 	while (i < texture->size)
-// 	{
-// 		if (texture->tex->img)
-// 			mlx_destroy_image(data->mlx.ptr, texture->tex->img);
-// 		if (texture->tex->next)
-// 			texture->tex = texture->tex->next;
-// 	}
-// }
+	if (!loop)
+		while (texture->lst->prev)
+			texture->lst = texture->lst->prev;
+	i = 0;
+	current = texture->lst;
+	while (i < texture->size && current)
+	{
+		if (current->img)
+			mlx_destroy_image(data->mlx.ptr, current->img);
+		if (current->next)
+			next = current->next;
+		else
+			next = NULL;
+		free(current);
+		current = next;
+		i++;
+	}
+}
 
+//free every textures
 int	free_textures(t_data *data)
 {
-	//free_anim(data, &data->no);
-	//free_anim(data, &data->so);
-	//free_anim(data, &data->we);
-	//free_anim(data, &data->ea);
-	if (data->no.img)
-		mlx_destroy_image(data->mlx.ptr, data->no.img);
-	if (data->so.img)
-		mlx_destroy_image(data->mlx.ptr, data->so.img);
-	if (data->we.img)
-		mlx_destroy_image(data->mlx.ptr, data->we.img);
-	if (data->ea.img)
-		mlx_destroy_image(data->mlx.ptr, data->ea.img);
+	free_anim(data, &data->anim_no, 1);
+	free_anim(data, &data->anim_so, 1);
+	free_anim(data, &data->anim_we, 1);
+	free_anim(data, &data->anim_ea, 1);
+	free_anim(data, &data->door_tex, 0);
 	if (data->bg.img)
 		mlx_destroy_image(data->mlx.ptr, data->bg.img);
 	if (data->mini.map.img)
@@ -91,7 +102,7 @@ int	free_textures(t_data *data)
 		mlx_destroy_image(data->mlx.ptr, data->micro.map.img);
 	if (data->micro.hand.img)
 		mlx_destroy_image(data->mlx.ptr, data->micro.hand.img);
-	if (data->micro.thumb.img)
-		mlx_destroy_image(data->mlx.ptr, data->micro.thumb.img);
+	if (data->lol.img)
+		mlx_destroy_image(data->mlx.ptr, data->lol.img);
 	return (1);
 }

@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 12:40:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/09 07:49:55 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:06:46 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./utils/headers/cub3D.h"
+#include "../utils/headers/cub3D.h"
 
+//draw the whole minimap with every components
 void	draw_minimap(t_data *data)
 {
 	int	y;
@@ -29,7 +30,7 @@ void	draw_minimap(t_data *data)
 			if (data->map[y][x] == '1')
 				draw_miniwall(data, x * data->mini.sq_size,
 					y * data->mini.sq_size, data->mini.w_color);
-			else if (data->map[y][x] != ' ')
+			else if (data->map[y][x] == '0')
 				draw_miniwall(data, x * data->mini.sq_size,
 					y * data->mini.sq_size, data->mini.g_color);
 			x++;

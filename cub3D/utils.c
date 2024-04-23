@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 09:46:02 by lleciak           #+#    #+#             */
-/*   Updated: 2024/04/05 07:25:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:27:40 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./utils/headers/cub3D.h"
 
+//add 2 chars at the end of a char*
 char	*ft_strjoin_char(char *hex, char a, char b)
 {
 	int		len;
@@ -60,6 +61,7 @@ int	ft_atoi(const char *nptr)
 	return (nb);
 }
 
+//convert an rgb int table into an hex int (for colors)
 int	rgb_to_hex(int rgb[3])
 {
 	int		color;

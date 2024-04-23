@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:25:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/11 15:59:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:10:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./utils/headers/cub3D.h"
 
+//calculate the right pixel coord in the texture file (vert walls)
 static int	set_x_color(t_data *data, t_img texture, int y_wall, float wall_h)
 {
 	data->ray.texx = (int)data->ray.y % (TILE_SIZE);
@@ -28,6 +29,7 @@ static int	set_x_color(t_data *data, t_img texture, int y_wall, float wall_h)
 	return (get_pixel(texture, data->ray.texx, data->ray.texy));
 }
 
+//calculate the right pixel coord in the texture file (hor walls)
 static int	set_y_color(t_data *data, t_img texture, int y_wall, float wall_h)
 {
 	data->ray.texx = (int)data->ray.x % TILE_SIZE;
@@ -44,6 +46,7 @@ static int	set_y_color(t_data *data, t_img texture, int y_wall, float wall_h)
 	return (get_pixel(texture, data->ray.texx, data->ray.texy));
 }
 
+//check weither we see north, south, east or west face to get the right texture
 static int	set_color(t_data *data, t_ray *ray, float wall_h, int y_wall)
 {
 	float	case_x;
@@ -72,6 +75,7 @@ static int	set_color(t_data *data, t_ray *ray, float wall_h, int y_wall)
 	return (0xff0015);
 }
 
+//draw pixel column's height the right color (in texture file) pixel by pixel
 static void	draw_col(t_data *data, float pixstart, float height, float top)
 {
 	int	i;
@@ -87,6 +91,7 @@ static void	draw_col(t_data *data, float pixstart, float height, float top)
 	put_img_to_img(data->bg, data->wine.line, data->ray.nb, top);
 }
 
+//get ray dist to set pixel column's height
 void	draw_wall(t_data *data)
 {
 	float	top;

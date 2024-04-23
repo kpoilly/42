@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 12:40:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/09 10:17:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:06:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./utils/headers/cub3D.h"
+#include "../utils/headers/cub3D.h"
 
+//draw the raycasting's ray (not used)
 void	draw_ray(t_data *data, float a, float endx, float endy)
 {
 	int		i;
@@ -38,6 +39,7 @@ void	draw_ray(t_data *data, float a, float endx, float endy)
 	}
 }
 
+//draw a ray on the minimap
 void	draw_miniray(t_data *data, float a)
 {
 	int		i;
@@ -60,6 +62,7 @@ void	draw_miniray(t_data *data, float a)
 	}
 }
 
+//draw the player's position on the minimap
 void	draw_player(t_data *data)
 {
 	int		i;
@@ -87,6 +90,7 @@ void	draw_player(t_data *data)
 	draw_miniray(data, data->player.a + ((FOV / 2) * DEG));
 }
 
+//draw a wall on the minimap
 void	draw_miniwall(t_data *data, int x, int y, int color)
 {
 	int	i;

@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 08:46:56 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/09 10:56:08 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/11 18:14:36 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./utils/headers/cub3D.h"
 
+//moves left and right
 void	moves_leftright(t_data *data)
 {
 	float	turn_a;
@@ -37,6 +38,7 @@ void	moves_leftright(t_data *data)
 	}
 }
 
+//moves forward and backward
 void	moves_forback(t_data *data)
 {
 	if (data->forward)
@@ -53,6 +55,7 @@ void	moves_forback(t_data *data)
 	}
 }
 
+//player's rotation
 void	rotate(t_data *data)
 {
 	if (data->r_left)

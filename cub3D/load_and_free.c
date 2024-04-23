@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_and_free.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:33:17 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/10 14:17:19 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/04/15 07:54:26 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./utils/headers/cub3D.h"
 
+//load a new mlx image (not a texture)
 t_img	load_img(t_data *data, t_img toload, int width, int height)
 {
 	toload.img = mlx_new_image(data->mlx.ptr, width,
@@ -26,6 +27,7 @@ t_img	load_img(t_data *data, t_img toload, int width, int height)
 	return (toload);
 }
 
+//load a texture into an mlx image
 int	load_texture(t_data *data, t_img *img, char *path)
 {
 	img->w = TILE_SIZE;
@@ -39,6 +41,7 @@ int	load_texture(t_data *data, t_img *img, char *path)
 	return (1);
 }
 
+//free the paths char *
 void	free_paths(t_data *data)
 {
 	if (data->no_text)
@@ -51,6 +54,7 @@ void	free_paths(t_data *data)
 		free(data->ea_text);
 }
 
+//free every textures
 int	free_textures(t_data *data)
 {
 	if (data->no.img)
@@ -73,7 +77,5 @@ int	free_textures(t_data *data)
 		mlx_destroy_image(data->mlx.ptr, data->micro.map.img);
 	if (data->micro.hand.img)
 		mlx_destroy_image(data->mlx.ptr, data->micro.hand.img);
-	if (data->micro.thumb.img)
-		mlx_destroy_image(data->mlx.ptr, data->micro.thumb.img);
 	return (1);
 }

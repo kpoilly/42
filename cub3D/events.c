@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:10:28 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/10 13:32:15 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/04/12 11:28:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./utils/headers/cub3D.h"
 
+//wich key is pressed
 int	keypress(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)
@@ -41,6 +42,7 @@ int	keypress(int keycode, t_data *data)
 	return (0);
 }
 
+//wich key is released
 int	keyrelease(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)
@@ -60,6 +62,7 @@ int	keyrelease(int keycode, t_data *data)
 	return (0);
 }
 
+//idle events
 int	no_event(t_data *data)
 {
 	moves_forback(data);
@@ -72,7 +75,7 @@ int	no_event(t_data *data)
 	return (0);
 }
 
-//Ferme la window de façon propre
+//close the window properly
 int	destroy(t_data *data)
 {
 	free_textures(data);
@@ -87,6 +90,7 @@ int	destroy(t_data *data)
 	return (0);
 }
 
+//kill the program properly
 int	fire_exit(t_data *data, char **map)
 {
 	free_textures(data);

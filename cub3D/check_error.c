@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:57:03 by lleciak           #+#    #+#             */
-/*   Updated: 2024/04/09 10:29:47 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/18 13:41:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ static int	check_textures(t_data *data)
 	check += load_texture(data, &data->so, data->so_text);
 	check += load_texture(data, &data->we, data->we_text);
 	check += load_texture(data, &data->ea, data->ea_text);
-	if (check != 4)
+	check += load_texture(data, &data->micro.hand,
+			"./utils/textures/TABLETTEV2.xpm");
+	if (check != 5)
 		return (ft_printf(2, "Error.\nInvalid texture path.\n"), 0);
 	return (1);
 }
@@ -89,9 +91,9 @@ int	map_format(char *arg)
 {
 	int	i;
 
-	i = 0;
+	i = ft_strlen(arg) - 1;
 	while (arg[i] && arg[i] != '.')
-		i++;
+		i--;
 	i++;
 	if (arg[i] && arg[i] == 'c' && arg[i + 1] && arg[i + 1] == 'u' && arg[i + 2]
 		&& arg[i + 2] == 'b' && !arg[i + 3])

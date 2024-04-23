@@ -6,20 +6,22 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:49:49 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/11 11:08:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/16 11:55:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils/headers/cub3D.h"
 
+//authorized characters in the map file
 int	map_charset(char c)
 {
 	if (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
-		|| c == 'D')
+		|| c == 'D' || c == 'T')
 		return (1);
 	return (0);
 }
 
+//is it the beginning of the map ?
 int	map_begin(char	*line)
 {
 	if (line[0] == '\n')
@@ -33,6 +35,7 @@ int	map_begin(char	*line)
 	return (1);
 }
 
+//is the tab only filled with numbers ?
 int	ft_only_nb(char	**tab)
 {
 	int	i;
@@ -53,6 +56,7 @@ int	ft_only_nb(char	**tab)
 	return (1);
 }
 
+//length of a char **
 int	ft_tablen(char	**tab)
 {
 	int	len;
@@ -63,6 +67,7 @@ int	ft_tablen(char	**tab)
 	return (len);
 }
 
+//get colors for floor or ceiling
 int	*get_bg_colors(char *line)
 {
 	int		i;
