@@ -6,11 +6,14 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:06:36 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/21 10:58:51 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/29 16:59:51 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_awesome_phonebook.hpp"
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+
+# include "my_awesome_phonebook.hpp"
 
 class PhoneBook
 {
@@ -24,3 +27,5 @@ class PhoneBook
 		Contact _contacts[8];
 		int		_pb_size;
 };
+
+#endif

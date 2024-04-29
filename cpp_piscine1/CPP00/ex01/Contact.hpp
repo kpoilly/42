@@ -6,11 +6,14 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:05:37 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/21 10:53:58 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/29 16:59:28 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_awesome_phonebook.hpp"
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
+# include "my_awesome_phonebook.hpp"
 
 class Contact
 {
@@ -28,3 +31,5 @@ class Contact
 		std::string _phnumber;
 		std::string _darksecret;
 };
+
+#endif
