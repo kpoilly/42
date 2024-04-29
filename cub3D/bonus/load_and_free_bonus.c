@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:33:17 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/22 15:08:03 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/23 11:24:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ int	free_textures(t_data *data)
 		mlx_destroy_image(data->mlx.ptr, data->micro.hand.img);
 	if (data->lol.img)
 		mlx_destroy_image(data->mlx.ptr, data->lol.img);
+	if (data->crocs.img)
+		mlx_destroy_image(data->mlx.ptr, data->crocs.img);
 	return (1);
 }

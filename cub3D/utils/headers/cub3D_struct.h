@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 07:36:37 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/23 09:01:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/24 13:44:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define FOV 66
 # define ROT_SPEED 5
 # define PLAY_SPEED 5
-
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
