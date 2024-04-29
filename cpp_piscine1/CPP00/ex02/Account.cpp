@@ -6,12 +6,13 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 07:45:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/29 18:28:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/04/29 18:59:46 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <iomanip>
 #include <ctime>
 
 int	Account::_nbAccounts = 0;
@@ -131,5 +132,15 @@ void	Account::displayStatus(void) const
 
 void	Account::_displayTimestamp(void)
 {
-	std::cout << "[prout] ";
+	std::time_t timestamp = std::time(nullptr);
+	struct tm *time = std::localtime(&timestamp);
+	std::cout << "[" << time->tm_year + 1900;
+	std::cout << std::setfill('0') << std::setw(2) << time->tm_mon + 1;
+	std::cout << std::setfill('0') << std::setw(2) << time->tm_mday << "_";
+	std::cout << std::setfill('0') << std::setw(2) << time->tm_hour;
+	std::cout << std::setfill('0') << std::setw(2) << time->tm_min;
+	std::cout << std::setfill('0') << std::setw(2) << time->tm_sec;
+	std::cout << "] ";
+	
+	
 };
