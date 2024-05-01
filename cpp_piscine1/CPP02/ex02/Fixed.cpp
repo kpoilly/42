@@ -6,17 +6,17 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/20 13:31:37 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/01 13:46:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-fixed::fixed():value(0)
+fixed::fixed():_value(0)
 {//std::cout << "Default Constructor called." <<std::endl;
 }
 
-fixed::fixed(const int nb):value(nb * 256)
+fixed::fixed(const int nb):_value(nb * 256)
 {//std::cout << "Int Constructor called." <<std::endl;
 }
 
@@ -26,12 +26,12 @@ fixed::fixed(const float nb)
 	
 	long temp = nb * 256; //pow(2, this->frac);
 	int conv = int(roundf(temp));
-	this->value = conv;
+	this->_value = conv;
 }
 fixed::fixed(const fixed& nb)
 {
 	//std::cout << "Copy Constructor called." <<std::endl;
-	this->value = nb.value;
+	this->_value = nb._value;
 }
 fixed::~fixed()
 {
@@ -41,7 +41,7 @@ fixed::~fixed()
 fixed& fixed::operator=(const fixed& nb)
 {
 	//std::cout << "Copy assignement operator called (=)." <<std::endl;
-	this->value = nb.value;
+	this->_value = nb._value;
 	return (*this);
 }
 
@@ -107,14 +107,14 @@ fixed& fixed::operator++ ()
 {
 	fixed *tmp = new fixed(this->toInt());
 	float res = this->toFloat();
-	this->value = toFixed(++res);
+	this->_value = toFixed(++res);
 	return (*tmp);
 }
 
 fixed& fixed::operator++ (int)
 {
 	float res = this->toFloat();
-	this->value = toFixed(++res);
+	this->_value = toFixed(++res);
 	return (*this);
 }
 
@@ -122,14 +122,14 @@ fixed& fixed::operator-- ()
 {
 	fixed *tmp = new fixed(this->toInt());
 	float res = this->toFloat();
-	this->value = toFixed(--res);
+	this->_value = toFixed(--res);
 	return (*tmp);
 }
 
 fixed& fixed::operator-- (int)
 {
 	float res = this->toFloat();
-	this->value = toFixed(--res);
+	this->_value = toFixed(--res);
 	return (*this);
 }
 
@@ -142,19 +142,19 @@ std::ostream& operator<<(std::ostream& os, const fixed& nb)
 int fixed::getRawBits(void) const
 {
 	//std::cout << "getRawBits member called :" << std::endl;
-	return (this->value);
+	return (this->_value);
 }
 void fixed::setRawBits(int const raw)
 {
 	//std::cout << "getRawBits member called." << std::endl;
-	this->value = raw;
+	this->_value = raw;
 }
 
 float fixed::toFloat(void) const
 {
 	float res;
 	
-	res = (float)this->value * 1.0;
+	res = (float)this->_value * 1.0;
 	res /= 256;
 
 	return (res);
@@ -167,22 +167,22 @@ int fixed::toInt(void) const
 
 fixed& fixed::min (fixed& a, fixed& b)
 {
-	return (a.value <= b.value ? a : b);
+	return (a._value <= b._value ? a : b);
 }
 
 const fixed& fixed::min (const fixed& a, const fixed& b)
 {
-	return (a.value <= b.value ? a : b);
+	return (a._value <= b._value ? a : b);
 }
 
 fixed& fixed::max (fixed& a, fixed& b)
 {
-	return (a.value >= b.value ? a : b);
+	return (a._value >= b._value ? a : b);
 }
 
 const fixed& fixed::max (const fixed& a, const fixed& b)
 {
-	return (a.value >= b.value ? a : b);
+	return (a._value >= b._value ? a : b);
 }
 
 int fixed::toFixed(float nb)
