@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:05:14 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/21 12:58:19 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/02 14:01:03 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	
 	std::string to_rep = av[2];
 	if (!to_rep.empty()){
-		for (int i = str.find(to_rep, 0); i != std::string::npos; i = str.find(to_rep, i))
+		for (unsigned long i = str.find(to_rep, 0); i != std::string::npos; i = str.find(to_rep, i))
 		{
 			str.erase(i, to_rep.size());
 			str.insert(i, av[3]);
@@ -40,7 +40,8 @@ int	main(int ac, char **av)
 	}
 
 	std::string in_name = av[1];
-	std::ofstream outfile(in_name + "_replace");
+	in_name += "_replace";
+	std::ofstream outfile(&*in_name.begin());
 	if (outfile.is_open())
 		outfile << str;
 }

@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 09:54:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/21 13:00:25 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/02 14:24:12 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void Harl::complain(std::string level)
 	void (Harl::*funcs[])(void) = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
 	bool found = false;
 
-	for (int i = 0; i < level.size(); i++)
+	for (unsigned int i = 0; i < level.size(); i++)
 		level[i] = toupper(level[i]);
 	
 	for (int i = 0; i < 4; i++)
@@ -58,9 +58,8 @@ void Harl::complain(std::string level)
 void Harl::big_complain(std::string level)
 {
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	bool found = false;
 
-	for (int i = 0; i < level.size(); i++)
+	for (unsigned int i = 0; i < level.size(); i++)
 		level[i] = toupper(level[i]);
 	
 	int i;

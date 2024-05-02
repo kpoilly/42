@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 12:26:26 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/21 12:54:57 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/02 13:37:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define Zombie_HPP
 
 # include <iostream>
+# include <cstdlib>
 
 class Zombie
 {
