@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/01 13:45:23 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/02 09:18:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,13 @@
 fixed::fixed():_value(0)
 {std::cout << "Default Constructor called." <<std::endl;};
 
-fixed::fixed(const int nb):_value(nb * 256)
+fixed::fixed(const int nb):_value(nb << this->_frac)
 {std::cout << "Int Constructor called." <<std::endl;}
 
 fixed::fixed(const float nb)
 {
 	std::cout << "Float Constructor called." <<std::endl;
-	float temp;
-	int conv;
-	
-	temp = nb * 256;
-	conv = int(roundf(temp));
-	this->_value = conv;
+	this->_value = roundf(nb * (1 << this->_frac));
 }
 fixed::fixed(const fixed& nb)
 {
@@ -64,15 +59,10 @@ void fixed::setRawBits(int const raw)
 
 float fixed::toFloat(void) const
 {
-	float res;
-	
-	res = (float)this->_value * 1.0;
-	res /= 256;
-
-	return (res);
+	return ((float)this->_value / (float)(1 << this->_frac));
 }
 
 int fixed::toInt(void) const
 {
-	return ((int)this->toFloat());
+	return (this->_value >> this->_frac);
 }

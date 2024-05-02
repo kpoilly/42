@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/01 13:46:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/02 09:35:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@ fixed::fixed():_value(0)
 {//std::cout << "Default Constructor called." <<std::endl;
 }
 
-fixed::fixed(const int nb):_value(nb * 256)
+fixed::fixed(const int nb):_value(nb << this->_frac)
 {//std::cout << "Int Constructor called." <<std::endl;
 }
 
 fixed::fixed(const float nb)
 {
 	//std::cout << "Float Constructor called." <<std::endl;
-	
-	long temp = nb * 256; //pow(2, this->frac);
-	int conv = int(roundf(temp));
-	this->_value = conv;
+	this->_value = roundf(nb * (1 << this->_frac));
 }
 fixed::fixed(const fixed& nb)
 {
@@ -103,33 +100,31 @@ fixed& fixed::operator/ (const fixed& other)
 	return (*res);
 }
 
-fixed& fixed::operator++ ()
-{
-	fixed *tmp = new fixed(this->toInt());
-	float res = this->toFloat();
-	this->_value = toFixed(++res);
-	return (*tmp);
-}
-
 fixed& fixed::operator++ (int)
 {
-	float res = this->toFloat();
-	this->_value = toFixed(++res);
-	return (*this);
+	fixed *tmp = new fixed();
+	tmp->setRawBits(this->_value);
+	this->_value++;
+	return (*tmp);
 }
 
-fixed& fixed::operator-- ()
+fixed& fixed::operator++ ()
 {
-	fixed *tmp = new fixed(this->toInt());
-	float res = this->toFloat();
-	this->_value = toFixed(--res);
-	return (*tmp);
+	this->_value++;
+	return (*this);
 }
 
 fixed& fixed::operator-- (int)
 {
-	float res = this->toFloat();
-	this->_value = toFixed(--res);
+	fixed *tmp = new fixed();
+	tmp->setRawBits(this->_value);
+	this->_value--;
+	return (*tmp);
+}
+
+fixed& fixed::operator-- ()
+{
+	this->_value++;
 	return (*this);
 }
 
@@ -152,17 +147,12 @@ void fixed::setRawBits(int const raw)
 
 float fixed::toFloat(void) const
 {
-	float res;
-	
-	res = (float)this->_value * 1.0;
-	res /= 256;
-
-	return (res);
+	return ((float)this->_value / (float)(1 << this->_frac));
 }
 
 int fixed::toInt(void) const
 {
-	return ((int)this->toFloat());
+	return (this->_value >> this->_frac);
 }
 
 fixed& fixed::min (fixed& a, fixed& b)
@@ -187,7 +177,5 @@ const fixed& fixed::max (const fixed& a, const fixed& b)
 
 int fixed::toFixed(float nb)
 {
-	long temp = nb * 256; //pow(2, this->frac);
-	int conv = int(roundf(temp));
-	return (conv);
+	return (roundf(nb * (1 << this->_frac)));
 }

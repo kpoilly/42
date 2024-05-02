@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/01 13:45:56 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/02 09:12:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class fixed
 {
 	private:
 		int _value;
-		static const int frac = 8;
+		static const int _frac = 8;
 
 	public:
 		fixed(void);
