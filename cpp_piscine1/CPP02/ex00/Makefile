@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/01 13:44:53 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/05/02 15:05:26 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS 			= -Wall -Wextra -Werror -std=c++98 -MMD
 
 all:			$(NAME)
 
-.c.o:
+.cpp.o:
 				$(CC) $(CFLAGS) -c $< -o ${<:.cpp=.o}
 				
 $(NAME):		$(OBJECTS) $(HEAD)
