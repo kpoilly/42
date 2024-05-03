@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:35:35 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/08 10:38:40 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/03 08:43:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,14 @@
 # define DOG_HPP
 
 # include "animal.hpp"
+
+class Dog : public Animal
+{
+	public:
+		Dog();
+		Dog(const Dog& copy);
+		Dog& operator=(const Dog& copy);
+		~Dog();
+};
 
 #endif
