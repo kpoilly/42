@@ -6,13 +6,13 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/03 07:29:34 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/05/03 07:30:59 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= Fixed
-FILES 			= main.cpp Fixed.cpp
-HEAD			= Fixed.hpp
+NAME 			= BSP
+FILES 			= main.cpp Fixed.cpp Point.cpp bsp.cpp
+HEAD			= Fixed.hpp Point.hpp
 OBJECTS 		= $(FILES:.cpp=.o)
 RM 						= rm -f
 CC 						= c++
