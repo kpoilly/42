@@ -6,13 +6,13 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/03 14:09:29 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/05/03 14:27:05 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= Materia
 FILES 			= main.cpp
-HEAD			= 
+HEAD			= Materia.hpp MateriaSource.hpp Character.hpp
 OBJECTS 		= $(FILES:.cpp=.o)
 RM 						= rm -f
 CC 						= c++
