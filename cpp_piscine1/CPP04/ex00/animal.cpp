@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:36:20 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/03 08:53:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/03 09:06:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,7 @@ Animal::~Animal()
 
 void Animal::makeSound() const
 {
-	if (this->_type == "Cat")
-		std::cout << "\033[1;33mMeeeeeooooow >:3\033[0m" << std::endl;
-	else if (this->_type == "Dog")
-		std::cout << "\033[1;35mWafWAF! >:D\033[0m" << std::endl;
-	else if (this->_type == "Frog")
-		std::cout << "\033[1;32mCrooooOOAAAAAaaa! <3\033[0m" << std::endl;
-	else
-		std::cout << "\033[1;31mUnReCoGniZaBlE WeIrD SoUnD...\033[0m" << std::endl;
+	std::cout << "\033[1;31mUnReCoGniZaBlE WeIrD SoUnD...\033[0m" << std::endl;
 }
 
 std::string Animal::getType() const

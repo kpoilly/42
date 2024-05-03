@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:35:35 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/03 08:43:17 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/03 09:03:12 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ class Dog : public Animal
 		Dog(const Dog& copy);
 		Dog& operator=(const Dog& copy);
 		~Dog();
+
+		void	makeSound(void) const;
 };
 
 #endif

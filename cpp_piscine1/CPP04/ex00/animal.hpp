@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:36:23 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/03 08:48:45 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/03 09:00:22 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Animal
 		Animal& operator=(const Animal& copy);
 		~Animal();
 		
-		void makeSound() const;
+		virtual void makeSound() const;
 		std::string getType() const;
 };
 

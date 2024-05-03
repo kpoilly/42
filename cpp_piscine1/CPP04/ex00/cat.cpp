@@ -12,7 +12,7 @@
 
 #include "cat.hpp"
 
-Cat::Cat()
+Cat::Cat(): Animal()
 {
 	this->Animal::_type = "Cat";
 	std::cout << "\033[1;33mIt's a cat!\033[0m" << std::endl;
@@ -33,4 +33,9 @@ Cat& Cat::operator=(const Cat& copy)
 Cat::~Cat()
 {
 	std::cout << "\033[1;33mEnjoy your new family, cat!\033[0m" << std::endl;
+};
+
+void	Cat::makeSound(void) const
+{
+	std::cout << "\033[1;33mMeeeeeooooow >:3\033[0m" << std::endl;
 };
