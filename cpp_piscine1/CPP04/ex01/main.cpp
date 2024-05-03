@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:34:35 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/03 11:00:40 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/03 12:21:26 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 
 int	main(void)
 {
+
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+
+	delete j;//should not create a leak
+	delete i;
+	
 	Animal *refuge[30];
 
 	for (int i = 0; i < 15; i++)
@@ -29,6 +36,6 @@ int	main(void)
 		refuge[i]->makeSound();
 	}
 
-	// for (int i = 0; i < 30; i++)
-	// 	delete refuge[i];
+	for (int i = 0; i < 30; i++)
+		delete refuge[i];
 }
