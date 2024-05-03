@@ -13,7 +13,6 @@
 #ifndef DIAMONDTRAP_HPP
 # define DIAMONDTRAP_HPP
 
-#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
@@ -23,7 +22,14 @@ class DiamondTrap : virtual FragTrap, virtual ScavTrap
 		std::string _Name;
 
 	public:
-		void	whoAmI();
+		DiamondTrap();
+		DiamondTrap(std::string name);
+		DiamondTrap(const DiamondTrap& copy);
+		DiamondTrap& operator=(const DiamondTrap& copy);
+		~DiamondTrap();
+		
+		using	ScavTrap::attack;
+		void	whoAmI() const;
 };
 
 #endif

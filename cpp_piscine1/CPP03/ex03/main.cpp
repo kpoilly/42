@@ -10,20 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
-	FragTrap eric("Eric");
+	DiamondTrap thierry("Thierry");
+	DiamondTrap thierry2("Pouet");
 
-	eric.attack("Bob");
-	eric.takeDamage(5);
-	eric.beRepaired(2);
-	eric.highFivesGuys();
-	eric.takeDamage(97);
-	eric.beRepaired(5);
-	eric.highFivesGuys();
+	thierry.attack("Pouet");
+	thierry.whoAmI();
+	thierry2.whoAmI();
+	thierry2 = thierry;
+	thierry.whoAmI();
 
 	return (0);
 }
