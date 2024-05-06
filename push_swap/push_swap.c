@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:35:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/02/06 08:37:55 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/03 14:50:59 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 		ft_free(inputs);
 	if (!a)
 		return (-1);
-	debug_prntlst(a, b);
+	//debug_prntlst(a, b);
 	if (!issorted(&a))
 		sort(&a, &b, len);
 	free_list(&a);
