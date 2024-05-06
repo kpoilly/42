@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/02 09:18:24 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/06 12:04:51 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int fixed::getRawBits(void) const
 }
 void fixed::setRawBits(int const raw)
 {
-	std::cout << "getRawBits member called." << std::endl;
+	std::cout << "setRawBits member called." << std::endl;
 	this->_value = raw;
 }
 
