@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/06 12:38:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/07 08:08:51 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,32 +44,32 @@ fixed& fixed::operator=(const fixed& nb)
 
 bool fixed::operator> (const fixed& other)
 {
-	return(this->toInt() > other.toInt());
+	return(this->toFloat() > other.toFloat());
 }
 
 bool fixed::operator< (const fixed& other)
 {
-	return(this->toInt() < other.toInt());
+	return(this->toFloat() < other.toFloat());
 }
 
 bool fixed::operator>= (const fixed& other)
 {
-	return(this->toInt() >= other.toInt());
+	return(this->toFloat() >= other.toFloat());
 }
 
 bool fixed::operator<= (const fixed& other)
 {
-	return(this->toInt() <= other.toInt());
+	return(this->toFloat() <= other.toFloat());
 }
 
 bool fixed::operator== (const fixed& other)
 {
-	return(this->toInt() == other.toInt());
+	return(this->toFloat() == other.toFloat());
 }
 
 bool fixed::operator!= (const fixed& other)
 {
-	return(this->toInt() != other.toInt());
+	return(this->toFloat() != other.toFloat());
 }
 
 fixed& fixed::operator+ (const fixed& other)
