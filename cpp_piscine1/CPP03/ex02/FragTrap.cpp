@@ -12,8 +12,9 @@
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(): ClapTrap()
+FragTrap::FragTrap(): ClapTrap("Paul")
 {
+	this->_Name = "Paul";
 	this->_HitPoints = 100;
 	this->_EnergyPoints = 100;
 	this->_AttackDmg = 30;

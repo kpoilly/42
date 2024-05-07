@@ -12,8 +12,9 @@
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(): ClapTrap()
+ScavTrap::ScavTrap(): ClapTrap("Eric")
 {
+	this->_Name = "Eric";
 	this->_HitPoints = 100;
 	this->_EnergyPoints = 50;
 	this->_AttackDmg = 20;
