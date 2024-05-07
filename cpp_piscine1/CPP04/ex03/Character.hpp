@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/03 14:23:06 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/03 14:24:26 by kpoilly          ###   ########.fr       */
+/*   Created: 2024/05/07 09:59:03 by kpoilly           #+#    #+#             */
+/*   Updated: 2024/05/07 12:45:02 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,23 @@
 # include <iostream>
 # include "Materia.hpp"
 
-class ICharacter
+class Character : virtual ICharacter
 {
 	public:
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
+		Character();
+		Character(std::string Name);
+		Character(const Character& copy);
+		Character& operator=(const Character& copy);
+		~Character();
+
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
+		
+	private:
+		std::string	_Name;
+		int	_invSize;
+		AMateria* _Inventory[4];
 };
 
 #endif

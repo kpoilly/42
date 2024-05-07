@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   Materia.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/03 14:25:06 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/07 10:06:46 by kpoilly          ###   ########.fr       */
+/*   Created: 2024/05/07 10:03:26 by kpoilly           #+#    #+#             */
+/*   Updated: 2024/05/07 13:06:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE_HPP
-# define MATERIASOURCE_HPP
+#include "Materia.hpp"
 
-# include <iostream>
-# include "Materia.hpp"
+AMateria::AMateria(): _Type("Empty"){};
+AMateria::AMateria(std::string const & type): _Type(type){};
+AMateria::~AMateria(){};
 
-class IMateriaSource
+AMateria::AMateria(const AMateria& copy)
 {
-	public:
-		virtual ~IMateriaSource() {}
-		virtual void learnMateria(AMateria*) = 0;
-		virtual AMateria* createMateria(std::string const & type) = 0;
+	*this = copy;
+};
+AMateria& AMateria::operator =(const AMateria& copy)
+{
+	this->_Type = copy.getType();
 };
 
-#endif
+std::string const & AMateria::getType() const {return (this->_Type);};
+
+void AMateria::use(ICharacter& target){};
