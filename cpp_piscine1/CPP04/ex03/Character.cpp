@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 09:59:13 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/09 13:08:11 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/09 13:13:50 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	Character::equip(AMateria* m)
 
 void	Character::unequip(int idx)
 {
-	if (idx >= 4 || idx < 0)
+	if (idx >= 4 || idx < 0 || !this->_Inventory[idx])
 		return ;
 	
-	// std::cout << "\033[1;34m" << this->_Name << " \033[0m";
-	// std::cout << "removed \033[1;35m" << this->_Inventory[idx]->getType() << "\033[0m";
-	// std::cout << " from his inventory." << std::endl;
+	std::cout << "\033[1;34m" << this->_Name << " \033[0m";
+	std::cout << "removed \033[1;35m" << this->_Inventory[idx]->getType() << "\033[0m";
+	std::cout << " from his inventory." << std::endl;
 	this->_Inventory[idx] = NULL;
 };
 
