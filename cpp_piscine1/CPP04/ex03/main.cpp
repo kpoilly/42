@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:26:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/09 13:11:06 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/09 13:17:53 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 int	main(void)
 {
 	{
-	std::cout << "= Subject's Main : =" << std::endl;
+	std::cout << "	= Subject's Main : =" << std::endl;
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -37,7 +37,7 @@ int	main(void)
 	delete bob;
 	delete me;
 	delete src;
-	std::cout << "==================\n" << std::endl;
+	std::cout << "	 =================\n" << std::endl;
 	}
 	{
 	IMateriaSource* src = new MateriaSource();
@@ -64,13 +64,13 @@ int	main(void)
 	paul->use(0, *bob);
 	bob->use(1, *bob);
 	
-	std::cout << "\n= Invalid Materia ID (use) =" << std::endl;
+	std::cout << "\n	= Invalid Materia ID (use) =" << std::endl;
 	paul->use(0, *bob); //works
 	paul->use(2, *bob); //doesn't
 	paul->use(-14, *bob); //doesn't
-	std::cout << "================\n" << std::endl;
+	std::cout << "		==============\n" << std::endl;
 	
-	std::cout << "= Invalid Materia ID (unequip) =" << std::endl;
+	std::cout << "	= Invalid Materia ID (unequip) =" << std::endl;
 	paul->use(1, *bob); //works
 	paul->unequip(1);
 	paul->unequip(-14); //doesn't
@@ -78,7 +78,7 @@ int	main(void)
 	paul->unequip(3); //doesn't
 	paul->equip(src->createMateria("cure"));
 	paul->use(1, *bob); //works
-	std::cout << "================" << std::endl;
+	std::cout << "		================" << std::endl;
 	
 	delete bob;
 	delete paul;
