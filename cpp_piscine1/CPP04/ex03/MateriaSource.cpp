@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 08:34:33 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/09 11:02:27 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/09 12:35:41 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ MateriaSource::~MateriaSource()
 {
 	for(int i = 0; i < 4; i++)
 		if (this->_Knowledge[i])
+		{
 			delete this->_Knowledge[i];
+			this->_Knowledge[i] = NULL;
+		}
 };
 
 void	MateriaSource::learnMateria(AMateria* mat)

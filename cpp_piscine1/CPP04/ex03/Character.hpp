@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 09:59:03 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/09 09:42:09 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/09 13:08:06 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ class Character : public ICharacter
 		
 	protected:
 		std::string	_Name;
-		int	_invSize;
 		AMateria* _Inventory[4];
 };
 
