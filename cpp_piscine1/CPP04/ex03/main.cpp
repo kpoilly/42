@@ -6,11 +6,17 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:26:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/03 14:28:18 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/09 10:02:12 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
+#include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 int	main(void)
 {

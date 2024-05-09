@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/09 08:34:35 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/09 09:37:34 by kpoilly          ###   ########.fr       */
+/*   Created: 2024/05/09 08:23:20 by kpoilly           #+#    #+#             */
+/*   Updated: 2024/05/09 09:39:55 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE_HPP
-# define MATERIASOURCE_HPP
+#ifndef CURE_HPP
+# define CURE_HPP
 
-# include "IMateriaSource.hpp"
+# include "AMateria.hpp"
 
-class MateriaSource: public IMateriaSource
+class Cure : public AMateria
 {
 	public:
-		MateriaSource();
-		MateriaSource(const MateriaSource& copy);
-		const MateriaSource& operator=(const MateriaSource& copy);
-		~MateriaSource();
+		Cure();
+		Cure(const Cure& copy);
+		const Cure& operator=(const Cure& copy);
+		~Cure();
 
-		void	learnMateria(AMateria*);
-		AMateria*	createMateria(std::string const & type);
-		
-	protected:
-		AMateria* _Knowledge[4];
-		int	_klSize;
+		void use(ICharacter& target);
+		Cure* clone() const;
 };
 
 #endif

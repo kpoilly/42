@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:23:06 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/07 10:48:31 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/09 09:50:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #define ICHARACTER_HPP
 
 # include <iostream>
-# include "Materia.hpp"
+# include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {	

@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 13:13:54 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/09 10:11:50 by kpoilly          ###   ########.fr       */
+/*   Created: 2024/05/09 08:23:17 by kpoilly           #+#    #+#             */
+/*   Updated: 2024/05/09 09:58:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "Cure.hpp"
 
-Ice::Ice(): AMateria()
+Cure::Cure(): AMateria()
 {
-	_Type = "ice";
+	_Type = "cure";
 };
 
-Ice::Ice(const Ice& copy)
+Cure::Cure(const Cure& copy)
 {
 	*this = copy;
 };
 
-const Ice& Ice::operator=(const Ice& copy)
+const Cure& Cure::operator=(const Cure& copy)
 {
 	return (*(copy.clone()));
 };
 
-Ice::~Ice(){};
+Cure::~Cure(){};
 
-void Ice::use(ICharacter& target)
+void Cure::use(ICharacter& target)
 {
-	std::cout << "shoots an \033[1;36mice bolt\033[0m at \033[1;31m";
-	std::cout << target.getName() << "\033[0m *" << std::endl;
+	std::cout << "\033[1;32mheals \033[0m";
+	std::cout << "\033[1;31m" << target.getName() << "\033[0m's wounds *" << std::endl;
 };
 
-Ice* Ice::clone() const
+Cure* Cure::clone() const
 {
-	Ice *copy = new Ice();
-	copy = (Ice *)this;
+	Cure *copy = new Cure();
+	copy = (Cure *)this;
 	return (copy);
 };
