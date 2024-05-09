@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 08:34:33 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/09 10:11:10 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/09 11:02:27 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ const MateriaSource& MateriaSource::operator=(const MateriaSource& copy)
 {
 	for(int i = 0; i < 4; i++)
 	{
-		if (this->_Knowledge[i] != NULL)
+		if (this->_Knowledge[i])
 			delete this->_Knowledge[i];
-		this->_Knowledge[i] = copy._Knowledge[i];
+		this->_Knowledge[i] = copy._Knowledge[i]->clone();
 	}
 	this->_klSize = 0;
 	for(int i = 0; i < 4; i++)
 	{
-		if (this->_Knowledge[i] != NULL)
+		if (this->_Knowledge[i])
 			this->_klSize++;
 	}
 	return (*this);
@@ -41,12 +41,9 @@ const MateriaSource& MateriaSource::operator=(const MateriaSource& copy)
 
 MateriaSource::~MateriaSource()
 {
-	// for(int i = 0; i < 4; i++)
-	// {
-	// 	if (this->_Knowledge[i] != NULL)
-	// 		delete this->_Knowledge[i];
-	// 	this->_Knowledge[i] = NULL;
-	// }
+	for(int i = 0; i < 4; i++)
+		if (this->_Knowledge[i])
+			delete this->_Knowledge[i];
 };
 
 void	MateriaSource::learnMateria(AMateria* mat)
@@ -60,8 +57,8 @@ void	MateriaSource::learnMateria(AMateria* mat)
 AMateria*	MateriaSource::createMateria(std::string const & type)
 {
 	for(int i = 0; i < 4; i++)
-		if (this->_Knowledge[i] != NULL
+		if (this->_Knowledge[i]
 			&& this->_Knowledge[i]->getType() == type)
-			return (this->_Knowledge[i]);
+			return (this->_Knowledge[i]->clone());
 	return 0;
 };

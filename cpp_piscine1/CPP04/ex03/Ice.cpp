@@ -6,25 +6,23 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 13:13:54 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/09 10:11:50 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/09 12:03:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-Ice::Ice(): AMateria()
-{
-	_Type = "ice";
-};
+Ice::Ice(): AMateria("ice"){};
 
-Ice::Ice(const Ice& copy)
+Ice::Ice(const Ice& copy) : AMateria("ice")
 {
 	*this = copy;
 };
 
 const Ice& Ice::operator=(const Ice& copy)
 {
-	return (*(copy.clone()));
+	this->_Type = copy._Type;
+	return (*this);
 };
 
 Ice::~Ice(){};
@@ -37,7 +35,6 @@ void Ice::use(ICharacter& target)
 
 Ice* Ice::clone() const
 {
-	Ice *copy = new Ice();
-	copy = (Ice *)this;
+	Ice *copy = new Ice(*this);
 	return (copy);
 };

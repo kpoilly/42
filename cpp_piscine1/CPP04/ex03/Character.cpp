@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 09:59:13 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/09 10:08:56 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/09 10:55:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,15 @@ Character& Character::operator=(const Character& copy)
 	this->_Name = copy.getName();
 	for(int i = 0; i < 4; i++)
 	{
-		if (this->_Inventory[i] != NULL)
+		if (this->_Inventory[i])
 			delete this->_Inventory[i];
 		this->_Inventory[i] = copy._Inventory[i];
 	}
+	
 	this->_invSize = 0;
 	for(int i = 0; i < 4; i++)
-	{
 		if (this->_Inventory[i] != NULL)
 			this->_invSize++;
-	}
 	return (*this);
 };
 
