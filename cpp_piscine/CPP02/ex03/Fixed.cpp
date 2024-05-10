@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/07 08:06:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:15:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,29 +74,29 @@ bool fixed::operator!= (const fixed& other)
 
 fixed& fixed::operator+ (const fixed& other)
 {
-	double value = this->toFloat() + other.toFloat();
-	fixed *res = new fixed((float)value);
+	float value = this->toFloat() + other.toFloat();
+	fixed *res = new fixed(value);
 	return (*res);
 }
 
-fixed& fixed::operator- (const fixed& other)
+fixed& fixed::operator- (const fixed& other) const
 {
-	double value = this->toFloat() - other.toFloat();
-	fixed *res = new fixed((float)value);
+	float value = this->toFloat() - other.toFloat();
+	fixed *res = new fixed(value);
 	return (*res);
 }
 
 fixed& fixed::operator* (const fixed& other)
 {
-	double value = this->toFloat() * other.toFloat();
-	fixed *res = new fixed((float)value);
+	float value = this->toFloat() * other.toFloat();
+	fixed *res = new fixed(value);
 	return (*res);
 }
 
 fixed& fixed::operator/ (const fixed& other)
 {
-	double value = this->toFloat() / other.toFloat();
-	fixed *res = new fixed((float)value);
+	float value = this->toFloat() / other.toFloat();
+	fixed *res = new fixed(value);
 	return (*res);
 }
 
@@ -124,7 +124,7 @@ fixed& fixed::operator-- (int)
 
 fixed& fixed::operator-- ()
 {
-	this->_value++;
+	this->_value--;
 	return (*this);
 }
 
