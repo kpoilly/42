@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/10 10:18:11 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:51:00 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)
 Bureaucrat& Bureaucrat::operator++ (int)
 {
 	if (this->_Grade <= 1)
-		return (*this);
+		throw std::string("Bureaucrat::GradeTooHighException");
 	Bureaucrat *tmp = new Bureaucrat(this->_Name, this->_Grade);
 	this->_Grade--;
 	return (*tmp);
@@ -44,7 +44,7 @@ Bureaucrat& Bureaucrat::operator++ (int)
 Bureaucrat& Bureaucrat::operator++ ()
 {
 	if (this->_Grade <= 1)
-		return (*this);
+		throw std::string("Bureaucrat::GradeTooHighException");
 	this->_Grade--;
 	return (*this);
 }
@@ -52,7 +52,7 @@ Bureaucrat& Bureaucrat::operator++ ()
 Bureaucrat& Bureaucrat::operator-- (int)
 {
 	if (this->_Grade >= 150)
-		return (*this);
+		throw std::string("Bureaucrat::GradeTooLowException");
 	Bureaucrat *tmp = new Bureaucrat(this->_Name, this->_Grade);
 	this->_Grade++;
 	return (*tmp);
@@ -61,7 +61,7 @@ Bureaucrat& Bureaucrat::operator-- (int)
 Bureaucrat& Bureaucrat::operator-- ()
 {
 	if (this->_Grade >= 150)
-		return (*this);
+		throw std::string("Bureaucrat::GradeTooLowException");
 	this->_Grade++;
 	return (*this);
 }
