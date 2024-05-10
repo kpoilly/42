@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:52:10 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/03 07:36:35 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/10 07:17:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	main(void)
 	point point1(5,7);
 	point point2(3,12);
 
-	std::cout << "in ? " << bsp(a, b, c, point1) << std::endl;
-	std::cout << "in ? " << bsp(a, b, c, point2) << std::endl;
+	std::cout << "p1 in ? " << bsp(a, b, c, point1) << std::endl;
+	std::cout << "p2 in ? " << bsp(a, b, c, point2) << std::endl;
 }
