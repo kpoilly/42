@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 07:45:53 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/30 11:11:16 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/10 06:58:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	Account::displayStatus(void) const
 
 void	Account::_displayTimestamp(void)
 {
-	std::time_t timestamp = std::time(nullptr);
+	std::time_t timestamp = std::time(NULL);
 	struct tm *time = std::localtime(&timestamp);
 	std::cout << "[" << time->tm_year + 1900;
 	std::cout << std::setfill('0') << std::setw(2) << time->tm_mon + 1;

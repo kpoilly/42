@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/04/29 07:45:32 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/05/10 06:57:33 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS 			= -Wall -Wextra -Werror -std=c++98 -MMD
 
 all:			$(NAME)
 
-.c.o:
+.cpp.o:
 				$(CC) $(CFLAGS) -c $< -o ${<:.cpp=.o}
 				
 $(NAME):		$(OBJECTS) $(HEAD)

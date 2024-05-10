@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:11:01 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/21 11:01:05 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/10 06:57:13 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void interface(PhoneBook book)
 		std::getline(std::cin, input);
 		if (std::cin.eof())
 			break;
-		for(int i = 0; i < input.length(); i++)
+		for(unsigned long i = 0; i < input.length(); i++)
 			input[i] = toupper(input[i]);
 		
 		if (input == "HELP")
