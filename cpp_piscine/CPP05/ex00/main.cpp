@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:31 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/10 12:37:56 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/10 12:39:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	main(void)
 		std::cout << ++Paul << std::endl;
 		std::cout << Paul++ << std::endl;
 		std::cout << Paul << std::endl;
-		std::cout << Boss++ << std::endl;
+		std::cout << --Paul << std::endl;
+		std::cout << Boss++ << std::endl; //Bureaucrat::GradeTooHighException
 		std::cout << Boss << std::endl;
 	}
 	catch(std::string error)
