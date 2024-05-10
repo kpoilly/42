@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 11:01:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/10 11:23:47 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/10 12:34:12 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,21 @@
 # include <iostream>
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 	public:
 		Form(std::string name, int grades, int gradex);
 		Form(const Form& copy);
-		const Form& operator=(const Form& copy);
 		~Form();
 
-		std::string getName() const;
-		bool		isSigned() const;
-		int 		getGradeS() const;
-		int 		getGradeX() const;
+		std::string 	getName() const;
+		bool			isSigned() const;
+		int 			getGradeS() const;
+		int 			getGradeX() const;
 		
-		void		beSigned(const Bureaucrat& signer) const;
+		void		beSigned(const Bureaucrat& signer);
 
 	private:
 		const std::string 	_Name;

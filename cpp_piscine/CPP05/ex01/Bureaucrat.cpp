@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/10 11:29:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/10 12:35:54 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Bureaucrat::~Bureaucrat(){};
 std::string Bureaucrat::getName() const{return (this->_Name);};
 int			Bureaucrat::getGrade() const{return (this->_Grade);};
 
-void		Bureaucrat::signForm(const Form& form) const
+void		Bureaucrat::signForm(Form& form) const
 {
 	try
 	{
@@ -35,13 +35,13 @@ void		Bureaucrat::signForm(const Form& form) const
 	catch(const std::string e)
 	{
 		std::cout << "\033[1;36m" << this->getName(); 
-		std::cout << "\033[0m couldn't sign \033[1;32" << form.getName();
+		std::cout << "\033[0m couldn't sign \033[1;32m" << form.getName();
 		std::cout << "\033[0m because \033[1;31m" + e  + "\033[0m"<< std::endl;
 		return ;
 	}
 	
 	std::cout << "\033[1;36m" << this->getName(); 
-	std::cout << "\033[0m signed \033[1;32" << form.getName() << std::endl;
+	std::cout << "\033[0m signed \033[1;32m" << form.getName() << "\033[0m." << std::endl;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)

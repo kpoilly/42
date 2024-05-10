@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:31 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/10 10:53:37 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/10 12:37:56 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	main(void)
 	}
 	catch(std::string error)
 	{
-		std::cerr << error << '\n';
+		std::cerr << "\033[1;31m" + error  + "\033[0m" << '\n';
 	}
 };
