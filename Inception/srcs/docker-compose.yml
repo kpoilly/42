@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 
 volumes:
   wordpress:
@@ -6,13 +6,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/kpoilly/data/wordpress'
+      device: '/goinfre/kpoilly/docker/volumes/wordpress'
   mariadb:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/kpoilly/data/mysql'
+      device: '/goinfre/kpoilly/docker/volumes/mysql'
 
 networks:
   inception:
