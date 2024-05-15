@@ -4,15 +4,15 @@ volumes:
   wordpress:
     driver: local
     driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/goinfre/kpoilly/docker/volumes/wordpress'
+      type: none
+      device: /home/kpoilly/data/wordpress
+      o: bind
   mariadb:
     driver: local
     driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/goinfre/kpoilly/docker/volumes/mysql'
+      type: none
+      device: /home/kpoilly/data/mysql
+      o: bind
 
 networks:
   inception:

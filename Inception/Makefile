@@ -5,30 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/03 07:30:59 by kpoilly          ###   ########.fr        #
+#    Created: 2024/05/15 13:32:57 by kpoilly           #+#    #+#              #
+#    Updated: 2024/05/15 13:52:26 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= BSP
-FILES 			= main.cpp Fixed.cpp Point.cpp bsp.cpp
-HEAD			= Fixed.hpp Point.hpp
-OBJECTS 		= $(FILES:.cpp=.o)
-RM 						= rm -f
-CC 						= c++
-CFLAGS 			= -Wall -Wextra -Werror -std=c++98 -MMD
+all:
+	docker compose -f ./srcs/docker-compose.yml up -d --build
 
-all:			$(NAME)
+down:
+	docker compose -f ./srcs/docker-compose.yml down
 
-.cpp.o:
-				$(CC) $(CFLAGS) -c $< -o ${<:.cpp=.o}
-				
-$(NAME):		$(OBJECTS) $(HEAD)
-				$(CC) $(CFLAGS) -I ./ -o $(NAME) $(OBJECTS)	
-							
-clean:
-						$(RM) $(OBJECTS)				
-fclean:			clean
-						$(RM) $(NAME)
-re:						fclean all
-.PHONY:		all clean fclean re
+re:
+	docker compose -f ./srcs/docker-compose.yml up -d --build
+
+clear:
+	
+
+.PHONY:
+	all down re clear

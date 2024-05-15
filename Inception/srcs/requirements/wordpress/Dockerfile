@@ -1,4 +1,5 @@
 FROM debian:buster
+
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get -y install wget
@@ -20,4 +21,4 @@ COPY ./tools/config_auto.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/config_auto.sh
 ENTRYPOINT /usr/local/bin/config_auto.sh
 
-CMD /usr/sbin/php-fpm7.3 -F
+CMD ["/usr/sbin/php-fpm7.3", "-F"]
