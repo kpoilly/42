@@ -8,4 +8,4 @@ mysql -e "FLUSH PRIVILEGES;"
 mysqladmin -u root -p$SQL_ROOT_PASSWORD shutdown
 
 #service mysql start
-#exec mysqld_safe
+exec mysqld_safe
