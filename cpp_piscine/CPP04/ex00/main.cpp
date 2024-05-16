@@ -6,13 +6,15 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:34:35 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/03 09:05:37 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/16 12:41:07 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "animal.hpp"
 #include "dog.hpp"
 #include "cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int	main(void)
 {
@@ -28,4 +30,7 @@ int	main(void)
 	j = i;
 	j->makeSound();
 	meta->makeSound();
+
+	const WrongAnimal* k = new WrongCat();
+	k->makeSound();
 }
