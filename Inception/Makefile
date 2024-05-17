@@ -6,7 +6,7 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/15 13:32:57 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/15 13:52:26 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/05/17 15:49:26 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ re:
 	docker compose -f ./srcs/docker-compose.yml up -d --build
 
 clear:
-	
+	docker compose -f ./srcs/docker-compose.yml up -d --build --force-recreate
 
 .PHONY:
 	all down re clear
