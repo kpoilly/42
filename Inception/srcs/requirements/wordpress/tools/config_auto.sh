@@ -15,6 +15,8 @@ else
 	wp core install --url=kpoilly.42.fr --title=inception --admin-user=kpoilly \
 					--admin_password=kpoilly42 --admin_email=kpoilly@student.42.fr \
 					--allow-root
+
+	chmod 755 -R /var/www/wordpress/wp-content
 fi
 
 exec "$@"
