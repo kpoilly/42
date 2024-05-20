@@ -1,3 +1,5 @@
+#!/bin/sh
+
 sleep 10
 
 if test -f "/var/www/html/wp-config.php";
