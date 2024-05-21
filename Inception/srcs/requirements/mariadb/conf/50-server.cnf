@@ -1,13 +1,7 @@
-[client-server]
-!includedir /etc/mysql/conf.d/
-!includedir /etc/mysql/mariadb.conf.d/
-
-[server]
-init_file = /etc/mysql/mysql_setup.sh
-
 [mysqld]
+user = root
 datadir = /var/lib/mysql
 socket = /run/mysqld/mysqld.sock
-bind_address = 127.0.0.1
+bind_address = 0.0.0.0
 port = 3306
-user = root
+skip-networking = false

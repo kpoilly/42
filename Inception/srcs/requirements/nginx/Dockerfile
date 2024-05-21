@@ -9,7 +9,7 @@ RUN apt install openssl -y
 RUN openssl req -x509 -nodes -out /etc/nginx/ssl/kpoilly.crt\
  -keyout /etc/nginx/ssl/kpoilly.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=kpoilly.42.fr/UID=kpoilly"
 
-COPY ./conf/nginx.conf /etc/nginx/
+COPY ./conf/nginx.conf /etc/nginx/conf.d
 
 RUN mkdir -p /var/run/nginx
 RUN chmod 755 /var/www/html
