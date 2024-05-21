@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS kpoilly_data;
+CREATE USER IF NOT EXISTS 'kpoilly'@'localhost' IDENTIFIED BY 'kpoilly42';
+GRANT ALL PRIVILEGES ON *.* TO 'kpoilly'@'%' IDENTIFIED BY 'kpoilly42';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'kpoilly42';
+FLUSH PRIVILEGES;

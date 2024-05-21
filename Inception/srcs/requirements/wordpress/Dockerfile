@@ -7,22 +7,11 @@ RUN apt-get install -y php php-fpm \
 	php-cgi php-mysql mariadb-client \
 	php-pdo php-gd php-cli
 
-RUN wget https://fr.wordpress.org/wordpress-6.5.3-fr_FR.tar.gz -P /var/www
-RUN cd /var/www && tar -xzf wordpress-6.5.3-fr_FR.tar.gz && rm wordpress-6.5.3-fr_FR.tar.gz
-RUN	chown -R root:root /var/www/wordpress
-
-RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp
-
-COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
 RUN mkdir /run/php
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/.
+
+EXPOSE 9000
 
 COPY ./tools/config_auto.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/config_auto.sh
-ENTRYPOINT ["/usr/local/bin/config_auto.sh"]
-
-WORKDIR /var/www/html
-EXPOSE 9000
-
-CMD ["/usr/sbin/php-fpm7.3", "-F"]
+CMD ["/usr/local/bin/config_auto.sh"]
