@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:31 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/10 12:37:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/24 15:35:57 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int	main(void)
 	{
 		std::cout << Paul << std::endl;
 		std::cout << Boss << std::endl;
+		std::cout << form << std::endl;
 		Paul.signForm(form); //Form::GradeTooLowException
-		std::cout << Paul++ << std::endl;
+		std::cout << ++Paul << std::endl;
 		Paul.signForm(form);
+		std::cout << form << std::endl;
 		Boss++; //Bureaucrat::GradeTooHighException
 	}
 	catch(std::string error)

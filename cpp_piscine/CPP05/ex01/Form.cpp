@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 10:58:59 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/10 12:35:31 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/24 15:38:22 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,13 @@ void		Form::beSigned(const Bureaucrat& signer)
 		throw std::string("Form::GradeTooLowException");
 	this->_Signed = true;
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& obj)
+{
+	os << "\033[1;32m" << obj.getName() << "\033[0m";
+	if (obj.isSigned())
+		os << ", a signed form by a rank " << obj.getGradeS() << " or greater.";
+	else
+		os << ", an unsigned form (need to be at rank " << obj.getGradeS() << " or greater).";
+	return (os);
+}
