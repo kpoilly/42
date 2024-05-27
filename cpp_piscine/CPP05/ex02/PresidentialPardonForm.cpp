@@ -13,13 +13,23 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm():
-AForm("Default", 25, 5){};
-PresidentialPardonForm::PresidentialPardonForm(std::string name):
-AForm(name, 25, 5){};
+AForm("PresidentialPardonForm", 25, 5), _Target("default"){};
+PresidentialPardonForm::PresidentialPardonForm(std::string target):
+AForm("PresidentialPardonForm", 25, 5), _Target(target){};
 
 //PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy)
 
 PresidentialPardonForm::~PresidentialPardonForm(){};
+
+void	PresidentialPardonForm::execute(const Bureaucrat& executor)
+{
+	if(!this->isSigned())
+		throw AForm::NotSignedException();
+	if (executor.getGrade() > this->_GradeX)
+		throw AForm::GradeTooLowException();
+	
+	
+}
 
 std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& obj)
 {

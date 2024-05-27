@@ -53,6 +53,13 @@ class AForm
 			virtual const char *what() const throw()
 			{return "AForm::GradeTooHigh";};
 	};
+
+	class NotSignedException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw()
+			{return "AForm::NotSigned";};
+	};
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm& obj);

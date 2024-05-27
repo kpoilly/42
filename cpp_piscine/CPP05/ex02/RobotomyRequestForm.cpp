@@ -13,13 +13,23 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm():
-AForm("Default", 72, 45){};
-RobotomyRequestForm::RobotomyRequestForm(std::string name):
-AForm(name, 72, 45){};
+AForm("RobotomyRequestForm", 72, 45), _Target("Default"){};
+RobotomyRequestForm::RobotomyRequestForm(std::string target):
+AForm("RobotomyRequestForm", 72, 45), _Target(target){};
 
 //RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy)
 
 RobotomyRequestForm::~RobotomyRequestForm(){};
+
+void	RobotomyRequestForm::execute(const Bureaucrat& executor)
+{
+	if(!this->isSigned())
+		throw AForm::NotSignedException();
+	if (executor.getGrade() > this->_GradeX)
+		throw AForm::GradeTooLowException();
+	
+	
+}
 
 std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& obj)
 {

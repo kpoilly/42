@@ -29,6 +29,9 @@ class RobotomyRequestForm : public AForm
 		~RobotomyRequestForm();
 
 		void	execute(const Bureaucrat& executor);
+
+	private:
+		std::string _Target;
 };
 
 std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& obj);

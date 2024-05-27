@@ -13,9 +13,9 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm():
-AForm("Default", 145, 137){};
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name):
-AForm(name, 145, 137){};
+AForm("ShrubberyCreationForm", 145, 137), _Target("Default"){};
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target):
+AForm("ShrubberyCreationForm", 145, 137), _Target(target){};
 
 //ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy)
 
@@ -23,10 +23,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){};
 
 void	ShrubberyCreationForm::execute(const Bureaucrat& executor)
 {
-	if(executor.getGrade() > this->_GradeX)
+	if(!this->isSigned())
+		throw AForm::NotSignedException();
+	if (executor.getGrade() > this->_GradeX)
 		throw AForm::GradeTooLowException();
 	
-	
+
 }
 
 std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
