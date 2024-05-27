@@ -28,7 +28,7 @@ AForm::~AForm(){};
 
 std::string 	AForm::getName() const
 {return(this->_Name);};
-bool				AForm::isSigned() const
+bool			AForm::isSigned() const
 {return(this->_Signed);};
 int 			AForm::getGradeS() const
 {return(this->_GradeS);};

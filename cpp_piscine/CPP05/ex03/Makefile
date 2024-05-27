@@ -6,11 +6,11 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/27 12:56:04 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/05/27 13:01:43 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= Exec
+NAME 			= Intern
 FILES 			= main.cpp Bureaucrat.cpp AForm.cpp Intern.cpp\
 				  ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 HEAD			= Bureaucrat.hpp AForm.hpp Intern.hpp\
