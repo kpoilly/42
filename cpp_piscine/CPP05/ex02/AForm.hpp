@@ -29,6 +29,7 @@ class AForm
 		int 			getGradeX() const;
 		
 		void			beSigned(const Bureaucrat& signer);
+		virtual void	execute(const Bureaucrat& executor) = 0;
 
 	protected:
 		AForm(std::string name, int grades, int gradex);

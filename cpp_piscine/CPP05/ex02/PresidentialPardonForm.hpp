@@ -27,6 +27,9 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm(std::string name);
 		PresidentialPardonForm(const PresidentialPardonForm& copy);
 		~PresidentialPardonForm();
+
+		void	execute(const Bureaucrat& executor);
+
 };
 
 std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& obj);
