@@ -28,7 +28,7 @@ void	PresidentialPardonForm::execute(const Bureaucrat& executor)
 	if (executor.getGrade() > this->_GradeX)
 		throw AForm::GradeTooLowException();
 	
-	
+	std::cout << "\033[1;33m" << this->_Target << "\033[0m has been pardoned by \033[1;36m" << executor.getName()<< "\033[0m." << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& obj)

@@ -6,13 +6,15 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/24 15:40:07 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/05/27 10:22:42 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			= Exec
-FILES 			= main.cpp Bureaucrat.cpp Form.cpp
-HEAD			= Bureaucrat.hpp Form.hpp
+FILES 			= main.cpp Bureaucrat.cpp AForm.cpp\
+				  ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+HEAD			= Bureaucrat.hpp AForm.hpp\
+				  ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 OBJECTS 		= $(FILES:.cpp=.o)
 RM 						= rm -f
 CC 						= c++

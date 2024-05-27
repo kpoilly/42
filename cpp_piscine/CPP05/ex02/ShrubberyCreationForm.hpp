@@ -14,6 +14,8 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include <iostream>
+# include <fstream>
+# include <filesystem>
 # include "AForm.hpp"
 # include "ShrubberyCreationForm.hpp"
 # include "Bureaucrat.hpp"
@@ -29,6 +31,13 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm();
 
 		void	execute(const Bureaucrat& executor);
+
+		class CannotOpenException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{return "ShrubberyCreationForm::CannotOpen";};
+		};
 
 	private:
 		std::string _Target;

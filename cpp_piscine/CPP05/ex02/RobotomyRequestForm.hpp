@@ -32,6 +32,7 @@ class RobotomyRequestForm : public AForm
 
 	private:
 		std::string _Target;
+		int			_FailCounter;
 };
 
 std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& obj);

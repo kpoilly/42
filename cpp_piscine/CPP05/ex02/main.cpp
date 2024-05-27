@@ -6,29 +6,46 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:31 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/27 09:16:56 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/27 10:53:42 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main(void)
 {
 	try
 	{
-		Bureaucrat 	Paul("Paul", 42);
 		Bureaucrat 	Boss("Xavier", 1);
-		//AForm		form("26B", 41, 1);
+		Bureaucrat 	Employee("Paul", 149);
+		
+		ShrubberyCreationForm  Shrub("Jack");
+		RobotomyRequestForm	   Robot("Bob");
+		PresidentialPardonForm Pres("Jerry");
 
-		std::cout << Paul << std::endl;
 		std::cout << Boss << std::endl;
-		///std::cout << form << std::endl;
-		//Paul.signForm(form); //Form::GradeTooLowException
-		std::cout << ++Paul << std::endl;
-		//Paul.signForm(form);
-		//std::cout << form << std::endl;
-		Boss++; //Bureaucrat::GradeTooHighException
+		
+		std::cout << "\n";\
+		//Employee.signForm(Robot); //AForm::GradeTooLow
+		Boss.signForm(Robot);
+		Employee.executeForm(Robot);
+		Boss.executeForm(Robot);
+		Boss.executeForm(Robot);
+		Boss.executeForm(Robot);
+		Boss.executeForm(Robot);
+
+		std::cout << "\n";
+		Boss.signForm(Shrub);
+		Boss.executeForm(Shrub);
+
+		std::cout << "\n";
+		Boss.executeForm(Pres);
+		Boss.signForm(Pres);
+		Boss.executeForm(Pres);
 	}
 	catch(std::exception &error)
 	{
