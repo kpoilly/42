@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:03:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/27 14:49:43 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/27 14:53:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ static void toFloat(std::string str)
 	if(str.size() <= 0 || value < std::numeric_limits<float>::lowest() || value > std::numeric_limits<float>::max())
 		std::cout << "impossible." << std::endl;
 	else
-		std::cout << std::setprecision(3) << value << "f" << std::endl;
+		{
+			std::cout.setf(std::ios::fixed);
+			std::cout << std::setprecision(1) << value << "f" << std::endl;
+		}
 };
 
 static void toDouble(std::string str)
