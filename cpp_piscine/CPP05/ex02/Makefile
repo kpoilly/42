@@ -6,17 +6,17 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/27 08:42:47 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/05/24 15:40:07 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= Form
+NAME 			= Exec
 FILES 			= main.cpp Bureaucrat.cpp Form.cpp
 HEAD			= Bureaucrat.hpp Form.hpp
 OBJECTS 		= $(FILES:.cpp=.o)
 RM 						= rm -f
 CC 						= c++
-CFLAGS 			= -Wall -Wextra -Werror -std=c++98 -MMD -g3
+CFLAGS 			= -Wall -Wextra -Werror -std=c++98 -MMD
 
 all:			$(NAME)
 

@@ -6,14 +6,20 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/24 15:37:45 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/27 07:24:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade):
-	_Name(name), _Grade(grade){};
+	_Name(name), _Grade(grade)
+{
+	if (this->_Grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	if (this->_Grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+};
 Bureaucrat::Bureaucrat(const Bureaucrat& copy){*this = copy;};
 const Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 {
@@ -53,7 +59,7 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)
 Bureaucrat& Bureaucrat::operator++ (int)
 {
 	if (this->_Grade <= 1)
-		throw std::string("Bureaucrat::GradeTooHighException");
+		throw Bureaucrat::GradeTooHighException();
 	Bureaucrat *tmp = new Bureaucrat(this->_Name, this->_Grade);
 	this->_Grade--;
 	return (*tmp);
@@ -62,7 +68,7 @@ Bureaucrat& Bureaucrat::operator++ (int)
 Bureaucrat& Bureaucrat::operator++ ()
 {
 	if (this->_Grade <= 1)
-		throw std::string("Bureaucrat::GradeTooHighException");
+		throw Bureaucrat::GradeTooHighException();
 	this->_Grade--;
 	return (*this);
 }
@@ -70,7 +76,7 @@ Bureaucrat& Bureaucrat::operator++ ()
 Bureaucrat& Bureaucrat::operator-- (int)
 {
 	if (this->_Grade >= 150)
-		throw std::string("Bureaucrat::GradeTooLowException");
+		throw Bureaucrat::GradeTooLowException();
 	Bureaucrat *tmp = new Bureaucrat(this->_Name, this->_Grade);
 	this->_Grade++;
 	return (*tmp);
@@ -79,7 +85,7 @@ Bureaucrat& Bureaucrat::operator-- (int)
 Bureaucrat& Bureaucrat::operator-- ()
 {
 	if (this->_Grade >= 150)
-		throw std::string("Bureaucrat::GradeTooLowException");
+		throw Bureaucrat::GradeTooLowException();
 	this->_Grade++;
 	return (*this);
 }

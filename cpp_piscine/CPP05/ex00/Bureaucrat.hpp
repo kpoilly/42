@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:56 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/10 10:13:46 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/27 08:48:25 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ class Bureaucrat
 		Bureaucrat& operator++ (int);
 		Bureaucrat& operator-- ();
 		Bureaucrat& operator-- (int);
+		
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{return "Bureaucrat::GradeTooLow";};
+		};
+		
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{return "Bureaucrat::GradeTooHigh";};
+		};
 
 	private:
 		std::string _Name;	

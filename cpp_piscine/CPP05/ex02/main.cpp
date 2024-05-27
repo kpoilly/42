@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:31 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/27 08:51:12 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/27 08:44:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,18 @@ int	main(void)
 		Bureaucrat 	Paul("Paul", 42);
 		Bureaucrat 	Boss("Xavier", 1);
 		Form		form("26B", 41, 1);
-		//Form		formerr("26B", 0, 1); //Form::GradeTooHighException
-		
+
 		std::cout << Paul << std::endl;
 		std::cout << Boss << std::endl;
 		std::cout << form << std::endl;
-		//Paul.signForm(form); //Form::GradeTooLowException
+		Paul.signForm(form); //Form::GradeTooLowException
 		std::cout << ++Paul << std::endl;
 		Paul.signForm(form);
 		std::cout << form << std::endl;
-		//Boss++; //Bureaucrat::GradeTooHighException
+		Boss++; //Bureaucrat::GradeTooHighException
 	}
-	catch(std::exception &error)
+	catch(std::string error)
 	{
-		std::cerr << "\033[1;31m" << error.what() << "\033[0m" << '\n';
+		std::cerr << "\033[1;31m" + error  + "\033[0m" << '\n';
 	}
 };

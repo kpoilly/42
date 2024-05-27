@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 08:18:27 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/27 08:49:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/27 07:23:16 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			Bureaucrat::getGrade() const{return (this->_Grade);};
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)
 {
-	os << "\033[1;36m" << obj.getName() << "\033[0m, bureaucrat grade " << obj.getGrade() << ".";
+	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".";
 	return (os);
 }
 
