@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                                           :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,25 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
 # include "AForm.hpp"
-# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class ShrubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 	public:
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string name);
-		ShrubberyCreationForm(const ShrubberyCreationForm& copy);
-		~ShrubberyCreationForm();
+		RobotomyRequestForm();
+		RobotomyRequestForm(std::string name);
+		RobotomyRequestForm(const RobotomyRequestForm& copy);
+		~RobotomyRequestForm();
 };
 
-std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& obj);
+std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& obj);
 
 #endif

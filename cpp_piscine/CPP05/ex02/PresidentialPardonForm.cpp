@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm():
-AForm("Default", 145, 137){};
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name):
-AForm(name, 145, 137){};
+PresidentialPardonForm::PresidentialPardonForm():
+AForm("Default", 25, 5){};
+PresidentialPardonForm::PresidentialPardonForm(std::string name):
+AForm(name, 25, 5){};
 
-//ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy)
+//PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy)
 
-ShrubberyCreationForm::~ShrubberyCreationForm(){};
+PresidentialPardonForm::~PresidentialPardonForm(){};
 
-std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
+std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& obj)
 {
 	os << "\033[1;32m" << obj.getName() << "\033[0m";
 	if (obj.isSigned())
-		os << ", a signed ShrubberyCreationForm by a rank " << obj.getGradeS() << " or greater.";
+		os << ", a signed PresidentialPardonForm by a rank " << obj.getGradeS() << " or greater.";
 	else
-		os << ", an unsigned ShrubberyCreationForm (need to be at rank " << obj.getGradeS() << " or greater).";
+		os << ", an unsigned PresidentialPardonForm (need to be at rank " << obj.getGradeS() << " or greater).";
 	return (os);
 }
