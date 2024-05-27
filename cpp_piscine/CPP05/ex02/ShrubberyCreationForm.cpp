@@ -21,6 +21,14 @@ AForm(name, 145, 137){};
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){};
 
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor)
+{
+	if(executor.getGrade() > this->_GradeX)
+		throw AForm::GradeTooLowException();
+	
+	
+}
+
 std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& obj)
 {
 	os << "\033[1;32m" << obj.getName() << "\033[0m";
