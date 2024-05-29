@@ -6,13 +6,13 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/29 08:54:53 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/05/29 10:40:11 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= Scalar
-FILES 			= main.cpp ScalarConverter.cpp
-HEAD			= ScalarConverter.hpp
+NAME 			= Template
+FILES 			= main.cpp
+HEAD			= whatever.hpp
 SRCS 			= $(addprefix ./objs/, $(FILES))
 OBJECTS 		= $(SRCS:%.cpp=%.o)
 RM 						= rm -f

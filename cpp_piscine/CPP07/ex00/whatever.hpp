@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 13:03:54 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/29 09:52:07 by kpoilly          ###   ########.fr       */
+/*   Created: 2024/05/29 10:41:40 by kpoilly           #+#    #+#             */
+/*   Updated: 2024/05/29 10:51:37 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 # include <iostream>
-# include <string>
-# include <iomanip>
-# include <limits>
-# include <fstream>
-# include <sstream>
-# include <stdlib.h>
 
-class ScalarConverter
+template <typename T> void swap(T &x, T &y)
 {
-	public:
-		~ScalarConverter();
-		static void convert(std::string literal, int type);
-		
-	private:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter& copy);
+	T temp = x;
+	x = y;
+	y = temp;
+};
+template <typename T> const T &max(const T &x, const T &y)
+{
+	return ((x > y) ? x : y);	
+};
+
+template <typename T> const T &min(const T &x, const T &y)
+{
+	return ((x < y) ? x : y);	
 };
 
 #endif
