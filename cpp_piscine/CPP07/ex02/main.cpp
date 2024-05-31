@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 10:55:03 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/31 08:42:32 by kpoilly          ###   ########.fr       */
+/*   Created: 2024/05/31 08:46:07 by kpoilly           #+#    #+#             */
+/*   Updated: 2024/05/31 10:19:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-# define ITER_HPP
+#include "Array.hpp"
 
-#include <iostream>
-
-template <typename T>
-void	iter(const T *arr, int length, void (*f)(const T))
+int main(void)
 {
-	for (int i = 0; i < length; i++)
-		f(arr[i]);
-};
+	try
+	{
+		Array<int> iArray(5);
+		iArray[1] = 42;
+		std::cout << iArray[1] << std::endl;
+		std::cout << iArray[3] << std::endl;
 
-template <typename T>
-void	print(const T elem)
-{
-	std::cout << elem << std::endl;
-};
-
-#endif
+		Array<std::string> sArray(5);
+		sArray[1] = "Coucou";
+		std::cout << sArray[1] << std::endl;
+		std::cout << sArray[14] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+}
