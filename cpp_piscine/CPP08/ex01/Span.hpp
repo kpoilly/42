@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:37:44 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/04 12:43:10 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/04 13:41:48 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SPAN_HPP
 
 # include <iostream>
+# include <algorithm>
+# include <vector>
 
 class Span
 {
@@ -30,7 +32,7 @@ class Span
 		int		getMin();
 
 	private:
-		int*	_array;
+		std::vector<int>	_array;
 		int		_size;
 		int		_cap;
 

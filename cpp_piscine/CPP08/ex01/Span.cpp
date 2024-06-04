@@ -6,18 +6,18 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:38:12 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/04 12:55:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/04 13:42:43 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span(): _size(0), _cap(0)
-{this->_array = NULL;};
-Span::Span(int N): _size(0), _cap(N)
-{this->_array = new int [N];};
+Span::Span(): _array(0),_size(0), _cap(0)
+{;}
+Span::Span(int N): _array(N), _size(0), _cap(N)
+{};
 Span::~Span()
-{delete [] this->_array;};
+{this->_array.clear();};
 
 void	Span::addNumber(int num)
 {
@@ -44,7 +44,7 @@ int		Span::longestSpan()
 {
 	if (this->_size <= 1)
 		throw SpanEmptyException();
-	return (this->getMax() - this->getMin());
+	return (*std::max_element(this->_array.begin(), this->_array.end()) - *std::min_element(this->_array.begin(), this->_array.end()));
 };
 
 int		Span::getMax()
