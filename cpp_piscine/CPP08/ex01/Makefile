@@ -6,11 +6,11 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/05/31 13:37:28 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/06/04 12:35:48 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= EasyFind
+NAME 			= Span
 FILES 			= main.cpp Span.cpp
 HEAD			= Span.hpp
 SRCS 			= $(addprefix ./objs/, $(FILES))
