@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:38:12 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/04 16:32:57 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/04 16:39:10 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,17 @@ Span::~Span()
 
 void	Span::addNumber(int num)
 {
-	if (this->_array.size() > this->_array.capacity())
+	if (!this->_cap)
 		throw SpanFullException();
 	this->_array[this->_array.size() - (this->_cap--)] = num;
+};
 
+void	Span::addNumber(std::vector<int> toAdd)
+{
+	if (toAdd.size() > this->_cap)
+		throw SpanFullException();
+	for (unsigned long i = 0; i < toAdd.size(); i++)
+		this->_array[this->_array.size() - (this->_cap--)] = toAdd[i];
 };
 
 int		Span::shortestSpan()

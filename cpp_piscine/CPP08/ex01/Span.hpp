@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:37:44 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/04 16:32:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/04 16:38:56 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ class Span
 		~Span();
 		
 		void	addNumber(int num);
+		void	addNumber(std::vector<int> toAdd);
 		int		shortestSpan();
 		int		longestSpan();
 
 	private:
 		std::vector<int>	_array;
-		int					_cap;
+		unsigned long		_cap;
 
 		class SpanFullException : public std::exception
 		{
