@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:37:44 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/04 16:38:56 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/05 08:42:36 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class Span
 		Span();
 		Span(int N);
 		~Span();
+
+		Span(const Span& copy);
+		const Span& operator=(const Span& copy);
 		
 		void	addNumber(int num);
 		void	addNumber(std::vector<int> toAdd);

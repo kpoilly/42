@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:38:47 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/04 16:44:37 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/05 08:30:35 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int main(void)
 	{
 		Span sp = Span(5);
 		std::vector<int> toAdd(5);
+		
 		toAdd[0] = 6;
 		toAdd[1] = 3;
 		toAdd[2] = 17;
