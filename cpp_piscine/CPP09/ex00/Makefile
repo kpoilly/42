@@ -6,11 +6,11 @@
 #    By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 18:29:47 by kpoilly           #+#    #+#              #
-#    Updated: 2024/06/05 13:26:36 by kpoilly          ###   ########.fr        #
+#    Updated: 2024/06/06 10:09:39 by kpoilly          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 			= BCEx
+NAME 			= btc
 FILES 			= main.cpp BitcoinExchange.cpp
 HEAD			= BitcoinExchange.hpp
 SRCS 			= $(addprefix ./objs/, $(FILES))
