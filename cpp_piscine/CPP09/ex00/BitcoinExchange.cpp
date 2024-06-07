@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:32:55 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/06 18:27:58 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/07 10:52:39 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,39 @@ static long double stringtold(std::string str)
 	long double ld;
 	ss >> ld;
 	return ld;
+};
+
+std::string itos(int i)
+{
+	std::stringstream ss;
+	std::string convert;
+	ss << i;
+	ss >> convert;
+	if (i < 10)
+		convert = "0" + convert;
+	return convert;
+};
+
+bool	check_date(std::string date)
+{
+	std::string checker = date.substr(0, date.find("-"));
+	if (stringtold(checker) < 2009)
+		return true;
+	checker = date.substr(date.find("-") + 1, 2);
+	if (stringtold(checker) < 0 || stringtold(checker) > 12)
+		return true;
+	checker = date.substr(date.find("-") + 1, 5);
+	checker = checker.substr(checker.find("-") + 1, checker.find("-"));
+	if (stringtold(checker) < 0 || stringtold(checker) > 31)
+		return true;
+	return false;
+};
+
+std::string get_date()
+{
+	std::time_t t = std::time(0);
+	std::tm* now = std::localtime(&t);
+	return (itos(now->tm_year + 1900) + "-" + itos(now->tm_mon + 1) + "-" + itos(now->tm_mday));	
 };
 
 static long double calc_rate(std::string str, std::map<std::string, long double> data)
@@ -36,32 +69,42 @@ static long double calc_rate(std::string str, std::map<std::string, long double>
 	return (nb * value);
 };
 
-int check_errors(std::string str)
+bool check_errors(std::string str)
 {
-	long double value;
-	
 	if (str.find(" | ") == std::string::npos)
 	{
 		std::cerr << "\033[1;31mError: Input file format should be 'date | value'." << std::endl;
-		std::cerr << "=> \033[0m" << str << std::endl;
-		return 1;
+		std::cerr << "=> \033[30m" << str << "\033[0m" << std::endl;
+		return true;
 	}
 
-	//Need to check date format Year-Month-Day (4 chiffre-(2 <= 12) - (2 <= 31))
-	value = stringtold(str.substr(str.find(" | ") + 3, std::string::npos));
+	std::string date = str.substr(0, str.find(" | "));
+	if (check_date(date))
+	{
+		std::cerr << "\033[1;31mError: Invalid date format (must be YEAR-MM-DD)." << std::endl;
+		std::cerr << "=> \033[30m" << date << "\033[0m" << std::endl;
+		return true;
+	}
+	if (date < "2009-01-02" || date > get_date())
+	{
+		std::cerr << "\033[1;31mError: Invalid date (must be between 2009-01-02 and today)." << std::endl;
+		std::cerr << "=> \033[30m" << date << "\033[0m" << std::endl;
+		return true;
+	}
+	long double value = stringtold(str.substr(str.find(" | ") + 3, std::string::npos));
 	if (value < 0)
 	{
 		std::cerr << "\033[1;31mError: Should be a positive number." << std::endl;
-		std::cerr << "=> \033[0m" << value << std::endl;
-		return 1;
+		std::cerr << "=> \033[30m" << value << "\033[0m" << std::endl;
+		return true;
 	}
 	if (value > 1000)
 	{
 		std::cerr << "\033[1;31mError: Number too large." << std::endl;
-		std::cerr << "=> \033[0m" << value << std::endl;
-		return 1;
+		std::cerr << "=> \033[30m" << value << "\033[0m" << std::endl;
+		return true;
 	}
-	return 0;
+	return false;
 };
 
 std::map<std::string, long double> get_data()
