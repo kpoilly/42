@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:35:10 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/10 11:11:51 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/10 13:04:52 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool valid_number(char c)
 bool is_op(char c)
 {
 	return (c == '+' || c == '-' || c == '/' || c == '*');
-}
+};
 
 bool check_error(std::string input)
 {

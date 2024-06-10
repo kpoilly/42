@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:34:48 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/10 11:16:23 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/10 13:05:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	calc(int a, int b, char op)
 		case '*':
 			return(a * b);
 	}
-	throw std::string("pb operateur");
+	throw std::string("Calc::UnknownOperator");
 	return (0);
-}
+};
 
 int	main(int ac, char** av)
 {
