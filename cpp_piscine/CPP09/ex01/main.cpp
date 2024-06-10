@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:34:48 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/10 11:02:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/10 11:16:23 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,15 @@
 
 int	calc(int a, int b, char op)
 {
-	std::string ops = "+-/*";
-	unsigned long i = 0;
-	
-	for (; i < ops.size(); i++)
-		if (ops[i] == op)
-			break ;
-	
-	switch (i)
+	switch (op)
 	{
-		case 0:
+		case '+':
 			return(a + b);
-		case 1:
+		case '-':
 			return(a - b);
-		case 2:
+		case '/':
 			return(a / b);
-		case 3:
+		case '*':
 			return(a * b);
 	}
 	throw std::string("pb operateur");
