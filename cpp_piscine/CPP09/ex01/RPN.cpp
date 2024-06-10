@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:35:10 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/10 13:04:52 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/10 14:14:53 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,11 @@ bool check_error(std::string input)
 		return true;
 	if (!valid_number(input[0]) || !valid_number(input[2]))
 		return true;
-	int	count = 0;
-	for (unsigned long i = 4; i < input.size(); i++)
+	for (unsigned long i = 1; i < input.size(); i++)
 	{
-		if (input[i] != ' ')
-			count++;
-		else if (!(i % 2))
+		if (((i % 2) && input[i] != ' ') || (!(i % 2) && input[i] == ' '))
 			return true;
-		if (input[i] != ' ' && ((!(count % 2) && !valid_number(input[i]))
-			|| (count % 2 && (input[i] <= '9' && input[i] >= '0'))))
+		else if (!(i % 2) && !is_op(input[i]) && !valid_number(input[i]))
 			return true;
 	}
 	return false;
