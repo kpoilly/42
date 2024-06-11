@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:03:54 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/29 09:52:07 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/11 09:33:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ScalarConverter
 {
 	public:
 		~ScalarConverter();
-		static void convert(std::string literal, int type);
+		static void convert(std::string literal);
 		
 	private:
 		ScalarConverter();

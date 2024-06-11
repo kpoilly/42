@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:03:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/29 10:31:59 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/11 09:37:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,22 @@ ScalarConverter::~ScalarConverter(){};
 
 static bool	isPseudof(std::string str)
 {
-	return (str == "-inff" || str == "+inff" || str == "nan");
+	return (str == "-inff" || str == "+inff");
 }
 
 static bool	isPseudo(std::string str)
 {
-	return (str == "-inf" || str == "+inf" || isPseudof(str));
+	return (str == "-inf" || str == "+inf" || str == "nan");
 }
 
-static void toChar(std::string str)
+static void toChar(std::string str, long double value)
 {
 	std::cout << "char: ";
-	if (isPseudo(str))
+	if (isPseudo(str) || isPseudof(str))
 	{
 		std::cout << "impossible." << std::endl;
 		return ;
 	}
-	long	value;
-	std::istringstream(str) >> value;
 	if(value < 0 || value > 255)
 		std::cout << "impossible." << std::endl;
 	else if (value == 0 || value > 127)
@@ -45,28 +43,29 @@ static void toChar(std::string str)
 
 };
 
-static void toInt(std::string str)
+static void toInt(std::string str, long double value)
 {	
 	std::cout << "int: ";
-	if (isPseudo(str) || str.size() <= 0)
+	if (isPseudo(str) || isPseudof(str) || str.size() <= 0)
 	{
 		std::cout << "impossible." << std::endl;
 		return ;
 	}
-	long	value;
-	std::istringstream(str) >> value;
 	if (value < std::numeric_limits<int>::min() || value > std::numeric_limits<int>::max())
 		std::cout << "impossible." << std::endl;
 	else
 		std::cout << static_cast<int>(value) << std::endl;
 };
 
-static void toFloat(std::string str)
+static void toFloat(std::string str, long double value)
 {
-	double	value = atof(str.c_str());
 	std::cout << "float: ";
-	if(str.size() <= 0 || ((value < -std::numeric_limits<float>::max() || value > std::numeric_limits<float>::max()) && !isPseudof(str)))
+	if(str.size() <= 0 || ((value < -std::numeric_limits<float>::max() || value > std::numeric_limits<float>::max())))
 		std::cout << "impossible." << std::endl;
+	else if (isPseudof(str))
+		std::cout << str << std::endl;
+	else if (isPseudo(str))
+		std::cout << str + "f" << std::endl;
 	else
 		{
 			std::cout.setf(std::ios::fixed);
@@ -74,36 +73,29 @@ static void toFloat(std::string str)
 		}
 };
 
-static void toDouble(std::string str)
+static void toDouble(std::string str, long double value)
 {
-	long double value = atof(str.c_str());
 	std::cout << "double: ";
-	if(str.size() <= 0 || ((value < -std::numeric_limits<double>::max() || value > std::numeric_limits<double>::max()) && !isPseudo(str)))
+	if(str.size() <= 0 || ((value < -std::numeric_limits<double>::max() || value > std::numeric_limits<double>::max())))
 		std::cout << "impossible." << std::endl;
+	else if (isPseudo(str))
+		std::cout << str << std::endl;
+	else if (isPseudof(str))
+		std::cout << str.substr(0, str.size() - 1) << std::endl;
 	else
 		std::cout << std::setprecision(5) << value << std::endl;
 };
 
-void ScalarConverter::convert(std::string literal, int type)
+void ScalarConverter::convert(std::string literal)
 {
 	if (literal.empty())
 		return ;
 
-	std::string	types[4] = {"char", "int", "float", "double"};
-	//int	type = getType(literal);
-	void (*funcs[])(std::string) = {toChar, toInt, toFloat, toDouble};
+	void (*funcs[])(std::string, long double) = {toChar, toInt, toFloat, toDouble};
+	std::stringstream ss(literal);
+	long double ld;
+	ss >> ld;
 	
-	if (type == 0)
-	{
-		std::ostringstream oss;
-		oss << static_cast<int>(literal[0]);
-		literal = oss.str();
-	}
 	for (int i = 0; i < 4; i++)
-	{
-		if (i != type)
-			funcs[i](literal);
-		else
-			std::cout << types[type] << ": " << literal << std::endl;
-	}
+			funcs[i](literal, ld);
 };
