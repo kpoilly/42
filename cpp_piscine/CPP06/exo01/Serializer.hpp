@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:06:31 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/10 15:25:21 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/11 06:56:12 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@
 class Serializer
 {
 	public:
-		static unintptr_t serialize(Data *ptr);
-		Data* deserialize(unintptr_t raw);
-			
+		static uintptr_t serialize(Data *ptr);
+		static Data* deserialize(uintptr_t raw);	
 };
 
 #endif
