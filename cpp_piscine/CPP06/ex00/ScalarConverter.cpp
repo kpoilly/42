@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:03:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/13 09:52:56 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/13 10:09:55 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,5 @@ void ScalarConverter::convert(std::string literal)
 			funcs[i](literal, ld);
 		else
 			std::cout << "\033[1;31m" + types[i] + ": " + literal + "\033[0m" << std::endl;
-		
 	}
 };
