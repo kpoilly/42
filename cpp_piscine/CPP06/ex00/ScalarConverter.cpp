@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:03:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/11 09:37:01 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/13 09:52:56 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,53 @@ static void toDouble(std::string str, long double value)
 		std::cout << std::setprecision(5) << value << std::endl;
 };
 
+int	getType(std::string literal)
+{
+	if (isPseudo(literal))
+		return 3;
+	if (isPseudof(literal))
+		return 2;
+	if (literal.find(".") != std::string::npos && literal.size() > 1)
+		return (literal.find("f") != std::string::npos) ? 2:3;
+	return (literal.size() == 1 && std::isprint(literal[0]) && !std::isdigit(literal[0])) ? 0:1;
+		
+};
+bool checkError(std::string literal)
+{
+	if (isPseudo(literal) || isPseudof(literal))
+		return true;
+	bool hasNum = false;
+
+	for (unsigned long i = 0; i  < literal.size(); i++)
+	{
+		if (std::isdigit(literal[i]))
+			hasNum = true;
+	}
+	return (!hasNum && literal.size() > 1) ? false:true;
+}
+
 void ScalarConverter::convert(std::string literal)
 {
-	if (literal.empty())
+	if (literal.empty() || !checkError(literal))
+	{
+		std::cerr << "\033[1;31mError.\033[0m" << std::endl;
 		return ;
+	}
 
 	void (*funcs[])(std::string, long double) = {toChar, toInt, toFloat, toDouble};
+	std::string types[4] = {"char", "int", "float", "double"};
+	//std::cout << "It's a " + types[getType(literal)] + " !" << std::endl;
+	int type = getType(literal);
 	std::stringstream ss(literal);
 	long double ld;
 	ss >> ld;
 	
 	for (int i = 0; i < 4; i++)
+	{
+		if	(type != i)
 			funcs[i](literal, ld);
+		else
+			std::cout << "\033[1;31m" + types[i] + ": " + literal + "\033[0m" << std::endl;
+		
+	}
 };
