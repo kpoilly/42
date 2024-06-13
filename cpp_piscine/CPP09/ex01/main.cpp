@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:34:48 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/10 14:29:33 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/10 15:00:29 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	main(int ac, char** av)
 		return 1;
 	}
 	
-	std::stack<int> stack;
-	std::string input(av[1]);
-	int			tocalc = -1;
+	std::stack<int>	stack;
+	std::string 	input(av[1]);
+	int				tocalc = -1;
 	
 	stack.push(input[0] - '0');
 	for (unsigned long i = 2; i < input.size(); i++)
