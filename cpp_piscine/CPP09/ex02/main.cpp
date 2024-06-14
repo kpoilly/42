@@ -6,11 +6,12 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:24:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/14 13:24:39 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/14 13:42:39 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <unistd.h>
 
 bool	validInput(std::string nb)
 {
@@ -58,13 +59,16 @@ int	main(int ac, char**av)
 		std::cout << cont1[i] << " ";
 	std::cout << std::endl;
 
-	//start chrono
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
 	//merginsSort(cont1);
-	//end chrono
+	gettimeofday(&tv2, NULL);
+	double time1 = (double) (tv2.tv_usec - tv1.tv_usec);
 
-	//start chrono
+	gettimeofday(&tv1, NULL);
 	//merginsSort(cont2);
-	//end chrono
+	gettimeofday(&tv2, NULL);
+	double time2 = (double) (tv2.tv_usec - tv1.tv_usec);
 
 	std::cout << "After:  ";
 	for (unsigned long i = 0; i < cont1.size(); i++)
@@ -72,9 +76,9 @@ int	main(int ac, char**av)
 	std::cout << std::endl;
 	
 	std::cout << "Time to process a range of " << cont1.size() << " elements";
-	std::cout << " with std::" << "vector" << " :  " << 0 << " us" << std::endl;
+	std::cout << " with std::" << "vector" << " :  " << time1 << " us" << std::endl;
 
 	std::cout << "Time to process a range of " << cont2.size() << " elements";
-	std::cout << " with std::" << "deque" << "  :  " << 0 << " us" << std::endl;
+	std::cout << " with std::" << "deque" << "  :  " << time2 << " us" << std::endl;
 	return 0;
 };
