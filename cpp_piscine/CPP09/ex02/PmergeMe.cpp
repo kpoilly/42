@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:07:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/17 14:47:51 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/17 14:50:59 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,6 @@ void	merginsSort(std::vector<int>& cont)
 	
 	//Sort pairs by a
 	std::sort(pairs.begin(), pairs.end(), sortCondition);
-	// for (unsigned long i = 0; i < pairs.size()-1; i++)
-	// {	
-	// 	if (pairs[i].first > pairs[i+1].first)
-	// 	{
-	// 		std::pair<int, int> tmp = pairs[i];
-	// 		pairs[i] = pairs[i+1];
-	// 		pairs[i+1] = tmp;
-	// 		i = 0;
-	// 	}
-	// }
-		
 	//If the nb of nums is odd, the unpaired element is added to the back
 	if (cont.size() % 2 == 1)
 		pairs.push_back(std::make_pair(-1, cont[cont.size()-1]));
@@ -51,10 +40,8 @@ void	merginsSort(std::vector<int>& cont)
 	//Add every a to the final sorted vector
 	cont.clear();
 	for (unsigned long i = 0; i < pairs.size(); i++)
-	{
 		if (pairs[i].first >= 0)
 			cont.push_back(pairs[i].first);
-	}
 
 	std::cout << "Pairs:" << std::endl;
 	for (unsigned long i = 0; i < pairs.size(); i++)
@@ -93,10 +80,8 @@ void	merginsSort(std::list<int>& cont)
 	//Add every a to the final sorted vector
 	cont.clear();
 	for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
-	{
 		if ((*it).first >= 0)
 			cont.push_back((*it).first);
-	}
 
 	std::cout << "Pairs:" << std::endl;
 	for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
