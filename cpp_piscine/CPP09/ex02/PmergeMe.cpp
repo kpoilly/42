@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:07:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/17 15:40:58 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/17 15:46:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,28 @@ void	merginsSort(std::vector<int>& cont)
 			pairs.push_back(std::make_pair(cont[i+1], cont[i]));
 	}
 	
-	//Sort pairs by a
+	//Sort pairs by their greatest value
 	std::sort(pairs.begin(), pairs.end(), sortCondition);
 	// //If the nb of nums is odd, the unpaired element is added to the back
 	// if (cont.size() % 2 == 1)
 	// 	pairs.push_back(std::make_pair(-1, cont[cont.size()-1]));
 	
-	//Add every a to the final sorted vector
+	//Add every "greatests values" to the final sorted list
 	cont.clear();
 	for (unsigned long i = 0; i < pairs.size(); i++)
 		cont.push_back(pairs[i].second);
 
 	//INSERT
+	//Insert lowest elem of the lowest pair at the beginning of sorted vector
 	cont.insert(cont.begin(), pairs.front().first);
 	pairs.erase(pairs.begin());
 	
 	std::cout << "Pairs:" << std::endl;
 	for (unsigned long i = 0; i < pairs.size(); i++)
-		std::cout << i << ": " << pairs[i].first << " | " << pairs[i].second << std::endl;
+		std::cout << pairs[i].first << " | " << pairs[i].second << std::endl;
 	std::cout << "sorted:" << std::endl;
 	for (unsigned long i = 0; i < cont.size(); i++)
-		std::cout << i << ": " << cont[i] << std::endl;
+		std::cout << cont[i] << std::endl;
 };
 
 void	merginsSort(std::list<int>& cont)
@@ -71,18 +72,19 @@ void	merginsSort(std::list<int>& cont)
 		cont.pop_front();
 	}
 	
-	//Sort pairs by a
+	//Sort pairs by their greatest value
 	pairs.sort(sortCondition);
 	// //If the nb of nums is odd, the unpaired element is added to the back
 	// if (cont.size() % 2 == 1)
 	// 	pairs.push_back(std::make_pair(-1, cont.back()));
 	
-	//Add every a to the final sorted vector
+	//Add every "greatests values" to the final sorted vector
 	cont.clear();
 	for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
 			cont.push_back((*it).second);
 
 	//INSERT
+	//Insert lowest elem of the lowest pair at the beginning of sorted list
 	cont.insert(cont.begin(), pairs.front().first);
 	pairs.erase(pairs.begin());
 	
