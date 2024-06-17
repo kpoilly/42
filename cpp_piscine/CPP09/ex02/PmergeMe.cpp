@@ -6,11 +6,20 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:07:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/17 15:46:24 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/17 18:27:36 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+int	Jacobsthal(int n)
+{
+	if (n == 0)
+		return 0;
+	if (n == 1)
+		return 1;
+	return Jacobsthal(n-1) + (2 * Jacobsthal(n-2));
+}
 
 bool	sortCondition(const std::pair<int, int>& a, const std::pair<int, int>& b)
 {
@@ -43,9 +52,6 @@ void	merginsSort(std::vector<int>& cont)
 		cont.push_back(pairs[i].second);
 
 	//INSERT
-	//Insert lowest elem of the lowest pair at the beginning of sorted vector
-	cont.insert(cont.begin(), pairs.front().first);
-	pairs.erase(pairs.begin());
 	
 	std::cout << "Pairs:" << std::endl;
 	for (unsigned long i = 0; i < pairs.size(); i++)
@@ -84,9 +90,6 @@ void	merginsSort(std::list<int>& cont)
 			cont.push_back((*it).second);
 
 	//INSERT
-	//Insert lowest elem of the lowest pair at the beginning of sorted list
-	cont.insert(cont.begin(), pairs.front().first);
-	pairs.erase(pairs.begin());
 	
 	std::cout << "Pairs:" << std::endl;
 	for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
