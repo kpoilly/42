@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:07:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/17 18:27:36 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:05:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	sortCondition(const std::pair<int, int>& a, const std::pair<int, int>& b)
 
 void	merginsSort(std::vector<int>& cont)
 {
-	std::cout << "\nVECTOR:\n" << std::endl;
+	//std::cout << "\nVECTOR:\n" << std::endl;
 	//MERGE
 	//Make Pairs
 	std::vector<std::pair<int, int> > pairs;
@@ -52,7 +52,18 @@ void	merginsSort(std::vector<int>& cont)
 		cont.push_back(pairs[i].second);
 
 	//INSERT
-	
+	for (unsigned long i = 0; i < pairs.size(); i++)
+	{
+		for (unsigned long j = 0; j <= i; j++)
+		{
+			//std::cout << pairs[i].first << " <= " << pairs[j].second << " ?" << std::endl;
+			if (pairs[i].first <= pairs[j].second)
+			{
+				cont.insert(std::find(cont.begin(), cont.end(),pairs[j].second), pairs[i].first);
+				break ;
+			}
+		}
+	}
 	std::cout << "Pairs:" << std::endl;
 	for (unsigned long i = 0; i < pairs.size(); i++)
 		std::cout << pairs[i].first << " | " << pairs[i].second << std::endl;
@@ -63,7 +74,7 @@ void	merginsSort(std::vector<int>& cont)
 
 void	merginsSort(std::list<int>& cont)
 {
-	std::cout << "\nLIST:\n" << std::endl;
+	//std::cout << "\nLIST:\n" << std::endl;
 	//MERGE
 	//Make Pairs
 	std::list<std::pair<int, int> > pairs;
@@ -89,12 +100,23 @@ void	merginsSort(std::list<int>& cont)
 	for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
 			cont.push_back((*it).second);
 
-	//INSERT
-	
-	std::cout << "Pairs:" << std::endl;
-	for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
-		std::cout << (*it).first << " | " << (*it).second << std::endl;
-	std::cout << "sorted:" << std::endl;
-	for (std::list<int>::iterator it = cont.begin(); it != cont.end(); it++)
-		std::cout << *it << std::endl;
+	// //INSERT
+	// for (unsigned long i = 0; i < pairs.size(); i++)
+	// {
+	// 	for (unsigned long j = 0; j <= i; j++)
+	// 	{
+	// 		//std::cout << pairs[i].first << " <= " << pairs[j].second << " ?" << std::endl;
+	// 		if (pairs[i].first <= pairs[j].second)
+	// 		{
+	// 			cont.insert(std::find(cont.begin(), cont.end(),pairs[j].second), pairs[i].first);
+	// 			break ;
+	// 		}
+	// 	}
+	// }	
+	// std::cout << "Pairs:" << std::endl;
+	// for (std::list<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
+	// 	std::cout << (*it).first << " | " << (*it).second << std::endl;
+	// std::cout << "sorted:" << std::endl;
+	// for (std::list<int>::iterator it = cont.begin(); it != cont.end(); it++)
+	// 	std::cout << *it << std::endl;
 };

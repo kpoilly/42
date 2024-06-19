@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:07:13 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/17 14:38:54 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/19 13:59:30 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PMERGEME_HPP
 
 # include <iostream>
+# include <unistd.h>
 # include <sys/time.h>
 # include <sstream>
 # include <string>
