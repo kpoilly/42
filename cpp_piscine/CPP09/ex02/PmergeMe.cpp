@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:07:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/19 14:05:24 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/06/21 14:09:46 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ bool	sortCondition(const std::pair<int, int>& a, const std::pair<int, int>& b)
 	return a.second < b.second;
 }
 
+bool	sortCondition2(const std::pair<int, int>& a, const std::pair<int, int>& b)
+{
+	return a.first < b.first;
+}
+
 void	merginsSort(std::vector<int>& cont)
 {
 	//std::cout << "\nVECTOR:\n" << std::endl;
@@ -42,34 +47,43 @@ void	merginsSort(std::vector<int>& cont)
 	
 	//Sort pairs by their greatest value
 	std::sort(pairs.begin(), pairs.end(), sortCondition);
-	// //If the nb of nums is odd, the unpaired element is added to the back
-	// if (cont.size() % 2 == 1)
-	// 	pairs.push_back(std::make_pair(-1, cont[cont.size()-1]));
+	
+	bool odd = (cont.size() % 2 == 1);
+	int last = cont[cont.size()-1];
+	cont.clear();
 	
 	//Add every "greatests values" to the final sorted list
-	cont.clear();
 	for (unsigned long i = 0; i < pairs.size(); i++)
 		cont.push_back(pairs[i].second);
+	//If the nb of nums is odd, the unpaired element is added to the back
+	if (odd)
+		pairs.push_back(std::make_pair(last, -1));
 
 	//INSERT
+	cont.insert(cont.begin(), pairs[0].first);
+	pairs.erase(pairs.begin());
+	std::sort(pairs.begin(), pairs.end(), sortCondition2);
+	
 	for (unsigned long i = 0; i < pairs.size(); i++)
 	{
-		for (unsigned long j = 0; j <= i; j++)
+		for (unsigned long j = 0; j < cont.size(); j++)
 		{
 			//std::cout << pairs[i].first << " <= " << pairs[j].second << " ?" << std::endl;
-			if (pairs[i].first <= pairs[j].second)
+			if (pairs[i].first <= cont[j])
 			{
-				cont.insert(std::find(cont.begin(), cont.end(),pairs[j].second), pairs[i].first);
+				cont.insert(std::find(cont.begin(), cont.end(), cont[j]), pairs[i].first);
 				break ;
 			}
 		}
 	}
-	std::cout << "Pairs:" << std::endl;
+
+	std::cout << "\nPairs:" << std::endl;
 	for (unsigned long i = 0; i < pairs.size(); i++)
 		std::cout << pairs[i].first << " | " << pairs[i].second << std::endl;
 	std::cout << "sorted:" << std::endl;
 	for (unsigned long i = 0; i < cont.size(); i++)
-		std::cout << cont[i] << std::endl;
+		std::cout << cont[i] << ", ";
+	std::cout << std::endl;
 };
 
 void	merginsSort(std::list<int>& cont)
