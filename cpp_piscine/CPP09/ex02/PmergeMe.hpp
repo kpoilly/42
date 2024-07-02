@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:07:13 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/06/19 13:59:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/07/02 12:53:09 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <list>
 # include <algorithm>
 
-void	merginsSort(std::vector<int>& cont);
-void	merginsSort(std::list<int>& cont);
+std::vector<int>	merginsSortVec(std::vector<int>& cont);
+std::list<int>		merginsSortList(std::list<int>& cont);
 
 #endif
