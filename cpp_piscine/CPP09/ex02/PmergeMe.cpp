@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:07:51 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/07/02 15:34:52 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/07/08 16:39:38 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,17 @@ std::list<int>	mergList(std::list<int>& left, std::list<int>& right)
 			left.pop_front();
 		}
 	}
-	
-	for(long double i = 0; i < left.size(); i++)
+
+	while (!left.empty())
+	{
 		merged.push_back(left.front());
-	for(long double i = 0; i < right.size(); i++)
+		left.pop_front();
+	}
+	while (!right.empty())
+	{
 		merged.push_back(right.front());
+		right.pop_front();
+	}
 	
 	return merged;
 }
@@ -94,22 +100,12 @@ std::list<int>	merginsSortList(std::list<int>& cont)
 	//std::cout << "\nLIST:\n" << std::endl;
 	if (cont.size() <= 1)
 		return cont;
-	long double	size = cont.size() /2;
 	
-	std::list<int> left;
-	std::list<int> right;
+	std::list<int>::iterator mid = cont.begin();
+	std::advance(mid, cont.size() /2);
 
-	for (long double i = 0; i < size; i++)
-	{
-		left.push_back(cont.front());
-		cont.pop_front();
-	}
-	//size = cont.size();
-	for (long double i = 0; cont.size(); i++)
-	{
-		right.push_back(cont.front());
-		cont.pop_front();
-	}
+	std::list<int> left(cont.begin(), mid);
+	std::list<int> right(mid, cont.end());
 
 	left = merginsSortList(left);
 	right = merginsSortList(right);
