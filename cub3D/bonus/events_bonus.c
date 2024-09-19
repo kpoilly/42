@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 09:10:28 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/24 07:45:38 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/17 19:15:31 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	keypress(int keycode, t_data *data)
 	}
 	else if (keycode == KEY_E)
 		data->open_door = 1;
+	event_speed(data, keycode);
 	show_maps(data, keycode);
 	return (0);
 }
@@ -58,6 +59,15 @@ int	keyrelease(int keycode, t_data *data)
 		data->r_right = 0;
 	else if (keycode == KEY_E)
 		data->open_door = 0;
+	else if (keycode == KEY_E)
+		data->open_door = 1;
+	else if (keycode == KEY_C)
+	{
+		data->crouch = 1;
+		data->speed = 1;
+	}
+	else if (keycode == KEY_SH)
+		data->speed = 1;
 	return (0);
 }
 

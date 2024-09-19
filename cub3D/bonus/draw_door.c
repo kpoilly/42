@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:14:33 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/22 15:23:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/01 09:53:14 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void	draw_door(t_data *data)
 	if (dis <= 0)
 		return ;
 	data->ray.obj_h = ((float)SC_H / dis) * ((float)TILE_SIZE + 15.0);
-	top = ((float)SC_H / 2.0) - (data->ray.obj_h / 2.0) + data->mouse.h;
+	top = ((float)SC_H / 2.0) - (data->ray.obj_h / (2.0 * data->crouch))
+		+ data->mouse.h;
 	if (top < 0)
 		draw_col(data, fabsf(top), data->ray.obj_h - fabsf(top), 0);
 	else

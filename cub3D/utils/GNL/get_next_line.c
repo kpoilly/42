@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:10:54 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/03/25 09:29:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/17 14:26:46 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ char	*get_next_line(int fd)
 	int			r;
 
 	r = 1;
-	if (fd == -1 || read(fd, NULL, 0) == -1)
-		return (NULL);
+	if (fd <= 0 || read(fd, NULL, 0) == -1)
+		return (free(stock), NULL);
 	stock = read_line(stock, fd, &r);
 	if (!stock || !ft_free(&stock))
 		return (NULL);

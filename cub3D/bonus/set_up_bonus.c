@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:16:52 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/23 09:05:03 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/17 19:26:45 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	set_up_img(t_data *data)
 	data->mini.player.img = NULL;
 	data->wine.line.img = NULL;
 	data->lol.img = NULL;
+	data->crocs.img = NULL;
 	data->anim_ea.lst = NULL;
 	data->anim_no.lst = NULL;
 	data->anim_so.lst = NULL;
@@ -100,6 +101,8 @@ void	set_up_mini(t_data *data)
 	data->micro.sq_size = 25;
 	data->micro.w = 9 * data->micro.sq_size;
 	data->micro.h = 11 * data->micro.sq_size;
+	data->crouch = 1;
+	data->speed = 1;
 }
 
 //set diffrent things up
@@ -128,6 +131,5 @@ void	set_up(t_data *data)
 	data->nb_doors = -1;
 	data->ray.side = 1;
 	data->ray.mapx = -1;
-	setup_img_anim(data);
 	set_door_list(data);
 }

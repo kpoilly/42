@@ -6,11 +6,22 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:53:32 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/23 09:03:00 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/01 10:07:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../utils/headers/cub3D.h"
+
+void	event_speed(t_data *data, int keycode)
+{
+	if (keycode == KEY_C)
+	{
+		data->crouch = 0.7;
+		data->speed = 0.55;
+	}
+	else if (keycode == KEY_SH)
+		data->speed = 1.5;
+}
 
 //can the player go on the case he's leading into
 static int	can_move(t_data *data, float dir, float a, float coef)
@@ -52,8 +63,8 @@ void	moves_leftright(t_data *data)
 		turn_a = data->player.a - (90 * DEG);
 		if (turn_a < 0)
 			turn_a += 2 * PI;
-		data->player.x += cosf(turn_a) * (PLAY_SPEED * 0.6);
-		data->player.y += sinf(turn_a) * (PLAY_SPEED * 0.6);
+		data->player.x += cosf(turn_a) * ((PLAY_SPEED * 0.6) * data->speed);
+		data->player.y += sinf(turn_a) * ((PLAY_SPEED * 0.6) * data->speed);
 		draw_bg(data);
 	}
 	if (data->right && can_move(data, -1, data->player.a - (90 * DEG), 0.3))
@@ -61,8 +72,8 @@ void	moves_leftright(t_data *data)
 		turn_a = data->player.a - (90 * DEG);
 		if (turn_a < 0)
 			turn_a += 2 * PI;
-		data->player.x -= cosf(turn_a) * (PLAY_SPEED * 0.6);
-		data->player.y -= sinf(turn_a) * (PLAY_SPEED * 0.6);
+		data->player.x -= cosf(turn_a) * ((PLAY_SPEED * 0.6) * data->speed);
+		data->player.y -= sinf(turn_a) * ((PLAY_SPEED * 0.6) * data->speed);
 		draw_bg(data);
 	}
 }
@@ -72,14 +83,14 @@ void	moves_forback(t_data *data)
 {
 	if (data->forward && can_move(data, 1, data->player.a, 1))
 	{
-		data->player.x += data->player.dirx * PLAY_SPEED;
-		data->player.y += data->player.diry * PLAY_SPEED;
+		data->player.x += data->player.dirx * (PLAY_SPEED * data->speed);
+		data->player.y += data->player.diry * (PLAY_SPEED * data->speed);
 		draw_bg(data);
 	}
 	if (data->backward && can_move(data, -1, data->player.a, 1))
 	{
-		data->player.x -= data->player.dirx * PLAY_SPEED;
-		data->player.y -= data->player.diry * PLAY_SPEED;
+		data->player.x -= data->player.dirx * (PLAY_SPEED * data->speed);
+		data->player.y -= data->player.diry * (PLAY_SPEED * data->speed);
 		draw_bg(data);
 	}
 }

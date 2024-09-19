@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:57:03 by lleciak           #+#    #+#             */
-/*   Updated: 2024/04/24 10:10:51 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/17 19:09:33 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static int	check_textures(t_data *data)
 			"./utils/textures/pouce.xpm");
 	check += load_texture(data, &data->lol, "./utils/textures/lol.xpm");
 	check += load_texture(data, &data->crocs, "./utils/textures/crocs.xpm");
+	setup_img_anim(data);
 	if (check != 8)
 		return (ft_printf(2, "Error.\nInvalid texture path.\n"), 0);
 	return (1);

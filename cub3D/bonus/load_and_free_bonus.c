@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 13:33:17 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/23 11:24:38 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/17 19:32:04 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ void	free_paths(t_data *data)
 }
 
 //free every frame of animations (not complete yet, need to free the t_img)
-static void	free_anim(t_data *data, t_anim *texture, int loop)
+void	free_anim(t_data *data, t_anim *texture, int loop)
 {
 	int		i;
 	t_img	*current;
 	t_img	*next;
 
+	if (!texture->lst->img)
+		return (free(texture->lst), (void) NULL);
 	if (!loop)
 		while (texture->lst->prev)
 			texture->lst = texture->lst->prev;
@@ -85,11 +87,16 @@ static void	free_anim(t_data *data, t_anim *texture, int loop)
 //free every textures
 int	free_textures(t_data *data)
 {
-	free_anim(data, &data->anim_no, 1);
-	free_anim(data, &data->anim_so, 1);
-	free_anim(data, &data->anim_we, 1);
-	free_anim(data, &data->anim_ea, 1);
-	free_anim(data, &data->door_tex, 0);
+	if (data->anim_no.lst)
+		free_anim(data, &data->anim_no, 1);
+	if (data->anim_no.lst)
+		free_anim(data, &data->anim_so, 1);
+	if (data->anim_no.lst)
+		free_anim(data, &data->anim_we, 1);
+	if (data->anim_no.lst)
+		free_anim(data, &data->anim_ea, 1);
+	if (data->anim_no.lst)
+		free_anim(data, &data->door_tex, 0);
 	if (data->bg.img)
 		mlx_destroy_image(data->mlx.ptr, data->bg.img);
 	if (data->mini.map.img)
@@ -100,11 +107,6 @@ int	free_textures(t_data *data)
 		mlx_destroy_image(data->mlx.ptr, data->wine.line.img);
 	if (data->micro.map.img)
 		mlx_destroy_image(data->mlx.ptr, data->micro.map.img);
-	if (data->micro.hand.img)
-		mlx_destroy_image(data->mlx.ptr, data->micro.hand.img);
-	if (data->lol.img)
-		mlx_destroy_image(data->mlx.ptr, data->lol.img);
-	if (data->crocs.img)
-		mlx_destroy_image(data->mlx.ptr, data->crocs.img);
+	free_text_extra(data);
 	return (1);
 }

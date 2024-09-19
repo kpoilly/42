@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 08:41:46 by lleciak           #+#    #+#             */
-/*   Updated: 2024/04/18 13:35:13 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/17 14:14:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-		return (1);
+		return (ft_printf(2, "Error.\nInvalid argument.\n"), 1);
 	if (!map_format(argv[1]))
 		exit(1);
 	data.mlx.ptr = mlx_init();

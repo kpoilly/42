@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 07:37:40 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/22 15:19:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/17 19:32:44 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int				load_texture(t_data *data, t_img *img, char *path);
 int				free_textures(t_data *data);
 void			free_paths(t_data *data);
 void			setup_img_anim(t_data *data);
+void			free_anim(t_data *data, t_anim *texture, int loop);
+void			free_text_extra(t_data *data);
 
 //check error
 int				check_error(t_data *data, char **map);
@@ -86,7 +88,7 @@ void			show_maps(t_data *data, int keycode);
 void			switch_anim(t_data *data);
 void			doors(t_data *data);
 void			mouse(t_data *data);
-
+void			event_speed(t_data *data, int keycode);
 //minimap
 void			draw_minimap(t_data *data);
 void			draw_miniwall(t_data *data, int x, int y, int color);
@@ -115,6 +117,5 @@ int				count_in_tab(char **tab, char c);
 t_door			*get_door(t_data *data, float x, float y);
 void			open_doors(t_data *data);
 void			close_all(t_data *data);
-
 
 #endif

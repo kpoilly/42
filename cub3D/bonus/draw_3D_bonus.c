@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:25:18 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/22 15:17:31 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/10 15:34:01 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,8 @@ void	draw_wall(t_data *data)
 		data->ray.wall_h = ((float)SC_H / dis) * ((float)TILE_SIZE + 15.0);
 		if (data->wine.line.img)
 			mlx_destroy_image(data->mlx.ptr, data->wine.line.img);
-		top = ((float)SC_H / 2.0) - (data->ray.wall_h / 2.0) + data->mouse.h;
+		top = ((float)SC_H / 2.0) - (data->ray.wall_h / (2.0 * data->crouch))
+			+ data->mouse.h;
 		if (top < 0)
 			draw_col(data, fabsf(top), data->ray.wall_h - fabsf(top), 0);
 		else

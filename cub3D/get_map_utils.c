@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:49:49 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/16 11:55:14 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/07/22 16:02:12 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	*get_bg_colors(char *line)
 	char	**check;
 
 	i = 0;
-	while (!(line[i] >= '0' && line[i] <= '9'))
+	while (line[i] && !(line[i] >= '0' && line[i] <= '9'))
 		i++;
 	clear = ft_strdup(line + i);
 	if (!clear)

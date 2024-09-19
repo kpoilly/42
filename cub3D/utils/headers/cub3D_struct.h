@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 07:36:37 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/24 13:44:30 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/05/01 09:59:11 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@
 # define KEY_F 102
 # define KEY_M 109
 # define KEY_E 101
+# define KEY_C 99
 # define KEY_INT 47
 # define KEY_ESC 65307
+# define KEY_SH 65505
 
 # define PI 3.1415926535
 # define DEG 0.0174533
@@ -54,7 +56,6 @@ typedef struct s_mlx {
 	int		width;
 	int		height;
 }	t_mlx;
-
 
 //image data
 typedef struct s_img {
@@ -196,6 +197,8 @@ typedef struct s_data
 	int			open_door;
 	int			nb_doors;
 	int			is_door;
+	float		crouch;
+	float		speed;
 	t_door		*doors;
 	t_door		*cur_door;
 	t_anim		door_tex;

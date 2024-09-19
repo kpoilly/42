@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:04:57 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/04/05 07:14:31 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/17 18:12:00 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ char	*get_textures_path(char *line)
 
 int	parse_line(t_data *data, char *line)
 {
-	if (line[0] == 'N' && line[1] == 'O')
-		data->no_text = get_textures_path(line);
-	else if (line[0] == 'S' && line[1] == 'O')
-		data->so_text = get_textures_path(line);
-	else if (line[0] == 'W' && line[1] == 'E')
-		data->we_text = get_textures_path(line);
-	else if (line[0] == 'E' && line[1] == 'A')
-		data->ea_text = get_textures_path(line);
-	else if (line[0] == 'F' && line[1] == ' ')
-		data->floor_colors = get_bg_colors(line);
-	else if (line[0] == 'C' && line[1] == ' ')
-		data->ceiling_colors = get_bg_colors(line);
-	else if (isempty(line) || map_begin(line))
+	if (!line || !*line || isempty(line) || map_begin(line))
 		return (0);
+	else if (line[0] == 'N' && line[1] && line[1] == 'O')
+		data->no_text = get_textures_path(line);
+	else if (line[0] == 'S' && line[1] && line[1] == 'O')
+		data->so_text = get_textures_path(line);
+	else if (line[0] == 'W' && line[1] && line[1] == 'E')
+		data->we_text = get_textures_path(line);
+	else if (line[0] == 'E' && line[1] && line[1] == 'A')
+		data->ea_text = get_textures_path(line);
+	else if (line[0] == 'F' && line[1] && line[1] == ' ')
+		data->floor_colors = get_bg_colors(line);
+	else if (line[0] == 'C' && line[1] && line[1] == ' ')
+		data->ceiling_colors = get_bg_colors(line);
 	else
 		return (ft_printf(2, "Error.\nInvalid line in file.\n"), 1);
 	return (0);
@@ -66,7 +66,7 @@ char	**get_map(char *map_tosplit, int fd)
 
 	tmp = NULL;
 	line = get_next_line(fd);
-	while (line)
+	while (line && *line != '\n')
 	{
 		tmp = ft_strjoin(map_tosplit, line);
 		if (map_tosplit)
@@ -78,6 +78,8 @@ char	**get_map(char *map_tosplit, int fd)
 	}
 	map = ft_split(map_tosplit, "\n");
 	free(map_tosplit);
+	free(line);
+	get_next_line(-1);
 	return (map);
 }
 
@@ -94,7 +96,7 @@ char	**read_map(t_data *data, char *filename)
 	if (!line)
 		return (NULL);
 	if (parse_line(data, line))
-		return (free(line), fire_exit(data, NULL), NULL);
+		return (get_next_line(-1), free(line), fire_exit(data, NULL), NULL);
 	while (line && !map_begin(line))
 	{
 		free(line);
@@ -102,7 +104,7 @@ char	**read_map(t_data *data, char *filename)
 		if (!line)
 			return (NULL);
 		if (parse_line(data, line))
-			return (free(line), fire_exit(data, NULL), NULL);
+			return (get_next_line(-1), free(line), fire_exit(data, NULL), NULL);
 	}
 	map = get_map(line, fd);
 	if (!check_error(data, map))

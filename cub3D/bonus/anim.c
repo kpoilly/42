@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 12:02:12 by lleciak           #+#    #+#             */
-/*   Updated: 2024/04/24 10:10:48 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/09/17 19:12:17 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,16 @@ void	path_anim(t_data *data, t_anim *list, char *path, int loop)
 
 void	setup_img_anim(t_data *data)
 {
-	path_anim(data, &data->anim_no, data->no_text, 1);
-	path_anim(data, &data->anim_we, data->we_text, 1);
-	path_anim(data, &data->anim_so, data->so_text, 1);
-	path_anim(data, &data->anim_ea, data->ea_text, 1);
-	path_anim(data, &data->door_tex, "./utils/textures/door.xpm", 0);
+	if (data->anim_no.lst->img)
+		path_anim(data, &data->anim_no, data->no_text, 1);
+	if (data->anim_we.lst->img)
+		path_anim(data, &data->anim_we, data->we_text, 1);
+	if (data->anim_so.lst->img)
+		path_anim(data, &data->anim_so, data->so_text, 1);
+	if (data->anim_ea.lst->img)
+		path_anim(data, &data->anim_ea, data->ea_text, 1);
+	if (data->door_tex.lst->img)
+		path_anim(data, &data->door_tex, "./utils/textures/door.xpm", 0);
 	data->anim_no.timer = clock();
 	data->anim_we.timer = clock();
 	data->anim_so.timer = clock();
