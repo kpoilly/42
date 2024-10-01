@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 08:46:03 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/31 10:06:57 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:51:16 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Array
 			this->_size = copy.size();
 			delete [] this->_array;
 			this->_array = new T[this->_size];
-			for (int i = 0; i < this->_size; i++)
+			for (unsigned int i = 0; i < this->_size; i++)
 				this->_array[i] = copy[i];
 		};
 		T &operator[](unsigned int i)
