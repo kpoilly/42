@@ -41,7 +41,7 @@ PRINTF_OBJECTS 	= $(PRINTF_FILES:.c=.o)
 
 RM 			= rm -f
 CC 			= cc
-CFLAGS 		= -Wall -Wextra -Werror -g3
+CFLAGS 		= -Wall -Wextra -Werror -g3 -o3
 
 #####################################################################################
 #####RULES
