@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 10:57:57 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/31 12:43:15 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/10/11 11:14:06 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EASY_FIND_HPP
 
 # include <iostream>
+# include <algorithm>
 
 class NoOccurenceFoundException : public std::exception
 {
@@ -24,20 +25,19 @@ class NoOccurenceFoundException : public std::exception
 
 template <typename T>
 
-int easyfind(T &container, int occur)
+void easyfind(T &container, int occur)
 {
 	try
 	{
-		for (unsigned int i = 0; i < container.size(); i++)
-			if (container[i] == occur)
-				return (i);
+		typename T::iterator found = std::find(container.begin(), container.end(), occur);
+		if (found == container.end())
+			throw NoOccurenceFoundException();
+		std::cout << "\033[1;32m" << occur << " has been found inside the container ! :D\033[0m" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	throw NoOccurenceFoundException();
-	return(-1);
 }
 
 #endif

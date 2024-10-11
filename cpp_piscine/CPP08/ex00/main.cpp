@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 10:57:43 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/31 12:42:57 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/10/11 11:14:24 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	main(void)
 		v.push_back(23);
 		v.push_back(98);
 		
-		std::cout << easyfind(v, 42) << std::endl;
-		std::cout << easyfind(v, 98) << std::endl;
-		std::cout << easyfind(v, 11) << std::endl;
+		easyfind(v, 42);
+		easyfind(v, 98);
+		easyfind(v, 11);
 	}
 	catch(const std::exception& e)
 	{
