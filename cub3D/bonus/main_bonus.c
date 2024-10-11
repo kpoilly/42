@@ -42,6 +42,7 @@ int	main(int argc, char **argv)
 	if (!data.mlx.win)
 		return (ft_printf(2, "Error.\n(mlx win setup)\n"), exit(1), 1);
 	draw_bg(&data);
+	mlx_mouse_hide(data.mlx.ptr, data.mlx.win);
 	mlx_loop_hook(data.mlx.ptr, &no_event, &data);
 	mlx_hook(data.mlx.win, 17, 1L << 17, &destroy, &data);
 	mlx_hook(data.mlx.win, 2, 1L << 0, &keypress, &data);
