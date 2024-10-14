@@ -21,10 +21,12 @@ int jacobsthal(int n)
 
 void insert(std::deque<int>& arr, int left, int right) 
 {
-    for (int i = left + 1; i <= right; ++i) {
+    for (int i = left + 1; i <= right; ++i) 
+    {
         int key = arr[i];
         int j = i - 1;
-        while (j >= left && arr[j] > key) {
+        while (j >= left && arr[j] > key) 
+        {
             arr[j + 1] = arr[j];
             j = j - 1;
         }
@@ -34,10 +36,12 @@ void insert(std::deque<int>& arr, int left, int right)
 
 void insert(std::vector<int>& arr, int left, int right) 
 {
-    for (int i = left + 1; i <= right; ++i) {
+    for (int i = left + 1; i <= right; ++i) 
+    {
         int key = arr[i];
         int j = i - 1;
-        while (j >= left && arr[j] > key) {
+        while (j >= left && arr[j] > key) 
+        {
             arr[j + 1] = arr[j];
             j = j - 1;
         }
