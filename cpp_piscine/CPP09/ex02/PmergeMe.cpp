@@ -143,9 +143,7 @@ void merge(std::vector<int>& arr, int left, int mid, int right)
 void slice(std::deque<int>& arr, int left, int right) 
 {
   if (right - left <= 1) 
-  {
     return;
-  }
 
   int mid = std::min(left + jacobsthal((right - left) / 2), right - 1);
   slice(arr, left, mid);
@@ -156,9 +154,7 @@ void slice(std::deque<int>& arr, int left, int right)
 void slice(std::vector<int>& arr, int left, int right) 
 {
   if (right - left <= 1) 
-  {
     return; // Un seul élément ou déjà triée
-  }
 
   int mid = std::min(left + jacobsthal((right - left) / 2), right - 1);
   slice(arr, left, mid);
@@ -170,10 +166,8 @@ void sort(std::deque<int>& arr)
 {
     int n = arr.size();
 
-    for (int i = 0; i < n - 1; i += 2) 
-    {
+    for (int i = 0; i < n - 1; i += 2)
         insert(arr, i, std::min(i+1, n-1));
-    }
 	slice(arr, 0, n-1);
 }
 
@@ -182,10 +176,8 @@ void sort(std::vector<int>& arr)
     int n = arr.size();
 
     // Tri des paires
-    for (int i = 0; i < n - 1; i += 2) 
-    {
+    for (int i = 0; i < n - 1; i += 2)
         insert(arr, i, std::min(i+1, n-1));
-    }
     // Merge recursif
 	slice(arr, 0, n-1);
 }
