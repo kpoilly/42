@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 13:34:48 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/10/18 14:26:22 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/10/18 18:44:58 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	calc(int a, int b, char op)
 {
-	std::cout << a << ' ' << op << ' ' << b << " = " << std::endl;
+	//std::cout << a << ' ' << op << ' ' << b << " = ";
 	switch (op)
 	{
 		case '+':
@@ -41,35 +41,33 @@ int	main(int ac, char** av)
 	std::stack<int>		numbers;
 	std::stack<char>	ops;
 	std::string 	input(av[1]);
-	int				tocalc, res;
+	int				res;
 	
 	int i = input.size() - 1;
 	for (; i >= 0; i--)
 	{
 		if (input[i] && valid_number(input[i]))
 			numbers.push(input[i] - '0');
-		if (input[input.size() - 1 - i] && is_op(input[input.size() - 1 - i]))
-		{
-			ops.push(input[input.size()- 1 - i]);
-			std::cout << input[input.size()- 1 - i] << " added to stack ops" << std::endl;
-		}
+		else if (input[i] && is_op(input[i]))
+			ops.push(input[i]);
 	}
 
-	tocalc = numbers.top();
+	res = numbers.top();
 	numbers.pop();
 	
 	if (numbers.size() != ops.size())
 	{
-		std::cerr << "Error. Invalid input. (2)" << std::endl;
+		std::cerr << "Error. Invalid input." << std::endl;
 		return 1;
 	}
 
-	for (size_t i = 0; i < numbers.size(); i++)
+	size_t nbops = ops.size();
+	for (size_t i = 0; i < nbops; i++)
 	{
-		res = calc(tocalc, numbers.top(), ops.top());
+		res = calc(res, numbers.top(), ops.top());
 		numbers.pop();
 		ops.pop();
-		std::cout << res << std::endl;
+		//std::cout << res << std::endl;
 	}
 
 	std::cout << res << std::endl;
