@@ -14,6 +14,7 @@
 
 int	calc(int a, int b, char op)
 {
+	std::cout << a << ' ' << op << ' ' << b << " = " << std::endl;
 	switch (op)
 	{
 		case '+':
@@ -37,40 +38,39 @@ int	main(int ac, char** av)
 		return 1;
 	}
 	
-	std::stack<int>	stack;
+	std::stack<int>		numbers;
+	std::stack<char>	ops;
 	std::string 	input(av[1]);
-	int				a, b;
+	int				tocalc, res;
 	
 	int i = input.size() - 1;
-	for (; i > 0; i--)
+	for (; i >= 0; i--)
 	{
-		if (input[i] && input[i] != ' ' && valid_number(input[i]))
-			stack.push(input[i]);
-	}
-	
-	i = input.size() - 1;
-	for (; i >= 0; i++)
-	{
-		if (input[i] && input[i] != ' ' && is_op(input[i]))
+		if (input[i] && valid_number(input[i]))
+			numbers.push(input[i] - '0');
+		if (input[input.size() - 1 - i] && is_op(input[input.size() - 1 - i]))
 		{
-			a = stack.top();
-			stack.pop();
-			b = stack.top();
-			stack.pop();
-			stack.push(calc(a, b, input[i]));
+			ops.push(input[input.size()- 1 - i]);
+			std::cout << input[input.size()- 1 - i] << " added to stack ops" << std::endl;
 		}
 	}
 
-	// stack.push(input[0] - '0');
-	// for (unsigned long i = 2; i < input.size(); i++)
-	// {
-	// 	if (valid_number(input[i]) && tocalc < 0)
-	// 		tocalc = input[i] - '0';
-	// 	else if (is_op(input[i]) && tocalc >= 0)
-	// 	{
-	// 		stack.push(calc(stack.top(), tocalc, input[i]));
-	// 		tocalc = -1;
-	// 	}
-	// }
-	// std::cout << stack.top() << std::endl;
+	tocalc = numbers.top();
+	numbers.pop();
+	
+	if (numbers.size() != ops.size())
+	{
+		std::cerr << "Error. Invalid input. (2)" << std::endl;
+		return 1;
+	}
+
+	for (size_t i = 0; i < numbers.size(); i++)
+	{
+		res = calc(tocalc, numbers.top(), ops.top());
+		numbers.pop();
+		ops.pop();
+		std::cout << res << std::endl;
+	}
+
+	std::cout << res << std::endl;
 };
