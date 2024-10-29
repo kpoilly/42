@@ -58,7 +58,7 @@ services:
       dockerfile: Dockerfile
     env_file: .env
     volumes:
-      - wordpress:/var/www/wordpress
+      - wordpress:/var/www/html
     restart: on-failure
     expose:
       - "9000"

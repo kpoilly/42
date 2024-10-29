@@ -23,7 +23,7 @@ wp core install --url=kpoilly.42.fr --title=inception --admin_user=kpoilly \
 				--admin_password=kpoilly42 --admin_email=kpoilly@student.42.fr \
 				--allow-root
 
-chmod 755 -R /var/www/wordpress/wp-content
+chmod 755 -R /var/www/html/wp-content
 # fi
 
 /usr/sbin/php-fpm7.3 -F
