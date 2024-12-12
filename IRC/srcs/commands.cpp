@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:32:30 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/12/11 16:56:29 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/12/12 20:55:52 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,6 @@ void	pong(int client_fd, std::string arg)
 	stoc(client_fd, "PONG " + arg + "\r\n");	
 };
 
-//command VERSION
-void	version(int client_fd)
-{
-	stoc(client_fd, RPL_VERSION);
-	stoc(client_fd, RPL_ISUPPORT);
-};
-
-//command MOTD
-void	motd(Server &server, int client_fd)
-{
-	if (server.get_motd().empty())
-		stoc(client_fd, "422" + server.get_user(client_fd).get_name() + " :No MOTD set.\r\n");
-	else
-		stoc(client_fd, "375" + server.get_user(client_fd).get_name() + " :Message of the Day \r\n372 :" +
-		server.get_motd() + "\r\n376 " + server.get_user(client_fd).get_name() + " :End of MOTD.\r\n");
-};
-
 //command WHOIS <nicknameorchannel>
 void	whois(Server &server, int client_fd, std::string arg)
 {
@@ -126,9 +109,9 @@ void	pass(Server &server, int client_fd, std::string arg)
 	User& user = server.get_user(client_fd);
 	
 	if (arg.empty())
-		stoc(client_fd, "464 " + user.get_name() + " :This server is protected by password.\r\n");
+		stoc(client_fd, ERR_PASSWDMISMATCH + user.get_name() + " :This server is protected by password.\r\n");
 	else if (server.get_password() != "" && arg != server.get_password() && arg !=server.get_password() + "\r")
-		stoc(client_fd, "464 " + user.get_name() + " :Password incorrect.\r\n");
+		stoc(client_fd, ERR_PASSWDMISMATCH + user.get_name() + " :Password incorrect.\r\n");
 	else
 		server.get_user(client_fd).authenticate();
 	

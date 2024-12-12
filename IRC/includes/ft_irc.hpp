@@ -6,7 +6,7 @@
 /*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:08:36 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/12/11 16:57:00 by kpoilly          ###   ########.fr       */
+/*   Updated: 2024/12/12 20:56:20 by kpoilly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 //errors
 # define ERR_NEEDMOREPARAMS		"461 " 
 # define ERR_NOTREGISTERED		"451 " 
+# define ERR_PASSWDMISMATCH		"464 "
 
 # define ERR_NICKNAMEINUSE		"433 "
 # define ERR_NONICKNAMEGIVEN	"431 "
@@ -93,8 +94,6 @@ size_t		strtost(std::string str);
 //commands
 void	cap(Server& server, int client_fd, std::string arg);
 void	pong(int client_fd, std::string arg);
-void	version(int client_fd);
-void	motd(Server &server, int client_fd);
 void	user(Server& server, int client_fd, std::string name, std::string IP, std::string real);
 void	nick(Server& server, int client_fd, std::string arg);
 void	whois(Server &server, int client_fd, std::string arg);
