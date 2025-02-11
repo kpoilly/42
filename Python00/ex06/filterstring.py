@@ -14,8 +14,8 @@ def main():
 
     except AssertionError as e:
         print("AssertionError:", e, file=sys.stderr)
-    except TypeError as e:
-        print("TypeError:", e, file=sys.stderr)
+    except ValueError as e:
+        print("ValueError:", e, file=sys.stderr)
 
 
 if __name__ == "__main__":
