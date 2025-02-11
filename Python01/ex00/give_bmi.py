@@ -33,7 +33,7 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     Check if given values (bmi) are greater than the limit
 
     Args:
-        values: Numpy array or list of numbers (ints or floats).
+        bmi: Numpy array or list of numbers (ints or floats).
         limit: Number (int or float).
 
     Returns:
