@@ -3,14 +3,14 @@ import numpy as np
 
 def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int | float]:
     """
-    Calcule l'IMC pour des listes de tailles et de poids.
+    Give BMI for a given list of heights and weights
 
     Args:
-        height: Liste ou tableau NumPy de tailles (m).
-        weight: Liste ou tableau NumPy de poids (kg).
+        height: Numpy array or list of numbers (ints or floats) in meters.
+        weight: Numpy array or list of numbers (ints or floats) in kg.
 
     Returns:
-        Tableau NumPy des valeurs d'IMC.
+        Numpy array of BMI results.
     """
 
     if not isinstance(height, (list, np.ndarray)) or not isinstance(weight, (list, np.ndarray)):
@@ -30,14 +30,14 @@ def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int |
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     """
-    Vérifie si les valeurs d'une liste sont supérieures à une limite donnée.
+    Check if given values (bmi) are greater than the limit
 
     Args:
-        values: Liste ou tableau NumPy de nombres.
-        limit: Nombre représentant la limite.
+        values: Numpy array or list of numbers (ints or floats).
+        limit: Number (int or float).
 
     Returns:
-        Tableau NumPy de booléens (True si supérieur à la limite, False sinon).
+        Numpy array of booleans (True is > limit, False otherwise).
     """
 
     if not isinstance(bmi, (list, np.ndarray)):
