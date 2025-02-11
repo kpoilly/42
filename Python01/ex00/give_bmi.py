@@ -23,7 +23,7 @@ def give_bmi(height: list[int | float], weight: list[int | float]) -> list[int |
         raise ValueError("lists should be the same size.")
 
     if not np.issubdtype(height.dtype, np.number) or not np.issubdtype(weight.dtype, np.number) or np.any(height <= 0) or np.any(weight <= 0):
-        raise TypeError("lists should only contains positive ints or floats.")
+        raise TypeError("lists should only contain positive ints or floats.")
 
     return weight / (height**2)
 
