@@ -9,6 +9,18 @@ matplotlib.use('gtk3agg')
 
 
 def ft_transpose(img):
+    """
+    transpose an image (rotate to 90deg)
+
+    Args:
+        img: Numpy array of the pixel content of
+        the image in RGB format.
+
+    Returns:
+        Numpy array of the pixel content of
+        the transposed image in RGB format.
+    """
+    
     height, width = img.shape
     img_transposed = np.zeros((height, width), dtype=img.dtype)
 

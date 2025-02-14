@@ -12,7 +12,7 @@ def ft_load(path: str) -> np.array:
 
     Returns:
         Numpy array of the pixel content of the given image
-        in RGN format.
+        in RGB format.
     """
 
     if ".jpg" not in path.lower() and ".jpeg" not in path.lower():
