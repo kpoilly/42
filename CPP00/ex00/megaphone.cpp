@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpoilly <kpoilly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:59:00 by kpoilly           #+#    #+#             */
-/*   Updated: 2024/05/10 06:56:32 by kpoilly          ###   ########.fr       */
+/*   Updated: 2025/03/03 21:33:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 
 void	megaphone(std::string str)
 {
@@ -27,7 +28,7 @@ int	main(int argc, char **argv)
 	}
 	
 	std::string str = argv[1];
-	if (str.find_first_not_of(" \t\v\n") && argc == 2)
+	if (str.find_first_not_of(" \t\v\n") == std::string::npos && argc == 2)
 	{
 		std::cout << "* LOUD AND UNBEARBALE FEEDBACK NOISE *" << std::endl;
 		return (1);
